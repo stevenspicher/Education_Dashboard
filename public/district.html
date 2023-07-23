@@ -1,0 +1,944 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.typekit.net/kdc4trt.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+          integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../static/districts.css" />
+    <link rel="stylesheet" href="../../static/search-inside.css">
+    <link rel="stylesheet" href="https://use.typekit.net/ipw6blv.css">
+    <title>{{ district.district }}</title>
+</head>
+
+<body>
+<div class="search-block">
+    <div class="app-search">
+        <a href="../../"><img src="../../static/home.png"></a>
+        <div class="search-row">
+            <input id="fill-box" type="text" placeholder="Search school or district ...">
+            <i class="fa fa-search"></i>
+        </div>
+    </div> <!-- closes app search -->
+    <div id="suggestions-list" class="list-items"></div>
+</div> <!-- closes search block -->
+<div class="container">
+    <div class="title-text">
+        <h1>{{ district.district }}</h1>
+        <h2><span id="student-count"></span> students</h2>
+        <h4>{{ district.street }}, {{ district.city }}</h4>
+        <h4>{{ format_number(district.hdphone) }}, <a href="https://{{ district.url }}" target="_blank">website</a></h4>
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-6 graphic">
+            <div id='map' class="graphic-style"></div>
+        </div>
+        <div class="col-12 col-md-6 graphic">
+            <div class="school-col-inner">
+                <h4>Schools in this district</h4>
+                <div class="inner-text">
+                    <ul>
+                        <li>Elementary Schools</li>
+                        <ul>
+                            {% for school in school_object_list %}
+                            {% if school.district_alt == district.district_alt %}
+                            {% if school.type_y == 'E' %}
+                            <li><a href="../../school/{{ school.school_id }}/">{{ school.school }}</a></li>
+                            {% endif %}
+                            {% endif %}
+                            {% endfor %}
+                        </ul>
+                        <li>Middle Schools</li>
+                        <ul>
+                            {% for school in school_object_list %}
+                            {% if school.district_alt == district.district_alt %}
+                            {% if school.type_y == 'M' %}
+                            <li><a href="../../school/{{ school.school_id }}/">{{ school.school }}</a></li>
+                            {% endif %}
+                            {% endif %}
+                            {% endfor %}
+                        </ul>
+                        <li>High Schools</li>
+                        <ul>
+                            {% for school in school_object_list %}
+                            {% if school.district_alt == district.district_alt %}
+                            {% if school.type_y == 'H' %}
+                            <li><a href="../../school/{{ school.school_id }}/">{{ school.school }}</a></li>
+                            {% endif %}
+                            {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="graphic">
+            <div class="graphic-style">
+                <h5>Academic Performance</h5>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <canvas id="chart-academic"></canvas>
+                    </div>
+                    <div class="col-sm-4">
+                        <canvas id="chart-academic2"></canvas>
+                    </div>
+                    <div class="col-sm-4">
+                        <canvas id="chart-academic3"></canvas>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <canvas id="chart-academic4"></canvas>
+                    </div>
+                    <div class="col-sm-6">
+                        <canvas id="chart-academic5"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-12 graphic">
+            <div class="graphic-style">
+                <h5>Demographics</h5>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <canvas id="chart-poverty"></canvas>
+                    </div>
+                    <div class="col-sm-6">
+                        <canvas id="chart-disabilities"></canvas>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <canvas id="chart-race"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 graphic">
+            <div class="graphic-style">
+                <div id="chart-harrassment"></div>
+            </div>
+        </div>
+        <div class="col-md-4 graphic">
+            <div class="graphic-style">
+                <div id="chart-teacherpay"></div>
+            </div>
+        </div>
+        <div class="col-md-4 graphic">
+            <div class="graphic-style">
+                <div id="chart-childsafe"></div>
+            </div>
+        </div>
+        <div class="col-12 col-md-4 graphic">
+            <div class="graphic-style">
+                <div id="chart-teachersafe"></div>
+            </div>
+        </div>
+        <div class="col-12 col-md-4 graphic">
+            <div class="graphic-style">
+                <div id="chart-violent"></div>
+            </div>
+        </div>
+        <div class="col-12 col-md-4 graphic">
+            <div class="graphic-style">
+                <div id="chart-nonviolent"></div>
+            </div>
+        </div>
+    </div>  <!-- ends row -->
+</div> <!-- closes container -->
+<footer>
+    <p>© 2022, Post and Courier</p>
+
+</footer>
+
+<!-- d3 -->
+<script src="https://d3js.org/d3.v7.min.js"></script>
+
+<!-- chart.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.js" integrity="sha512-5m2r+g00HDHnhXQDbRLAfZBwPpPCaK+wPLV6lm8VQ+09ilGdHfXV7IVyKPkLOTfi4vTTUVJnz7ELs7cA87/GMA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+
+<!-- fuse -->
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.1"></script>
+
+<!-- leaflet -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
+
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<script src="../../static/search.js"></script>
+
+<!-- custom javascript -->
+<script>
+
+    // // // // // // // // // // // //
+    // // // // // // MISC. FUNCTIONS AND SCRIPTS
+    // // // // // // // // // // // //
+
+    // function to fromat numbers
+
+    function formatComma(float){
+        num = Math.round(float)
+        return num.toLocaleString("en-US")
+    }
+
+    // inject total enrolled students
+    d3.select("#student-count")
+        .text(formatComma({{ district.total_actively_enrolled_students }}))
+
+
+    // // // // // //
+    // // // MAP SCRIPT
+    // // // // // //
+
+    function districtMap() {
+        let latList = [];
+        let lonList = []
+        {% for school in school_object_list %}
+        {% if school.district_alt == district.district_alt %}
+        {% if school.year == "2021" %}
+        {% if school.lat != "no_result" %}
+        latList.push({{ school.lat }})
+        lonList.push({{ school.lon }})
+        {% endif %}
+        {% endif %}
+        {% endif %}
+        {% endfor %}
+        var map = L.map('map', {
+            scrollWheelZoom: false,
+        })
+        if(latList[0]){
+            map.setView([latList[0], lonList[0]], 9);
+        } else{
+            map.setView([33.4, -81.1], 7);
+        }
+
+        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYWFkaXR0YW1iZSIsImEiOiJja3R2eDFjZjMyZXJxMnhwcTR0Y3F5eGk2In0.9AAyIXkTkCMcZ8NNlDPB9g', {
+            maxZoom: 18,
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+                'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            id: 'mapbox/light-v9',
+            tileSize: 512,
+            zoomOffset: -1
+        }).addTo(map);
+
+        {% for school in school_object_list %}
+        {% if school.district_alt == district.district_alt %}
+        {% if school.year == "2021" %}
+        {% if school.lat != "no_result" %}
+        var marker = L.marker([{{ school.lat }}, {{ school.lon }} ]).addTo(map)
+            .bindPopup('<b><a href="../../school/{{ school.school_id }}">{{ school.school }}</a></b>');
+        {% endif %}
+        {% endif %}
+        {% endif %}
+        {% endfor %}
+        //console.log(latList[1])
+    }
+
+    // // // // // //
+    // // // FUNCTION TO DRAW STAT CHART
+    // // // // // //
+
+    function drawStat(graphic,data){
+        var chartWidth = $(graphic).width()
+
+        const div = d3.select(graphic)
+            .append("div")
+            .style("width", `100%`)
+            .style("height", `100%`)
+            .style("text-align","center")
+            .style("margin", "auto")
+            .selectAll(null)
+            .data(data)
+            .enter()
+
+
+        const num = div
+
+            .append("h1")
+            .text(function (d) {
+                return `${d.value}`
+            })
+            //.style("font-size","84px")
+            .style("color","#82C566")
+            .style("font-family","miller-headline")
+            .style("font-weight","700")
+
+        const text = div
+            .append("h5")
+            .text(function (d) {
+                return d.label
+            })
+
+    }
+    // // // // // // // // // // // //
+    // // // // // // DECLARE GLOBAL CONSTS WITH DATA
+    // // // // // // // // // // // //
+
+    const dataTeacherpayStat = [
+        { label: 'Average teacher pay', value: `${'{{ district.tchsalary_avg_curr }}' === 'NA' ? 'N/A' : '$' + formatComma({{ district.tchsalary_avg_curr_yr }})}` }
+    ]
+
+    const dataChildsafeStat = [
+        { label: 'Parents who agree "my child feels safe at school"', value: `${'{{ district.par_child_feels_safe }}' === 'NA' ? 'N/A' : formatComma({{ district.par_child_feels_safe }}) + '%'}` }
+    ]
+
+    const dataTeachersafeStat = [
+        { label: 'Teachers who agree "I feel safe at my school"', value: `${'{{ district.tch_i_feel_safe }}' === 'NA' ? 'N/A' : formatComma({{ district.tch_i_feel_safe }}) + '%'}` }
+    ]
+
+    const dataViolentassaultsStat = [
+        { label: 'Number of violent assaults', value: `${'{{ district.ocr_violent_all }}' === 'NA' ? 'N/A' : formatComma({{ district.ocr_violent_all }})}` }
+    ]
+
+    const dataNonviolentassaultsStat = [
+        { label: 'Number of nonviolent assaults', value: `${'{{ district.ocr_nonviolent_all }}' === 'NA' ? 'N/A' : formatComma({{ district.ocr_nonviolent_all }})}` }
+    ]
+
+    const dataHarrassmentStat = [
+        { label: 'Number of incidents of bullying or harrassment', value: `${'{{ district.ocr_bully_harass }}' === 'NA' ? 'N/A' : formatComma({{ district.ocr_bully_harass }})}` }
+    ]
+
+    // // // // // // // // // // // //
+    // // // // // // CALL FUNCTIONS
+    // // // // // // // // // // // //
+
+    Chart.register(ChartDataLabels);
+
+    searchApp("district")
+    districtMap()
+
+    drawStat("#chart-teacherpay",dataTeacherpayStat)
+    drawStat("#chart-childsafe",dataChildsafeStat)
+    drawStat("#chart-teachersafe",dataTeachersafeStat)
+    drawStat("#chart-violent",dataViolentassaultsStat)
+    drawStat("#chart-nonviolent",dataNonviolentassaultsStat)
+    drawStat("#chart-harrassment",dataHarrassmentStat)
+
+    const name = `{{ district.district }}`
+
+    new Chart(
+        document.getElementById('chart-academic'), {
+            type: 'bar',
+            data: {
+                labels: [
+                    'Students with Positive Reading Score',
+                ],
+                datasets: [{
+                    label: name,
+                    backgroundColor: 'rgb(255, 99, 132)',
+                    borderColor: 'rgb(255, 99, 132)',
+                    data: [`{{district.e_pct_me}}` === 'NA' ? 0 : `{{district.e_pct_me}}`],
+                    barPercentage: 1.0
+                },
+                    {
+                        label: 'State Average',
+                        backgroundColor: 'rgb(30,144,255)',
+                        borderColor: 'rgb(30,144,255)',
+                        data: [`{{state_average.e_pct_me}}` === 'NA' ? 0 : `{{state_average.e_pct_me}}`],
+                        barPercentage: 1.0
+                    }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        max: 100,
+                        ticks: {
+                            callback: function(value, index, ticks) {
+                                return `${value}%`
+                            }
+                        },
+                        title: {
+                            display: false,
+                            text: 'Percentage of Students with Satisfactory Scores'
+                        }
+                    }
+                },
+                plugins: {
+                    datalabels: {
+                        formatter: (value, ctx) => {
+                            if (value !== 0) {
+                                return Math.round(value) + '%';
+                            } else {
+                                return 'N/A'
+                            }
+                        },
+                        anchor: 'end',
+                        align: (value, ctx) => {
+                            if (value.dataset.data[0] > 30) {
+                                return 'bottom'
+                            }
+                            else {
+                                return 'top'
+                            }
+                        },
+                        font: {
+                            weight: 'bold'
+                        }
+                    },
+                    tooltips: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.dataset.label + '%';
+                            },
+                        }
+                    }
+                }
+            }
+        }
+    )
+
+    new Chart(
+        document.getElementById('chart-academic2'), {
+            type: 'bar',
+            data: {
+                labels: [
+                    'Students with Positive Math Score',
+                ],
+                datasets: [{
+                    label: name,
+                    backgroundColor: 'rgb(255, 99, 132)',
+                    borderColor: 'rgb(255, 99, 132)',
+                    data: [`{{district.m_pct_me}}` === 'NA' ? 0 : `{{district.m_pct_me}}`],
+                    barPercentage: 1.0
+                },
+                    {
+                        label: 'State Average',
+                        backgroundColor: 'rgb(30,144,255)',
+                        borderColor: 'rgb(30,144,255)',
+                        data: [`{{state_average.m_pct_me}}` === 'NA' ? 0 : `{{state_average.m_pct_me}}`],
+                        barPercentage: 1.0
+                    }]
+            },
+            options: {
+                legend: {
+                    display: false,
+                },
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        max: 100,
+                        ticks: {
+                            callback: function(value, index, ticks) {
+                                return `${value}%`
+                            }
+                        },
+                        title: {
+                            display: false,
+                            text: 'Percentage of Students with Satisfactory Scores'
+                        }
+                    }
+                },
+                plugins: {
+                    datalabels: {
+                        formatter: (value, ctx) => {
+                            if (value !== 0) {
+                                return Math.round(value) + '%';
+                            } else {
+                                return 'N/A'
+                            }
+                        },
+                        anchor: 'end',
+                        align: (value, ctx) => {
+                            if (value.dataset.data[0] > 30) {
+                                return 'bottom'
+                            }
+                            else {
+                                return 'top'
+                            }
+                        },
+                        font: {
+                            weight: 'bold'
+                        }
+                    },
+                    tooltips: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.dataset.label + '%';
+                            },
+                        }
+                    },
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        }
+    )
+
+    new Chart(
+        document.getElementById('chart-academic3'), {
+            type: 'bar',
+            data: {
+                labels: [
+                    'Students with Positive Science Score',
+                ],
+                datasets: [{
+                    label: name,
+                    backgroundColor: 'rgb(255, 99, 132)',
+                    borderColor: 'rgb(255, 99, 132)',
+                    data: [`{{district.sc_pct_me}}` === 'NA' ? 0 : `{{district.sc_pct_me}}`],
+                    barPercentage: 1.0
+                },
+                    {
+                        label: 'State Average',
+                        backgroundColor: 'rgb(30,144,255)',
+                        borderColor: 'rgb(30,144,255)',
+                        data: [`{{state_average.sc_pct_me}}` === 'NA' ? 0 : `{{state_average.sc_pct_me}}`],
+                        barPercentage: 1.0
+                    }]
+            },
+            options: {
+                legend: {
+                    display: false,
+                },
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        max: 100,
+                        ticks: {
+                            callback: function(value, index, ticks) {
+                                return `${value}%`
+                            }
+                        },
+                        title: {
+                            display: false,
+                            text: 'Percentage of Students with Satisfactory Scores'
+                        }
+                    }
+                },
+                plugins: {
+                    datalabels: {
+                        formatter: (value, ctx) => {
+                            if (value !== 0) {
+                                return Math.round(value) + '%';
+                            } else {
+                                return 'N/A'
+                            }
+                        },
+                        anchor: 'end',
+                        align: (value, ctx) => {
+                            if (value.dataset.data[0] > 30) {
+                                return 'bottom'
+                            }
+                            else {
+                                return 'top'
+                            }
+                        },
+                        font: {
+                            weight: 'bold'
+                        }
+                    },
+                    tooltips: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.dataset.label + '%';
+                            },
+                        }
+                    },
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        }
+    )
+
+
+
+    new Chart(
+        document.getElementById('chart-academic4'), {
+            type: 'bar',
+            data: {
+                labels: [
+                    'On-time graduation rate'
+                ],
+                datasets: [{
+                    label: name,
+                    backgroundColor: 'rgb(255, 99, 132)',
+                    borderColor: 'rgb(255, 99, 132)',
+                    data: [`{{district.gpercent_overall}}` === 'NA' ? 0 : `{{district.gpercent_overall}}`],
+                    barPercentage: 1.0,
+                    categoryPercentage: 0.6,
+                },
+                    {
+                        label: 'State Average',
+                        backgroundColor: 'rgb(30,144,255)',
+                        borderColor: 'rgb(30,144,255)',
+                        data: [`{{state_average.gpercent_overall}}` === 'NA' ? 0 : `{{state_average.gpercent_overall}}`],
+                        barPercentage: 1.0,
+                        categoryPercentage: 0.6,
+                    }]
+            },
+            options: {
+                legend: {
+                    display: false,
+                },
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        max: 100,
+                        ticks: {
+                            callback: function(value, index, ticks) {
+                                return `${value}%`
+                            }
+                        },
+                    },
+                },
+                plugins: {
+                    datalabels: {
+                        formatter: (value, ctx) => {
+                            if (value !== 0) {
+                                return Math.round(value) + '%';
+                            } else {
+                                return 'N/A'
+                            }
+                        },
+                        anchor: 'end',
+                        align: (value, ctx) => {
+                            if (value.dataset.data[0] > 30) {
+                                return 'bottom'
+                            }
+                            else {
+                                return 'top'
+                            }
+                        },
+                        font: {
+                            weight: 'bold'
+                        }
+                    },
+                    tooltips: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.dataset.label + '%';
+                            },
+                        }
+                    },
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        }
+    )
+
+    new Chart(
+        document.getElementById('chart-academic5'), {
+            type: 'bar',
+            data: {
+                labels: [
+                    'Average ACT Score'
+                ],
+                datasets: [{
+                    label: name,
+                    backgroundColor: 'rgb(255, 99, 132)',
+                    borderColor: 'rgb(255, 99, 132)',
+                    data: [`{{district.act_avg_composite_score}}` === 'NA' ? 0 : `{{district.act_avg_composite_score}}`],
+                    barPercentage: 1.0,
+                    categoryPercentage: 0.6,
+                },
+                    {
+                        label: 'State Average',
+                        backgroundColor: 'rgb(30,144,255)',
+                        borderColor: 'rgb(30,144,255)',
+                        data: [`{{state_average.act_avg_composite_score}}` === 'NA' ? 0 : `{{state_average.act_avg_composite_score}}`],
+                        barPercentage: 1.0,
+                        categoryPercentage: 0.6,
+                    }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        max: 32,
+                        ticks: {
+                            stepSize: 16,
+                            callback: function(value, index, ticks) {
+                                if (value === 0 || value === 16 || value === 32) {
+                                    return `${value}`
+                                }
+                            }
+                        },
+                        title: {
+                            display: false,
+                            text: 'Percentage of Students with Satisfactory Scores'
+                        }
+                    },
+                },
+                plugins: {
+                    datalabels: {
+                        formatter: (value, ctx) => {
+                            if (value !== 0) {
+                                return Math.round(value);
+                            } else {
+                                return 'N/A'
+                            }
+                        },
+                        anchor: 'end',
+                        align: (value, ctx) => {
+                            if (value.dataset.data[0] > 25) {
+                                return 'bottom'
+                            }
+                            else {
+                                return 'top'
+                            }
+                        },
+                        font: {
+                            weight: 'bold'
+                        }
+                    },
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        }
+    )
+
+    new Chart(
+        document.getElementById('chart-race'), {
+            type: 'bar',
+            data: {
+                labels: [
+                    'White',
+                    'Black',
+                    'Other'
+                ],
+                datasets: [{
+                    label: name,
+                    backgroundColor: 'rgb(255, 99, 132)',
+                    borderColor: 'rgb(255, 99, 132)',
+                    data: [
+                        `{{district.percent_white}}` === 'NA' ? 0 : `{{district.percent_white}}`,
+                        `{{district.percent_black_aa}}` === 'NA' ? 0 : `{{district.percent_black_aa}}`,
+                        `{{district.percent_all_other_races}}` === 'NA' ? 0 : `{{district.percent_all_other_races}}`
+                    ],
+                    barPercentage: 1.0,
+                    categoryPercentage: 0.6,
+                },
+                    {
+                        label: 'State Average',
+                        backgroundColor: 'rgb(30,144,255)',
+                        borderColor: 'rgb(30,144,255)',
+                        data: [
+                            `{{state_average.percent_white}}` === 'NA' ? 0 : `{{state_average.percent_white}}`,
+                            `{{state_average.percent_black_aa}}` === 'NA' ? 0 : `{{state_average.percent_black_aa}}`,
+                            `{{state_average.percent_all_other_races}}` === 'NA' ? 0 : `{{state_average.percent_all_other_races}}`
+                        ],
+                        barPercentage: 1.0,
+                        categoryPercentage: 0.6,
+                    },
+                ]},
+            options: {
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        max: 100,
+                        ticks: {
+                            callback: function(value, index, ticks) {
+                                return `${value}%`
+                            }
+                        },
+                    },
+                },
+                plugins: {
+                    datalabels: {
+                        formatter: (value, ctx) => {
+                            if (value !== 0) {
+                                return Math.round(value) + '%';
+                            } else {
+                                return 'N/A'
+                            }
+                        },
+                        anchor: 'end',
+                        align: (value, ctx) => {
+                            if (value.dataset.data[value.dataIndex] > 30) {
+                                return 'bottom'
+                            }
+                            else {
+                                return 'top'
+                            }
+                        },
+                        font: {
+                            weight: 'bold'
+                        }
+                    },
+                    tooltips: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.dataset.label + '%';
+                            },
+                        }
+                    },
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        }
+    )
+
+    new Chart(
+        document.getElementById('chart-poverty'), {
+            type: 'bar',
+            data: {
+                labels: [
+                    'Percentage of Students in Poverty',
+                ],
+                datasets: [{
+                    label: name,
+                    backgroundColor: 'rgb(255, 99, 132)',
+                    borderColor: 'rgb(255, 99, 132)',
+                    data: [`{{district.studentsin_poverty_pct_curr_yr}}` === 'NA' ? 0 : `{{district.studentsin_poverty_pct_curr_yr}}`],
+                    barPercentage: 1.0,
+                    categoryPercentage: 0.6
+                },
+                    {
+                        label: 'State Average',
+                        backgroundColor: 'rgb(30,144,255)',
+                        borderColor: 'rgb(30,144,255)',
+                        data: [`{{state_average.studentsin_poverty_pct_curr_yr}}` === 'NA' ? 0 : `{{state_average.studentsin_poverty_pct_curr_yr}}`],
+                        barPercentage: 1.0,
+                        categoryPercentage: 0.6
+                    }]
+            },
+            options: {
+                legend: {
+                    display: false,
+                },
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        max: 100,
+                        ticks: {
+                            callback: function(value, index, ticks) {
+                                return `${value}%`
+                            }
+                        },
+                        title: {
+                            display: false,
+                            text: 'Percentage of Students with Satisfactory Scores'
+                        }
+                    }
+                },
+                plugins: {
+                    datalabels: {
+                        formatter: (value, ctx) => {
+                            if (value !== 0) {
+                                return Math.round(value) + '%';
+                            } else {
+                                return 'N/A'
+                            }
+                        },
+                        anchor: 'end',
+                        align: (value, ctx) => {
+                            if (value.dataset.data[0] > 30) {
+                                return 'bottom'
+                            }
+                            else {
+                                return 'top'
+                            }
+                        },
+                        font: {
+                            weight: 'bold'
+                        }
+                    },
+                    legend: {
+                        display: true
+                    }
+                }
+            }
+        }
+    );
+
+    new Chart(
+        document.getElementById('chart-disabilities'), {
+            type: 'bar',
+            data: {
+                labels: [
+                    'Percentage of Students with Disabilities',
+                ],
+                datasets: [{
+                    label: name,
+                    backgroundColor: 'rgb(255, 99, 132)',
+                    borderColor: 'rgb(255, 99, 132)',
+                    data: [`{{district.pct_disabilities}}` === 'NA' ? 0 : `{{district.pct_disabilities}}`],
+                    barPercentage: 1.0,
+                    categoryPercentage: 0.6
+                },
+                    {
+                        label: 'State Average',
+                        backgroundColor: 'rgb(30,144,255)',
+                        borderColor: 'rgb(30,144,255)',
+                        data: [`{{state_average.pct_disabilities}}` === 'NA' ? 0 : `{{state_average.pct_disabilities}}`],
+                        barPercentage: 1.0,
+                        categoryPercentage: 0.6
+                    }]
+            },
+            options: {
+                legend: {
+                    display: false,
+                },
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        max: 100,
+                        ticks: {
+                            callback: function(value, index, ticks) {
+                                return `${value}%`
+                            }
+                        },
+                        title: {
+                            display: false,
+                            text: 'Percentage of Students with Satisfactory Scores'
+                        }
+                    }
+                },
+                plugins: {
+                    datalabels: {
+                        formatter: (value, ctx) => {
+                            if (value !== 0) {
+                                return Math.round(value) + '%';
+                            } else {
+                                return 'N/A'
+                            }
+                        },
+                        anchor: 'end',
+                        align: (value, ctx) => {
+                            if (value.dataset.data[0] > 30) {
+                                return 'bottom'
+                            }
+                            else {
+                                return 'top'
+                            }
+                        },
+                        font: {
+                            weight: 'bold'
+                        }
+                    },
+                    tooltips: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.dataset.label + '%';
+                            },
+                        }
+                    },
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        }
+    )
+
+</script>
+
+</body>
+</html>

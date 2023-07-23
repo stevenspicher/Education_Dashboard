@@ -1,0 +1,9 @@
+{
+  "name": "Education Dashboard",
+  "version": "1.0.0",
+  "dependencies": {
+  },
+  "scripts": {
+    "server": "npx http-server ./public"
+  }
+}
