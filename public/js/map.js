@@ -74,14 +74,16 @@ d3.json("../static/data.geojson").then(function (loadedData) {
             fillOpacity: 0.7
         };
     }
+
     function onEachFeature(feature, layer) {
-        layer.bindPopup("<p style = \"text-align:center;\">" + '<strong>' + feature.properties.LEA_NAME + '</strong>' + " <br>total kidz: " + '<strong>' + parseFloat((feature.properties.total_students_enrolled)).toFixed(0) + " XXXXXXXX " +"<a href='{{'>hi</a>" +" XXXX " + "</strong></p>");
+        layer.bindPopup("<p style = \"text-align:center;\">" + '<strong>' + feature.properties.LEA_NAME + '</strong>' + " <br>total kidz: " + '<strong>' + parseFloat((feature.properties.total_students_enrolled)).toFixed(0) + " XXXXXXXX " + "<a href='{{'>hi</a>" + " XXXX " + "</strong></p>");
     }
-    var geojsonLayer = new L.geoJson(loadedData, { onEachFeature: onEachFeature, style: style });
+
+    var geojsonLayer = new L.geoJson(loadedData, {onEachFeature: onEachFeature, style: style});
 
     geojsonLayer.addTo(map);
 
-    var totalLegend = L.control({ position: 'bottomright' });
+    var totalLegend = L.control({position: 'bottomright'});
 
     totalLegend.onAdd = function (map) {
         var div = L.DomUtil.create('div', 'info legend'),
@@ -98,7 +100,7 @@ d3.json("../static/data.geojson").then(function (loadedData) {
         return div;
     };
 
-    var boyLegend = L.control({ position: 'bottomright' });
+    var boyLegend = L.control({position: 'bottomright'});
 
     boyLegend.onAdd = function (map) {
         var div = L.DomUtil.create('div', 'info legend'),
@@ -116,7 +118,7 @@ d3.json("../static/data.geojson").then(function (loadedData) {
     };
 
 
-    var girlLegend = L.control({ position: 'bottomright' });
+    var girlLegend = L.control({position: 'bottomright'});
 
     girlLegend.onAdd = function (map) {
         var div = L.DomUtil.create('div', 'info legend'),
@@ -133,7 +135,7 @@ d3.json("../static/data.geojson").then(function (loadedData) {
         return div;
     };
 
-    var unknownLegend = L.control({ position: 'bottomright' });
+    var unknownLegend = L.control({position: 'bottomright'});
 
     unknownLegend.onAdd = function (map) {
         var div = L.DomUtil.create('div', 'info legend'),
@@ -233,7 +235,7 @@ d3.json("../static/data.geojson").then(function (loadedData) {
 
     var currentLegend = totalLegend;
 
-    var buttons = L.control({ position: 'topright' });
+    var buttons = L.control({position: 'topright'});
 
     buttons.onAdd = function (map) {
         var div = L.DomUtil.create('div', 'info legend');
@@ -276,14 +278,10 @@ d3.json("../static/data.geojson").then(function (loadedData) {
         else if (this.innerText == "Girls") {
             property = "gender_female";
 
-        }
-
-        else if (this.innerText == "Boys") {
+        } else if (this.innerText == "Boys") {
             property = "gender_male";
 
-        }
-
-        else if (this.innerText == "Unknown") {
+        } else if (this.innerText == "Unknown") {
             property = "gender_missing";
 
         }
@@ -321,6 +319,7 @@ d3.json("../static/data.geojson").then(function (loadedData) {
                 fillOpacity: 0.7
             };
         }
+
         function styleBoys(feature) {
 
             property2 = parseFloat(feature['properties'][property]).toFixed(1);
@@ -444,11 +443,9 @@ d3.json("../static/data.geojson").then(function (loadedData) {
 
             if (property == "gender_male") {
                 updatedProperty = "Boyz"
-            }
-            else if (property == "gender_female") {
+            } else if (property == "gender_female") {
                 updatedProperty = "Girlz"
-            }
-            else if (property == "gender_missing") {
+            } else if (property == "gender_missing") {
                 updatedProperty = "Unknown"
             }
             // else if (property == "Asian") {
@@ -477,44 +474,37 @@ d3.json("../static/data.geojson").then(function (loadedData) {
         if (this.innerText == "Total") {
 
             map.removeLayer(geojsonLayer);
-            geojsonLayer = new L.geoJson(loadedData, { onEachFeature: onEachFeature2, style: styleTotal });
+            geojsonLayer = new L.geoJson(loadedData, {onEachFeature: onEachFeature2, style: styleTotal});
             geojsonLayer.addTo(map);
 
             map.removeControl(currentLegend);
             currentLegend = totalLegend;
             totalLegend.addTo(map);
 
-        }
-
-        else if (this.innerText == "Boys") {
+        } else if (this.innerText == "Boys") {
 
             map.removeLayer(geojsonLayer);
-            geojsonLayer = new L.geoJson(loadedData, { onEachFeature: onEachFeature2, style: styleBoys });
+            geojsonLayer = new L.geoJson(loadedData, {onEachFeature: onEachFeature2, style: styleBoys});
             geojsonLayer.addTo(map);
 
             map.removeControl(currentLegend);
             currentLegend = boyLegend;
             boyLegend.addTo(map);
 
-        }
-
-        else if (this.innerText == "Girls") {
+        } else if (this.innerText == "Girls") {
 
             map.removeLayer(geojsonLayer);
-            geojsonLayer = new L.geoJson(loadedData, { onEachFeature: onEachFeature2, style: styleGirls });
+            geojsonLayer = new L.geoJson(loadedData, {onEachFeature: onEachFeature2, style: styleGirls});
             geojsonLayer.addTo(map);
 
             map.removeControl(currentLegend);
             currentLegend = girlLegend;
             girlLegend.addTo(map);
 
-        }
-
-
-        else if (this.innerText == "Unknown") {
+        } else if (this.innerText == "Unknown") {
 
             map.removeLayer(geojsonLayer);
-            geojsonLayer = new L.geoJson(loadedData, { onEachFeature: onEachFeature2, style: styleUnknown });
+            geojsonLayer = new L.geoJson(loadedData, {onEachFeature: onEachFeature2, style: styleUnknown});
             geojsonLayer.addTo(map);
 
             map.removeControl(currentLegend);
@@ -588,7 +578,6 @@ d3.json("../static/data.geojson").then(function (loadedData) {
     })
 
     map.attributionControl.addAttribution('Population data &copy; <a href="http://census.gov/">US Census Bureau</a>');
-
 
 
     currentLegend.addTo(map);

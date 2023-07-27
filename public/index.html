@@ -17,8 +17,8 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <link rel="stylesheet" href="static/style.css">
-    <link rel="stylesheet" href="static/search.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/search.css">
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 </head>
 
@@ -35,9 +35,8 @@
         </div>
         <div class="search-eg">
             <p>For example: </p>
-            <p><a href="/district/160999/">Abbeville County School District</a></p>
-            <p><a href="/school/403024/">Iva Elementary School</a></p>
-            <p><a href="/school/4201002/">Chapman High School</a></p>
+            <p><a href="district.html">Abbeville County School District</a></p>
+            <p><a href="school.html">Iva Elementary School</a></p>
         </div>
         <div id="suggestions-list" class="list-items"></div>
     </div>
@@ -60,7 +59,7 @@
         {% for school in school_object_list %}
 
         <tr>
-            <td><a href="school/{{ school.school_id }}/">{{ school.school }}</a></td>
+            <td><a href="screens/school/{{ school.school_id }}/">{{ school.school }}</a></td>
 
             {% if school.type_y == 'H' %}
             <td>High School</td>
@@ -123,7 +122,7 @@
 <script src="https://d3js.org/d3.v7.min.js"></script>
 
 <!-- <-- search script -->
-<script src="static/search.js"></script>
+<script src="js/search.js"></script>
 
 <!-- TEMP -->
 <script>
@@ -132,7 +131,7 @@
 
 <!-- leaflet map script -->
 <script>
-    d3.json("static/district_demographic_join_new.geojson").then(function (loadedData) {
+    d3.json("geo/district_demographic_join_new.geojson").then(function (loadedData) {
 
 
         var map = L.map('map', {
@@ -188,9 +187,8 @@
             return num.toLocaleString("en-US");
         }
 
-
         function onEachFeature(feature, layer) {
-            layer.bindPopup("<p style = \"text-align:center;\">" + '<strong>' + '<a href=' + "district/" + feature.properties.district_id + ">" + feature.properties.LEA_NAME + '</a></strong>' + " <br> Graduation Rate: " + parseFloat((feature.properties.gpercent_overall)).toFixed(0) + '%');
+            layer.bindPopup("<p style = \"text-align:center;\">" + '<strong>' + '<a href=' + "" + feature.properties.district_id + "screens/district/>" + feature.properties.LEA_NAME + '</a></strong>' + " <br> Graduation Rate: " + parseFloat((feature.properties.gpercent_overall)).toFixed(0) + '%');
         }
 
         var geojsonLayer = new L.geoJson(loadedData, { onEachFeature: onEachFeature, style: style });

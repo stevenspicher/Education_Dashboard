@@ -4,22 +4,23 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://use.typekit.net/kdc4trt.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css"/>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-          integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+          integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../../static/districts.css" />
-    <link rel="stylesheet" href="../../static/search-inside.css">
+    <link rel="stylesheet" href="css/schools.css"/>
+    <link rel="stylesheet" href="css/search-inside.css">
     <link rel="stylesheet" href="https://use.typekit.net/ipw6blv.css">
-    <title>{{ district.district }}</title>
+    <title>Abbeville County School Dist</title>
 </head>
 
 <body>
 <div class="search-block">
     <div class="app-search">
-        <a href="../../"><img src="../../static/home.png"></a>
+        <a href="../../.."><img src="../../asset/home.png"></a>
         <div class="search-row">
             <input id="fill-box" type="text" placeholder="Search school or district ...">
             <i class="fa fa-search"></i>
@@ -29,10 +30,10 @@
 </div> <!-- closes search block -->
 <div class="container">
     <div class="title-text">
-        <h1>{{ district.district }}</h1>
+        <h1>Abbeville County School Dist</h1>
         <h2><span id="student-count"></span> students</h2>
-        <h4>{{ district.street }}, {{ district.city }}</h4>
-        <h4>{{ format_number(district.hdphone) }}, <a href="https://{{ district.url }}" target="_blank">website</a></h4>
+        <h4>400 Greenville Street, Abbeville</h4>
+        <h4>864-366-5427, <a href="https://acsdsc.org" target="_blank">website</a></h4>
     </div>
     <div class="row">
         <div class="col-12 col-md-6 graphic">
@@ -45,33 +46,45 @@
                     <ul>
                         <li>Elementary Schools</li>
                         <ul>
-                            {% for school in school_object_list %}
-                            {% if school.district_alt == district.district_alt %}
-                            {% if school.type_y == 'E' %}
-                            <li><a href="../../school/{{ school.school_id }}/">{{ school.school }}</a></li>
-                            {% endif %}
-                            {% endif %}
-                            {% endfor %}
+
+
+                            <li><a href="../../school/160018/">Cherokee Trail Elementary</a></li>
+
+
+                            <li><a href="../../school/160019/">Diamond Hill Elementary School</a></li>
+
+
+                            <li><a href="../../school/160007/">John C. Calhoun Elementary School</a></li>
+
+
+                            <li><a href="../../school/160017/">Westwood Elementary School</a></li>
+
+
                         </ul>
                         <li>Middle Schools</li>
                         <ul>
-                            {% for school in school_object_list %}
-                            {% if school.district_alt == district.district_alt %}
-                            {% if school.type_y == 'M' %}
-                            <li><a href="../../school/{{ school.school_id }}/">{{ school.school }}</a></li>
-                            {% endif %}
-                            {% endif %}
-                            {% endfor %}
+
+
+                            <li><a href="../../school/160018/">Cherokee Trail Middle</a></li>
+
+
+                            <li><a href="../../school/160019/">Diamond Hill Middle School</a></li>
+
+
+                            <li><a href="../../school/160016/">Wright Middle</a></li>
+
+
                         </ul>
                         <li>High Schools</li>
                         <ul>
-                            {% for school in school_object_list %}
-                            {% if school.district_alt == district.district_alt %}
-                            {% if school.type_y == 'H' %}
-                            <li><a href="../../school/{{ school.school_id }}/">{{ school.school }}</a></li>
-                            {% endif %}
-                            {% endif %}
-                            {% endfor %}
+
+
+                            <li><a href="../../school/160001/">Abbeville High School</a></li>
+
+
+                            <li><a href="../../school/160003/">Dixie High School</a></li>
+
+
                         </ul>
                     </ul>
                 </div>
@@ -144,11 +157,6 @@
                 <div id="chart-violent"></div>
             </div>
         </div>
-        <div class="col-12 col-md-4 graphic">
-            <div class="graphic-style">
-                <div id="chart-nonviolent"></div>
-            </div>
-        </div>
     </div>  <!-- ends row -->
 </div> <!-- closes container -->
 <footer>
@@ -160,7 +168,9 @@
 <script src="https://d3js.org/d3.v7.min.js"></script>
 
 <!-- chart.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.js" integrity="sha512-5m2r+g00HDHnhXQDbRLAfZBwPpPCaK+wPLV6lm8VQ+09ilGdHfXV7IVyKPkLOTfi4vTTUVJnz7ELs7cA87/GMA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.js"
+        integrity="sha512-5m2r+g00HDHnhXQDbRLAfZBwPpPCaK+wPLV6lm8VQ+09ilGdHfXV7IVyKPkLOTfi4vTTUVJnz7ELs7cA87/GMA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
 
 <!-- fuse -->
@@ -172,7 +182,7 @@
 <!-- jQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-<script src="../../static/search.js"></script>
+<script src="js/search.js"></script>
 
 <!-- custom javascript -->
 <script>
@@ -183,14 +193,14 @@
 
     // function to fromat numbers
 
-    function formatComma(float){
+    function formatComma(float) {
         num = Math.round(float)
         return num.toLocaleString("en-US")
     }
 
     // inject total enrolled students
     d3.select("#student-count")
-        .text(formatComma({{ district.total_actively_enrolled_students }}))
+        .text(formatComma(2926))
 
 
     // // // // // //
@@ -199,23 +209,55 @@
 
     function districtMap() {
         let latList = [];
-        let lonList = []
-        {% for school in school_object_list %}
-        {% if school.district_alt == district.district_alt %}
-        {% if school.year == "2021" %}
-        {% if school.lat != "no_result" %}
-        latList.push({{ school.lat }})
-        lonList.push({{ school.lon }})
-        {% endif %}
-        {% endif %}
-        {% endif %}
-        {% endfor %}
+        let lonList = [];
+
+
+        latList.push(34.18729295)
+        lonList.push(-82.37512603)
+
+
+        latList.push(34.3641167)
+        lonList.push(-82.35564697)
+
+
+        latList.push(34.3645549)
+        lonList.push(-82.3582024)
+
+
+        latList.push(34.2559676)
+        lonList.push(-82.56481013)
+
+
+        latList.push(34.2559676)
+        lonList.push(-82.56481013)
+
+
+        latList.push(34.328243)
+        lonList.push(-82.387977)
+
+
+        latList.push(34.10373135)
+        lonList.push(-82.59765549)
+
+
+        latList.push(34.1872022)
+        lonList.push(-82.354427)
+
+
+        latList.push(34.1540754)
+        lonList.push(-82.3986732)
+
+
+        latList.push(34.18642145)
+        lonList.push(-82.40282005)
+
+
         var map = L.map('map', {
             scrollWheelZoom: false,
         })
-        if(latList[0]){
+        if (latList[0]) {
             map.setView([latList[0], lonList[0]], 9);
-        } else{
+        } else {
             map.setView([33.4, -81.1], 7);
         }
 
@@ -228,16 +270,47 @@
             zoomOffset: -1
         }).addTo(map);
 
-        {% for school in school_object_list %}
-        {% if school.district_alt == district.district_alt %}
-        {% if school.year == "2021" %}
-        {% if school.lat != "no_result" %}
-        var marker = L.marker([{{ school.lat }}, {{ school.lon }} ]).addTo(map)
-            .bindPopup('<b><a href="../../school/{{ school.school_id }}">{{ school.school }}</a></b>');
-        {% endif %}
-        {% endif %}
-        {% endif %}
-        {% endfor %}
+
+        var marker = L.marker([34.18729295, -82.37512603]).addTo(map)
+            .bindPopup('<b><a href="../../school/160001">Abbeville High School</a></b>');
+
+
+        var marker = L.marker([34.3641167, -82.35564697]).addTo(map)
+            .bindPopup('<b><a href="../../school/160018">Cherokee Trail Elementary</a></b>');
+
+
+        var marker = L.marker([34.3645549, -82.3582024]).addTo(map)
+            .bindPopup('<b><a href="../../school/160018">Cherokee Trail Middle</a></b>');
+
+
+        var marker = L.marker([34.2559676, -82.56481013]).addTo(map)
+            .bindPopup('<b><a href="../../school/160019">Diamond Hill Elementary School</a></b>');
+
+
+        var marker = L.marker([34.2559676, -82.56481013]).addTo(map)
+            .bindPopup('<b><a href="../../school/160019">Diamond Hill Middle School</a></b>');
+
+
+        var marker = L.marker([34.328243, -82.387977]).addTo(map)
+            .bindPopup('<b><a href="../../school/160003">Dixie High School</a></b>');
+
+
+        var marker = L.marker([34.10373135, -82.59765549]).addTo(map)
+            .bindPopup('<b><a href="../../school/160007">John C. Calhoun Elementary School</a></b>');
+
+
+        var marker = L.marker([34.1872022, -82.354427]).addTo(map)
+            .bindPopup('<b><a href="../../school/160020">Long Cane Primary</a></b>');
+
+
+        var marker = L.marker([34.1540754, -82.3986732]).addTo(map)
+            .bindPopup('<b><a href="../../school/160017">Westwood Elementary School</a></b>');
+
+
+        var marker = L.marker([34.18642145, -82.40282005]).addTo(map)
+            .bindPopup('<b><a href="../../school/160016">Wright Middle</a></b>');
+
+
         //console.log(latList[1])
     }
 
@@ -245,14 +318,14 @@
     // // // FUNCTION TO DRAW STAT CHART
     // // // // // //
 
-    function drawStat(graphic,data){
+    function drawStat(graphic, data) {
         var chartWidth = $(graphic).width()
 
         const div = d3.select(graphic)
             .append("div")
             .style("width", `100%`)
             .style("height", `100%`)
-            .style("text-align","center")
+            .style("text-align", "center")
             .style("margin", "auto")
             .selectAll(null)
             .data(data)
@@ -266,9 +339,9 @@
                 return `${d.value}`
             })
             //.style("font-size","84px")
-            .style("color","#82C566")
-            .style("font-family","miller-headline")
-            .style("font-weight","700")
+            .style("color", "#82C566")
+            .style("font-family", "miller-headline")
+            .style("font-weight", "700")
 
         const text = div
             .append("h5")
@@ -277,32 +350,35 @@
             })
 
     }
+
     // // // // // // // // // // // //
     // // // // // // DECLARE GLOBAL CONSTS WITH DATA
     // // // // // // // // // // // //
 
     const dataTeacherpayStat = [
-        { label: 'Average teacher pay', value: `${'{{ district.tchsalary_avg_curr }}' === 'NA' ? 'N/A' : '$' + formatComma({{ district.tchsalary_avg_curr_yr }})}` }
+        {label: 'Average teacher pay', value: `${'' === 'NA' ? 'N/A' : '$' + formatComma(51129)}`}
     ]
 
     const dataChildsafeStat = [
-        { label: 'Parents who agree "my child feels safe at school"', value: `${'{{ district.par_child_feels_safe }}' === 'NA' ? 'N/A' : formatComma({{ district.par_child_feels_safe }}) + '%'}` }
+        {
+            label: 'Parents who agree "my child feels safe at school"',
+            value: `${'93.1' === 'NA' ? 'N/A' : formatComma(93.1) + '%'}`
+        }
     ]
 
     const dataTeachersafeStat = [
-        { label: 'Teachers who agree "I feel safe at my school"', value: `${'{{ district.tch_i_feel_safe }}' === 'NA' ? 'N/A' : formatComma({{ district.tch_i_feel_safe }}) + '%'}` }
+        {
+            label: 'Teachers who agree "I feel safe at my school"',
+            value: `${'97.3' === 'NA' ? 'N/A' : formatComma(97.3) + '%'}`
+        }
     ]
 
     const dataViolentassaultsStat = [
-        { label: 'Number of violent assaults', value: `${'{{ district.ocr_violent_all }}' === 'NA' ? 'N/A' : formatComma({{ district.ocr_violent_all }})}` }
-    ]
-
-    const dataNonviolentassaultsStat = [
-        { label: 'Number of nonviolent assaults', value: `${'{{ district.ocr_nonviolent_all }}' === 'NA' ? 'N/A' : formatComma({{ district.ocr_nonviolent_all }})}` }
+        {label: 'Number of violent assaults', value: `${'30' === 'NA' ? 'N/A' : formatComma(30)}`}
     ]
 
     const dataHarrassmentStat = [
-        { label: 'Number of incidents of bullying or harrassment', value: `${'{{ district.ocr_bully_harass }}' === 'NA' ? 'N/A' : formatComma({{ district.ocr_bully_harass }})}` }
+        {label: 'Number of incidents of bullying or harrassment', value: `${'6' === 'NA' ? 'N/A' : formatComma(6)}`}
     ]
 
     // // // // // // // // // // // //
@@ -314,14 +390,13 @@
     searchApp("district")
     districtMap()
 
-    drawStat("#chart-teacherpay",dataTeacherpayStat)
-    drawStat("#chart-childsafe",dataChildsafeStat)
-    drawStat("#chart-teachersafe",dataTeachersafeStat)
-    drawStat("#chart-violent",dataViolentassaultsStat)
-    drawStat("#chart-nonviolent",dataNonviolentassaultsStat)
-    drawStat("#chart-harrassment",dataHarrassmentStat)
+    drawStat("#chart-teacherpay", dataTeacherpayStat)
+    drawStat("#chart-childsafe", dataChildsafeStat)
+    drawStat("#chart-teachersafe", dataTeachersafeStat)
+    drawStat("#chart-violent", dataViolentassaultsStat)
+    drawStat("#chart-harrassment", dataHarrassmentStat)
 
-    const name = `{{ district.district }}`
+    const name = `Abbeville County School Dist`
 
     new Chart(
         document.getElementById('chart-academic'), {
@@ -334,14 +409,14 @@
                     label: name,
                     backgroundColor: 'rgb(255, 99, 132)',
                     borderColor: 'rgb(255, 99, 132)',
-                    data: [`{{district.e_pct_me}}` === 'NA' ? 0 : `{{district.e_pct_me}}`],
+                    data: [`51.8` === 'NA' ? 0 : `51.8`],
                     barPercentage: 1.0
                 },
                     {
                         label: 'State Average',
                         backgroundColor: 'rgb(30,144,255)',
                         borderColor: 'rgb(30,144,255)',
-                        data: [`{{state_average.e_pct_me}}` === 'NA' ? 0 : `{{state_average.e_pct_me}}`],
+                        data: [`45.22699696663287` === 'NA' ? 0 : `45.22699696663287`],
                         barPercentage: 1.0
                     }]
             },
@@ -351,7 +426,7 @@
                     y: {
                         max: 100,
                         ticks: {
-                            callback: function(value, index, ticks) {
+                            callback: function (value, index, ticks) {
                                 return `${value}%`
                             }
                         },
@@ -374,8 +449,7 @@
                         align: (value, ctx) => {
                             if (value.dataset.data[0] > 30) {
                                 return 'bottom'
-                            }
-                            else {
+                            } else {
                                 return 'top'
                             }
                         },
@@ -385,7 +459,7 @@
                     },
                     tooltips: {
                         callbacks: {
-                            label: function(context) {
+                            label: function (context) {
                                 return context.dataset.label + '%';
                             },
                         }
@@ -406,14 +480,14 @@
                     label: name,
                     backgroundColor: 'rgb(255, 99, 132)',
                     borderColor: 'rgb(255, 99, 132)',
-                    data: [`{{district.m_pct_me}}` === 'NA' ? 0 : `{{district.m_pct_me}}`],
+                    data: [`48.1` === 'NA' ? 0 : `48.1`],
                     barPercentage: 1.0
                 },
                     {
                         label: 'State Average',
                         backgroundColor: 'rgb(30,144,255)',
                         borderColor: 'rgb(30,144,255)',
-                        data: [`{{state_average.m_pct_me}}` === 'NA' ? 0 : `{{state_average.m_pct_me}}`],
+                        data: [`39.478926038500525` === 'NA' ? 0 : `39.478926038500525`],
                         barPercentage: 1.0
                     }]
             },
@@ -426,7 +500,7 @@
                     y: {
                         max: 100,
                         ticks: {
-                            callback: function(value, index, ticks) {
+                            callback: function (value, index, ticks) {
                                 return `${value}%`
                             }
                         },
@@ -449,8 +523,7 @@
                         align: (value, ctx) => {
                             if (value.dataset.data[0] > 30) {
                                 return 'bottom'
-                            }
-                            else {
+                            } else {
                                 return 'top'
                             }
                         },
@@ -460,7 +533,7 @@
                     },
                     tooltips: {
                         callbacks: {
-                            label: function(context) {
+                            label: function (context) {
                                 return context.dataset.label + '%';
                             },
                         }
@@ -484,14 +557,14 @@
                     label: name,
                     backgroundColor: 'rgb(255, 99, 132)',
                     borderColor: 'rgb(255, 99, 132)',
-                    data: [`{{district.sc_pct_me}}` === 'NA' ? 0 : `{{district.sc_pct_me}}`],
+                    data: [`55.1` === 'NA' ? 0 : `55.1`],
                     barPercentage: 1.0
                 },
                     {
                         label: 'State Average',
                         backgroundColor: 'rgb(30,144,255)',
                         borderColor: 'rgb(30,144,255)',
-                        data: [`{{state_average.sc_pct_me}}` === 'NA' ? 0 : `{{state_average.sc_pct_me}}`],
+                        data: [`33.923712183156155` === 'NA' ? 0 : `33.923712183156155`],
                         barPercentage: 1.0
                     }]
             },
@@ -504,7 +577,7 @@
                     y: {
                         max: 100,
                         ticks: {
-                            callback: function(value, index, ticks) {
+                            callback: function (value, index, ticks) {
                                 return `${value}%`
                             }
                         },
@@ -527,8 +600,7 @@
                         align: (value, ctx) => {
                             if (value.dataset.data[0] > 30) {
                                 return 'bottom'
-                            }
-                            else {
+                            } else {
                                 return 'top'
                             }
                         },
@@ -538,7 +610,7 @@
                     },
                     tooltips: {
                         callbacks: {
-                            label: function(context) {
+                            label: function (context) {
                                 return context.dataset.label + '%';
                             },
                         }
@@ -552,7 +624,6 @@
     )
 
 
-
     new Chart(
         document.getElementById('chart-academic4'), {
             type: 'bar',
@@ -564,7 +635,7 @@
                     label: name,
                     backgroundColor: 'rgb(255, 99, 132)',
                     borderColor: 'rgb(255, 99, 132)',
-                    data: [`{{district.gpercent_overall}}` === 'NA' ? 0 : `{{district.gpercent_overall}}`],
+                    data: [`85.4` === 'NA' ? 0 : `85.4`],
                     barPercentage: 1.0,
                     categoryPercentage: 0.6,
                 },
@@ -572,7 +643,7 @@
                         label: 'State Average',
                         backgroundColor: 'rgb(30,144,255)',
                         borderColor: 'rgb(30,144,255)',
-                        data: [`{{state_average.gpercent_overall}}` === 'NA' ? 0 : `{{state_average.gpercent_overall}}`],
+                        data: [`83.45819672131152` === 'NA' ? 0 : `83.45819672131152`],
                         barPercentage: 1.0,
                         categoryPercentage: 0.6,
                     }]
@@ -586,7 +657,7 @@
                     y: {
                         max: 100,
                         ticks: {
-                            callback: function(value, index, ticks) {
+                            callback: function (value, index, ticks) {
                                 return `${value}%`
                             }
                         },
@@ -605,8 +676,7 @@
                         align: (value, ctx) => {
                             if (value.dataset.data[0] > 30) {
                                 return 'bottom'
-                            }
-                            else {
+                            } else {
                                 return 'top'
                             }
                         },
@@ -616,7 +686,7 @@
                     },
                     tooltips: {
                         callbacks: {
-                            label: function(context) {
+                            label: function (context) {
                                 return context.dataset.label + '%';
                             },
                         }
@@ -640,7 +710,7 @@
                     label: name,
                     backgroundColor: 'rgb(255, 99, 132)',
                     borderColor: 'rgb(255, 99, 132)',
-                    data: [`{{district.act_avg_composite_score}}` === 'NA' ? 0 : `{{district.act_avg_composite_score}}`],
+                    data: [`18.9` === 'NA' ? 0 : `18.9`],
                     barPercentage: 1.0,
                     categoryPercentage: 0.6,
                 },
@@ -648,7 +718,7 @@
                         label: 'State Average',
                         backgroundColor: 'rgb(30,144,255)',
                         borderColor: 'rgb(30,144,255)',
-                        data: [`{{state_average.act_avg_composite_score}}` === 'NA' ? 0 : `{{state_average.act_avg_composite_score}}`],
+                        data: [`17.933920704845814` === 'NA' ? 0 : `17.933920704845814`],
                         barPercentage: 1.0,
                         categoryPercentage: 0.6,
                     }]
@@ -660,7 +730,7 @@
                         max: 32,
                         ticks: {
                             stepSize: 16,
-                            callback: function(value, index, ticks) {
+                            callback: function (value, index, ticks) {
                                 if (value === 0 || value === 16 || value === 32) {
                                     return `${value}`
                                 }
@@ -685,8 +755,7 @@
                         align: (value, ctx) => {
                             if (value.dataset.data[0] > 25) {
                                 return 'bottom'
-                            }
-                            else {
+                            } else {
                                 return 'top'
                             }
                         },
@@ -716,9 +785,9 @@
                     backgroundColor: 'rgb(255, 99, 132)',
                     borderColor: 'rgb(255, 99, 132)',
                     data: [
-                        `{{district.percent_white}}` === 'NA' ? 0 : `{{district.percent_white}}`,
-                        `{{district.percent_black_aa}}` === 'NA' ? 0 : `{{district.percent_black_aa}}`,
-                        `{{district.percent_all_other_races}}` === 'NA' ? 0 : `{{district.percent_all_other_races}}`
+                        `62` === 'NA' ? 0 : `62`,
+                        `33.1` === 'NA' ? 0 : `33.1`,
+                        `2.6` === 'NA' ? 0 : `2.6`
                     ],
                     barPercentage: 1.0,
                     categoryPercentage: 0.6,
@@ -728,21 +797,22 @@
                         backgroundColor: 'rgb(30,144,255)',
                         borderColor: 'rgb(30,144,255)',
                         data: [
-                            `{{state_average.percent_white}}` === 'NA' ? 0 : `{{state_average.percent_white}}`,
-                            `{{state_average.percent_black_aa}}` === 'NA' ? 0 : `{{state_average.percent_black_aa}}`,
-                            `{{state_average.percent_all_other_races}}` === 'NA' ? 0 : `{{state_average.percent_all_other_races}}`
+                            `45.84081016679899` === 'NA' ? 0 : `45.84081016679899`,
+                            `37.026899753415385` === 'NA' ? 0 : `37.026899753415385`,
+                            `17.119062748212873` === 'NA' ? 0 : `17.119062748212873`
                         ],
                         barPercentage: 1.0,
                         categoryPercentage: 0.6,
                     },
-                ]},
+                ]
+            },
             options: {
                 maintainAspectRatio: false,
                 scales: {
                     y: {
                         max: 100,
                         ticks: {
-                            callback: function(value, index, ticks) {
+                            callback: function (value, index, ticks) {
                                 return `${value}%`
                             }
                         },
@@ -761,8 +831,7 @@
                         align: (value, ctx) => {
                             if (value.dataset.data[value.dataIndex] > 30) {
                                 return 'bottom'
-                            }
-                            else {
+                            } else {
                                 return 'top'
                             }
                         },
@@ -772,7 +841,7 @@
                     },
                     tooltips: {
                         callbacks: {
-                            label: function(context) {
+                            label: function (context) {
                                 return context.dataset.label + '%';
                             },
                         }
@@ -796,7 +865,7 @@
                     label: name,
                     backgroundColor: 'rgb(255, 99, 132)',
                     borderColor: 'rgb(255, 99, 132)',
-                    data: [`{{district.studentsin_poverty_pct_curr_yr}}` === 'NA' ? 0 : `{{district.studentsin_poverty_pct_curr_yr}}`],
+                    data: [`69.1` === 'NA' ? 0 : `69.1`],
                     barPercentage: 1.0,
                     categoryPercentage: 0.6
                 },
@@ -804,7 +873,7 @@
                         label: 'State Average',
                         backgroundColor: 'rgb(30,144,255)',
                         borderColor: 'rgb(30,144,255)',
-                        data: [`{{state_average.studentsin_poverty_pct_curr_yr}}` === 'NA' ? 0 : `{{state_average.studentsin_poverty_pct_curr_yr}}`],
+                        data: [`0.6851351351351346` === 'NA' ? 0 : `0.6851351351351346`],
                         barPercentage: 1.0,
                         categoryPercentage: 0.6
                     }]
@@ -818,7 +887,7 @@
                     y: {
                         max: 100,
                         ticks: {
-                            callback: function(value, index, ticks) {
+                            callback: function (value, index, ticks) {
                                 return `${value}%`
                             }
                         },
@@ -841,8 +910,7 @@
                         align: (value, ctx) => {
                             if (value.dataset.data[0] > 30) {
                                 return 'bottom'
-                            }
-                            else {
+                            } else {
                                 return 'top'
                             }
                         },
@@ -869,7 +937,7 @@
                     label: name,
                     backgroundColor: 'rgb(255, 99, 132)',
                     borderColor: 'rgb(255, 99, 132)',
-                    data: [`{{district.pct_disabilities}}` === 'NA' ? 0 : `{{district.pct_disabilities}}`],
+                    data: [`14.5` === 'NA' ? 0 : `14.5`],
                     barPercentage: 1.0,
                     categoryPercentage: 0.6
                 },
@@ -877,7 +945,7 @@
                         label: 'State Average',
                         backgroundColor: 'rgb(30,144,255)',
                         borderColor: 'rgb(30,144,255)',
-                        data: [`{{state_average.pct_disabilities}}` === 'NA' ? 0 : `{{state_average.pct_disabilities}}`],
+                        data: [`18.434936157565645` === 'NA' ? 0 : `18.434936157565645`],
                         barPercentage: 1.0,
                         categoryPercentage: 0.6
                     }]
@@ -891,7 +959,7 @@
                     y: {
                         max: 100,
                         ticks: {
-                            callback: function(value, index, ticks) {
+                            callback: function (value, index, ticks) {
                                 return `${value}%`
                             }
                         },
@@ -914,8 +982,7 @@
                         align: (value, ctx) => {
                             if (value.dataset.data[0] > 30) {
                                 return 'bottom'
-                            }
-                            else {
+                            } else {
                                 return 'top'
                             }
                         },
@@ -925,7 +992,7 @@
                     },
                     tooltips: {
                         callbacks: {
-                            label: function(context) {
+                            label: function (context) {
                                 return context.dataset.label + '%';
                             },
                         }
