@@ -4,28 +4,40 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8d0d108c-4ac4-4e0b-8b45-613489021c53" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Education Dashboard.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hello.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/district.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/district/example/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/elementary_school.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/school.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/school/example/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/static/districts.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/static/map.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/static/schools.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/static/search-inside.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/static/search.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/static/search.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/static/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/index.js" afterDir="false" />
+    <list default="true" id="8d0d108c-4ac4-4e0b-8b45-613489021c53" name="Changes" comment="dividing css,files, js, map, etc">
+      <change afterPath="$PROJECT_DIR$/educationdashboard/.eslintrc.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/educationdashboard/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/educationdashboard/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/educationdashboard/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/educationdashboard/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/educationdashboard/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/educationdashboard/public/vite.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/educationdashboard/src/App.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/educationdashboard/src/assets/react.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/educationdashboard/src/components/Legend.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/educationdashboard/src/css/Legend.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/educationdashboard/src/css/search.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/educationdashboard/src/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/educationdashboard/src/main.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/educationdashboard/src/mapping/district_demographic_join.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/educationdashboard/src/mapping/etl_district_full_data_with_geometries.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/educationdashboard/vite.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hello.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/district.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/district/example/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/elementary_school.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/school.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/school/example/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/static/districts.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/static/map.js" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/components/FrontPageMap.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/static/schools.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/static/search-inside.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/static/search.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/static/search.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/static/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/components/LiveMap.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,13 +58,16 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2SzUUAddaDnLHqZEbvRmH5Pt8Ks" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
@@ -66,6 +81,8 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/educationdashboard/src/components" />
+      <recent name="$PROJECT_DIR$/educationdashboard/src/css" />
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
@@ -83,5 +100,19 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>
