@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8d0d108c-4ac4-4e0b-8b45-613489021c53" name="Changes" comment="routing and some basic page work">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/App.jsx" afterDir="false" />
-    </list>
+    <list default="true" id="8d0d108c-4ac4-4e0b-8b45-613489021c53" name="Changes" comment="readme updates" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -72,7 +67,7 @@
       <option name="presentableId" value="Default" />
       <updated>1690148917966</updated>
       <workItem from="1690148919246" duration="2340000" />
-      <workItem from="1690757489260" duration="2246000" />
+      <workItem from="1690757489260" duration="2818000" />
     </task>
     <task id="LOCAL-00001" summary="installed react-leaflet;&#10;loaded district layers;&#10;started legend;">
       <created>1690561038395</created>
@@ -102,7 +97,14 @@
       <option name="project" value="LOCAL" />
       <updated>1690566848513</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="readme updates">
+      <created>1690821090776</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1690821090776</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -135,6 +137,7 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="installed react-leaflet;&#10;loaded district layers;&#10;started legend;" />
     <MESSAGE value="routing and some basic page work" />
-    <option name="LAST_COMMIT_MESSAGE" value="routing and some basic page work" />
+    <MESSAGE value="readme updates" />
+    <option name="LAST_COMMIT_MESSAGE" value="readme updates" />
   </component>
 </project>
