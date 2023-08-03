@@ -4,7 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8d0d108c-4ac4-4e0b-8b45-613489021c53" name="Changes" comment="readme updates" />
+    <list default="true" id="8d0d108c-4ac4-4e0b-8b45-613489021c53" name="Changes" comment="readme updates">
+      <change afterPath="$PROJECT_DIR$/chart data" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/educationdashboard/src/assets/SugarCloud2Test.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/educationdashboard/src/assets/home.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/educationdashboard/src/assets/sugarcloud.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/educationdashboard/src/css/district.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/educationdashboard/src/css/schools.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/educationdashboard/src/data/data.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/educationdashboard/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/educationdashboard/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/educationdashboard/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/educationdashboard/src/screens/District.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/screens/District.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/educationdashboard/src/screens/School.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/screens/School.jsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -67,7 +81,9 @@
       <option name="presentableId" value="Default" />
       <updated>1690148917966</updated>
       <workItem from="1690148919246" duration="2340000" />
-      <workItem from="1690757489260" duration="2818000" />
+      <workItem from="1690757489260" duration="2867000" />
+      <workItem from="1690922122411" duration="10955000" />
+      <workItem from="1691094734892" duration="5069000" />
     </task>
     <task id="LOCAL-00001" summary="installed react-leaflet;&#10;loaded district layers;&#10;started legend;">
       <created>1690561038395</created>
@@ -104,7 +120,14 @@
       <option name="project" value="LOCAL" />
       <updated>1690821090776</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="readme updates">
+      <created>1690821151840</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1690821151840</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

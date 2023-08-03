@@ -1,10 +1,12 @@
 import "../css/search.css"
+import "../css/district.css"
+import home from "../assets/home.png"
 const District = () => {
     return (
         <>
         <div className="search-block">
             <div className="app-search">
-                <a href="../../.."><img src="../../asset/home.png"/></a>
+                <a href="../../.."><img src={home}/></a>
                 <div className="search-row">
                     <input id="fill-box" type="text" placeholder="Search school or district ..."/>
                         <i className="fa fa-search"></i>

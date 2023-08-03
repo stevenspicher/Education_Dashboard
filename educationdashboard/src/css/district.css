@@ -1,0 +1,129 @@
+body {
+    background-color: #F3F4F2;
+    font-family: "adelle-sans", sans-serif
+}
+
+a:hover {
+    color: #1D8ACB;
+}
+
+.container {
+    padding-right: 10%;
+    padding-left: 10%;
+    padding-bottom: 2%;
+    /* border-bottom: 5px solid black; */
+}
+
+.title-text {
+    text-align: center;
+}
+
+h1 {
+    font-weight: 700;
+}
+
+h2 {
+    font-weight: 500;
+}
+
+.school-col-inner {
+    color: #F3F4F2;
+}
+
+.school-col-inner h4 {
+    font-weight: 700;
+}
+
+#map {
+    width: 100%;
+    height: 500px;
+}
+
+.graphic-style {
+    border-left: 1px solid black;
+    border-bottom: 14pt solid black;
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+    box-shadow: 5px 5px 10px gainsboro;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.graphic {
+    padding: 1%;
+}
+
+.school-col-inner {
+    padding: 5%;
+    background-color: #393F3C;
+    max-height: 500px;
+    min-height: 500px;
+    overflow: scroll;
+}
+
+.row {
+    padding-top: 1%;
+    padding-bottom: 1%;
+    justify-content: center;
+}
+
+/* css for graphics */
+
+/* dot graphic */
+
+.dot-holder {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+}
+
+.dot-group {
+    display: flex;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 1px;
+}
+
+footer {
+    border-top: #393F3C solid 2px;
+    width: 80%;
+    margin: auto;
+    padding-bottom: 1%;
+}
+
+footer p {
+    text-align: center;
+    padding-top: 1%;
+}
+
+
+@media only screen and (max-width: 1200px) {
+    .dot {
+        width: 4px;
+        height: 5px;
+        min-height: 11px;
+        border-radius: 0;
+    }
+}
+
+
+
+@media only screen and (max-width: 600px) {
+
+    .school-col-inner {
+        max-height: none;
+    }
+
+    .dot {
+        width: 1.5px;
+        height: 5px;
+        min-height: 11px;
+        border-radius: 0;
+    }
+}
