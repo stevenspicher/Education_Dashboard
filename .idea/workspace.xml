@@ -5,19 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8d0d108c-4ac4-4e0b-8b45-613489021c53" name="Changes" comment="readme updates">
-      <change afterPath="$PROJECT_DIR$/chart data" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/educationdashboard/src/assets/SugarCloud2Test.mp4" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/educationdashboard/src/assets/home.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/educationdashboard/src/assets/sugarcloud.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/educationdashboard/src/css/district.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/educationdashboard/src/css/schools.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/educationdashboard/src/data/data.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/educationdashboard/src/screens/District.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/screens/District.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/screens/School.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/screens/School.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +19,9 @@
         <option value="package.json" />
       </list>
     </option>
+  </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="origin/routing" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -84,6 +76,8 @@
       <workItem from="1690757489260" duration="2867000" />
       <workItem from="1690922122411" duration="10955000" />
       <workItem from="1691094734892" duration="5069000" />
+      <workItem from="1691166582081" duration="152000" />
+      <workItem from="1691365359257" duration="1711000" />
     </task>
     <task id="LOCAL-00001" summary="installed react-leaflet;&#10;loaded district layers;&#10;started legend;">
       <created>1690561038395</created>

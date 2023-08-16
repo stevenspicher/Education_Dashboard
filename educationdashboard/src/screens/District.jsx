@@ -1,9 +1,25 @@
 import "../css/search.css"
 import "../css/district.css"
 import home from "../assets/home.png"
+import {Card, Container} from "react-bootstrap";
+import {Stack} from "@mui/material";
+import {Chart} from "react-google-charts";
+import {
+    black,
+    careerReadyDiplomaEarners,
+    collegeReadyDiplomaEarners,
+    dropoutPercentage, englishLanguageLearningStudents,
+    mathScoreData,
+    onTimeGraduationRate,
+    options, other,
+    readingScoreData,
+    scienceScoreData, studentsInPoverty, studentsWithDisabilities, white
+} from "../data/data.js";
+import LiveMap from "../components/LiveMap.jsx";
 const District = () => {
+    const studentNumber = "2,376"
     return (
-        <>
+<Container>
         <div className="search-block">
             <div className="app-search">
                 <a href="../../.."><img src={home}/></a>
@@ -15,19 +31,22 @@ const District = () => {
 
             <div id="suggestions-list" className="list-items"></div>
         </div>
-    <div className="container">
         <div className="title-text">
             <h1>Abbeville County School Dist</h1>
-            <h2><span id="student-count"></span> students</h2>
+            <h2>{studentNumber} students</h2>
             <h4>400 Greenville Street, Abbeville</h4>
             <h4>864-366-5427, <a href="https://acsdsc.org" target="_blank">website</a></h4>
         </div>
-        <div className="row">
-            <div className="col-12 col-md-6 graphic">
-                <div id='map' className="graphic-style"></div>
-            </div>
-            <div className="col-12 col-md-6 graphic">
-                <div className="school-col-inner">
+            <Stack direction={"row"}>
+
+            {/*<div className=" graphic">*/}
+            {/*    <div id='map' className="graphic-style">*/}
+                    <LiveMap/>
+                {/*</div>*/}
+            {/*</div>*/}
+
+            {/*<div className=" graphic">*/}
+            {/*    <div className="school-col-inner">*/}
                     <h4>Schools in this district</h4>
                     <div className="inner-text">
                         <ul>
@@ -75,80 +94,184 @@ const District = () => {
                             </ul>
                         </ul>
                     </div>
-                </div>
-            </div>
-            <div className="graphic">
-                <div className="graphic-style">
+                {/*</div>*/}
+            {/*</div>*/}
+        </Stack>
+            <div className={"chart-container graphic-style"}>
+                <Stack>
                     <h5>Academic Performance</h5>
-                    <div className="row">
-                        <div className="col-sm-4">
-                            <canvas id="chart-academic"></canvas>
-                        </div>
-                        <div className="col-sm-4">
-                            <canvas id="chart-academic2"></canvas>
-                        </div>
-                        <div className="col-sm-4">
-                            <canvas id="chart-academic3"></canvas>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-sm-6">
-                            <canvas id="chart-academic4"></canvas>
-                        </div>
-                        <div className="col-sm-6">
-                            <canvas id="chart-academic5"></canvas>
-                        </div>
-                    </div>
-                </div>
+                    <Stack className="chart-container" direction={"row"}>
+                        <Chart
+                            chartType="ColumnChart"
+                            width="200px"
+                            height="50%"
+                            data={readingScoreData}
+                            options={options}
+                        />
+                        <Chart
+                            chartType="ColumnChart"
+                            width="200px"
+                            height="50%"
+                            data={mathScoreData}
+                            options={options}
+                        />
+                        <Chart
+                            chartType="ColumnChart"
+                            width="200px"
+                            height="50%"
+                            data={scienceScoreData}
+                            options={options}
+                        />
+                    </Stack>
+                    <Stack className="chart-container" direction={"row"}>
+                        <Chart
+                            chartType="ColumnChart"
+                            width="200px"
+                            height="50%"
+                            data={onTimeGraduationRate}
+                            options={options}
+                        />
+                        <Chart
+                            chartType="ColumnChart"
+                            width="200px"
+                            height="50%"
+                            data={dropoutPercentage}
+                            options={options}
+                        />
+                    </Stack>
+                    <Stack className="chart-container" direction={"row"}>
+                        <Chart
+                            chartType="ColumnChart"
+                            width="200px"
+                            height="50%"
+                            data={collegeReadyDiplomaEarners}
+                            options={options}
+                        />
+                        <Chart
+                            chartType="ColumnChart"
+                            width="200px"
+                            height="50%"
+                            data={careerReadyDiplomaEarners}
+                            options={options}
+                        />
+                    </Stack>
+
+                </Stack>
             </div>
-            <div className="col-12 col-md-12 graphic">
-                <div className="graphic-style">
-                    <h5>Demographics</h5>
-                    <div className="row">
-                        <div className="col-sm-6">
-                            <canvas id="chart-poverty"></canvas>
-                        </div>
-                        <div className="col-sm-6">
-                            <canvas id="chart-disabilities"></canvas>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-sm-12">
-                            <canvas id="chart-race"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div className="col-md-4 graphic">
-                <div className="graphic-style">
-                    <div id="chart-harrassment"></div>
-                </div>
-            </div>
-            <div className="col-md-4 graphic">
-                <div className="graphic-style">
-                    <div id="chart-teacherpay"></div>
-                </div>
-            </div>
-            <div className="col-md-4 graphic">
-                <div className="graphic-style">
-                    <div id="chart-childsafe"></div>
-                </div>
-            </div>
-            <div className="col-12 col-md-4 graphic">
-                <div className="graphic-style">
-                    <div id="chart-teachersafe"></div>
-                </div>
-            </div>
-            <div className="col-12 col-md-4 graphic">
-                <div className="graphic-style">
-                    <div id="chart-violent"></div>
-                </div>
-            </div>
-        </div>
+            <div className={"chart-container"}>
+
+                <div className="col-12 col-md-12 graphic">
+                    <div className="graphic-style">
+                        <Stack>
+                            <h5>Demographics</h5>
+                            <Stack className="chart-container" direction={"row"}>
+                                <Chart
+                                    chartType="ColumnChart"
+                                    width="200px"
+                                    height="50%"
+                                    data={studentsInPoverty}
+                                    options={options}
+                                />
+                                <Chart
+                                    chartType="ColumnChart"
+                                    width="200px"
+                                    height="50%"
+                                    data={studentsWithDisabilities}
+                                    options={options}
+                                />
+                                <Chart
+                                    chartType="ColumnChart"
+                                    width="200px"
+                                    height="50%"
+                                    data={englishLanguageLearningStudents}
+                                    options={options}
+                                />
+                            </Stack>
+                            <Stack className="chart-container" direction={"row"}>
+                                <Chart
+                                    chartType="ColumnChart"
+                                    width="200px"
+                                    height="50%"
+                                    data={white}
+                                    options={options}
+                                />
+                                <Chart
+                                    chartType="ColumnChart"
+                                    width="200px"
+                                    height="50%"
+                                    data={black}
+                                    options={options}
+                                />
+                                <Chart
+                                    chartType="ColumnChart"
+                                    width="200px"
+                                    height="50%"
+                                    data={other}
+                                    options={options}
+                                />
+                            </Stack>
 
 
-    </div>
-        </>
+                        </Stack>
+                    </div>
+                </div>
+            </div>
+            <div className={"card-container"}>
+                <div className="col-md-4 graphic">
+                    <Card className={"graphic-style card-width"}>
+                        <Card.Body>
+                            <Card.Title className="card-total">0</Card.Title>
+                            <Card.Text>
+                                Number of incidents of bullying or harassment
+                            </Card.Text>
+                        </Card.Body>
+                    </Card>
+                </div>
+                <div className="col-md-4 graphic">
+                    <Card className="graphic-style card-width">
+                        <Card.Body>
+                            <Card.Title className="card-total">$55,206</Card.Title>
+                            <Card.Text>
+                                Average teacher pay
+                            </Card.Text>
+                        </Card.Body>
+                    </Card>
+                </div>
+                <div className="col-md-4 graphic">
+                    <Card className={"graphic-style card-width"}>
+                        <Card.Body>
+                            <Card.Title className="card-total">95%</Card.Title>
+                            <Card.Text>
+                                Parents who agree "my child feels safe at school"
+                            </Card.Text>
+                        </Card.Body>
+                    </Card>
+                </div>
+                <div className="col-12 col-md-4 graphic">
+                    <Card className="graphic-style card-width">
+                        <Card.Body>
+                            <Card.Title className="card-total">100%</Card.Title>
+                            <Card.Text>
+                                Teachers who agree "I feel safe at my school"
+                            </Card.Text>
+                        </Card.Body>
+                    </Card>
+                </div>
+                <div className="col-12 col-md-4 graphic">
+                    <Card className="graphic-style card-width">
+                        <Card.Body>
+                            <Card.Title className="card-total">8</Card.Title>
+                            <Card.Text>
+                                Number of violent assaults
+                            </Card.Text>
+                        </Card.Body>
+                    </Card>
+                </div>
+            </div>
+        {/*</div>*/}
+
+
+    </Container>
     )
 };
 
