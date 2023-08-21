@@ -8,10 +8,10 @@ body {
     color: #262b28;
 }
 
-#container {
-    max-width: 800px;
-    margin: auto;
-}
+/*#container {*/
+/*    max-width: 800px;*/
+/*    margin: auto;*/
+/*}*/
 
 #title {
     text-align: center;
@@ -20,19 +20,44 @@ body {
 #title h1 {
     text-transform: uppercase;
     font-weight: 600;
-    font-size: 48px;
+    font-size: 2.5rem;
 }
 
 .h1 {
     text-transform: uppercase;
     font-weight: 600;
-    font-size: 48px;
+    font-size: 2.5rem;
 }
 
 .h2 {
     font-weight: 400;
     font-size: 20px;
     padding-bottom: 30px;
+}
+
+.h3 {
+    font-weight: 500;
+    font-size: 1.75rem;
+    line-height: 1.2;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+.h4 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    line-height: 1.2;
+    font-size: 1.5rem;
+}
+
+.chart-title {
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: 1.2;
+    font-style: normal;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
 }
 
 #search {
@@ -171,35 +196,78 @@ body {
     font-family: "miller-headline";
     font-weight: 700;
     font-size: 42px;
+    text-align: center;
+    /*align-items: center;*/
+    /*justify-content: center;*/
 }
 .card-text {
-
+    text-align: center;
+    font-family: adelle-sans-condensed, sans-serif;
+    font-style: normal;
+    font-size: 1.25rem;
 }
 
+.card-body {
+    align-content: center;
+    justify-content: center;
+}
 
 .card-container {
-    align-items: center;
-    margin-bottom: 50px;
+    margin-bottom: 10px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     flex-wrap: wrap;
-    height: 400px;
-    align-content: space-between;
+    /*height: 400px;*/
+    /*align-content: space-between;*/
+    align-content: center;
 }
 
 .card-width {
+    justify-content: center;
     align-items: center;
-    max-width: 300px;
+    max-width: 33.333%;
     min-width: 300px;
-    min-height: 100px;
+    /*min-height: 100px;*/
 }
 
 .chart-container {
-    /*width: 100%;*/
+    width: 100%;
     align-items: center;
+    align-content: center;
     /*margin-bottom: 50px;*/
     display: flex;
     /*flex-direction: column;*/
-    /*flex-wrap: wrap;*/
+    flex-wrap: wrap;
     /*height: 400px;*/
+}
+
+.card-graphic-style {
+    border-left: 1px solid black;
+    border-bottom: 14pt solid black;
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+    box-shadow: 5px 5px 10px gainsboro;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 5px;
+    min-height: 95%;
+
+}
+
+.chart-graphic-style {
+    max-width: 960px;
+    border-left: 1px solid black;
+    border-bottom: 14pt solid black;
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+    box-shadow: 5px 5px 10px gainsboro;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 5px;
+    min-height: 95%;
+
 }

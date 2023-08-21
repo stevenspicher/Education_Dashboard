@@ -16,10 +16,13 @@ a:hover {
 
 .title-text {
     text-align: center;
+    font-weight: 700;
+    font-size: 2.5rem;
 }
 
 h1 {
     font-weight: 700;
+    font-size: 2.5rem;
 }
 
 h2 {
@@ -49,6 +52,9 @@ h2 {
     padding-bottom: 10px;
     padding-left: 20px;
     padding-right: 20px;
+    margin: 5px;
+    min-height: 95%;
+
 }
 
 .graphic {
