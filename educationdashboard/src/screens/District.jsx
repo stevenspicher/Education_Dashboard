@@ -14,7 +14,7 @@ import {
     options, other,
     readingScoreData,
     scienceScoreData, studentsInPoverty, studentsWithDisabilities, white
-} from "../data/data.js";
+} from "../dataImport/data.js";
 import LiveMap from "../components/LiveMap.jsx";
 const District = () => {
     const studentNumber = "2,376"

@@ -18,7 +18,7 @@ import {
     black,
     white,
     other
-} from "../data/data"
+} from "../dataImport/data"
 
 const School = () => {
     return (
@@ -116,68 +116,64 @@ const School = () => {
                         </div>
                     </div>
                     <div className="col-12 col-md-4 graphic">
-                            <div className="chart-graphic-style">
-                                <Stack
-
-                                >
-                                    <h5 className={"chart-title"}>Demographics</h5>
-
-                                    <Stack
-                                        className="chart-container"
-                                        direction="row"
-                                        justifyContent="space-evenly"
-                                        alignItems="center"
-                                    >
-                                        <Chart
-                                            chartType="ColumnChart"
-                                            width="200px"
-                                            height="50%"
-                                            data={studentsInPoverty}
-                                            options={options}
-                                        />
-                                        <Chart
-                                            chartType="ColumnChart"
-                                            width="200px"
-                                            height="50%"
-                                            data={studentsWithDisabilities}
-                                            options={options}
-                                        />
-                                        <Chart
-                                            chartType="ColumnChart"
-                                            width="200px"
-                                            height="50%"
-                                            data={englishLanguageLearningStudents}
-                                            options={options}
-                                        />
-                                    </Stack>
-                                    <Stack className="chart-container"    direction="row"
-                                           justifyContent="space-evenly"
-                                           alignItems="center">
-                                        <Chart
-                                            chartType="ColumnChart"
-                                            width="200px"
-                                            height="50%"
-                                            data={white}
-                                            options={options}
-                                        />
-                                        <Chart
-                                            chartType="ColumnChart"
-                                            width="200px"
-                                            height="50%"
-                                            data={black}
-                                            options={options}
-                                        />
-                                        <Chart
-                                            chartType="ColumnChart"
-                                            width="200px"
-                                            height="50%"
-                                            data={other}
-                                            options={options}
-                                        />
-                                    </Stack>
+                        <div className="chart-graphic-style">
+                            <h5 className={"chart-title"}>Demographics</h5>
+                            <div className={"columns is-desktop is-gapless is-multiline"}>
+                                <div className="column is-one-third">
+                                    <Chart
+                                        chartType="ColumnChart"
+                                        // width="300px"
+                                        // height="70%"
+                                        data={studentsInPoverty}
+                                        options={options}
+                                    /></div>
+                                <div className="column is-one-third">
+                                    <Chart
+                                        chartType="ColumnChart"
+                                        // width="300px"
+                                        // height="70%"
+                                        data={studentsWithDisabilities}
+                                        options={options}
+                                    /></div>
+                                <div className="column is-one-third">
+                                    <Chart
+                                        chartType="ColumnChart"
+                                        // width="300px"
+                                        // height="70%"
+                                        data={englishLanguageLearningStudents}
+                                        options={options}
+                                    /></div>
 
 
-                                </Stack>
+                                <div className="column is-one-third">
+                                    <Chart
+                                        chartType="ColumnChart"
+                                        // width="200px"
+                                        height="100%"
+                                        data={white}
+                                        options={options}
+                                    />
+                                </div>
+                                <div className="column is-one-third">
+                                    <Chart
+                                        chartType="ColumnChart"
+                                        // width="200px"
+                                        height="100%"
+                                        data={black}
+                                        options={options}
+                                    />
+                                </div>
+                                <div className="column is-one-third">
+                                    <Chart
+                                        chartType="ColumnChart"
+                                        // width="200px"
+                                        height="100%"
+                                        data={other}
+                                        options={options}
+                                    />
+                                </div>
+
+                            </div>
                         </div>
                     </div>
                     <div className={"card-container col-12 col-md-12  graphic"}>
@@ -229,7 +225,7 @@ const School = () => {
                                 </Card.Text>
                             </Card.Body>
                         </Card>
-                        </div>
+                    </div>
                     {/*</div>*/}
                 </div>
 

@@ -4,9 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8d0d108c-4ac4-4e0b-8b45-613489021c53" name="Changes" comment="readme updates">
+    <list default="true" id="8d0d108c-4ac4-4e0b-8b45-613489021c53" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/AdditionalInfoImport.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/ReportCardImport.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/educationdashboard/src/functions/functions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/educationdashboard/src/screens/DataImport.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/educationdashboard/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/educationdashboard/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/educationdashboard/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/educationdashboard/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/educationdashboard/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/educationdashboard/src/css/schools.css" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/css/schools.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/educationdashboard/src/data/data.js" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/data.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/educationdashboard/src/screens/District.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/screens/District.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/educationdashboard/src/screens/School.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/screens/School.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,6 +90,9 @@
       <workItem from="1691094734892" duration="5069000" />
       <workItem from="1691166582081" duration="152000" />
       <workItem from="1691365359257" duration="1711000" />
+      <workItem from="1693440707764" duration="3142000" />
+      <workItem from="1694452157889" duration="6125000" />
+      <workItem from="1694536141510" duration="13576000" />
     </task>
     <task id="LOCAL-00001" summary="installed react-leaflet;&#10;loaded district layers;&#10;started legend;">
       <created>1690561038395</created>
@@ -121,7 +136,14 @@
       <option name="project" value="LOCAL" />
       <updated>1690821151840</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="styling">
+      <created>1692633137043</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1692633137043</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -138,7 +160,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="static_base" />
+                        <option value="main" />
                       </list>
                     </value>
                   </entry>
@@ -155,6 +177,8 @@
     <MESSAGE value="installed react-leaflet;&#10;loaded district layers;&#10;started legend;" />
     <MESSAGE value="routing and some basic page work" />
     <MESSAGE value="readme updates" />
-    <option name="LAST_COMMIT_MESSAGE" value="readme updates" />
+    <MESSAGE value="added map (main page version) to district page" />
+    <MESSAGE value="styling" />
+    <option name="LAST_COMMIT_MESSAGE" value="styling" />
   </component>
 </project>
