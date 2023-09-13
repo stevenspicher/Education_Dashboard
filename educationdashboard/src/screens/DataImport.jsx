@@ -3,7 +3,10 @@ import {AdditionalInfoImport} from "../dataImport/AdditionalInfoImport.js";
 import {ReportCardImport} from "../dataImport/ReportCardImport.js";
 import {Box, Dialog, IconButton, Typography, Button} from "@mui/material";
 import CheckIcon from "@mui/icons-material/Check";
-import {createMainPageDataObject, createGradRateDataObject, createCollegeDataObject} from "../functions/functions.js";
+import {
+    createFullDataObject,
+    createSpecificDataObject,
+} from "../functions/functions.js";
 
 function CloseIcon() {
     return null;
@@ -20,20 +23,21 @@ const ReportCardDataImport = () => {
     const [open, setOpen] = useState(true)
 
 function mergeData (reportCardData, additionalInfoData, currentYear) {
-        console.log(additionalInfoData)
 
-const mainPage = createMainPageDataObject(reportCardData);
-const gradRate = createGradRateDataObject(reportCardData);
-const college = createCollegeDataObject(additionalInfoData);
-
-// const ratings = createDataObject(reportCardData, "ratings");
-// const participation = createDataObject(reportCardData, "participation");
-// const participationBySubject = createDataObject(reportCardData, "participationBySubject");
+const mainPage = createFullDataObject(reportCardData.mainPage);
+const gradRate = createSpecificDataObject(reportCardData.gradRate, ["GRADRATE22"]);
+const college = createSpecificDataObject(additionalInfoData.college, ["ACT_Avg_CompositeScore"]);
+const teacher = createSpecificDataObject(additionalInfoData.env, ["TCHSALARY_AvgCurrYr", "TCHRETURN3yrAvg_PctCurrYr"])
+const ratings = createFullDataObject(reportCardData.ratings);
+const participation = createFullDataObject(reportCardData.participation);
+const participationBySubject = createFullDataObject(reportCardData.participationBySubject);
         console.log(mainPage)
         console.log(gradRate)
         console.log(college)
-        // console.log(participation)
-        // console.log(participationBySubject)
+        console.log(teacher)
+    console.log(ratings)
+        console.log(participation)
+        console.log(participationBySubject)
 }
 
 

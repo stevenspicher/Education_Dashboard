@@ -4,21 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8d0d108c-4ac4-4e0b-8b45-613489021c53" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/AdditionalInfoImport.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/ReportCardImport.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/educationdashboard/src/functions/functions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/educationdashboard/src/screens/DataImport.jsx" afterDir="false" />
+    <list default="true" id="8d0d108c-4ac4-4e0b-8b45-613489021c53" name="Changes" comment="added data imports">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/css/schools.css" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/css/schools.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/data/data.js" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/data.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/screens/District.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/screens/District.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/screens/School.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/screens/School.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/educationdashboard/src/functions/functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/functions/functions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/educationdashboard/src/screens/DataImport.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/screens/DataImport.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,12 +22,12 @@
     </option>
   </component>
   <component name="Git.Merge.Settings">
-    <option name="BRANCH" value="origin/routing" />
+    <option name="BRANCH" value="origin/school_page_styling" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="school_page_styling" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -179,6 +168,7 @@
     <MESSAGE value="readme updates" />
     <MESSAGE value="added map (main page version) to district page" />
     <MESSAGE value="styling" />
-    <option name="LAST_COMMIT_MESSAGE" value="styling" />
+    <MESSAGE value="added data imports" />
+    <option name="LAST_COMMIT_MESSAGE" value="added data imports" />
   </component>
 </project>
