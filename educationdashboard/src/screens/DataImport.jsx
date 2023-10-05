@@ -26,18 +26,25 @@ function mergeData (reportCardData, additionalInfoData, currentYear) {
 
 const mainPage = createFullDataObject(reportCardData.mainPage);
 const gradRate = createSpecificDataObject(reportCardData.gradRate, ["GRADRATE22"]);
-const college = createSpecificDataObject(additionalInfoData.college, ["ACT_Avg_CompositeScore"]);
-const teacher = createSpecificDataObject(additionalInfoData.env, ["TCHSALARY_AvgCurrYr", "TCHRETURN3yrAvg_PctCurrYr"])
+const college = createSpecificDataObject(additionalInfoData.collegeReadiness, ["ACT_Avg_CompositeScore"]);
+const teacher = createSpecificDataObject(additionalInfoData.classroomEnvironment, ["TCHSALARY_AvgCurrYr", "TCHRETURN3yrAvg_PctCurrYr"])
 const ratings = createFullDataObject(reportCardData.ratings);
 const participation = createFullDataObject(reportCardData.participation);
 const participationBySubject = createFullDataObject(reportCardData.participationBySubject);
-        console.log(mainPage)
-        console.log(gradRate)
-        console.log(college)
-        console.log(teacher)
-    console.log(ratings)
-        console.log(participation)
-        console.log(participationBySubject)
+const collegeAndCareerReadiness = createFullDataObject(reportCardData.collegeAndCareerReadiness);
+        console.log(
+            {
+                mainPage: mainPage,
+                gradRate: gradRate,
+                collegePrep: college,
+                teacherInfo: teacher,
+                ratings: ratings,
+                participation: participation,
+                participationBySubject: participationBySubject,
+                collegeAndCareerReadiness: collegeAndCareerReadiness
+            },
+        )
+
 }
 
 

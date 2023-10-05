@@ -43,11 +43,11 @@ const fileNameWithYear = data.name.split('.')[0];
     })
 
     setReport({
-        career: careerReadinessData,
-        absences: chronicAbsenceData,
+        careerReadiness: careerReadinessData,
+        chronicAbsences: chronicAbsenceData,
         finance: financialDataData,
-        env: classroomEnvironmentData,
+        classroomEnvironment: classroomEnvironmentData,
         safety: schoolSafetyData,
-        college: collegeReadinessData
+        collegeReadiness: collegeReadinessData
     })
 };

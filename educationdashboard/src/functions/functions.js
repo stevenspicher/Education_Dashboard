@@ -1,5 +1,6 @@
 
-///COMMENT FUNCTIONS!!!
+///Returns report object with all available data
+// format: {category: data}
 export function createFullDataObject(data) {
     if (data !== undefined) {
         let reportCategories = [];
@@ -21,6 +22,9 @@ export function createFullDataObject(data) {
     }
 }
 
+/// returns report object including only the categories listed in the category arr parameter:
+/// eg: ["TCHSALARY_AvgCurrYr", "TCHRETURN3yrAvg_PctCurrYr"]
+/// format: {category: data}
 export function createSpecificDataObject(data, categoryArr) {
     let reportCategories = [];
     let report = [];

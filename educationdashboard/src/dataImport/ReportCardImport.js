@@ -11,9 +11,10 @@ export const ReportCardImport = async (data, setReport, setCurrentYear, setRepor
     const wb = XLSX.readFile(file)
     const ratingsWS = wb.Sheets[wb.SheetNames[1]];
     const mainPageWS = wb.Sheets[wb.SheetNames[3]];
-    const gradRateWS = wb.Sheets[wb.SheetNames[9]];
     const participationWS = wb.Sheets[wb.SheetNames[6]];
     const participationBySubjectWS = wb.Sheets[wb.SheetNames[7]];
+    const gradRateWS = wb.Sheets[wb.SheetNames[9]];
+    const collegeAndCareerReadinessWS = wb.Sheets[wb.SheetNames[11]];
     const ratingsData = XLSX.utils.sheet_to_json(ratingsWS, {
         header: 1,
         defval: ""
@@ -34,13 +35,17 @@ export const ReportCardImport = async (data, setReport, setCurrentYear, setRepor
         header: 1,
         defval: ""
     })
-
+    const collegeAndCareerReadinessData = XLSX.utils.sheet_to_json(collegeAndCareerReadinessWS, {
+        header: 1,
+        defval: ""
+    })
     setReport({
         ratings:ratingsData.slice(2),
         gradRate: gradRateData,
         mainPage: mainPageData,
         participationBySubject: participationBySubjectData,
-        participation: participationData
+        participation: participationData,
+        collegeAndCareerReadiness: collegeAndCareerReadinessData
     })
 
 };
