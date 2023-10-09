@@ -1,13 +1,54 @@
 import '../index.css';
 import '../css/search.css';
 import LiveMap from "../components/LiveMap.jsx";
+import {useContext, useEffect, useState} from "react";
+import {AppContext} from "../context/appContext.tsx";
+import {TableCell, TableRow, Typography} from "@mui/material";
 
 function Home() {
+    const {state, dispatch} = useContext(AppContext)
+    const [report, setReport] = useState(undefined)
 
+    useEffect(() => {
+        dispatch({})
+        setReport(state.report)
+    }, [state]);
+console.log(report)
+
+    const downloadFile = ({ data, fileName, fileType }) => {
+        // Create a blob with the data we want to download as a file
+        const blob = new Blob([data], { type: fileType })
+        // Create an anchor element and dispatch a click event on it
+        // to trigger a download
+        const a = document.createElement('a')
+        a.download = fileName
+        a.href = window.URL.createObjectURL(blob)
+        const clickEvt = new MouseEvent('click', {
+            view: window,
+            bubbles: true,
+            cancelable: true,
+        })
+        a.dispatchEvent(clickEvt)
+        a.remove()
+    }
+
+    const exportToJson = e => {
+        e.preventDefault()
+        downloadFile({
+            data: JSON.stringify(report),
+            fileName: 'data.json',
+            fileType: 'text/json',
+        })
+    }
   return (
       <div id="container">
           <div id="title">
               <h1>South Carolina Schools Explorer</h1>
+          </div>
+          <div className='actionBtns'>
+              <button type='button' onClick={exportToJson}>
+                  Export to JSON
+              </button>
           </div>
 
           <div className="app-search">
@@ -40,6 +81,37 @@ function Home() {
           </tr>
           </thead>
           <tbody>
+          {report === undefined ? <></> :
+              report.mainPage.map((row, index) => {
+                  const ID = row["SCHOOLID"];
+console.log(report.gradRate[ID])
+                      return (
+                          <TableRow
+                              key={index} sx={{'&:last-child td, &:last-child th': {border: 0}}}
+                          >
+                              <TableCell component="th" scope="row">
+                                  <Typography>{row["SchoolNm"]}</Typography>
+                              </TableCell>
+                              <TableCell component="th" scope="row">
+                                  <Typography>{row["SCHOOLID"]}</Typography>
+                              </TableCell>
+                              <TableCell component="th" scope="row">
+                                  <Typography>{"report.gradRate[ID].GRADRATE22"}</Typography>
+                              </TableCell>
+                              <TableCell component="th" scope="row">
+                                  <Typography>{"Avg ACT Score"}</Typography>
+                              </TableCell>
+                              <TableCell component="th" scope="row">
+                                  <Typography>{"Avg Teacher Salary"}</Typography>
+                              </TableCell>
+                              <TableCell component="th" scope="row">
+                                  <Typography>{"3-Yr Teacher Retention"}</Typography>
+                              </TableCell>
+
+                          </TableRow>
+                      )
+              })
+          }
           {/*{% for school in school_object_list %}*/}
 
           {/*<tr>*/}

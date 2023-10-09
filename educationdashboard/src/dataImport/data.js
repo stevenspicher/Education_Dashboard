@@ -75,3 +75,6 @@ export const other = [
   ["", "Chapman High School", "District Average", "State Average"],
   ["Other", 33, 6, 17],
 ];
+
+
+export const storedReportObject = {}

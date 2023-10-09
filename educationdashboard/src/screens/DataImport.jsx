@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useContext, useState} from "react";
 import {AdditionalInfoImport} from "../dataImport/AdditionalInfoImport.js";
 import {ReportCardImport} from "../dataImport/ReportCardImport.js";
 import {Box, Dialog, IconButton, Typography, Button} from "@mui/material";
@@ -7,12 +7,15 @@ import {
     createFullDataObject,
     createSpecificDataObject,
 } from "../functions/functions.js";
+import {AppContext} from "../context/appContext.tsx";
+import {Navigate, useNavigate} from "react-router-dom";
 
 function CloseIcon() {
     return null;
 }
 
 const ReportCardDataImport = () => {
+    const {dispatch} = useContext(AppContext)
     const [reportCardData, setReportCardData] = useState(undefined);
     const [additionalInfoData, setAdditionalInfoData] = useState(undefined);
     const [currentYear, setCurrentYear] = useState(undefined);
@@ -22,30 +25,32 @@ const ReportCardDataImport = () => {
 
     const [open, setOpen] = useState(true)
 
+    const dispatchReport = (report) => {
+        dispatch({
+            type: "SAVE_REPORT", report: report
+        })
+    }
+    const navigate = useNavigate();
 function mergeData (reportCardData, additionalInfoData, currentYear) {
 
-const mainPage = createFullDataObject(reportCardData.mainPage);
-const gradRate = createSpecificDataObject(reportCardData.gradRate, ["GRADRATE22"]);
-const college = createSpecificDataObject(additionalInfoData.collegeReadiness, ["ACT_Avg_CompositeScore"]);
-const teacher = createSpecificDataObject(additionalInfoData.classroomEnvironment, ["TCHSALARY_AvgCurrYr", "TCHRETURN3yrAvg_PctCurrYr"])
-const ratings = createFullDataObject(reportCardData.ratings);
-const participation = createFullDataObject(reportCardData.participation);
-const participationBySubject = createFullDataObject(reportCardData.participationBySubject);
-const collegeAndCareerReadiness = createFullDataObject(reportCardData.collegeAndCareerReadiness);
-        console.log(
-            {
-                mainPage: mainPage,
-                gradRate: gradRate,
-                collegePrep: college,
-                teacherInfo: teacher,
-                ratings: ratings,
-                participation: participation,
-                participationBySubject: participationBySubject,
-                collegeAndCareerReadiness: collegeAndCareerReadiness
-            },
-        )
-
+    const mainPage = createFullDataObject(reportCardData.mainPage);
+    const gradRate = createSpecificDataObject(reportCardData.gradRate, ["GRADRATE22"]);
+    const college = createSpecificDataObject(additionalInfoData.collegeReadiness, ["ACT_Avg_CompositeScore"]);
+    const teacher = createSpecificDataObject(additionalInfoData.classroomEnvironment, ["TCHSALARY_AvgCurrYr", "TCHRETURN3yrAvg_PctCurrYr"])
+    const ratings = createFullDataObject(reportCardData.ratings);
+    const participation = createFullDataObject(reportCardData.participation);
+    const participationBySubject = createFullDataObject(reportCardData.participationBySubject);
+    const collegeAndCareerReadiness = createFullDataObject(reportCardData.collegeAndCareerReadiness);
+    dispatchReport({mainPage: mainPage,
+        gradRate: gradRate,
+        collegePrep: college,
+        teacherInfo: teacher,
+        ratings: ratings,
+        participation: participation,
+        participationBySubject: participationBySubject,
+        collegeAndCareerReadiness: collegeAndCareerReadiness})
 }
+
 
 
     const handleOpen = () => setOpen(true);
@@ -60,6 +65,7 @@ const collegeAndCareerReadiness = createFullDataObject(reportCardData.collegeAnd
         p: 4,
         overflow: 'scroll',
     };
+    let report;
     return (
         <Dialog
             open={open}
@@ -107,7 +113,11 @@ const collegeAndCareerReadiness = createFullDataObject(reportCardData.collegeAnd
                     }}
                     name="myfile"/>
                 {additionalInfoVerified ? <CheckIcon/> : <></>}
-            <Button onClick={() => mergeData(reportCardData, additionalInfoData, currentYear)}>Merge Data</Button>
+            <Button onClick={() => {
+              mergeData(reportCardData, additionalInfoData, currentYear);
+                navigate("/home")
+            }}>Merge Data</Button>
+
             </Box>
         </Dialog>
     )
