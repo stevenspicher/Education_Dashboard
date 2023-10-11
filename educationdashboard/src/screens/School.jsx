@@ -1,6 +1,7 @@
 import "../css/schools.css";
 import home from "../assets/home.png"
 import {Button, Card, Col, Container, Row} from "react-bootstrap";
+import {useParams} from "react-router";
 import {Chart} from "react-google-charts";
 import {Box, Grid, Stack} from "@mui/material";
 import {
@@ -18,12 +19,14 @@ import {
     black,
     white,
     other
-} from "../dataImport/data"
+} from "../dataImport/data.js"
+import dataFile from "../dataImport/dataFile.json";
 
 const School = () => {
+const {id} = useParams();
+
     return (
         <>
-
             <Container fluid>
                 <div className="search-block">
                     <div className="app-search">
@@ -31,7 +34,6 @@ const School = () => {
                         <div className="search-row">
                             <input id="fill-box" type="text" placeholder="Search school or district ..."/>
                             <i className="fa fa-search"></i>
-
                         </div>
                     </div>
                     <div id="suggestions-list" className="list-items"></div>
@@ -40,10 +42,10 @@ const School = () => {
                 <div className="container">
 
                     <div id="title">
-                        <div className={"h1"}>Iva Elementary School</div>
-                        <div className={"h3"}>Anderson School District 3</div>
-                        <div className={"h4"}>803 Antreville Hwy, Iva</div>
-                        <div className={"h4"}>385 students, 30 teachers</div>
+                        <div className={"h1"}>{dataFile[id].schoolName}</div>
+                        <div className={"h3"}>{dataFile[id].districtName}</div>
+                        <div className={"h4"}>{dataFile[id].street}, {dataFile[id].city}</div>
+                        <div className={"h4"}>{dataFile[id].totalStudents} students, {dataFile[id].teacherCount} teachers</div>
                     </div>
 
                     <div className="col-12 col-md-12 graphic">
@@ -179,7 +181,7 @@ const School = () => {
                     <div className={"card-container col-12 col-md-12  graphic"}>
                         <Card className={"card-graphic-style card-width"}>
                             <Card.Body>
-                                <Card.Title className="card-total">0</Card.Title>
+                                <Card.Title className="card-total">{dataFile[id].bullyAndHarass}</Card.Title>
                                 <Card.Text>
                                     Number of incidents of bullying or harassment
                                 </Card.Text>
@@ -189,7 +191,7 @@ const School = () => {
                         {/*<div className="col-md-4 graphic">*/}
                         <Card className="card-graphic-style card-width">
                             <Card.Body>
-                                <Card.Title className="card-total">$55,206</Card.Title>
+                                <Card.Title className="card-total">{dataFile[id].avgTeacherSalary}</Card.Title>
                                 <Card.Text>
                                     Average teacher pay
                                 </Card.Text>
@@ -199,7 +201,7 @@ const School = () => {
                         {/*<div className="col-md-4 graphic">*/}
                         <Card className={"card-graphic-style card-width"}>
                             <Card.Body>
-                                <Card.Title className="card-total">95%</Card.Title>
+                                <Card.Title className="card-total">{dataFile[id].parentFeelsSafe}</Card.Title>
                                 <Card.Text>
                                     Parents who agree "my child feels safe at school"
                                 </Card.Text>
@@ -209,7 +211,7 @@ const School = () => {
                         {/*<div className="col-12 col-md-4 graphic">*/}
                         <Card className="card-graphic-style card-width">
                             <Card.Body>
-                                <Card.Title className="card-total">100%</Card.Title>
+                                <Card.Title className="card-total">{dataFile[id].teacherFeelsSafe}</Card.Title>
                                 <Card.Text>
                                     Teachers who agree "I feel safe at my school"
                                 </Card.Text>
@@ -219,7 +221,7 @@ const School = () => {
                         {/*// <div className="col-12 col-md-4 graphic">*/}
                         <Card className="card-graphic-style card-width ">
                             <Card.Body>
-                                <Card.Title className="card-total">8</Card.Title>
+                                <Card.Title className="card-total">""</Card.Title>
                                 <Card.Text className={"h5"}>
                                     Number of violent assaults
                                 </Card.Text>
@@ -228,11 +230,10 @@ const School = () => {
                     </div>
                     {/*</div>*/}
                 </div>
-
-
             </Container>
         </>
     )
 }
+
 export default School
 
