@@ -5,50 +5,52 @@ import {Card, Container} from "react-bootstrap";
 import {Stack} from "@mui/material";
 import {Chart} from "react-google-charts";
 import {
-    black,
-    careerReadyDiplomaEarners,
-    collegeReadyDiplomaEarners,
-    dropoutPercentage, englishLanguageLearningStudents,
-    mathScoreData,
-    onTimeGraduationRate,
-    options, other,
-    readingScoreData,
-    scienceScoreData, studentsInPoverty, studentsWithDisabilities, white
-} from "../dataImport/data.js";
+    createAverageACTScoreData,
+    createBlackData,
+    createDistrictMathScoreData,
+    createDistrictReadingScoreData,
+    createDistrictScienceScoreData,
+    createOnTimeGraduationRateData, createOtherData,
+    createStudentsInPovertyData,
+    createStudentsWithDisabilitiesData, createWhiteData,
+    options,
+
+} from "../components/District/districtDataFunctions";
 import dataFile from "../dataImport/dataFile.json";
 import LiveMap from "../components/LiveMap.jsx";
 import {useParams} from "react-router";
-import DistrictSchoolList from "../components/DistrictSchoolList.jsx";
+import DistrictSchoolList from "../components/District/DistrictSchoolList.jsx";
+
 const District = () => {
-    const studentNumber = "2,376"
     const {id} = useParams();
     console.log(dataFile[id])
     return (
-<Container>
-        <div className="search-block">
-            <div className="app-search">
-                <a href="../../.."><img src={home} alt="home icon"/></a>
-                <div className="search-row">
-                    <input id="fill-box" type="text" placeholder="Search school or district ..."/>
+        <Container>
+            <div className="search-block">
+                <div className="app-search">
+                    <a href="../../.."><img src={home} alt="home icon"/></a>
+                    <div className="search-row">
+                        <input id="fill-box" type="text" placeholder="Search school or district ..."/>
                         <i className="fa fa-search"></i>
+                    </div>
                 </div>
+
+                <div id="suggestions-list" className="list-items"></div>
             </div>
-
-            <div id="suggestions-list" className="list-items"></div>
-        </div>
-        <div className="title-text">
-            <h1>Abbeville County School Dist</h1>
-            <h2>{studentNumber} students</h2>
-            <h4>400 Greenville Street, Abbeville</h4>
-            <h4>864-366-5427, <a href="https://acsdsc.org" target="_blank">website</a></h4>
-        </div>
-            <Stack direction={"row"}>
-
-            {/*<div className=" graphic">*/}
-            {/*    <div id='map' className="graphic-style">*/}
+            <div className="title-text">
+                <h1>{dataFile[id].schoolName}</h1>
+                <h2>{dataFile[id].totalStudents} students</h2>
+                <h4>{dataFile[id].street}, {dataFile[id].city}</h4>
+                <h4>{dataFile[id].schoolPhone}, <a href={dataFile[id].url} target="_blank">website</a></h4>
+            </div>
+            <Stack direction={"row"} spacing={3}>
+                <Card style={{minWidth: 520}}>
                     <LiveMap/>
-                <DistrictSchoolList/>
-        </Stack>
+                </Card>
+                <Card style={{minWidth: 520}}>
+                    <DistrictSchoolList list={dataFile[id].districtSchoolList}/>
+                </Card>
+            </Stack>
             <div className={"chart-container graphic-style"}>
                 <Stack>
                     <h5>Academic Performance</h5>
@@ -57,21 +59,21 @@ const District = () => {
                             chartType="ColumnChart"
                             width="200px"
                             height="50%"
-                            data={readingScoreData}
+                            data={createDistrictReadingScoreData(dataFile[id])}
                             options={options}
                         />
                         <Chart
                             chartType="ColumnChart"
                             width="200px"
                             height="50%"
-                            data={mathScoreData}
+                            data={createDistrictMathScoreData(dataFile[id])}
                             options={options}
                         />
                         <Chart
                             chartType="ColumnChart"
                             width="200px"
                             height="50%"
-                            data={scienceScoreData}
+                            data={createDistrictScienceScoreData(dataFile[id])}
                             options={options}
                         />
                     </Stack>
@@ -80,34 +82,17 @@ const District = () => {
                             chartType="ColumnChart"
                             width="200px"
                             height="50%"
-                            data={onTimeGraduationRate}
+                            data={createOnTimeGraduationRateData(dataFile[id])}
                             options={options}
                         />
                         <Chart
                             chartType="ColumnChart"
                             width="200px"
                             height="50%"
-                            data={dropoutPercentage}
+                            data={createAverageACTScoreData(dataFile[id])}
                             options={options}
                         />
                     </Stack>
-                    <Stack className="chart-container" direction={"row"}>
-                        <Chart
-                            chartType="ColumnChart"
-                            width="200px"
-                            height="50%"
-                            data={collegeReadyDiplomaEarners}
-                            options={options}
-                        />
-                        <Chart
-                            chartType="ColumnChart"
-                            width="200px"
-                            height="50%"
-                            data={careerReadyDiplomaEarners}
-                            options={options}
-                        />
-                    </Stack>
-
                 </Stack>
             </div>
             <div className={"chart-container"}>
@@ -121,21 +106,14 @@ const District = () => {
                                     chartType="ColumnChart"
                                     width="200px"
                                     height="50%"
-                                    data={studentsInPoverty}
+                                    data={createStudentsInPovertyData(dataFile[id])}
                                     options={options}
                                 />
                                 <Chart
                                     chartType="ColumnChart"
                                     width="200px"
                                     height="50%"
-                                    data={studentsWithDisabilities}
-                                    options={options}
-                                />
-                                <Chart
-                                    chartType="ColumnChart"
-                                    width="200px"
-                                    height="50%"
-                                    data={englishLanguageLearningStudents}
+                                    data={createStudentsWithDisabilitiesData(dataFile[id])}
                                     options={options}
                                 />
                             </Stack>
@@ -144,21 +122,21 @@ const District = () => {
                                     chartType="ColumnChart"
                                     width="200px"
                                     height="50%"
-                                    data={white}
+                                    data={createWhiteData(dataFile[id])}
                                     options={options}
                                 />
                                 <Chart
                                     chartType="ColumnChart"
                                     width="200px"
                                     height="50%"
-                                    data={black}
+                                    data={createBlackData(dataFile[id])}
                                     options={options}
                                 />
                                 <Chart
                                     chartType="ColumnChart"
                                     width="200px"
                                     height="50%"
-                                    data={other}
+                                    data={createOtherData(dataFile[id])}
                                     options={options}
                                 />
                             </Stack>
@@ -172,7 +150,7 @@ const District = () => {
                 <div className="col-md-4 graphic">
                     <Card className={"graphic-style card-width"}>
                         <Card.Body>
-                            <Card.Title className="card-total">0</Card.Title>
+                            <Card.Title className="card-total">{dataFile[id].bullyAndHarass}</Card.Title>
                             <Card.Text>
                                 Number of incidents of bullying or harassment
                             </Card.Text>
@@ -182,7 +160,7 @@ const District = () => {
                 <div className="col-md-4 graphic">
                     <Card className="graphic-style card-width">
                         <Card.Body>
-                            <Card.Title className="card-total">$55,206</Card.Title>
+                            <Card.Title className="card-total">{dataFile[id].avgTeacherSalary}</Card.Title>
                             <Card.Text>
                                 Average teacher pay
                             </Card.Text>
@@ -192,7 +170,7 @@ const District = () => {
                 <div className="col-md-4 graphic">
                     <Card className={"graphic-style card-width"}>
                         <Card.Body>
-                            <Card.Title className="card-total">95%</Card.Title>
+                            <Card.Title className="card-total">{dataFile[id].parentFeelsSafe}</Card.Title>
                             <Card.Text>
                                 Parents who agree "my child feels safe at school"
                             </Card.Text>
@@ -202,7 +180,7 @@ const District = () => {
                 <div className="col-12 col-md-4 graphic">
                     <Card className="graphic-style card-width">
                         <Card.Body>
-                            <Card.Title className="card-total">100%</Card.Title>
+                            <Card.Title className="card-total">{dataFile[id].teacherFeelsSafe}</Card.Title>
                             <Card.Text>
                                 Teachers who agree "I feel safe at my school"
                             </Card.Text>
@@ -212,19 +190,19 @@ const District = () => {
                 <div className="col-12 col-md-4 graphic">
                     <Card className="graphic-style card-width">
                         <Card.Body>
-                            <Card.Title className="card-total">8</Card.Title>
+                            <Card.Title className="card-total">{dataFile[id].teacherFeelsSafe}</Card.Title>
                             <Card.Text>
-                                Number of violent assaults
+                                Number of violent assaults -- fix
                             </Card.Text>
                         </Card.Body>
                     </Card>
                 </div>
             </div>
-        {/*</div>*/}
+            {/*</div>*/}
 
 
-    </Container>
-    )
+        </Container>
+    );
 };
 
 export default District

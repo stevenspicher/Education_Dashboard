@@ -1,7 +1,7 @@
-import {createFullDataObject} from "../functions/functions";
+import {createFullDataObject} from "./functions";
 
 
-export function mergeData (reportCardData, additionalInfoData, setSchoolData, currentYear) {
+export function mergeData (reportCardData, additionalInfoData, setSchoolData) {
     const mainPage = createFullDataObject(reportCardData.mainPage);
     const achievePrepSuccessElemMid = createFullDataObject(reportCardData.achievePrepSuccessElemMid);
     const achievePrepSuccessHigh = createFullDataObject(reportCardData.achievePrepSuccessHigh);
@@ -64,7 +64,7 @@ export function mergeData (reportCardData, additionalInfoData, setSchoolData, cu
         let district;
         let districtId;
     Object.keys(combined).map((schoolId) => {
-        let type = "";
+        let type;
 
         district = Object.values(combined).find((district) => district["SchoolNm"] === combined[schoolId]["DistrictNm"]);
         if (district !== undefined) {
@@ -201,6 +201,7 @@ export function mergeData (reportCardData, additionalInfoData, setSchoolData, cu
 
         cleanedSchoolData[schoolId] = {
             schoolType: type,
+            schoolPhone: combined[schoolId]["SchoolNm"], //FIX
             schoolName: combined[schoolId]["SchoolNm"],
             districtName: combined[schoolId]["DistrictNm"],
             academicPerformance: academicPerformance,
