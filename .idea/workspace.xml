@@ -4,16 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8d0d108c-4ac4-4e0b-8b45-613489021c53" name="Changes" comment="server for converting data to json file&#10;started displaying data on pages">
-      <change afterPath="$PROJECT_DIR$/educationdashboard/src/functions/mergeData.js" afterDir="false" />
+    <list default="true" id="8d0d108c-4ac4-4e0b-8b45-613489021c53" name="Changes" comment="mergeData.js now bundles all(?) data necessary for charts.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/dataImport/AdditionalInfoImport.js" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/AdditionalInfoImport.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/dataImport/ReportCardImport.js" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/ReportCardImport.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/dataImport/data.js" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/data.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/dataImport/dataFile.json" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/dataFile.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/screens/DataImport.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/screens/DataImport.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/screens/District.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/screens/District.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/screens/School.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/screens/School.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +90,7 @@
       <workItem from="1696874583243" duration="3975000" />
       <workItem from="1696885530499" duration="33564000" />
       <workItem from="1697233654588" duration="2921000" />
-      <workItem from="1697738554238" duration="24872000" />
+      <workItem from="1697738554238" duration="26049000" />
     </task>
     <task id="LOCAL-00001" summary="installed react-leaflet;&#10;loaded district layers;&#10;started legend;">
       <created>1690561038395</created>
@@ -177,7 +169,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697027350493</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="mergeData.js now bundles all(?) data necessary for charts.">
+      <created>1697769244657</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1697769244657</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -216,6 +215,7 @@
     <MESSAGE value="added data imports" />
     <MESSAGE value="created global functions:&#10;createFullDataObject&#10;createSpecificDataObject" />
     <MESSAGE value="server for converting data to json file&#10;started displaying data on pages" />
-    <option name="LAST_COMMIT_MESSAGE" value="server for converting data to json file&#10;started displaying data on pages" />
+    <MESSAGE value="mergeData.js now bundles all(?) data necessary for charts." />
+    <option name="LAST_COMMIT_MESSAGE" value="mergeData.js now bundles all(?) data necessary for charts." />
   </component>
 </project>
