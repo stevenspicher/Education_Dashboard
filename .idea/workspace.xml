@@ -4,17 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8d0d108c-4ac4-4e0b-8b45-613489021c53" name="Changes" comment="server for converting data to json file&#10;started displaying data on pages">
-      <change afterPath="$PROJECT_DIR$/educationdashboard/src/functions/mergeData.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/dataImport/AdditionalInfoImport.js" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/AdditionalInfoImport.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/dataImport/ReportCardImport.js" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/ReportCardImport.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/dataImport/data.js" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/data.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/dataImport/dataFile.json" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/dataFile.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/screens/DataImport.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/screens/DataImport.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/screens/District.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/screens/District.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/screens/School.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/screens/School.jsx" afterDir="false" />
-    </list>
+    <list default="true" id="8d0d108c-4ac4-4e0b-8b45-613489021c53" name="Changes" comment="updating gitignore" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -216,6 +206,7 @@
     <MESSAGE value="added data imports" />
     <MESSAGE value="created global functions:&#10;createFullDataObject&#10;createSpecificDataObject" />
     <MESSAGE value="server for converting data to json file&#10;started displaying data on pages" />
-    <option name="LAST_COMMIT_MESSAGE" value="server for converting data to json file&#10;started displaying data on pages" />
+    <MESSAGE value="updating gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="updating gitignore" />
   </component>
 </project>
