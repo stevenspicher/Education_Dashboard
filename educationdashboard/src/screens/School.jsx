@@ -6,9 +6,6 @@ import {Chart} from "react-google-charts";
 import {Box, Grid, Stack} from "@mui/material";
 import {
     scienceScoreData,
-    readingScoreData,
-    options,
-    mathScoreData,
     careerReadyDiplomaEarners,
     collegeReadyDiplomaEarners,
     onTimeGraduationRate,
@@ -23,7 +20,45 @@ import {
 import dataFile from "../dataImport/dataFile.json";
 
 const School = () => {
-const {id} = useParams();
+    const {id} = useParams();
+    console.log(dataFile[id])
+
+    const mathScoreData = [
+        ["", dataFile[id].schoolName, "District Average", "State Average"],
+        ["Students with positive Math Score",
+            dataFile[id].academicPerformance.positiveMathScoreAvg,
+            dataFile[id].academicPerformance.positiveMathScoreAvgDistrict,
+            dataFile[id].academicPerformance.positiveMathScoreAvgState
+        ],
+    ];
+
+    const readingScoreData = [
+        ["", dataFile[id].schoolName, "District Average", "State Average"],
+        ["Students with Positive Reading Score",
+            dataFile[id].academicPerformance.positiveReadingScoreAvg,
+            dataFile[id].academicPerformance.positiveReadingScoreAvgDistrict,
+            dataFile[id].academicPerformance.positiveReadingScoreAvgState
+        ],
+    ];
+
+    const scienceScoreData = [
+        ["", dataFile[id].schoolName, "District Average", "State Average"],
+        ["Students with Positive Science Score",
+            dataFile[id].academicPerformance.positiveScienceScoreAvg,
+            dataFile[id].academicPerformance.positiveScienceScoreAvgDistrict,
+            dataFile[id].academicPerformance.positiveScienceScoreAvgState
+        ],
+    ];
+
+    const options = {
+        title: "Age vs. Weight comparison",
+        hAxis: { title: "", viewWindow: { min: 0, max: 0 } },
+        vAxis: { title: "", viewWindow: { min: 10, max: 100 } },
+        backgroundColor: '#f3f4f2',
+        legend: "none",
+        height: "100%",
+        width: "100%"
+    };
 
     return (
         <>
@@ -45,7 +80,9 @@ const {id} = useParams();
                         <div className={"h1"}>{dataFile[id].schoolName}</div>
                         <div className={"h3"}>{dataFile[id].districtName}</div>
                         <div className={"h4"}>{dataFile[id].street}, {dataFile[id].city}</div>
-                        <div className={"h4"}>{dataFile[id].totalStudents} students, {dataFile[id].teacherCount} teachers</div>
+                        <div
+                            className={"h4"}>{dataFile[id].totalStudents} students, {dataFile[id].teacherCount} teachers
+                        </div>
                     </div>
 
                     <div className="col-12 col-md-12 graphic">

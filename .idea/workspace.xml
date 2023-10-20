@@ -4,21 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8d0d108c-4ac4-4e0b-8b45-613489021c53" name="Changes" comment="created global functions:&#10;createFullDataObject&#10;createSpecificDataObject">
-      <change afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/dataFile.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/package-lock.json" afterDir="false" />
+    <list default="true" id="8d0d108c-4ac4-4e0b-8b45-613489021c53" name="Changes" comment="server for converting data to json file&#10;started displaying data on pages">
+      <change afterPath="$PROJECT_DIR$/educationdashboard/src/functions/mergeData.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/assets/SugarCloud2Test.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/assets/sugarcloud.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/educationdashboard/src/dataImport/AdditionalInfoImport.js" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/AdditionalInfoImport.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/educationdashboard/src/dataImport/ReportCardImport.js" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/ReportCardImport.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/educationdashboard/src/dataImport/data.js" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/data.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/educationdashboard/src/dataImport/dataFile.json" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/dataFile.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/educationdashboard/src/screens/DataImport.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/screens/DataImport.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/educationdashboard/src/screens/District.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/screens/District.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/screens/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/screens/Home.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/educationdashboard/src/screens/School.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/screens/School.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,22 +49,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/steven/IdeaProjects/Education Dashboard/educationdashboard/src/dataImport",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "/Applications/IntelliJ IDEA.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/steven/IdeaProjects/Education Dashboard/educationdashboard/src/dataImport&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Applications/IntelliJ IDEA.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/educationdashboard/src/dataImport" />
@@ -101,7 +96,9 @@
       <workItem from="1694536141510" duration="13576000" />
       <workItem from="1696521916995" duration="7799000" />
       <workItem from="1696874583243" duration="3975000" />
-      <workItem from="1696885530499" duration="33487000" />
+      <workItem from="1696885530499" duration="33564000" />
+      <workItem from="1697233654588" duration="2921000" />
+      <workItem from="1697738554238" duration="24872000" />
     </task>
     <task id="LOCAL-00001" summary="installed react-leaflet;&#10;loaded district layers;&#10;started legend;">
       <created>1690561038395</created>
@@ -173,7 +170,14 @@
       <option name="project" value="LOCAL" />
       <updated>1696874917573</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="server for converting data to json file&#10;started displaying data on pages">
+      <created>1697027350493</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1697027350493</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -211,6 +215,7 @@
     <MESSAGE value="styling" />
     <MESSAGE value="added data imports" />
     <MESSAGE value="created global functions:&#10;createFullDataObject&#10;createSpecificDataObject" />
-    <option name="LAST_COMMIT_MESSAGE" value="created global functions:&#10;createFullDataObject&#10;createSpecificDataObject" />
+    <MESSAGE value="server for converting data to json file&#10;started displaying data on pages" />
+    <option name="LAST_COMMIT_MESSAGE" value="server for converting data to json file&#10;started displaying data on pages" />
   </component>
 </project>
