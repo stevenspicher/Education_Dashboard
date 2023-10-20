@@ -18,6 +18,7 @@ import {
 import dataFile from "../dataImport/dataFile.json";
 import LiveMap from "../components/LiveMap.jsx";
 import {useParams} from "react-router";
+import DistrictSchoolList from "../components/DistrictSchoolList.jsx";
 const District = () => {
     const studentNumber = "2,376"
     const {id} = useParams();
@@ -26,7 +27,7 @@ const District = () => {
 <Container>
         <div className="search-block">
             <div className="app-search">
-                <a href="../../.."><img src={home}/></a>
+                <a href="../../.."><img src={home} alt="home icon"/></a>
                 <div className="search-row">
                     <input id="fill-box" type="text" placeholder="Search school or district ..."/>
                         <i className="fa fa-search"></i>
@@ -46,60 +47,7 @@ const District = () => {
             {/*<div className=" graphic">*/}
             {/*    <div id='map' className="graphic-style">*/}
                     <LiveMap/>
-                {/*</div>*/}
-            {/*</div>*/}
-
-            {/*<div className=" graphic">*/}
-            {/*    <div className="school-col-inner">*/}
-                    <h4>Schools in this district</h4>
-                    <div className="inner-text">
-                        <ul>
-                            <li>Elementary Schools</li>
-                            <ul>
-
-
-                                <li><a href="../../school/160018/">Cherokee Trail Elementary</a></li>
-
-
-                                <li><a href="../../school/160019/">Diamond Hill Elementary School</a></li>
-
-
-                                <li><a href="../../school/160007/">John C. Calhoun Elementary School</a></li>
-
-
-                                <li><a href="../../school/160017/">Westwood Elementary School</a></li>
-
-
-                            </ul>
-                            <li>Middle Schools</li>
-                            <ul>
-
-
-                                <li><a href="../../school/160018/">Cherokee Trail Middle</a></li>
-
-
-                                <li><a href="../../school/160019/">Diamond Hill Middle School</a></li>
-
-
-                                <li><a href="../../school/160016/">Wright Middle</a></li>
-
-
-                            </ul>
-                            <li>High Schools</li>
-                            <ul>
-
-
-                                <li><a href="../../school/160001/">Abbeville High School</a></li>
-
-
-                                <li><a href="../../school/160003/">Dixie High School</a></li>
-
-
-                            </ul>
-                        </ul>
-                    </div>
-                {/*</div>*/}
-            {/*</div>*/}
+                <DistrictSchoolList/>
         </Stack>
             <div className={"chart-container graphic-style"}>
                 <Stack>
