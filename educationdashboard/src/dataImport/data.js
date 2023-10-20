@@ -5,14 +5,15 @@ export const readingScoreData = [
 ];
 
 export const options = {
-  // title: "Age vs. Weight comparison",
-  // hAxis: { title: "Students with Positive Reading Score", viewWindow: { min: 0, max: 0 } },
-  vAxis: { title: "", viewWindow: { min: 0, max: 100 } },
+  title: "Age vs. Weight comparison",
+  hAxis: { title: "Students with Positive Reading Score", viewWindow: { min: 0, max: 0 } },
+  vAxis: { title: "", viewWindow: { min: 10, max: 100 } },
   backgroundColor: '#f3f4f2',
   legend: "none",
- height: "100%",
+  height: "100%",
   width: "100%"
 };
+
 export const mathScoreData = [
 ["", "Chapman High School", "District Average", "State Average"],
 ["Students with positive Math Score", 50, 49, 39],
@@ -75,3 +76,6 @@ export const other = [
   ["", "Chapman High School", "District Average", "State Average"],
   ["Other", 33, 6, 17],
 ];
+
+
+export const storedReportObject = {}

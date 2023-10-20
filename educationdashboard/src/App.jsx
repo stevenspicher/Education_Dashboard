@@ -12,9 +12,9 @@ function App () {
             <Route path="/" element={<Navigate replace to="/home"/>}/>
             <Route path="home" element={<Home/>}/>
             <Route path="district" element={<District/>}/>
-            <Route path="district:id" element={<District/>}/>
+            <Route path="district/:id" element={<District/>}/>
             <Route path="school" element={<School/>}/>
-            <Route path="school:id" element={<School/>}/>
+            <Route path="school/:id" element={<School/>}/>
             <Route path="importdata" element={<ReportCardDataImport/>}/>
         </Routes>
     )

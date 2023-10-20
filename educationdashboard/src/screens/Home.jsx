@@ -1,14 +1,29 @@
 import '../index.css';
 import '../css/search.css';
 import LiveMap from "../components/LiveMap.jsx";
+import {useContext, useEffect, useState} from "react";
+import {AppContext} from "../context/appContext.tsx";
+import {Button, Link, TableCell, TableRow, Typography} from "@mui/material";
+import dataFile from "../dataImport/dataFile.json";
+import {useNavigate} from "react-router-dom";
+
 
 function Home() {
+    const navigate = useNavigate();
+    const {state, dispatch} = useContext(AppContext)
+    const [report, setReport] = useState(undefined)
+
+    useEffect(() => {
+        dispatch({})
+        setReport(state.report)
+    }, [state]);
 
   return (
       <div id="container">
           <div id="title">
               <h1>South Carolina Schools Explorer</h1>
           </div>
+
 
           <div className="app-search">
               <div className="search-row">
@@ -18,7 +33,7 @@ function Home() {
               <div className="search-eg">
                   <p>For example: </p>
                   <p><a href="/district">Abbeville County School District</a></p>
-                  <p><a href="/school">Iva Elementary School</a></p>
+                  <p><a href="/school/0403024">Iva Elementary School</a></p>
               </div>
               <div id="suggestions-list" className="list-items"></div>
           </div>
@@ -40,47 +55,40 @@ function Home() {
           </tr>
           </thead>
           <tbody>
-          {/*{% for school in school_object_list %}*/}
+          {dataFile === undefined ? <></> :
+              Object.entries(dataFile).map((school, index) => {
+                      return (
+                          <TableRow
+                              key={index} sx={{'&:last-child td, &:last-child th': {border: 0}}}
+                          >
+                              <TableCell component="th" scope="row">
+                                  <Typography>
+                                      <Link onClick={() =>  {navigate(`/school/${school[0]}`)}}>
+                                          {school[1].schoolName}
+                                      </Link>
+                                  </Typography>
+                              </TableCell>
+                              <TableCell component="th" scope="row">
+                                  <Typography>{school[1].schoolType}</Typography>
+                              </TableCell>
+                              <TableCell component="th" scope="row">
+                                  <Typography>{school[1].gradRate ?? ""}</Typography>
+                              </TableCell>
+                              <TableCell component="th" scope="row">
+                                  <Typography>{school[1].ACTComposite ?? ""}</Typography>
+                              </TableCell>
+                              <TableCell component="th" scope="row">
+                                  <Typography>{school[1].avgTeacherSalary ?? ""}</Typography>
+                              </TableCell>
+                              <TableCell component="th" scope="row">
+                                  <Typography>{school[1].teacherReturnRate ?? ""}</Typography>
+                              </TableCell>
 
-          {/*<tr>*/}
-          {/*    <td><a href="screens/school/{{ school.school_id }}/">{{school.school}}</a></td>*/}
+                          </TableRow>
+                      )
+              })
+          }
 
-          {/*    {% if school.type_y == 'H' %}*/}
-          {/*    <td>High School</td>*/}
-          {/*    {% elif school.type_y == 'M' %}*/}
-          {/*    <td>Middle School</td>*/}
-          {/*    {% elif school.type_y == 'E' %}*/}
-          {/*    <td>Elementary School</td>*/}
-          {/*    {% else %}*/}
-          {/*    <td>N/A</td>*/}
-          {/*    {% endif %}*/}
-
-          {/*    {% if school.gpercent_overall|float|round(1) > 0 %}*/}
-          {/*    <td>{{school.gpercent_overall | float | round(1)}}%</td>*/}
-          {/*    {% else %}*/}
-          {/*    <td></td>*/}
-          {/*    {% endif %}*/}
-
-          {/*    {% if school.act_avg_composite_score|float > 0 %}*/}
-          {/*    <td>{{school.act_avg_composite_score}}</td>*/}
-          {/*    {% else %}*/}
-          {/*    <td></td>*/}
-          {/*    {% endif %}*/}
-
-          {/*    {% if school.tchsalary_avg_curr_yr|int|round(1) > 0 %}*/}
-          {/*    <td>${{format_comma(school.tchsalary_avg_curr_yr | int | round(1))}}</td>*/}
-          {/*    {% else %}*/}
-          {/*    <td></td>*/}
-          {/*    {% endif %}*/}
-
-          {/*    {% if school.tchreturn3yr_avg_pct_curr_yr|float|round(1) > 0 %}*/}
-          {/*    <td>{{school.tchreturn3yr_avg_pct_curr_yr | float | round(1)}}%</td>*/}
-          {/*    {% else %}*/}
-          {/*    <td></td>*/}
-          {/*    {% endif %}*/}
-          {/*</tr>*/}
-
-          {/*{% endfor %}*/}
           </tbody>
       </table>
 

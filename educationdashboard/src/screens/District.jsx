@@ -15,9 +15,13 @@ import {
     readingScoreData,
     scienceScoreData, studentsInPoverty, studentsWithDisabilities, white
 } from "../dataImport/data.js";
+import dataFile from "../dataImport/dataFile.json";
 import LiveMap from "../components/LiveMap.jsx";
+import {useParams} from "react-router";
 const District = () => {
     const studentNumber = "2,376"
+    const {id} = useParams();
+    console.log(dataFile[id])
     return (
 <Container>
         <div className="search-block">

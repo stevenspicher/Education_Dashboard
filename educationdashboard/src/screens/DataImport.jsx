@@ -1,18 +1,18 @@
-import {useState} from "react";
+import {useContext, useState} from "react";
 import {AdditionalInfoImport} from "../dataImport/AdditionalInfoImport.js";
 import {ReportCardImport} from "../dataImport/ReportCardImport.js";
 import {Box, Dialog, IconButton, Typography, Button} from "@mui/material";
 import CheckIcon from "@mui/icons-material/Check";
-import {
-    createFullDataObject,
-    createSpecificDataObject,
-} from "../functions/functions.js";
+import {AppContext} from "../context/appContext.tsx";
+import {Navigate, useNavigate} from "react-router-dom";
+import {mergeData} from "../functions/mergeData";
 
 function CloseIcon() {
     return null;
 }
 
 const ReportCardDataImport = () => {
+    const {dispatch} = useContext(AppContext)
     const [reportCardData, setReportCardData] = useState(undefined);
     const [additionalInfoData, setAdditionalInfoData] = useState(undefined);
     const [currentYear, setCurrentYear] = useState(undefined);
@@ -22,34 +22,46 @@ const ReportCardDataImport = () => {
 
     const [open, setOpen] = useState(true)
 
-function mergeData (reportCardData, additionalInfoData, currentYear) {
-
-const mainPage = createFullDataObject(reportCardData.mainPage);
-const gradRate = createSpecificDataObject(reportCardData.gradRate, ["GRADRATE22"]);
-const college = createSpecificDataObject(additionalInfoData.collegeReadiness, ["ACT_Avg_CompositeScore"]);
-const teacher = createSpecificDataObject(additionalInfoData.classroomEnvironment, ["TCHSALARY_AvgCurrYr", "TCHRETURN3yrAvg_PctCurrYr"])
-const ratings = createFullDataObject(reportCardData.ratings);
-const participation = createFullDataObject(reportCardData.participation);
-const participationBySubject = createFullDataObject(reportCardData.participationBySubject);
-const collegeAndCareerReadiness = createFullDataObject(reportCardData.collegeAndCareerReadiness);
-        console.log(
-            {
-                mainPage: mainPage,
-                gradRate: gradRate,
-                collegePrep: college,
-                teacherInfo: teacher,
-                ratings: ratings,
-                participation: participation,
-                participationBySubject: participationBySubject,
-                collegeAndCareerReadiness: collegeAndCareerReadiness
-            },
-        )
-
-}
-
+    const dispatchReport = (report) => {
+        dispatch({
+            type: "SAVE_REPORT", report: report
+        })
+    }
+    const navigate = useNavigate();
+    const [schoolData, setSchoolData] = useState({});
 
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+
+    const sendData = (data) => {
+        fetch('http://192.168.86.94:5001/post', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data, null, 2)
+        })
+    }
+
+const downloadFile = (data) => {
+
+    // create file in browser
+    const fileName = "data";
+    const json = JSON.stringify(data, null, 2);
+    const blob = new Blob([json], { type: "application/json" });
+    const href = URL.createObjectURL(blob);
+
+    // create "a" HTLM element with href to file
+    const link = document.createElement("a");
+    link.href = href;
+    link.download = fileName + ".json";
+    document.body.appendChild(link);
+    link.click();
+
+    // clean up "a" element & remove ObjectURL
+    document.body.removeChild(link);
+    URL.revokeObjectURL(href);
+}
 
     const style = {
         top: '70%',
@@ -60,15 +72,16 @@ const collegeAndCareerReadiness = createFullDataObject(reportCardData.collegeAnd
         p: 4,
         overflow: 'scroll',
     };
+    let report;
     return (
-        <Dialog
-            open={open}
-            fullWidth
-            maxWidth={"xl"}
-            onClose={handleClose}
-            aria-labelledby="modal-modal-title"
-            aria-describedby="modal-modal-description"
-        >
+        // <Dialog
+        //     open={open}
+        //     fullWidth
+        //     maxWidth={"xl"}
+        //     onClose={handleClose}
+        //     aria-labelledby="modal-modal-title"
+        //     aria-describedby="modal-modal-description"
+        // >
 
             <Box sx={style}>
                 <Typography variant={"h3"}>Import Data for Schools Explorer</Typography>
@@ -107,9 +120,17 @@ const collegeAndCareerReadiness = createFullDataObject(reportCardData.collegeAnd
                     }}
                     name="myfile"/>
                 {additionalInfoVerified ? <CheckIcon/> : <></>}
-            <Button onClick={() => mergeData(reportCardData, additionalInfoData, currentYear)}>Merge Data</Button>
+            <Button onClick={() => {
+              mergeData(reportCardData, additionalInfoData, setSchoolData, currentYear);
+            }}>Merge Data</Button>
+                <Button onClick={() => {
+                    sendData(schoolData)
+            }}>Send Data</Button> <Button onClick={() => {
+                navigate("/home")
+            }}>Home</Button>
+
             </Box>
-        </Dialog>
+        // </Dialog>
     )
 }
 
