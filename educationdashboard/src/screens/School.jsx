@@ -18,6 +18,7 @@ import {
     createCollegeReadyDiplomaEarnersData,
     createCareerReadyDiplomaEarnersData, createELLStudentData, optionsLegend,
 } from "../components/School/schoolDataFunctions.js";
+import {Stack} from "@mui/material";
 
 const School = () => {
     const {id} = useParams();
