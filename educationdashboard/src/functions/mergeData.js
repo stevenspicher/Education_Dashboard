@@ -1,7 +1,7 @@
 import {createFullDataObject} from "./functions";
 
 
-export function mergeData (reportCardData, additionalInfoData, setSchoolData) {
+export function mergeData(reportCardData, additionalInfoData, setSchoolData) {
     const mainPage = createFullDataObject(reportCardData.mainPage);
     const achievePrepSuccessElemMid = createFullDataObject(reportCardData.achievePrepSuccessElemMid);
     const achievePrepSuccessHigh = createFullDataObject(reportCardData.achievePrepSuccessHigh);
@@ -17,6 +17,7 @@ export function mergeData (reportCardData, additionalInfoData, setSchoolData) {
     const participationBySubject = createFullDataObject(reportCardData.participationBySubject);
     const collegeAndCareerReadiness = createFullDataObject(reportCardData.collegeAndCareerReadiness);
     const cleanedSchoolData = {};
+
     function objCombine(obj, variable) {
         let fixedKey;
         //obj = report, variable = created Object
@@ -37,6 +38,7 @@ export function mergeData (reportCardData, additionalInfoData, setSchoolData) {
             }
         }
     }
+
     let combined = {};
 
 
@@ -55,145 +57,150 @@ export function mergeData (reportCardData, additionalInfoData, setSchoolData) {
     objCombine(collegeAndCareerReadiness, combined);
     objCombine(finance, combined);
     //combined = all data (except for when createSpecificDataObject is used)
-                let districtSchoolList = [];
-                let academicPerformanceDistrict = {}
-                let academicPerformance = {}
-                let demographics = {};
-                let demographicsDistrict = {};
-
-        let district;
-        let districtId;
+console.log(combined)
+        let demographicsDistrict = {};
+        let academicPerformanceDistrictH = {}
+        let academicPerformanceDistrictME = {}
     Object.keys(combined).map((schoolId) => {
-        let type;
+
+        let district,
+            districtId,
+            districtSchoolList = [],
+            academicPerformanceStateH,
+            academicPerformanceStateME,
+            academicPerformanceH,
+            academicPerformanceME,
+            academicPerformance,
+            demographics,
+            type;
 
         district = Object.values(combined).find((district) => district["SchoolNm"] === combined[schoolId]["DistrictNm"]);
         if (district !== undefined) {
             districtId = district["SCHOOLID"]
             if (districtId.toString().length === 6) {
-                districtId = "0" + districtId.toString()
+               districtId = "0" + districtId.toString()
             }
-            academicPerformanceDistrict = {
+            academicPerformanceDistrictH = {
+                ACTCompositeAVGDistrict: combined[districtId]["ACT_Avg_CompositeScore"],
                 positiveReadingScoreAvgDistrict: combined[districtId]["E_PctABC"],
                 positiveMathScoreAvgDistrict: combined[districtId]["M_PctABC"],
                 positiveScienceScoreAvgDistrict: combined[districtId]["SC_PctABC"],
+                dropoutRateDistrict: combined[districtId]["DropoutRateCurrYr"],
+                collegeReadyDistrict: combined[districtId]["PctCollege"],
+                careerReadyDistrict: combined[districtId]["PctCareer"],
+            };
+            academicPerformanceDistrictME = {
+                positiveReadingScoreAvgDistrict: combined[districtId]["E_PctME"],
+                positiveMathScoreAvgDistrict: combined[districtId]["M_PctME"],
+                positiveScienceScoreAvgDistrict: combined[districtId]["SC_PctME"],
             };
             demographicsDistrict = {
-            studentsInPovertyDistrict: Number(combined[districtId]["NTotal_ED"])/Number(combined[districtId]["NTotal_ALL"]),
-            studentsWithDisabilitiesDistrict: combined[districtId]["NTotal_DI"]/combined[districtId]["NTotal_ALL"],
-            ELLStudentsDistrict: combined[districtId]["NTotal_EL"]/combined[districtId]["NTotal_ALL"],
-            studentsWhiteDistrict: combined[districtId]["NTotal_CA"]/combined[districtId]["NTotal_ALL"],
-            studentsBlackDistrict: combined[districtId]["NTotal_AA"]/combined[districtId]["NTotal_ALL"],
-            studentsOtherDistrict: (combined[districtId]["NTotal_AP"] ?? 0 + combined[districtId]["NTotal_AI"] ?? 0 + combined[districtId]["NTotal_HI"] ?? 0)/combined[districtId]["NTotal_ALL"],
+                studentsInPovertyDistrict: Number(combined[districtId]["NTotal_ED"]) / Number(combined[districtId]["NTotal_ALL"]),
+                studentsWithDisabilitiesDistrict: combined[districtId]["NTotal_DI"] / combined[districtId]["NTotal_ALL"],
+                ELLStudentsDistrict: combined[districtId]["NTotal_EL"] / combined[districtId]["NTotal_ALL"],
+                studentsWhiteDistrict: combined[districtId]["NTotal_CA"] / combined[districtId]["NTotal_ALL"],
+                studentsBlackDistrict: combined[districtId]["NTotal_AA"] / combined[districtId]["NTotal_ALL"],
+                studentsOtherDistrict: (combined[districtId]["NTotal_AP"] ?? 0 + combined[districtId]["NTotal_AI"] ?? 0 + combined[districtId]["NTotal_HI"] ?? 0) / combined[districtId]["NTotal_ALL"],
             }
         }
-    let year = combined[schoolId]["ReportCardYear"].toString().slice(2)
-        academicPerformance = {
+        demographics = {
+            ...demographicsDistrict,
+            studentsInPoverty: Number(combined[schoolId]["NTotal_ED"]) / Number(combined[schoolId]["NTotal_ALL"]),
+            studentsWithDisabilities: combined[schoolId]["NTotal_DI"] / combined[schoolId]["NTotal_ALL"],
+            ELLStudents: combined[schoolId]["NTotal_EL"] / combined[schoolId]["NTotal_ALL"],
+            studentsWhite: combined[schoolId]["NTotal_CA"] / combined[schoolId]["NTotal_ALL"],
+            studentsBlack: combined[schoolId]["NTotal_AA"] / combined[schoolId]["NTotal_ALL"],
+            studentsOther: (combined[schoolId]["NTotal_AP"] ?? 0 + combined[schoolId]["NTotal_AI"] ?? 0 + combined[schoolId]["NTotal_HI"] ?? 0) / combined[schoolId]["NTotal_ALL"],
+            studentsInPovertyState: Number(combined[9999999]["NTotal_ED"]) / Number(combined[9999999]["NTotal_ALL"]),
+            studentsWithDisabilitiesState: combined[9999999]["NTotal_DI"] / combined[9999999]["NTotal_ALL"],
+            ELLStudentsState: combined[9999999]["NTotal_EL"] / combined[9999999]["NTotal_ALL"],
+            studentsWhiteState: combined[9999999]["NTotal_CA"] / combined[9999999]["NTotal_ALL"],
+            studentsBlackState: combined[9999999]["NTotal_AA"] / combined[9999999]["NTotal_ALL"],
+            studentsOtherState: (combined[9999999]["NTotal_AP"] ?? 0 + combined[9999999]["NTotal_AI"] ?? 0 + combined[9999999]["NTotal_HI"] ?? 0) / combined[9999999]["NTotal_ALL"],
+        }
+        let year = combined[schoolId]["ReportCardYear"].toString().slice(2)
+        academicPerformanceH = {
+            ACTCompositeAVG: combined[schoolId]["ACT_Avg_CompositeScore"],
+            positiveReadingScoreAvg: combined[schoolId]["E_PctABC"],
+            positiveMathScoreAvg: combined[schoolId]["M_PctABC"] ,
+            positiveScienceScoreAvg: combined[schoolId]["SC_PctABC"] ,
+            dropoutRate: combined[schoolId]["DropoutRateCurrYr"],
+            collegeReady: combined[schoolId]["PctCollege"],
+            careerReady: combined[schoolId]["PctCareer"],
+        };
+        academicPerformanceME = {
             positiveReadingScoreAvg: combined[schoolId]["E_PctME"],
             positiveMathScoreAvg: combined[schoolId]["M_PctME"],
             positiveScienceScoreAvg: combined[schoolId]["SC_PctME"],
+        };
+        academicPerformanceStateME = {
             positiveReadingScoreAvgState: combined[9999999]["E_PctME"],
             positiveMathScoreAvgState: combined[9999999]["M_PctME"],
             positiveScienceScoreAvgState: combined[9999999]["SC_PctME"],
         };
-
-
-        demographics = {
-            studentsInPoverty: Number(combined[schoolId]["NTotal_ED"])/Number(combined[schoolId]["NTotal_ALL"]),
-            studentsWithDisabilities: combined[schoolId]["NTotal_DI"]/combined[schoolId]["NTotal_ALL"],
-            ELLStudents: combined[schoolId]["NTotal_EL"]/combined[schoolId]["NTotal_ALL"],
-            studentsWhite: combined[schoolId]["NTotal_CA"]/combined[schoolId]["NTotal_ALL"],
-            studentsBlack: combined[schoolId]["NTotal_AA"]/combined[schoolId]["NTotal_ALL"],
-            studentsOther: (combined[schoolId]["NTotal_AP"] ?? 0 + combined[schoolId]["NTotal_AI"] ?? 0 + combined[schoolId]["NTotal_HI"] ?? 0)/combined[schoolId]["NTotal_ALL"],
-            studentsInPovertyState: Number(combined[9999999]["NTotal_ED"])/Number(combined[9999999]["NTotal_ALL"]),
-            studentsWithDisabilitiesState: combined[9999999]["NTotal_DI"]/combined[9999999]["NTotal_ALL"],
-            ELLStudentsState: combined[9999999]["NTotal_EL"]/combined[9999999]["NTotal_ALL"],
-            studentsWhiteState: combined[9999999]["NTotal_CA"]/combined[9999999]["NTotal_ALL"],
-            studentsBlackState: combined[9999999]["NTotal_AA"]/combined[9999999]["NTotal_ALL"],
-            studentsOtherState: (combined[9999999]["NTotal_AP"] ?? 0 + combined[9999999]["NTotal_AI"] ?? 0 + combined[9999999]["NTotal_HI"] ?? 0)/combined[9999999]["NTotal_ALL"],
+        academicPerformanceStateH = {
+            positiveReadingScoreAvgState: combined[9999999]["E_PctABC"],
+            positiveMathScoreAvgState: combined[9999999]["M_PctABC"],
+            positiveScienceScoreAvgState: combined[9999999]["SC_PctABC"],
+            dropoutRateState: combined[9999999]["DropoutRateCurrYr"],
+            collegeReadyState: combined[9999999]["PctCollege"],
+            careerReadyState: combined[9999999]["PctCareer"],
+            // ACTCompositeAVGState: combined[9999999]["ACT_Avg_CompositeScore"],
         };
+
+
         switch (combined[schoolId]["SCHOOLTYPECD"]) {
             case 'M':
                 type = "Middle School";
-
                 academicPerformance = {
-                   ...academicPerformance,
-                    ...academicPerformanceDistrict
+                    ...academicPerformanceME,
+                    ...academicPerformanceDistrictME,
+                    ...academicPerformanceStateME
 
                 };
-                demographics = {
-                    ...demographics,
-                    ...demographicsDistrict
-                }
 
                 break;
             case 'E':
                 type = "Elementary School";
-                    academicPerformance = {
-                        ...academicPerformance,
-                        ...academicPerformanceDistrict
-                    };
-                    demographics = {
-                        ...demographics,
-                        ...demographicsDistrict
-                    }
+                academicPerformance = {
+                    ...academicPerformanceME,
+                    ...academicPerformanceDistrictME,
+                    ...academicPerformanceStateME
+                };
                 break;
             case 'H':
                 type = "High School";
 
                 academicPerformance = {
-                    ...academicPerformance,
-                    positiveReadingScoreAvg: combined[schoolId]["E_PctABC"],
-                    positiveMathScoreAvg: combined[schoolId]["M_PctABC"],
-                    positiveScienceScoreAvg: combined[schoolId]["SC_PctABC"],
-
-                    dropoutRate: combined[schoolId]["DropoutRateCurrYr"],
-                    collegeReady: combined[schoolId]["PctCollege"],
-                    careerReady: combined[schoolId]["PctCareer"],
-                    ...academicPerformanceDistrict,
-
-
-                    dropoutRateState: combined[9999999]["DropoutRateCurrYr"],
-                    collegeReadyState: combined[9999999]["PctCollege"],
-                    careerReadyState: combined[9999999]["PctCareer"],
-                };
-
-                demographics = {
-                    ...demographics,
-                    ...demographicsDistrict
+                    ...academicPerformanceH,
+                    ...academicPerformanceDistrictH,
+                    ...academicPerformanceStateH
                 }
-
                 break;
             case 'D':
                 type = "District";
                 districtSchoolList = [];
                 Object.keys(combined).forEach((school) => {
-                const query = combined[school]["DistrictNm"]
+                    const query = combined[school]["DistrictNm"]
                     if (query === combined[schoolId]["DistrictNm"])
-                    districtSchoolList.push([{"schoolName": combined[school]["SchoolNm"], "id": school, "type": combined[school]["SCHOOLTYPECD"]}])
+                        districtSchoolList.push([{
+                            "schoolName": combined[school]["SchoolNm"],
+                            "id": school,
+                            "type": combined[school]["SCHOOLTYPECD"]
+                        }])
                 })
                 academicPerformance = {
-                    ...academicPerformance,
-                    positiveReadingScoreAvg: combined[schoolId]["E_PctABC"],
-                    positiveMathScoreAvg: combined[schoolId]["M_PctABC"],
-                    positiveScienceScoreAvg: combined[schoolId]["SC_PctABC"],
-                    gradRate: combined[schoolId][`GRADRATE${year}`],
-                    gradRateState: combined[9999999][`GRADRATE${year}`],
-                    ACTCompositeState: combined[9999999]["ACT_Avg_CompositeScore"],
-                    positiveReadingScoreAvgState: combined[9999999]["E_PctABC"],
-                    positiveMathScoreAvgState: combined[9999999]["M_PctABC"],
-                    positiveScienceScoreAvgState: combined[9999999]["SC_PctABC"],
+                    ...academicPerformanceH,
+                ...academicPerformanceStateH
                 };
                 break;
             case 'P':
                 type = "Primary School";
                 academicPerformance = {
-                  ...academicPerformance,
-                    ...academicPerformanceDistrict
+                    ...academicPerformanceME,
+                    ...academicPerformanceDistrictME,
+                    ...academicPerformanceStateME
                 };
-                demographics = {
-                    ...demographics,
-                    ...demographicsDistrict
-                }
                 break;
             default:
                 type = "N/A";
@@ -206,7 +213,8 @@ export function mergeData (reportCardData, additionalInfoData, setSchoolData) {
             districtName: combined[schoolId]["DistrictNm"],
             academicPerformance: academicPerformance,
             demographics: demographics,
-            districtSchoolList: combined[schoolId]["SCHOOLTYPECD"] === "D" ?  districtSchoolList : [],
+            districtSchoolList: combined[schoolId]["SCHOOLTYPECD"] === "D" ? districtSchoolList : [],
+            gradRate: combined[schoolId][`GRADRATE${year}`],
             avgTeacherSalary: combined[schoolId]["TCHSALARY_AvgCurrYr"],
             teacherReturnRate: combined[schoolId]["TCHRETURN3yrAvg_PctCurrYr"],
             city: combined[schoolId]["city"],
@@ -222,6 +230,7 @@ export function mergeData (reportCardData, additionalInfoData, setSchoolData) {
             studentsInPovertyCurrentYear: combined[schoolId]["StudentsinPoverty_PCTCurrYr"],
         }
     })
+
     console.log(cleanedSchoolData)
 
     setSchoolData(cleanedSchoolData)

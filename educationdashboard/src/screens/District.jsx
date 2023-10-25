@@ -7,9 +7,7 @@ import {Chart} from "react-google-charts";
 import {
     createAverageACTScoreData,
     createBlackData,
-    createDistrictMathScoreData,
-    createDistrictReadingScoreData,
-    createDistrictScienceScoreData,
+    createDistrictScoreData,
     createOnTimeGraduationRateData, createOtherData,
     createStudentsInPovertyData,
     createStudentsWithDisabilitiesData, createWhiteData,
@@ -59,21 +57,21 @@ const District = () => {
                             chartType="ColumnChart"
                             width="200px"
                             height="50%"
-                            data={createDistrictReadingScoreData(dataFile[id])}
+                            data={createDistrictScoreData(dataFile[id], "Reading")}
                             options={options}
                         />
                         <Chart
                             chartType="ColumnChart"
                             width="200px"
                             height="50%"
-                            data={createDistrictMathScoreData(dataFile[id])}
+                            data={createDistrictScoreData(dataFile[id], "Math")}
                             options={options}
                         />
                         <Chart
                             chartType="ColumnChart"
                             width="200px"
                             height="50%"
-                            data={createDistrictScienceScoreData(dataFile[id])}
+                            data={createDistrictScoreData(dataFile[id], "Science")}
                             options={options}
                         />
                     </Stack>

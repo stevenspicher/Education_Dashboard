@@ -1,22 +1,14 @@
 import '../index.css';
 import '../css/search.css';
 import LiveMap from "../components/LiveMap.jsx";
-import {useContext, useEffect, useState} from "react";
-import {AppContext} from "../context/appContext.tsx";
-import {Button, Link, TableCell, TableRow, Typography} from "@mui/material";
+import { Link, TableCell, TableRow, Typography} from "@mui/material";
 import dataFile from "../dataImport/dataFile.json";
 import {useNavigate} from "react-router-dom";
 
 
 function Home() {
     const navigate = useNavigate();
-    const {state, dispatch} = useContext(AppContext)
-    const [report, setReport] = useState(undefined)
 
-    useEffect(() => {
-        dispatch({})
-        setReport(state.report)
-    }, [state]);
 
   return (
       <div id="container">
@@ -75,7 +67,7 @@ function Home() {
                                   <Typography>{school[1].gradRate ?? ""}</Typography>
                               </TableCell>
                               <TableCell component="th" scope="row">
-                                  <Typography>{school[1].ACTComposite ?? ""}</Typography>
+                                  <Typography>{school[1].academicPerformance.ACTCompositeAVG ?? ""}</Typography>
                               </TableCell>
                               <TableCell component="th" scope="row">
                                   <Typography>{school[1].avgTeacherSalary ?? ""}</Typography>

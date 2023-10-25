@@ -27,13 +27,29 @@ export const createDistrictScienceScoreData = (dataFile) => {
     ["Students with positive Science Score", dataFile.academicPerformance.positiveScienceScoreAvg, dataFile.academicPerformance.positiveScienceScoreAvgState]]
 }
 
+export const createDistrictScoreData = (dataFile, subject) => {
+  let scores = scoreCheck(
+      dataFile.academicPerformance[`positive${subject}ScoreAvg`],
+      dataFile.academicPerformance[`positive${subject}ScoreAvgState`]
+  )
+  return [["", dataFile.schoolName,  "State Average"],
+    [`Students with positive ${subject} Score`, scores.district, scores.state]]
+}
 export const createOnTimeGraduationRateData = (dataFile) => {
+  let scores = scoreCheck(
+      dataFile.academicPerformance.gradRate,
+      dataFile.academicPerformance.gradRateState
+  )
   return [["", dataFile.schoolName, "State Average"],
-    ["On-time graduation rate", dataFile.academicPerformance.gradRate, dataFile.academicPerformance.gradRateState]]
+    ["On-time graduation rate", scores.district, scores.state]]
 };
 export const createAverageACTScoreData = (dataFile) => {
+  let scores = scoreCheck(
+      dataFile.academicPerformance.ACTCompositeAVG,
+      dataFile.academicPerformance.ACTCompositeAVGState
+  )
   return [["", dataFile.schoolName, "State Average"],
-    ["Average Act Score - fix!!", dataFile.academicPerformance.ACTCompositeState, dataFile.academicPerformance.ACTCompositeState]]
+    ["Average Act Score - fix!!", scores.district, scores.state]]
   //TODO: fix ACTComposite
 };
 
@@ -41,12 +57,12 @@ export const createAverageACTScoreData = (dataFile) => {
 
 export const createStudentsInPovertyData = (dataFile) => {
   return [["", dataFile.schoolName, "State Average"],
-    ["Students in Poverty", dataFile.demographics.studentsInPoverty, dataFile.demographics.studentsInPovertyState]]
+    ["Percentage of Students in Poverty", dataFile.demographics.studentsInPoverty, dataFile.demographics.studentsInPovertyState]]
 };
 
 export const createStudentsWithDisabilitiesData = (dataFile) => {
   return [["", dataFile.schoolName, "State Average"],
-    ["Students with Disabilities", dataFile.demographics.studentsWithDisabilities, dataFile.demographics.studentsWithDisabilitiesState],]
+    ["Percentage of Students with Disabilities", dataFile.demographics.studentsWithDisabilities, dataFile.demographics.studentsWithDisabilitiesState],]
 };
 
 
@@ -69,3 +85,13 @@ export const createOtherData = (dataFile) =>
 };
 
 export const storedReportObject = {}
+const scoreCheck = (district, state) => {
+
+  if (Number.isNaN(district) || district === undefined || district === "*") {
+    district = 0;
+  }
+  if (Number.isNaN(state) || state === undefined || state === "*") {
+    state = 0;
+  }
+  return { district, state}
+}

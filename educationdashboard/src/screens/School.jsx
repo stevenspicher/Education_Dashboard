@@ -1,71 +1,36 @@
 import "../css/schools.css";
 import home from "../assets/home.png"
-import {Button, Card, Col, Container, Row} from "react-bootstrap";
+import { Card, Container} from "react-bootstrap";
 import {useParams} from "react-router";
 import {Chart} from "react-google-charts";
-import {Box, Grid, Stack} from "@mui/material";
-import {
-    scienceScoreData,
-    careerReadyDiplomaEarners,
-    collegeReadyDiplomaEarners,
-    onTimeGraduationRate,
-    dropoutPercentage,
-    studentsWithDisabilities,
-    studentsInPoverty,
-    englishLanguageLearningStudents,
-    black,
-    white,
-    other
-} from "../dataImport/data.js"
+
+
 import dataFile from "../dataImport/dataFile.json";
+import {
+    options,
+    createScoreData,
+    createStudentsInPovertyData,
+    createStudentsWithDisabilitiesData,
+    createStudentEthnicityData,
+    createOnTimeGraduationRateData,
+    createDropoutPercentageData,
+    createAverageACTScoreData,
+    createCollegeReadyDiplomaEarnersData,
+    createCareerReadyDiplomaEarnersData, createELLStudentData, optionsLegend,
+} from "../components/School/schoolDataFunctions.js";
 
 const School = () => {
     const {id} = useParams();
     console.log(dataFile[id])
 
-    const mathScoreData = [
-        ["", dataFile[id].schoolName, "District Average", "State Average"],
-        ["Students with positive Math Score",
-            dataFile[id].academicPerformance.positiveMathScoreAvg,
-            dataFile[id].academicPerformance.positiveMathScoreAvgDistrict,
-            dataFile[id].academicPerformance.positiveMathScoreAvgState
-        ],
-    ];
 
-    const readingScoreData = [
-        ["", dataFile[id].schoolName, "District Average", "State Average"],
-        ["Students with Positive Reading Score",
-            dataFile[id].academicPerformance.positiveReadingScoreAvg,
-            dataFile[id].academicPerformance.positiveReadingScoreAvgDistrict,
-            dataFile[id].academicPerformance.positiveReadingScoreAvgState
-        ],
-    ];
-
-    const scienceScoreData = [
-        ["", dataFile[id].schoolName, "District Average", "State Average"],
-        ["Students with Positive Science Score",
-            dataFile[id].academicPerformance.positiveScienceScoreAvg,
-            dataFile[id].academicPerformance.positiveScienceScoreAvgDistrict,
-            dataFile[id].academicPerformance.positiveScienceScoreAvgState
-        ],
-    ];
-
-    const options = {
-        title: "Age vs. Weight comparison",
-        hAxis: { title: "", viewWindow: { min: 0, max: 0 } },
-        vAxis: { title: "", viewWindow: { min: 10, max: 100 } },
-        backgroundColor: '#f3f4f2',
-        legend: "none",
-        height: "100%",
-        width: "100%"
-    };
 
     return (
         <>
             <Container fluid>
                 <div className="search-block">
                     <div className="app-search">
-                        <a href="../../"><img src={home}/></a>
+                        <a href="../../"><img alt={"home icon"} src={home}/></a>
                         <div className="search-row">
                             <input id="fill-box" type="text" placeholder="Search school or district ..."/>
                             <i className="fa fa-search"></i>
@@ -85,7 +50,7 @@ const School = () => {
                         </div>
                     </div>
 
-                    <div className="col-12 col-md-12 graphic">
+                    <div className=" graphic">
                         <div className={"chart-graphic-style"}>
                             <Stack>
                                 <h5 className={"chart-title"}>Academic Performance</h5>
@@ -98,58 +63,74 @@ const School = () => {
                                 >
                                     <Chart
                                         chartType="ColumnChart"
-                                        width="200px"
+                                        width="300px"
                                         height="50%"
-                                        data={readingScoreData}
+                                        data={createScoreData(dataFile[id], "Reading")}
+                                        options={optionsLegend}
+                                    />
+                                    <Chart
+                                        chartType="ColumnChart"
+                                        width="300px"
+                                        height="50%"
+                                        data={createScoreData(dataFile[id], "Math")}
+                                        options={options}
+                                    />
+                                    {dataFile[id].schoolType === "High School" ?
+                                    <Chart
+                                        chartType="ColumnChart"
+                                        width="300px"
+                                        height="50%"
+                                        data={createAverageACTScoreData(dataFile[id])}
+                                        options={options}
+                                    /> :
+                                        <Chart
+                                            chartType="ColumnChart"
+                                            width="300px"
+                                            height="50%"
+                                            data={createScoreData(dataFile[id], "Science")}
+                                            options={options}
+                                        />
+                                    }
+                                </Stack>
+                                {dataFile[id].schoolType === "High School" ?
+                                    <>
+                                    <Stack className="chart-container" direction={"row"}>
+                                        <Chart
+                                            chartType="ColumnChart"
+                                            width="400px"
+                                            height="50%"
+                                            data={createOnTimeGraduationRateData(dataFile[id])}
+                                            options={options}
+                                        />
+                                        <Chart
+                                            chartType="ColumnChart"
+                                            width="400px"
+                                            height="50%"
+                                            data={createDropoutPercentageData(dataFile[id])}
+                                            options={options}
+                                        />
+                                    </Stack>
+                                    <Stack className="chart-container" direction={"row"}>
+                                    <Chart
+                                        chartType="ColumnChart"
+                                        width="400px"
+                                        height="50%"
+                                        data={createCollegeReadyDiplomaEarnersData(dataFile[id])}
                                         options={options}
                                     />
                                     <Chart
                                         chartType="ColumnChart"
-                                        width="200px"
+                                        width="400px"
                                         height="50%"
-                                        data={mathScoreData}
-                                        options={options}
-                                    />
-                                    <Chart
-                                        chartType="ColumnChart"
-                                        width="200px"
-                                        height="50%"
-                                        data={scienceScoreData}
+                                        data={createCareerReadyDiplomaEarnersData(dataFile[id])}
                                         options={options}
                                     />
                                 </Stack>
-                                {/*<Stack className="chart-container" direction={"row"}>*/}
-                                {/*    <Chart*/}
-                                {/*        chartType="ColumnChart"*/}
-                                {/*        width="200px"*/}
-                                {/*        height="50%"*/}
-                                {/*        data={onTimeGraduationRate}*/}
-                                {/*        options={options}*/}
-                                {/*    />*/}
-                                {/*    <Chart*/}
-                                {/*        chartType="ColumnChart"*/}
-                                {/*        width="200px"*/}
-                                {/*        height="50%"*/}
-                                {/*        data={dropoutPercentage}*/}
-                                {/*        options={options}*/}
-                                {/*    />*/}
-                                {/*</Stack>*/}
-                                {/*<Stack className="chart-container" direction={"row"}>*/}
-                                {/*    <Chart*/}
-                                {/*        chartType="ColumnChart"*/}
-                                {/*        width="200px"*/}
-                                {/*        height="50%"*/}
-                                {/*        data={collegeReadyDiplomaEarners}*/}
-                                {/*        options={options}*/}
-                                {/*    />*/}
-                                {/*    <Chart*/}
-                                {/*        chartType="ColumnChart"*/}
-                                {/*        width="200px"*/}
-                                {/*        height="50%"*/}
-                                {/*        data={careerReadyDiplomaEarners}*/}
-                                {/*        options={options}*/}
-                                {/*    />*/}
-                                {/*</Stack>*/}
+                                    </>
+
+                                    : <></>
+                                }
+
 
                             </Stack>
                         </div>
@@ -163,7 +144,7 @@ const School = () => {
                                         chartType="ColumnChart"
                                         // width="300px"
                                         // height="70%"
-                                        data={studentsInPoverty}
+                                        data={createStudentsInPovertyData(dataFile[id])}
                                         options={options}
                                     /></div>
                                 <div className="column is-one-third">
@@ -171,17 +152,19 @@ const School = () => {
                                         chartType="ColumnChart"
                                         // width="300px"
                                         // height="70%"
-                                        data={studentsWithDisabilities}
+                                        data={createStudentsWithDisabilitiesData(dataFile[id])}
                                         options={options}
                                     /></div>
                                 <div className="column is-one-third">
+
                                     <Chart
                                         chartType="ColumnChart"
-                                        // width="300px"
-                                        // height="70%"
-                                        data={englishLanguageLearningStudents}
+                                        width="200px"
+                                        height="50%"
+                                        data={createELLStudentData(dataFile[id])}
                                         options={options}
-                                    /></div>
+                                    />
+                                </div>
 
 
                                 <div className="column is-one-third">
@@ -189,7 +172,7 @@ const School = () => {
                                         chartType="ColumnChart"
                                         // width="200px"
                                         height="100%"
-                                        data={white}
+                                        data={createStudentEthnicityData(dataFile[id], "White")}
                                         options={options}
                                     />
                                 </div>
@@ -198,7 +181,7 @@ const School = () => {
                                         chartType="ColumnChart"
                                         // width="200px"
                                         height="100%"
-                                        data={black}
+                                        data={createStudentEthnicityData(dataFile[id], "Black")}
                                         options={options}
                                     />
                                 </div>
@@ -207,7 +190,7 @@ const School = () => {
                                         chartType="ColumnChart"
                                         // width="200px"
                                         height="100%"
-                                        data={other}
+                                        data={createStudentEthnicityData(dataFile[id], "Other")}
                                         options={options}
                                     />
                                 </div>
@@ -269,7 +252,7 @@ const School = () => {
                 </div>
             </Container>
         </>
-    )
+    );
 }
 
 export default School
