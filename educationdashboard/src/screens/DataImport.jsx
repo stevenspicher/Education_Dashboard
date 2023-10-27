@@ -1,11 +1,11 @@
 import {useContext, useState} from "react";
 import {AdditionalInfoImport} from "../dataImport/AdditionalInfoImport.js";
 import {ReportCardImport} from "../dataImport/ReportCardImport.js";
-import {Box, Dialog, IconButton, Typography, Button} from "@mui/material";
+import {Box, IconButton, Typography, Button} from "@mui/material";
 import CheckIcon from "@mui/icons-material/Check";
 import {AppContext} from "../context/appContext.tsx";
-import {Navigate, useNavigate} from "react-router-dom";
-import {mergeData} from "../functions/mergeData";
+import { useNavigate} from "react-router-dom";
+import {mergeData} from "../functions/mergeData_2";
 
 function CloseIcon() {
     return null;
@@ -16,52 +16,73 @@ const ReportCardDataImport = () => {
     const [reportCardData, setReportCardData] = useState(undefined);
     const [additionalInfoData, setAdditionalInfoData] = useState(undefined);
     const [currentYear, setCurrentYear] = useState(undefined);
-    const [yearVerified,setYearVerified] = useState(false);
     const [reportCardVerified, setReportCardVerified] = useState(false);
     const [additionalInfoVerified, setAdditionalInfoVerified] = useState(false);
 
-    const [open, setOpen] = useState(true)
 
-    const dispatchReport = (report) => {
-        dispatch({
-            type: "SAVE_REPORT", report: report
-        })
-    }
     const navigate = useNavigate();
     const [schoolData, setSchoolData] = useState({});
 
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
 
     const sendData = (data) => {
-        fetch('http://192.168.86.94:5001/post', {
+        fetch('http://192.168.86.94:5001/posthomed', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(data, null, 2)
+            body: JSON.stringify(data.homeDistrictInfo, null, 2)
+        })
+        fetch('http://192.168.86.94:5001/posthomes', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data.homeSchoolInfo, null, 2)
+        })
+        fetch('http://192.168.86.94:5001/poststate', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data.state, null, 2)
+        })
+        fetch('http://192.168.86.94:5001/postdistricts', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data.districts, null, 2)
+        })
+        fetch('http://192.168.86.94:5001/poste', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data.e, null, 2)
+        })
+        fetch('http://192.168.86.94:5001/posth', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data.h, null, 2)
+        })
+        fetch('http://192.168.86.94:5001/postm', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data.m, null, 2)
+        })
+        fetch('http://192.168.86.94:5001/postp', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data.p, null, 2)
         })
     }
 
-const downloadFile = (data) => {
-
-    // create file in browser
-    const fileName = "data";
-    const json = JSON.stringify(data, null, 2);
-    const blob = new Blob([json], { type: "application/json" });
-    const href = URL.createObjectURL(blob);
-
-    // create "a" HTLM element with href to file
-    const link = document.createElement("a");
-    link.href = href;
-    link.download = fileName + ".json";
-    document.body.appendChild(link);
-    link.click();
-
-    // clean up "a" element & remove ObjectURL
-    document.body.removeChild(link);
-    URL.revokeObjectURL(href);
-}
 
     const style = {
         top: '70%',
@@ -72,33 +93,10 @@ const downloadFile = (data) => {
         p: 4,
         overflow: 'scroll',
     };
-    let report;
     return (
-        // <Dialog
-        //     open={open}
-        //     fullWidth
-        //     maxWidth={"xl"}
-        //     onClose={handleClose}
-        //     aria-labelledby="modal-modal-title"
-        //     aria-describedby="modal-modal-description"
-        // >
 
             <Box sx={style}>
                 <Typography variant={"h3"}>Import Data for Schools Explorer</Typography>
-                {handleClose ? (
-                    <IconButton
-                        aria-label="close"
-                        onClick={handleClose}
-                        sx={{
-                            position: 'absolute',
-                            right: 8,
-                            top: 8,
-                            color: (theme) => theme.palette.grey[500],
-                        }}
-                    >
-                        <CloseIcon/>
-                    </IconButton>
-                ) : null}
                 <Typography variant={"h5"}>Reports:</Typography>
                 <Typography>Import Report Card Data For Researchers</Typography>
                 <input
@@ -130,7 +128,6 @@ const downloadFile = (data) => {
             }}>Home</Button>
 
             </Box>
-        // </Dialog>
     )
 }
 

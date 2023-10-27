@@ -1,8 +1,8 @@
 import {MapContainer, TileLayer, GeoJSON, } from "react-leaflet";
 import etlData from "../mapping/etl_district_full_data_with_geometries.json"
 import Legend from "../components/Legend"
-const LiveMap = () => {
-
+const LiveMap = (districtData) => {
+console.log(etlData)
     return (
 
     <MapContainer id={"map"} center={[33.4, -81.1]} zoom={7} scrollWheelZoom={true} >

@@ -13,7 +13,8 @@ import {
     TableRow, TableSortLabel,
     Typography
 } from "@mui/material";
-import dataFile from "../dataImport/dataFile.json";
+import districtData from "../dataImport/homeDistrictData.json";
+import schoolData from "../dataImport/homeSchoolData.json";
 import {useNavigate} from "react-router-dom";
 import {Container} from "react-bootstrap";
 import {useMemo, useState} from "react";
@@ -25,7 +26,7 @@ function Home() {
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(10);
     const [order, setOrder] = useState('asc');
-    const [orderBy, setOrderBy] = useState('name');
+    const [orderBy, setOrderBy] = useState('schoolName');
 
     const headCells = [
         {
@@ -65,20 +66,21 @@ function Home() {
             label: '3 YR Teacher Retention',
         },
     ];
-
-    const trimmedSchoolList = [];
-    Object.entries(dataFile).map((school) => {
-        if (school[1].schoolType !== "District")
-            trimmedSchoolList.push({
-                name: school[1].schoolName,
-                id: school[0],
-                type: school[1].schoolType ?? "",
-                gradRate: school[1].gradRate ?? "",
-                act:school[1].academicPerformance.ACTCompositeAVG ?? "",
-                salary: school[1].avgTeacherSalary ?? "",
-                returnRate: school[1].teacherReturnRate ?? ""
-            })
-    })
+console.log(schoolData)
+console.log(districtData)
+    // const trimmedSchoolList = [];
+    // dataFile.home.map((school) => {
+    //     if (school[1].schoolType !== "District")
+    //         trimmedSchoolList.push({
+    //             name: school[1].schoolName,
+    //             id: school[0],
+    //             type: school[1].schoolType ?? "",
+    //             gradRate: school[1].gradRate ?? "",
+    //             act:school[1].academicPerformance.ACTCompositeAVG ?? "",
+    //             salary: school[1].avgTeacherSalary ?? "",
+    //             returnRate: school[1].teacherReturnRate ?? ""
+    //         })
+    // })
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
     };
@@ -111,13 +113,13 @@ function Home() {
     const visibleRows = useMemo(
         () =>
 
-            trimmedSchoolList.slice().sort(getComparator(order, orderBy)).slice(
+            Object.values(schoolData).slice().sort(getComparator(order, orderBy)).slice(
         page * rowsPerPage,
                 page * rowsPerPage + rowsPerPage,
             ),
         [page, rowsPerPage, order, orderBy],
     );
-
+console.log(visibleRows)
     const createSortHandler = (property) => (event) => {
         handleRequestSort(event, property);
     };
@@ -141,14 +143,14 @@ function Home() {
               <div className="search-eg">
                   <p>For example: </p>
                   <p><a href="/district/0160999">Abbeville County School District</a></p>
-                  <p><a href="/school/0403024">Iva Elementary School</a></p>
+                  <p><a href="/school/0403024+E">Iva Elementary School</a></p>
               </div>
               <div id="suggestions-list" className="list-items"></div>
           </div>
 </Stack>
 
           <div className="map-border">
-            <LiveMap/>
+            {/*<LiveMap districtData={districtData}/>*/}
           </div>
 
           <h1>School Data</h1>
@@ -158,7 +160,7 @@ function Home() {
                       <TableRow>
                           <TablePagination
                               rowsPerPageOptions={[5, 10, 25]}
-                              count={Object.entries(dataFile).length}
+                              count={Object.entries(schoolData).length}
                               rowsPerPage={rowsPerPage}
                               page={page}
                               onPageChange={handleChangePage}
@@ -192,7 +194,7 @@ function Home() {
                   </TableHead>
                   <TableBody>
 
-          {dataFile === undefined ? <></> :
+          {schoolData === undefined ? <></> :
               visibleRows.map((school, index) => {
                       return (
                           <TableRow
@@ -200,25 +202,25 @@ function Home() {
                           >
                               <TableCell component="th" scope="row">
                                   <Typography>
-                                      <Link onClick={() =>  {navigate(`/school/${school.id}`)}}>
-                                          {school.name}
+                                      <Link onClick={() =>  {navigate(`/school/${school.schoolId}+${school.schoolCode}`)}}>
+                                          {school.schoolName}
                                       </Link>
                                   </Typography>
                               </TableCell>
                               <TableCell component="th" scope="row">
-                                  <Typography>{school.type}</Typography>
+                                  <Typography>{school.schoolType}</Typography>
                               </TableCell>
                               <TableCell component="th" scope="row">
                                   <Typography>{school.gradRate ?? ""}</Typography>
                               </TableCell>
                               <TableCell component="th" scope="row">
-                                  <Typography>{school.act ?? ""}</Typography>
+                                  <Typography>{school.ACTCompositeAVG ?? ""}</Typography>
                               </TableCell>
                               <TableCell component="th" scope="row">
-                                  <Typography>{school.salary ?? ""}</Typography>
+                                  <Typography>{school.avgTeacherSalary ?? ""}</Typography>
                               </TableCell>
                               <TableCell component="th" scope="row">
-                                  <Typography>{school.returnRate ?? ""}</Typography>
+                                  <Typography>{school.teacherReturnRate ?? ""}</Typography>
                               </TableCell>
 
                           </TableRow>

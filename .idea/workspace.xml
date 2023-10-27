@@ -4,12 +4,30 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8d0d108c-4ac4-4e0b-8b45-613489021c53" name="Changes" comment="School data display">
+    <list default="true" id="8d0d108c-4ac4-4e0b-8b45-613489021c53" name="Changes" comment="converted mergeData.js to mergeData.js (will rename).&#10;Creates specific data files for components.">
+      <change afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/districtsData.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/e.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/h.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/homeDistrictData.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/homeSchoolData.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/m.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/p.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/stateData.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/educationdashboard/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/educationdashboard/src/components/District/DistrictSchoolList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/components/District/DistrictSchoolList.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/educationdashboard/src/components/District/districtDataFunctions.js" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/components/District/districtDataFunctions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/educationdashboard/src/components/FrontPageMap.js" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/components/FrontPageMap.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/educationdashboard/src/components/LiveMap.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/components/LiveMap.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/educationdashboard/src/components/School/schoolDataFunctions.js" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/components/School/schoolDataFunctions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/educationdashboard/src/dataImport/data.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/educationdashboard/src/dataImport/dataFile.json" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/dataFile.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/educationdashboard/src/functions/mergeData.js" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/functions/mergeData_2.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/educationdashboard/src/screens/DataImport.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/screens/DataImport.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/educationdashboard/src/screens/District.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/screens/District.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/educationdashboard/src/screens/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/screens/Home.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/educationdashboard/src/screens/School.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/screens/School.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,24 +63,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/steven/IdeaProjects/Education Dashboard/educationdashboard/src/components/School&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Applications/IntelliJ IDEA.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/Users/steven/IdeaProjects/Education Dashboard/educationdashboard/src/functions",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "ts.external.directory.path": "/Applications/IntelliJ IDEA.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/educationdashboard/src/functions" />
       <recent name="$PROJECT_DIR$/educationdashboard/src/components/School" />
       <recent name="$PROJECT_DIR$/educationdashboard/src/components/District" />
       <recent name="$PROJECT_DIR$/educationdashboard/src/dataImport" />
@@ -98,6 +117,7 @@
       <workItem from="1697233654588" duration="2921000" />
       <workItem from="1697738554238" duration="24872000" />
       <workItem from="1698166618397" duration="20455000" />
+      <workItem from="1698288732082" duration="32605000" />
     </task>
     <task id="LOCAL-00001" summary="installed react-leaflet;&#10;loaded district layers;&#10;started legend;">
       <created>1690561038395</created>
@@ -190,7 +210,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697815258690</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Home School table:&#10;trimmed list to remove District,&#10;added pagination, &#10;first stages of sort feature">
+      <created>1698259076727</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1698259076727</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -232,6 +259,8 @@
     <MESSAGE value="updating gitignore" />
     <MESSAGE value="Created DistrictSchoolList.jsx" />
     <MESSAGE value="created schoolDataFunctions.js&#10;added scoreCheck functions to both datafunctions" />
-    <option name="LAST_COMMIT_MESSAGE" value="created schoolDataFunctions.js&#10;added scoreCheck functions to both datafunctions" />
+    <MESSAGE value="Home School table:&#10;trimmed list to remove District,&#10;added pagination, &#10;first stages of sort feature" />
+    <MESSAGE value="converted mergeData.js to mergeData.js (will rename).&#10;Creates specific data files for components." />
+    <option name="LAST_COMMIT_MESSAGE" value="converted mergeData.js to mergeData.js (will rename).&#10;Creates specific data files for components." />
   </component>
 </project>

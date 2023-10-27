@@ -1,3 +1,6 @@
+import state from "../../dataImport/stateData.json"
+import districts from "../../dataImport/districtsData.json"
+
 export const options = {
     // title: "Age vs. Weight comparison",
     // hAxis: { title: "Students with Positive Reading Score", viewWindow: { min: 0, max: 0 } },
@@ -19,103 +22,106 @@ export  const optionsLegend = {
 
 
 };
-export const createScoreData = (dataFile, subject) => {
+export const createScoreData = (school, subject, code) => {
+    console.log(school)
+    console.log(districts[school["districtId"]])
+    console.log(state)
     let scores = scoreCheck(
-        dataFile.academicPerformance[`positive${subject}ScoreAvg`],
-        dataFile.academicPerformance[`positive${subject}ScoreAvgDistrict`],
-        dataFile.academicPerformance[`positive${subject}ScoreAvgState`]
+        school[`positive${subject}ScoreAvg`],
+        districts[school["districtId"]][`positive${subject}ScoreAvg_${code}`],
+        state[`positive${subject}ScoreAvg_E`]
     )
-    return [["", dataFile.schoolName, "District Average", "State Average"],
+    return [["", school.schoolName, "District Average", "State Average"],
         [`Students with Positive ${subject} Score`, scores.school, scores.district, scores.state]]
 }
 
-export const createOnTimeGraduationRateData = (dataFile) => {
+export const createOnTimeGraduationRateData = (school) => {
     let scores = scoreCheck(
-        dataFile.academicPerformance.gradRate,
-        dataFile.academicPerformance.gradRate,
-        dataFile.academicPerformance.gradRate
+        school.gradRate,
+        districts[school["districtId"]].gradRate,
+        state.gradRate
     )
-    return [["", dataFile.schoolName, "District Average", "State Average"],
+    return [["", school.schoolName, "District Average", "State Average"],
         ["On-time graduation rate", scores.school, scores.district, scores.state]]
 };
 
-export const createDropoutPercentageData = (dataFile) => {
+export const createDropoutPercentageData = (school) => {
     let scores = scoreCheck(
-        dataFile.academicPerformance.dropoutRate,
-        dataFile.academicPerformance.dropoutRateDistrict,
-        dataFile.academicPerformance.dropoutRateState
+        school.dropoutRate,
+        districts[school["districtId"]].dropoutRate,
+        state.dropoutRate
     )
-    return [["", dataFile.schoolName, "District Average", "State Average"],
+    return [["", school.schoolName, "District Average", "State Average"],
         ["Dropout Percentage", scores.school, scores.district, scores.state]]
 };
-export const createAverageACTScoreData = (dataFile) => {
+export const createAverageACTScoreData = (school) => {
     let scores = scoreCheck(
-        dataFile.academicPerformance.ACTCompositeAVG,
-        dataFile.academicPerformance.ACTCompositeAVGDistrict,
-        dataFile.academicPerformance.ACTCompositeAVG
+        school.ACTCompositeAVG,
+        districts[school["districtId"]].ACTCompositeAVG,
+        state.ACTCompositeAVG
     )
-    return [["", dataFile.schoolName, "District Average", "State Average"],
+    return [["", school.schoolName, "District Average", "State Average"],
         ["Average Act Score - fix!!", scores.school, scores.district, scores.state]]
 };
 
-export const createCollegeReadyDiplomaEarnersData = (dataFile) => {
+export const createCollegeReadyDiplomaEarnersData = (school) => {
     let scores = scoreCheck(
-        dataFile.academicPerformance.collegeReady,
-        dataFile.academicPerformance.collegeReadyDistrict,
-        dataFile.academicPerformance.collegeReadyState
+        school.collegeReady,
+        districts[school["districtId"]].collegeReady,
+        state.collegeReady
     )
-    return [["", dataFile.schoolName, "District Average","State Average"],
+    return [["", school.schoolName, "District Average","State Average"],
         ["College-Ready Diploma Earners", scores.school, scores.district, scores.state]]
 };
-export const createCareerReadyDiplomaEarnersData = (dataFile) => {
+export const createCareerReadyDiplomaEarnersData = (school) => {
     let scores = scoreCheck(
-        dataFile.academicPerformance.careerReady,
-        dataFile.academicPerformance.careerReadyDistrict,
-        dataFile.academicPerformance.careerReadyState
+        school.careerReady,
+        districts[school["districtId"]].careerReady,
+        state.careerReady
     )
-    return [["", dataFile.schoolName, "District Average", "State Average"],
+    return [["", school.schoolName, "District Average", "State Average"],
         ["Career-Ready Diploma Earners", scores.school, scores.district, scores.state]]
 };
 
-export const createStudentsInPovertyData = (dataFile) => {
+export const createStudentsInPovertyData = (school) => {
     let scores = scoreCheck(
-        dataFile.demographics.studentsInPoverty,
-        dataFile.demographics.studentsInPovertyDistrict,
-        dataFile.demographics.studentsInPovertyState
+        school.studentsInPoverty,
+        districts[school["districtId"]].studentsInPoverty,
+        state.studentsInPoverty
     )
-    return [["", dataFile.schoolName, "District Average", "State Average"],
+    return [["", school.schoolName, "District Average", "State Average"],
         ["Percentage of Students In Poverty", scores.school, scores.district, scores.state,]]
 };
 
-export const createStudentsWithDisabilitiesData = (dataFile) => {
+export const createStudentsWithDisabilitiesData = (school) => {
 
     let scores = scoreCheck(
-        dataFile.demographics.studentsWithDisabilities,
-        dataFile.demographics.studentsWithDisabilitiesDistrict,
-        dataFile.demographics.studentsWithDisabilitiesState
+        school.studentsWithDisabilities,
+        districts[school["districtId"]].studentsWithDisabilities,
+        state.studentsWithDisabilities
     )
-    return [["", dataFile.schoolName, "District Average", "State Average"],
+    return [["", school.schoolName, "District Average", "State Average"],
         ["Percentage of Students With Disabilities", scores.school, scores.district, scores.state,]]
 };
 ///TODO - Add ELL data to object
-export const createELLStudentData = (dataFile) => {
+export const createELLStudentData = (school) => {
 
     let scores = scoreCheck(
-        dataFile.academicPerformance.ELLStudents,
-        dataFile.academicPerformance.ELLStudentsDistrict,
-        dataFile.academicPerformance.ELLStudentsState
+        school.ELLStudents,
+        districts[school["districtId"]].ELLStudents,
+        state.ELLStudents
     )
-    return [["", dataFile.schoolName, "District Average", "State Average"],
+    return [["", school.schoolName, "District Average", "State Average"],
         ["English Language Learning Students", scores.school, scores.district, scores.state,]]
 };
 
-export const createStudentEthnicityData = (dataFile, type) => {
+export const createStudentEthnicityData = (school, type) => {
     let scores = scoreCheck(
-        dataFile.demographics[`students${type}`],
-        dataFile.demographics[`students${type}District`],
-        dataFile.demographics[`students${type}State`]
+       school[`students${type}`],
+        districts[school["districtId"]][`students${type}`],
+        state[`students${type}`]
     )
-    return [["", dataFile.schoolName, "District Average", "State Average"],
+    return [["", school.schoolName, "District Average", "State Average"],
         [type, scores.school, scores.district, scores.state],]
 };
 

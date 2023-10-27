@@ -7,7 +7,7 @@ const DistrictSchoolList = (props) => {
         if (school.type === type) {
             return (
                 <Link onClick={() => {
-                    navigate(`/school/${school.id}`)
+                    navigate(`/school/${school.id}+${school.type}`)
                 }}>
                     {school.schoolName}
                 </Link>

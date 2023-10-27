@@ -5,7 +5,10 @@ import {useParams} from "react-router";
 import {Chart} from "react-google-charts";
 
 
-import dataFile from "../dataImport/dataFile.json";
+import h from "../dataImport/h"
+import e from "../dataImport/e"
+import m from "../dataImport/m"
+import p from "../dataImport/p"
 import {
     options,
     createScoreData,
@@ -21,8 +24,29 @@ import {
 import {Stack} from "@mui/material";
 
 const School = () => {
-    const {id} = useParams();
-    console.log(dataFile[id])
+
+    const {idandcode} = useParams();
+    const id = idandcode.toString().split("+")[0]
+    const code = idandcode.toString().split("+")[1]
+
+    let school;
+    
+    switch (code) {
+        case "H":
+        school = h
+            break;
+        case "E":
+            school = e
+            break;
+        case "P":
+            school = p
+            break;
+        case "M" :
+            school = m
+            break;
+    }
+
+    school = school[id]
 
 
 
@@ -43,11 +67,11 @@ const School = () => {
                 <div className="container">
 
                     <div id="title">
-                        <div className={"h1"}>{dataFile[id].schoolName}</div>
-                        <div className={"h3"}>{dataFile[id].districtName}</div>
-                        <div className={"h4"}>{dataFile[id].street}, {dataFile[id].city}</div>
+                        <div className={"h1"}>{school.schoolName}</div>
+                        <div className={"h3"}>{school.districtName}</div>
+                        <div className={"h4"}>{school.street}, {school.city}</div>
                         <div
-                            className={"h4"}>{dataFile[id].totalStudents} students, {dataFile[id].teacherCount} teachers
+                            className={"h4"}>{school.totalStudents} students, {school.teacherCount} teachers
                         </div>
                     </div>
 
@@ -66,48 +90,48 @@ const School = () => {
                                         chartType="ColumnChart"
                                         width="300px"
                                         height="50%"
-                                        data={createScoreData(dataFile[id], "Reading")}
+                                        data={createScoreData(school, "Reading", "E")}
                                         options={optionsLegend}
                                     />
                                     <Chart
                                         chartType="ColumnChart"
                                         width="300px"
                                         height="50%"
-                                        data={createScoreData(dataFile[id], "Math")}
+                                        data={createScoreData(school, "Math", "E")}
                                         options={options}
                                     />
-                                    {dataFile[id].schoolType === "High School" ?
+                                    {school.schoolType === "High School" ?
                                     <Chart
                                         chartType="ColumnChart"
                                         width="300px"
                                         height="50%"
-                                        data={createAverageACTScoreData(dataFile[id])}
+                                        data={createAverageACTScoreData(school)}
                                         options={options}
                                     /> :
                                         <Chart
                                             chartType="ColumnChart"
                                             width="300px"
                                             height="50%"
-                                            data={createScoreData(dataFile[id], "Science")}
+                                            data={createScoreData(school, "Science", "E")}
                                             options={options}
                                         />
                                     }
                                 </Stack>
-                                {dataFile[id].schoolType === "High School" ?
+                                {school.schoolType === "High School" ?
                                     <>
                                     <Stack className="chart-container" direction={"row"}>
                                         <Chart
                                             chartType="ColumnChart"
                                             width="400px"
                                             height="50%"
-                                            data={createOnTimeGraduationRateData(dataFile[id])}
+                                            data={createOnTimeGraduationRateData(school)}
                                             options={options}
                                         />
                                         <Chart
                                             chartType="ColumnChart"
                                             width="400px"
                                             height="50%"
-                                            data={createDropoutPercentageData(dataFile[id])}
+                                            data={createDropoutPercentageData(school)}
                                             options={options}
                                         />
                                     </Stack>
@@ -116,14 +140,14 @@ const School = () => {
                                         chartType="ColumnChart"
                                         width="400px"
                                         height="50%"
-                                        data={createCollegeReadyDiplomaEarnersData(dataFile[id])}
+                                        data={createCollegeReadyDiplomaEarnersData(school)}
                                         options={options}
                                     />
                                     <Chart
                                         chartType="ColumnChart"
                                         width="400px"
                                         height="50%"
-                                        data={createCareerReadyDiplomaEarnersData(dataFile[id])}
+                                        data={createCareerReadyDiplomaEarnersData(school)}
                                         options={options}
                                     />
                                 </Stack>
@@ -145,7 +169,7 @@ const School = () => {
                                         chartType="ColumnChart"
                                         // width="300px"
                                         // height="70%"
-                                        data={createStudentsInPovertyData(dataFile[id])}
+                                        data={createStudentsInPovertyData(school)}
                                         options={options}
                                     /></div>
                                 <div className="column is-one-third">
@@ -153,7 +177,7 @@ const School = () => {
                                         chartType="ColumnChart"
                                         // width="300px"
                                         // height="70%"
-                                        data={createStudentsWithDisabilitiesData(dataFile[id])}
+                                        data={createStudentsWithDisabilitiesData(school)}
                                         options={options}
                                     /></div>
                                 <div className="column is-one-third">
@@ -162,7 +186,7 @@ const School = () => {
                                         chartType="ColumnChart"
                                         width="200px"
                                         height="50%"
-                                        data={createELLStudentData(dataFile[id])}
+                                        data={createELLStudentData(school)}
                                         options={options}
                                     />
                                 </div>
@@ -173,7 +197,7 @@ const School = () => {
                                         chartType="ColumnChart"
                                         // width="200px"
                                         height="100%"
-                                        data={createStudentEthnicityData(dataFile[id], "White")}
+                                        data={createStudentEthnicityData(school, "White")}
                                         options={options}
                                     />
                                 </div>
@@ -182,7 +206,7 @@ const School = () => {
                                         chartType="ColumnChart"
                                         // width="200px"
                                         height="100%"
-                                        data={createStudentEthnicityData(dataFile[id], "Black")}
+                                        data={createStudentEthnicityData(school, "Black")}
                                         options={options}
                                     />
                                 </div>
@@ -191,7 +215,7 @@ const School = () => {
                                         chartType="ColumnChart"
                                         // width="200px"
                                         height="100%"
-                                        data={createStudentEthnicityData(dataFile[id], "Other")}
+                                        data={createStudentEthnicityData(school, "Other")}
                                         options={options}
                                     />
                                 </div>
@@ -202,7 +226,7 @@ const School = () => {
                     <div className={"card-container col-12 col-md-12  graphic"}>
                         <Card className={"card-graphic-style card-width"}>
                             <Card.Body>
-                                <Card.Title className="card-total">{dataFile[id].bullyAndHarass}</Card.Title>
+                                <Card.Title className="card-total">{school.bullyAndHarass}</Card.Title>
                                 <Card.Text>
                                     Number of incidents of bullying or harassment
                                 </Card.Text>
@@ -212,7 +236,7 @@ const School = () => {
                         {/*<div className="col-md-4 graphic">*/}
                         <Card className="card-graphic-style card-width">
                             <Card.Body>
-                                <Card.Title className="card-total">{dataFile[id].avgTeacherSalary}</Card.Title>
+                                <Card.Title className="card-total">{school.avgTeacherSalary}</Card.Title>
                                 <Card.Text>
                                     Average teacher pay
                                 </Card.Text>
@@ -222,7 +246,7 @@ const School = () => {
                         {/*<div className="col-md-4 graphic">*/}
                         <Card className={"card-graphic-style card-width"}>
                             <Card.Body>
-                                <Card.Title className="card-total">{dataFile[id].parentFeelsSafe}</Card.Title>
+                                <Card.Title className="card-total">{school.parentFeelsSafe}</Card.Title>
                                 <Card.Text>
                                     Parents who agree "my child feels safe at school"
                                 </Card.Text>
@@ -232,7 +256,7 @@ const School = () => {
                         {/*<div className="col-12 col-md-4 graphic">*/}
                         <Card className="card-graphic-style card-width">
                             <Card.Body>
-                                <Card.Title className="card-total">{dataFile[id].teacherFeelsSafe}</Card.Title>
+                                <Card.Title className="card-total">{school.teacherFeelsSafe}</Card.Title>
                                 <Card.Text>
                                     Teachers who agree "I feel safe at my school"
                                 </Card.Text>
@@ -242,7 +266,7 @@ const School = () => {
                         {/*// <div className="col-12 col-md-4 graphic">*/}
                         <Card className="card-graphic-style card-width ">
                             <Card.Body>
-                                <Card.Title className="card-total">""</Card.Title>
+                                <Card.Title className="card-total">{school.violentAssaults}</Card.Title>
                                 <Card.Text className={"h5"}>
                                     Number of violent assaults
                                 </Card.Text>
