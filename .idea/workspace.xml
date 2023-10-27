@@ -4,31 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8d0d108c-4ac4-4e0b-8b45-613489021c53" name="Changes" comment="converted mergeData.js to mergeData.js (will rename).&#10;Creates specific data files for components.">
-      <change afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/districtsData.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/e.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/h.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/homeDistrictData.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/homeSchoolData.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/m.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/p.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/stateData.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/components/District/DistrictSchoolList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/components/District/DistrictSchoolList.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/components/District/districtDataFunctions.js" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/components/District/districtDataFunctions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/components/FrontPageMap.js" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/components/FrontPageMap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/components/LiveMap.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/components/LiveMap.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/components/School/schoolDataFunctions.js" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/components/School/schoolDataFunctions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/dataImport/data.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/dataImport/dataFile.json" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/dataFile.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/functions/mergeData.js" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/functions/mergeData_2.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/screens/DataImport.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/screens/DataImport.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/screens/District.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/screens/District.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/screens/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/screens/Home.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/screens/School.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/screens/School.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/index.js" afterDir="false" />
-    </list>
+    <list default="true" id="8d0d108c-4ac4-4e0b-8b45-613489021c53" name="Changes" comment="converted mergeData.js to mergeData.js (will rename).&#10;Creates specific data files for components." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -42,7 +18,7 @@
     </option>
   </component>
   <component name="Git.Merge.Settings">
-    <option name="BRANCH" value="school_data_display" />
+    <option name="BRANCH" value="page_specific_data_files" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -217,7 +193,14 @@
       <option name="project" value="LOCAL" />
       <updated>1698259076727</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="converted mergeData.js to mergeData.js (will rename).&#10;Creates specific data files for components.">
+      <created>1698370331618</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1698370331618</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
