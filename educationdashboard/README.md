@@ -87,13 +87,13 @@ School data and state average for categories
 
 All display json data referenced by ID (School Number)
 Home searches json for query results and 
-Home sends ID for school/district to District.jsx or School.jsx
+Home sends ID for school/district to DistrictDemographics.jsx or SchoolDemographics.jsx
 
 screen gets data from json using id
 
-District sends school id to School.jsx
+District sends school id to SchoolDemographics.jsx
 
-School sends district id to District.jsx
+School sends district id to DistrictDemographics.jsx
 
 No need to send data back to home??
 

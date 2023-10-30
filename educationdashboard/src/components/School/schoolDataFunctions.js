@@ -23,9 +23,6 @@ export  const optionsLegend = {
 
 };
 export const createScoreData = (school, subject, code) => {
-    console.log(school)
-    console.log(districts[school["districtId"]])
-    console.log(state)
     let scores = scoreCheck(
         school[`positive${subject}ScoreAvg`],
         districts[school["districtId"]][`positive${subject}ScoreAvg_${code}`],

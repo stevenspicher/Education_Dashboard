@@ -1,7 +1,7 @@
 import {MapContainer, TileLayer, GeoJSON, } from "react-leaflet";
-import etlData from "../mapping/etl_district_full_data_with_geometries.json"
-import Legend from "../components/Legend"
-const LiveMap = (districtData) => {
+import etlData from "../../../mapping/etl_district_full_data_with_geometries.json"
+import Legend from "../../Legend.jsx"
+const LiveMap = () => {
 console.log(etlData)
     return (
 

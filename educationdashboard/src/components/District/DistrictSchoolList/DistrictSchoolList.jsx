@@ -1,7 +1,7 @@
 import {Link} from "@mui/material";
 import {useNavigate} from "react-router-dom";
 
-const DistrictSchoolList = (props) => {
+const DistrictSchoolList = ({district}) => {
     const navigate = useNavigate();
     const displaySchoolInfo = (school, type) => {
         if (school.type === type) {
@@ -19,7 +19,8 @@ const DistrictSchoolList = (props) => {
             <h4>Schools in this district</h4>
             <div className="inner-text">
                 <ul>Elementary Schools</ul>
-                {props.list.map((school, index) => {
+                {district.districtSchoolList.map((school, index) => {
+                    console.log(school)
                     return (
                         <div key={index}>
                             {displaySchoolInfo(school[0], "E")}
@@ -31,7 +32,7 @@ const DistrictSchoolList = (props) => {
 
                 <ul>Middle Schools</ul>
                 <ul>
-                    {props.list.map((school, index) => {
+                    {district.districtSchoolList.map((school, index) => {
                         return (
                             <div key={index}>
                                 {displaySchoolInfo(school[0], "M")}
@@ -42,7 +43,7 @@ const DistrictSchoolList = (props) => {
                 </ul>
                 <ul>High Schools</ul>
                 <ul>
-                    {props.list.map((school, index) => {
+                    {district.districtSchoolList.map((school, index) => {
                         return (
                             <div key={index}>
                                 {displaySchoolInfo(school[0], "H")}
