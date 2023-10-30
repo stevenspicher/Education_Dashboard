@@ -4,30 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8d0d108c-4ac4-4e0b-8b45-613489021c53" name="Changes" comment="converted mergeData.js to mergeData.js (will rename).&#10;Creates specific data files for components.">
-      <change afterPath="$PROJECT_DIR$/educationdashboard/src/components/District/DistrictAcademicPerformance/DistrictAcademicPerformance.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/educationdashboard/src/components/District/DistrictClimateCards/DistrictClimateCards.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/educationdashboard/src/components/District/DistrictDemographics/DistrictDemographics.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/educationdashboard/src/components/District/DistrictHeader/DistrictHeader.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/educationdashboard/src/components/District/DistrictMap/DistrictSchoolsMap.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/educationdashboard/src/components/District/DistrictSchoolList/SchoolList.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/educationdashboard/src/components/District/DistrictSearch/FullSearch.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/educationdashboard/src/components/Home/HomePageSearch/FullSearch.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/educationdashboard/src/components/Home/Table/Table.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/educationdashboard/src/components/School/SchoolAcademicPerformance/AcademicPerformance.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/educationdashboard/src/components/School/SchoolClimateCards/ClimateCards.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/educationdashboard/src/components/School/SchoolDemographics/Demographics.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/educationdashboard/src/components/School/SchoolHeader/SchoolHeader.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/educationdashboard/src/components/School/SchoolSearch/FullSearch.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/components/District/DistrictSchoolList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/components/District/DistrictSchoolList/DistrictSchoolList.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/components/LiveMap.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/components/Home/DistrictMap/LiveMap.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/components/School/schoolDataFunctions.js" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/components/School/schoolDataFunctions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/screens/District.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/screens/District.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/screens/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/screens/Home.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/screens/School.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/screens/School.jsx" afterDir="false" />
-    </list>
+    <list default="true" id="8d0d108c-4ac4-4e0b-8b45-613489021c53" name="Changes" comment="Created separate components for Home, School and District pages" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -62,22 +39,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/steven/IdeaProjects/Education Dashboard/educationdashboard/src/components/District/DistrictMap",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "/Applications/IntelliJ IDEA.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/steven/IdeaProjects/Education Dashboard/educationdashboard/src/components/District/DistrictMap&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Applications/IntelliJ IDEA.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/educationdashboard/src/components/District/DistrictMap" />
@@ -224,7 +201,14 @@
       <option name="project" value="LOCAL" />
       <updated>1698370331618</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Created separate components for Home, School and District pages">
+      <created>1698677922570</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1698677922570</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -268,6 +252,7 @@
     <MESSAGE value="created schoolDataFunctions.js&#10;added scoreCheck functions to both datafunctions" />
     <MESSAGE value="Home School table:&#10;trimmed list to remove District,&#10;added pagination, &#10;first stages of sort feature" />
     <MESSAGE value="converted mergeData.js to mergeData.js (will rename).&#10;Creates specific data files for components." />
-    <option name="LAST_COMMIT_MESSAGE" value="converted mergeData.js to mergeData.js (will rename).&#10;Creates specific data files for components." />
+    <MESSAGE value="Created separate components for Home, School and District pages" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created separate components for Home, School and District pages" />
   </component>
 </project>
