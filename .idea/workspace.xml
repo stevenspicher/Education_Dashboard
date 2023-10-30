@@ -4,35 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8d0d108c-4ac4-4e0b-8b45-613489021c53" name="Changes" comment="Created separate components for Home, School and District pages">
-      <change afterPath="$PROJECT_DIR$/server/dataImport/.eslintrc.cjs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/dataImport/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/dataImport/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/dataImport/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/dataImport/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/dataImport/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/dataImport/public/vite.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/dataImport/src/App.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/dataImport/src/App.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/dataImport/src/assets/react.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/dataImport/src/index.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/dataImport/src/main.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/dataImport/vite.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/public/api.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/public/index.html" afterDir="false" />
+    <list default="true" id="8d0d108c-4ac4-4e0b-8b45-613489021c53" name="Changes" comment="merging data import update">
+      <change afterPath="$PROJECT_DIR$/educationdashboard/.firebaserc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/educationdashboard/firebase.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/components/Home/Table/Table.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/components/Home/Table/Table.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/dataImport/AdditionalInfoImport.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/dataImport/src/importScripts/AdditionalInfoImport.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/dataImport/ReportCardImport.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/dataImport/src/importScripts/ReportCardImport.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/dataImport/dataFile.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/functions/functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/dataImport/src/functions/functions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/functions/mergeData_2.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/dataImport/src/functions/mergeData_2.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/screens/DataImport.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/server/dataImport/src/DataImport.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/screens/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/screens/Home.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chart data" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,22 +44,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/steven/IdeaProjects/Education Dashboard/server/dataImport/src/functions",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "/Applications/IntelliJ IDEA.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/steven/IdeaProjects/Education Dashboard/server/dataImport/src/functions&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Applications/IntelliJ IDEA.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/server/dataImport/src/functions" />
@@ -289,6 +265,8 @@
     <MESSAGE value="Home School table:&#10;trimmed list to remove District,&#10;added pagination, &#10;first stages of sort feature" />
     <MESSAGE value="converted mergeData.js to mergeData.js (will rename).&#10;Creates specific data files for components." />
     <MESSAGE value="Created separate components for Home, School and District pages" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created separate components for Home, School and District pages" />
+    <MESSAGE value="Move data import to server, created second react app for data input and added api serve on express server for eventual conversion to db" />
+    <MESSAGE value="merging data import update" />
+    <option name="LAST_COMMIT_MESSAGE" value="merging data import update" />
   </component>
 </project>
