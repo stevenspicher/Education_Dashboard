@@ -13,12 +13,16 @@ import {
 import {visuallyHidden} from "@mui/utils";
 import schoolData from "../../../dataImport/homeSchoolData.json";
 
+
 const SchoolTable = () => {
     const navigate = useNavigate();
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(10);
     const [order, setOrder] = useState('asc');
     const [orderBy, setOrderBy] = useState('schoolName');
+    // const [schoolDataAPI, setSchoolDataAPI] = useState(undefined)
+    // if (api.api !== undefined) setSchoolDataAPI(api.api.homeSchoolInfo)
+
 
     const headCells = [
         {

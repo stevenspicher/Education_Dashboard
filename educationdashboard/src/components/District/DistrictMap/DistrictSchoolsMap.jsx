@@ -1,8 +1,6 @@
 import {MapContainer, TileLayer, GeoJSON, } from "react-leaflet";
-import etlData from "../../../mapping/etl_district_full_data_with_geometries.json"
 import Legend from "../../Legend.jsx"
 const DistrictSchoolsMap = () => {
-console.log(etlData)
     return (
 
     <MapContainer id={"map"} center={[33.4, -81.1]} zoom={7} scrollWheelZoom={true} >
@@ -11,7 +9,7 @@ console.log(etlData)
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         <Legend/>
-        <GeoJSON data={etlData} />
+        {/*<GeoJSON  />*/}
         {/*<GeoJSON data={districtData} />*/}
         {/*<Marker position={[33.4, -81.1]}>*/}
         {/*    <Popup>*/}

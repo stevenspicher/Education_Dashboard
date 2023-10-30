@@ -15,13 +15,13 @@ function Home() {
           <div id="title">
               <h1>South Carolina Schools Explorer</h1>
           </div>
-        <FullSearch/>
+        <FullSearch />
 
           <h1>Districts</h1>
-            <LiveMap/>
+            <LiveMap />
 
           <h1>Schools</h1>
-          <SchoolTable/>
+          <SchoolTable />
 
 
 </Container>

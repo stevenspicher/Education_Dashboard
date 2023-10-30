@@ -13,6 +13,8 @@ app.use(cors({
     origin: "*",
 }));
 
+app.use(express.static('public'))
+
 app.post('/poststate', (req, res) => {
     fs.writeFile('../educationdashboard/src/dataImport/stateData.json', JSON.stringify(req.body), function (err) {
         if (err) return console.log(err);
@@ -79,6 +81,16 @@ app.post('/postp', (req, res) => {
         res.status(200).json(result);
     });
 });
+
+app.post('/postservefile', (req, res) => {
+    fs.writeFile('./public/api.json', JSON.stringify(req.body), function (err) {
+        if (err) return console.log(err);
+        let result = (req.body);
+        console.log("receiving API")
+        res.status(200).json(result);
+    });
+});
+
 
 app.listen(PORT, () => {
     console.log(`dashboard listening on ${PORT}`)
