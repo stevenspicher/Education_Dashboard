@@ -91,7 +91,18 @@ app.post('/postservefile', (req, res) => {
     });
 });
 
+app.post('/postgeodata', (req, res) => {
+    fs.writeFile('./public/geodata.json', JSON.stringify(req.body), function (err) {
+        if (err) return console.log(err);
+        let result = (req.body);
+        console.log("receiving geodata")
+        res.status(200).json(result);
+    });
+});
+
+
 
 app.listen(PORT, () => {
     console.log(`dashboard listening on ${PORT}`)
 })
+

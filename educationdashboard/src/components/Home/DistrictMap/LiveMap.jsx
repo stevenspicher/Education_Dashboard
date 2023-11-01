@@ -2,9 +2,12 @@ import {MapContainer, TileLayer, GeoJSON, Marker, Popup, Polygon,} from "react-l
 import district_geoData from "../../../dataImport/district_geoData.json"
 import districtsData from "../../../dataImport/districtsData.json"
 import DistrictsMapLegend from "./DistrictsMapLegend.jsx";
+import {Link} from "@mui/material";
+import {useNavigate} from "react-router-dom";
 
 
 const LiveMap = () => {
+    const navigate = useNavigate();
     const district = district_geoData.features
 console.log(districtsData)
     console.log(district)
@@ -12,13 +15,22 @@ console.log(districtsData)
     const districtName = (id) => {
         if (districtsData[id] !== undefined)
         {
-        return districtsData[id].schoolName
+        return (
+            // '<Link onClick={() => {
+            //     navigate(`/school/${school.id}+${school.type}`)
+            //         }}>
+            //         {school.schoolName}
+            //         </Link>'
+            `<a href="/district/${[id]}">${districtsData[id].schoolName}</a>`
+
+            // districtsData[id].schoolName
+        )
         } else {return ""}
     }
     const districtGradRate = (id) => {
         if (districtsData[id] !== undefined)
         {
-            return "    Graduation Rate: " + districtsData[id].gradRate
+            return ("    Graduation Rate: " + districtsData[id].gradRate)
         } else {return ""}
     }
 
@@ -54,8 +66,9 @@ console.log(districtsData)
 
         const onEachDistrict = (district, layer) => {
         let id = district.properties.district_id
-        layer.bindPopup(districtName(id) +
-            districtGradRate(id) + districtAvgActScore(id) + districtAvgTeacherSalary(id)).openPopup();
+        layer.bindPopup(districtName(id)
+            // + districtGradRate(id) + districtAvgActScore(id) + districtAvgTeacherSalary(id))
+        ).openPopup();
 
         layer.options.fillColor = "green"
         layer.options.weight = "5"

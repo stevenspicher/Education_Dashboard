@@ -4,21 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8d0d108c-4ac4-4e0b-8b45-613489021c53" name="Changes" comment="added firebase hosting">
-      <change afterPath="$PROJECT_DIR$/educationdashboard/src/components/Home/DistrictMap/DistrictsMapLegend.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/district_geoData.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/etl_school_full_data_with_coords.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/dataImport/src/assets/district_demographic_join.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/dataImport/src/assets/etl_district_full_data_with_geometries.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/dataImport/src/assets/etl_school_full_data_with_coords.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/dataImport/src/importScripts/geodataImport.js" afterDir="false" />
+    <list default="true" id="8d0d108c-4ac4-4e0b-8b45-613489021c53" name="Changes" comment="geodata for districts working">
+      <change afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/schoolGeoData.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/dataImport/src/assets/etl_school_full_data_with_coords.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/public/geodata.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/educationdashboard/src/components/District/DistrictMap/DistrictSchoolsMap.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/components/District/DistrictMap/DistrictSchoolsMap.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/educationdashboard/src/components/Home/DistrictMap/LiveMap.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/components/Home/DistrictMap/LiveMap.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/components/Legend.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/components/Legend.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/educationdashboard/src/screens/District.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/screens/District.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/dataImport/src/DataImport.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/server/dataImport/src/DataImport.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/dataImport/src/importScripts/geodataImport.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/dataImport/src/importScripts/geodataImport.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +56,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/steven/IdeaProjects/Education Dashboard/educationdashboard/src/components/Home/DistrictMap",
+    "last_opened_file_path": "/Users/steven/IdeaProjects/Education Dashboard/educationdashboard/src/dataImport",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -72,8 +68,8 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/educationdashboard/src/components/Home/DistrictMap" />
       <recent name="$PROJECT_DIR$/educationdashboard/src/dataImport" />
+      <recent name="$PROJECT_DIR$/educationdashboard/src/components/Home/DistrictMap" />
       <recent name="$PROJECT_DIR$/server/dataImport/src/functions" />
       <recent name="$PROJECT_DIR$/server/dataImport" />
       <recent name="$PROJECT_DIR$/server" />
@@ -237,7 +233,14 @@
       <option name="project" value="LOCAL" />
       <updated>1698690175655</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="geodata for districts working">
+      <created>1698862367096</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1698862367096</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -284,6 +287,7 @@
     <MESSAGE value="Created separate components for Home, School and District pages" />
     <MESSAGE value="Move data import to server, created second react app for data input and added api serve on express server for eventual conversion to db" />
     <MESSAGE value="merging data import update" />
-    <option name="LAST_COMMIT_MESSAGE" value="merging data import update" />
+    <MESSAGE value="geodata for districts working" />
+    <option name="LAST_COMMIT_MESSAGE" value="geodata for districts working" />
   </component>
 </project>

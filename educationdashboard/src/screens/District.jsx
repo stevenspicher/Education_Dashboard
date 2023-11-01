@@ -24,7 +24,7 @@ const District = () => {
                 alignItems="center"
 
             >
-            <DistrictSchoolsMap/>
+            <DistrictSchoolsMap district={districtsData[id].districtSchoolList}/>
                 <DistrictSchoolList district={districtsData[id]}/>
             </Stack>
             <DistrictAcademicPerformance district={districtsData[id]}/>
