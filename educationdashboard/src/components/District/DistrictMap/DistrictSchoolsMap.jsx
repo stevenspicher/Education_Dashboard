@@ -1,5 +1,6 @@
 import {MapContainer, TileLayer, GeoJSON, } from "react-leaflet";
 import Legend from "../../Legend.jsx"
+
 const DistrictSchoolsMap = () => {
     return (
 
@@ -10,7 +11,7 @@ const DistrictSchoolsMap = () => {
         />
         <Legend/>
         {/*<GeoJSON  />*/}
-        {/*<GeoJSON data={districtData} />*/}
+        {/*<GeoJSON data={district_geoData} />*/}
         {/*<Marker position={[33.4, -81.1]}>*/}
         {/*    <Popup>*/}
         {/*        A pretty CSS3 popup. <br /> Easily customizable.*/}

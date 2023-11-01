@@ -41,8 +41,8 @@ function Legend() {
                 for (let i = 0; i < grades.length; i++) {
                     div.innerHTML +=
                         `<h4>${grades[i]}</h4>`
-                        // "<b>Lorem ipsum dolor sit amet consectetur adipiscing</b>";
-                        // '<i style="background:' + getColorTotal(grades[i] + 1) + '"></i> '
+                    //     "<b>Lorem ipsum dolor sit amet consectetur adipiscing</b>";
+                    //     '<i style="background:' + getColorTotal(grades[i] + 1) + '"></i> '
                     // grades[i] + (grades[i] ? ' and ' + grades[i] + '<br>' : ' and less');
                 }
                 return div;

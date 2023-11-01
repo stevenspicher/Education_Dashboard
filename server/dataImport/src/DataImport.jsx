@@ -5,6 +5,7 @@ import CheckIcon from "@mui/icons-material/Check";
 import {mergeData} from "./functions/mergeData_2"
 import {ReportCardImport} from "./importScripts/ReportCardImport.js";
 import {AdditionalInfoImport} from "./importScripts/AdditionalInfoImport.js";
+import {geoDataConversion} from "./importScripts/geodataImport.js";
 
 
 
@@ -130,6 +131,7 @@ const ReportCardDataImport = () => {
                     }}
                     name="myfile"/>
                 {additionalInfoVerified ? <CheckIcon/> : <></>}
+
             <Button onClick={() => {
               mergeData(reportCardData, additionalInfoData, setSchoolData, currentYear);
             }}>Merge Data</Button>
@@ -143,6 +145,10 @@ const ReportCardDataImport = () => {
                 <Button onClick={() => {
                     getApiData()
                 }}>Get API</Button>
+
+                <Button onClick={() => {
+                    geoDataConversion()
+                }}>Convert GeoData</Button>
 
             </Box>
     )
