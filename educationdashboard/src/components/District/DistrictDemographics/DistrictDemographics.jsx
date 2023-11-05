@@ -2,68 +2,70 @@ import {Chart} from "react-google-charts";
 
 import {Stack} from "@mui/material";
 import {
-    createBlackData,
-    createOtherData,
-    createStudentsInPovertyData, createStudentsWithDisabilitiesData,
-    createWhiteData, options
-} from "../districtDataFunctions.js";
+    createDistrictBlackData,
+    createDistrictOtherData,
+    createDistrictStudentsInPovertyData, createDistrictStudentsWithDisabilitiesData,
+    createDistrictWhiteData
+} from "../../Charts/chartFunctions.js";
+import {options, optionsLegend} from "../../Charts/chartOptions";
 
 const DistrictDemographics = ({district}) => {
     return (
-       <Stack>
 
-           <div className={"chart-container"}>
+        <Stack>
+            <h5 style={{marginLeft: "100px"}}>Demographics</h5>
+            <Stack
+                className="chart-container"
+                direction="row"
+                justifyContent="space-evenly"
+                alignItems="center"
+            >
+                <Chart
+                    chartType="ColumnChart"
+                    width="400px"
+                    // height="50%"
+                    data={createDistrictStudentsInPovertyData(district)}
+                    options={options}
+                />
+                <Chart
+                    chartType="ColumnChart"
+                    width="400px"
+                    // height="50%"
+                    data={createDistrictStudentsWithDisabilitiesData(district)}
+                    options={options}
+                />
+            </Stack>
+            <Stack
+                className="chart-container"
+                direction="row"
+                justifyContent="space-evenly"
+                alignItems="center"
+            >
+                <Chart
+                    chartType="ColumnChart"
+                    width="400px"
+                    // height="50%"
+                    data={createDistrictWhiteData(district)}
+                    options={options}
+                />
+                <Chart
+                    chartType="ColumnChart"
+                    width="400px"
+                    // height="50%"
+                    data={createDistrictBlackData(district)}
+                    options={options}
+                />
+                <Chart
+                    chartType="ColumnChart"
+                    width="400px"
+                    // height="50%"
+                    data={createDistrictOtherData(district)}
+                    options={options}
+                />
+            </Stack>
 
-               <div className="col-12 col-md-12 graphic">
-                   <div className="graphic-style">
-                       <Stack>
-                           <h5>Demographics</h5>
-                           <Stack className="chart-container" direction={"row"}>
-                               <Chart
-                                   chartType="ColumnChart"
-                                   width="200px"
-                                   height="50%"
-                                   data={createStudentsInPovertyData(district)}
-                                   options={options}
-                               />
-                               <Chart
-                                   chartType="ColumnChart"
-                                   width="200px"
-                                   height="50%"
-                                   data={createStudentsWithDisabilitiesData(district)}
-                                   options={options}
-                               />
-                           </Stack>
-                           <Stack className="chart-container" direction={"row"}>
-                               <Chart
-                                   chartType="ColumnChart"
-                                   width="200px"
-                                   height="50%"
-                                   data={createWhiteData(district)}
-                                   options={options}
-                               />
-                               <Chart
-                                   chartType="ColumnChart"
-                                   width="200px"
-                                   height="50%"
-                                   data={createBlackData(district)}
-                                   options={options}
-                               />
-                               <Chart
-                                   chartType="ColumnChart"
-                                   width="200px"
-                                   height="50%"
-                                   data={createOtherData(district)}
-                                   options={options}
-                               />
-                           </Stack>
+        </Stack>
 
-
-                       </Stack>
-                   </div>
-               </div>
-           </div>
-       </Stack>
     )
 }
 export default DistrictDemographics

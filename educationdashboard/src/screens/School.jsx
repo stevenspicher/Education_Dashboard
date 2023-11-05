@@ -1,5 +1,4 @@
 import "../css/schools.css";
-import {Container} from "react-bootstrap";
 import {useParams} from "react-router";
 
 
@@ -10,8 +9,9 @@ import p from "../dataImport/p"
 import ClimateCards from "../components/School/SchoolClimateCards/ClimateCards.jsx";
 import FullSearch from "../components/School/SchoolSearch/FullSearch.jsx";
 import AcademicPerformance from "../components/School/SchoolAcademicPerformance/AcademicPerformance.jsx";
-import Demographics from "../components/School/SchoolDemographics/Demographics.jsx";
+import SchoolDemographics from "../components/School/SchoolDemographics/SchoolDemographics.jsx";
 import SchoolHeader from "../components/School/SchoolHeader/SchoolHeader.jsx";
+import {Container, Paper} from "@mui/material";
 
 const School = () => {
 
@@ -40,12 +40,20 @@ const School = () => {
 
 
     return (
-            <Container fluid>
+            <Container>
                 <FullSearch/>
+                <Paper elevation={3}>
                 <SchoolHeader school={school}/>
+                </Paper>
+                <Paper elevation={3}>
                 <AcademicPerformance school={school}/>
-                <Demographics school={school}/>
+                </Paper>
+                <Paper elevation={3}>
+                <SchoolDemographics school={school}/>
+                </Paper>
+                <Paper elevation={3}>
                 <ClimateCards school={school}/>
+                </Paper>
             </Container>
     );
 }

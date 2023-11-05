@@ -1,16 +1,15 @@
 import {Stack} from "@mui/material";
 import {Chart} from "react-google-charts";
 import {
-    createAverageACTScoreData,
-    createCareerReadyDiplomaEarnersData,
-    createCollegeReadyDiplomaEarnersData,
-    createDropoutPercentageData,
-    createOnTimeGraduationRateData,
-    createScoreData,
-    options,
-    optionsLegend
-} from "../schoolDataFunctions.js";
+    createSchoolAverageACTScoreData,
+    createSchoolCareerReadyDiplomaEarnersData,
+    createSchoolCollegeReadyDiplomaEarnersData,
+    createSchoolDropoutPercentageData,
+    createSchoolOnTimeGraduationRateData,
+    createSchoolScoreData,
 
+} from "../../Charts/chartFunctions.js";
+import {options, optionsLegend} from "../../Charts/chartOptions";
 const AcademicPerformance = ({school}) => {
     return (
 
@@ -25,31 +24,31 @@ const AcademicPerformance = ({school}) => {
                 >
                     <Chart
                         chartType="ColumnChart"
-                        width="300px"
+                        width="400px"
                         height="50%"
-                        data={createScoreData(school, "Reading", "E")}
+                        data={createSchoolScoreData(school, "Reading", "E")}
                         options={optionsLegend}
                     />
                     <Chart
                         chartType="ColumnChart"
-                        width="300px"
+                        width="400px"
                         height="50%"
-                        data={createScoreData(school, "Math", "E")}
+                        data={createSchoolScoreData(school, "Math", "E")}
                         options={options}
                     />
                     {school.schoolType === "High School" ?
                     <Chart
                         chartType="ColumnChart"
-                        width="300px"
+                        width="400px"
                         height="50%"
-                        data={createAverageACTScoreData(school)}
+                        data={createSchoolAverageACTScoreData(school)}
                         options={options}
                     /> :
                         <Chart
                             chartType="ColumnChart"
-                            width="300px"
+                            width="400px"
                             height="50%"
-                            data={createScoreData(school, "Science", "E")}
+                            data={createSchoolScoreData(school, "Science", "E")}
                             options={options}
                         />
                     }
@@ -58,37 +57,43 @@ const AcademicPerformance = ({school}) => {
                     <>
                     <Stack
                         className="chart-container"
-                        direction={"row"}>
+                        direction={"row"}
+                        justifyContent="space-evenly"
+                        alignItems="center">
                         <Chart
                             chartType="ColumnChart"
                             width="400px"
                             height="50%"
-                            data={createOnTimeGraduationRateData(school)}
+                            data={createSchoolOnTimeGraduationRateData(school)}
                             options={options}
                         />
                         <Chart
                             chartType="ColumnChart"
                             width="400px"
                             height="50%"
-                            data={createDropoutPercentageData(school)}
+                            data={createSchoolDropoutPercentageData(school)}
                             options={options}
                         />
                     </Stack>
-                    <Stack
-                        className="chart-container"
-                        direction={"row"}>
+                        <Stack
+                            className="chart-container"
+                            direction="row"
+                            justifyContent="space-evenly"
+                            alignItems="center"
+                            // spacing={4}
+                        >
                     <Chart
                         chartType="ColumnChart"
                         width="400px"
                         height="50%"
-                        data={createCollegeReadyDiplomaEarnersData(school)}
+                        data={createSchoolCollegeReadyDiplomaEarnersData(school)}
                         options={options}
                     />
                     <Chart
                         chartType="ColumnChart"
                         width="400px"
                         height="50%"
-                        data={createCareerReadyDiplomaEarnersData(school)}
+                        data={createSchoolCareerReadyDiplomaEarnersData(school)}
                         options={options}
                     />
                 </Stack>

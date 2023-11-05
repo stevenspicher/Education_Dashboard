@@ -1,51 +1,65 @@
 import {Stack} from "@mui/material";
 import {Chart} from "react-google-charts";
 import {
-    createAverageACTScoreData,
+    createDistrictAverageACTScoreData,
     createDistrictScoreData,
-    createOnTimeGraduationRateData, options
-} from "../districtDataFunctions.js";
+    createDistrictOnTimeGraduationRateData
+} from "../../Charts/chartFunctions.js";
+import {options, optionsLegend,
+} from "../../Charts/chartOptions";
 
 const DistrictAcademicPerformance = ({district}) => {
     return (
         <Stack>
-            <h5>Academic Performance</h5>
-            <Stack className="chart-container" direction={"row"}>
+            <h5 className={"chart-title"} style={{marginLeft:"100px"}}>Academic Performance</h5>
+            <Stack
+                className="chart-container"
+                direction="row"
+                justifyContent="space-evenly"
+                alignItems="center"
+                // spacing={4}
+            >
                 <Chart
                     chartType="ColumnChart"
-                    width="200px"
+                    width="400px"
                     height="50%"
                     data={createDistrictScoreData(district, "Reading")}
-                    options={options}
+                    options={optionsLegend}
                 />
                 <Chart
                     chartType="ColumnChart"
-                    width="200px"
+                    width="400px"
                     height="50%"
                     data={createDistrictScoreData(district, "Math")}
                     options={options}
                 />
                 <Chart
                     chartType="ColumnChart"
-                    width="200px"
+                    width="400px"
                     height="50%"
                     data={createDistrictScoreData(district, "Science")}
                     options={options}
                 />
             </Stack>
-            <Stack className="chart-container" direction={"row"}>
+            <Stack
+                className="chart-container"
+                direction="row"
+                justifyContent="space-evenly"
+                alignItems="center"
+                // spacing={4}
+            >
                 <Chart
                     chartType="ColumnChart"
-                    width="200px"
+                    width="400px"
                     height="50%"
-                    data={createOnTimeGraduationRateData(district)}
+                    data={createDistrictOnTimeGraduationRateData(district)}
                     options={options}
                 />
                 <Chart
                     chartType="ColumnChart"
-                    width="200px"
+                    width="400px"
                     height="50%"
-                    data={createAverageACTScoreData(district)}
+                    data={createDistrictAverageACTScoreData(district)}
                     options={options}
                 />
             </Stack>

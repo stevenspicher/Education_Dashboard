@@ -20,7 +20,6 @@ const DistrictSchoolList = ({district}) => {
             <div className="inner-text">
                 <ul>Elementary Schools</ul>
                 {district.districtSchoolList.map((school, index) => {
-                    console.log(school)
                     return (
                         <div key={index}>
                             {displaySchoolInfo(school[0], "E")}

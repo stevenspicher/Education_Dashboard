@@ -7,8 +7,8 @@ const FullSearch = () => {
 
             <div className="app-search">
                         <a href="../../"><img alt={"home icon"} src={home}/></a>
-                        <div>
-                            <input id="fill-box" type="text" placeholder="Search school or district ..."/>
+                        <div style={{width: "80%"}}>
+                            <input  id="fill-box" type="text" placeholder="Search school or district ..."/>
                             <i className="fa fa-search"></i>
                         </div>
                     </div>

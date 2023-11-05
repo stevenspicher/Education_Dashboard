@@ -4,7 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8d0d108c-4ac4-4e0b-8b45-613489021c53" name="Changes" comment="maps working with data and links" />
+    <list default="true" id="8d0d108c-4ac4-4e0b-8b45-613489021c53" name="Changes" comment="maps working with data and links">
+      <change afterPath="$PROJECT_DIR$/educationdashboard/src/components/Charts/chartFunctions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/educationdashboard/src/components/Charts/chartOptions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/educationdashboard/src/components/District/DistrictAcademicPerformance/DistrictAcademicPerformance.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/components/District/DistrictAcademicPerformance/DistrictAcademicPerformance.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/educationdashboard/src/components/District/DistrictDemographics/DistrictDemographics.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/components/District/DistrictDemographics/DistrictDemographics.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/educationdashboard/src/components/District/DistrictMap/DistrictSchoolsMap.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/components/District/DistrictMap/DistrictSchoolsMap.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/educationdashboard/src/components/District/DistrictSchoolList/DistrictSchoolList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/components/District/DistrictSchoolList/DistrictSchoolList.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/educationdashboard/src/components/District/DistrictSearch/FullSearch.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/components/District/DistrictSearch/FullSearch.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/educationdashboard/src/components/District/districtDataFunctions.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/educationdashboard/src/components/Home/HomePageSearch/FullSearch.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/components/Home/HomePageSearch/FullSearch.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/educationdashboard/src/components/School/SchoolAcademicPerformance/AcademicPerformance.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/components/School/SchoolAcademicPerformance/AcademicPerformance.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/educationdashboard/src/components/School/SchoolDemographics/Demographics.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/components/School/SchoolDemographics/SchoolDemographics.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/educationdashboard/src/components/School/SchoolSearch/FullSearch.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/components/School/SchoolSearch/FullSearch.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/educationdashboard/src/components/School/schoolDataFunctions.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/educationdashboard/src/screens/District.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/screens/District.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/educationdashboard/src/screens/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/screens/Home.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/educationdashboard/src/screens/School.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/screens/School.jsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -23,7 +41,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="strip_geodata" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -64,11 +82,11 @@
       <recent name="$PROJECT_DIR$/server" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/educationdashboard/src/components/Charts" />
       <recent name="$PROJECT_DIR$/server/dataImport/src" />
       <recent name="$PROJECT_DIR$/server/dataImport" />
       <recent name="$PROJECT_DIR$/server/importScripts" />
       <recent name="$PROJECT_DIR$/server/public" />
-      <recent name="$PROJECT_DIR$/educationdashboard/src/components/District/DistrictSchoolList" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
