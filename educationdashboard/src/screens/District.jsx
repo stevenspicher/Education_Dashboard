@@ -11,31 +11,35 @@ import {Container, Paper, Stack} from "@mui/material";
 import DistrictSchoolList from "../components/District/DistrictSchoolList/DistrictSchoolList.jsx";
 
 const District = () => {
+    const elevationHeight = 12;
     const {id} = useParams();
     return (
         <Container>
+    <Paper elevation={elevationHeight} sx={{marginTop:"10px"}} >
             <FullSearch/>
-            <DistrictHeader district={districtsData[id]}/>
-            <Paper elevation={3}>
-
+        </Paper>
+            <Paper elevation={elevationHeight} sx={{marginTop:"10px"}}>
+                <DistrictHeader district={districtsData[id]}/>
+            </Paper>
+            <Paper elevation={elevationHeight} sx={{marginTop:"10px"}}>
                 <Stack
                     className="chart-container"
                     direction="row"
                     justifyContent="space-evenly"
                     // alignItems="center"
-                    spacing={2}
+
                 >
                     <DistrictSchoolsMap district={districtsData[id].districtSchoolList}/>
                     <DistrictSchoolList district={districtsData[id]}/>
                 </Stack>
             </Paper>
-            <Paper elevation={3}>
+            <Paper elevation={elevationHeight} sx={{marginTop:"10px"}}>
                 <DistrictAcademicPerformance district={districtsData[id]}/>
             </Paper>
-            <Paper elevation={3}>
+            <Paper elevation={elevationHeight} sx={{marginTop:"10px"}}>
                 <DistrictDemographics district={districtsData[id]}/>
             </Paper>
-            <Paper elevation={3}>
+            <Paper elevation={elevationHeight} sx={{marginTop:"10px"}}>
                 <DistrictClimateCards district={districtsData[id]}/>
             </Paper>
         </Container>

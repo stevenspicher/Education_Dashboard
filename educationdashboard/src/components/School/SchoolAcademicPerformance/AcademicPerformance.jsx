@@ -12,7 +12,6 @@ import {
 import {options, optionsLegend} from "../../Charts/chartOptions";
 const AcademicPerformance = ({school}) => {
     return (
-
             <Stack >
                 <h5 className={"chart-title"} style={{marginLeft:"100px"}}>Academic Performance</h5>
                 <Stack
@@ -24,14 +23,14 @@ const AcademicPerformance = ({school}) => {
                 >
                     <Chart
                         chartType="ColumnChart"
-                        width="400px"
+                        width="300px"
                         height="50%"
                         data={createSchoolScoreData(school, "Reading", "E")}
                         options={optionsLegend}
                     />
                     <Chart
                         chartType="ColumnChart"
-                        width="400px"
+                        width="300px"
                         height="50%"
                         data={createSchoolScoreData(school, "Math", "E")}
                         options={options}
@@ -39,14 +38,14 @@ const AcademicPerformance = ({school}) => {
                     {school.schoolType === "High School" ?
                     <Chart
                         chartType="ColumnChart"
-                        width="400px"
+                        width="300px"
                         height="50%"
                         data={createSchoolAverageACTScoreData(school)}
                         options={options}
                     /> :
                         <Chart
                             chartType="ColumnChart"
-                            width="400px"
+                            width="300px"
                             height="50%"
                             data={createSchoolScoreData(school, "Science", "E")}
                             options={options}
@@ -62,14 +61,14 @@ const AcademicPerformance = ({school}) => {
                         alignItems="center">
                         <Chart
                             chartType="ColumnChart"
-                            width="400px"
+                            width="300px"
                             height="50%"
                             data={createSchoolOnTimeGraduationRateData(school)}
                             options={options}
                         />
                         <Chart
                             chartType="ColumnChart"
-                            width="400px"
+                            width="300px"
                             height="50%"
                             data={createSchoolDropoutPercentageData(school)}
                             options={options}
@@ -84,14 +83,14 @@ const AcademicPerformance = ({school}) => {
                         >
                     <Chart
                         chartType="ColumnChart"
-                        width="400px"
+                        width="300px"
                         height="50%"
                         data={createSchoolCollegeReadyDiplomaEarnersData(school)}
                         options={options}
                     />
                     <Chart
                         chartType="ColumnChart"
-                        width="400px"
+                        width="300px"
                         height="50%"
                         data={createSchoolCareerReadyDiplomaEarnersData(school)}
                         options={options}

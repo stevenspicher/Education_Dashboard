@@ -21,21 +21,21 @@ const DistrictAcademicPerformance = ({district}) => {
             >
                 <Chart
                     chartType="ColumnChart"
-                    width="400px"
+                    width="300px"
                     height="50%"
                     data={createDistrictScoreData(district, "Reading")}
                     options={optionsLegend}
                 />
                 <Chart
                     chartType="ColumnChart"
-                    width="400px"
+                    width="300px"
                     height="50%"
                     data={createDistrictScoreData(district, "Math")}
                     options={options}
                 />
                 <Chart
                     chartType="ColumnChart"
-                    width="400px"
+                    width="300px"
                     height="50%"
                     data={createDistrictScoreData(district, "Science")}
                     options={options}
@@ -50,14 +50,14 @@ const DistrictAcademicPerformance = ({district}) => {
             >
                 <Chart
                     chartType="ColumnChart"
-                    width="400px"
+                    width="300px"
                     height="50%"
                     data={createDistrictOnTimeGraduationRateData(district)}
                     options={options}
                 />
                 <Chart
                     chartType="ColumnChart"
-                    width="400px"
+                    width="300px"
                     height="50%"
                     data={createDistrictAverageACTScoreData(district)}
                     options={options}

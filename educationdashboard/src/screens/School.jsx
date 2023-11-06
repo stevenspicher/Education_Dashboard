@@ -14,7 +14,7 @@ import SchoolHeader from "../components/School/SchoolHeader/SchoolHeader.jsx";
 import {Container, Paper} from "@mui/material";
 
 const School = () => {
-
+    const elevationHeight = 12;
     const {idandcode} = useParams();
     const id = idandcode.toString().split("+")[0]
     const code = idandcode.toString().split("+")[1]
@@ -41,17 +41,19 @@ const School = () => {
 
     return (
             <Container>
+                <Paper elevation={elevationHeight} sx={{marginTop:"10px"}}>
                 <FullSearch/>
-                <Paper elevation={3}>
+                </Paper>
+                <Paper elevation={elevationHeight} sx={{marginTop:"10px"}}>
                 <SchoolHeader school={school}/>
                 </Paper>
-                <Paper elevation={3}>
+                <Paper elevation={elevationHeight} sx={{marginTop:"10px"}}>
                 <AcademicPerformance school={school}/>
                 </Paper>
-                <Paper elevation={3}>
+                <Paper elevation={elevationHeight} sx={{marginTop:"10px"}}>
                 <SchoolDemographics school={school}/>
                 </Paper>
-                <Paper elevation={3}>
+                <Paper elevation={elevationHeight} sx={{marginTop:"10px"}}>
                 <ClimateCards school={school}/>
                 </Paper>
             </Container>

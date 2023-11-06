@@ -21,15 +21,15 @@ const SchoolDemographics = ({school}) => {
 
                 <Chart
                     chartType="ColumnChart"
-                    width="400px"
-                    // height="70%"
+                    width="300px"
+                    height="50%"
                     data={createSchoolStudentsInPovertyData(school)}
                     options={options}
                 />
                 <Chart
                     chartType="ColumnChart"
-                    width="400px"
-                    // height="70%"
+                    width="300px"
+                    height="50%"
                     data={createSchoolStudentsWithDisabilitiesData(school)}
                     options={options}
                 />
@@ -43,22 +43,22 @@ const SchoolDemographics = ({school}) => {
 
                          <Chart
                              chartType="ColumnChart"
-                             width="400px"
-                             // height="100%"
+                             width="300px"
+                             height="50%"
                              data={createSchoolStudentEthnicityData(school, "White")}
                              options={options}
                          />
                          <Chart
                              chartType="ColumnChart"
-                             width="400px"
-                             // height="100%"
+                             width="300px"
+                             height="50%"
                              data={createSchoolStudentEthnicityData(school, "Black")}
                              options={options}
                          />
                          <Chart
                              chartType="ColumnChart"
-                             width="400px"
-                             // height="100%"
+                             width="300px"
+                             height="50%"
                              data={createSchoolStudentEthnicityData(school, "Other")}
                              options={options}
                          />

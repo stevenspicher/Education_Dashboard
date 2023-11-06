@@ -22,14 +22,14 @@ const DistrictDemographics = ({district}) => {
             >
                 <Chart
                     chartType="ColumnChart"
-                    width="400px"
+                    width="300px"
                     // height="50%"
                     data={createDistrictStudentsInPovertyData(district)}
                     options={options}
                 />
                 <Chart
                     chartType="ColumnChart"
-                    width="400px"
+                    width="300px"
                     // height="50%"
                     data={createDistrictStudentsWithDisabilitiesData(district)}
                     options={options}
@@ -43,21 +43,21 @@ const DistrictDemographics = ({district}) => {
             >
                 <Chart
                     chartType="ColumnChart"
-                    width="400px"
+                    width="300px"
                     // height="50%"
                     data={createDistrictWhiteData(district)}
                     options={options}
                 />
                 <Chart
                     chartType="ColumnChart"
-                    width="400px"
+                    width="300px"
                     // height="50%"
                     data={createDistrictBlackData(district)}
                     options={options}
                 />
                 <Chart
                     chartType="ColumnChart"
-                    width="400px"
+                    width="300px"
                     // height="50%"
                     data={createDistrictOtherData(district)}
                     options={options}

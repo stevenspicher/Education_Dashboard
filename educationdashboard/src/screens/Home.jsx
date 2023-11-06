@@ -8,20 +8,21 @@ import {Container} from "@mui/material";
 
 
 function Home() {
-
+    const elevationHeight = 12;
     return (
         <Container>
+            <Paper elevation={elevationHeight} sx={{marginTop:"10px"}}>
             <div id="title">
                 <h1>South Carolina Schools Explorer</h1>
             </div>
+                </Paper>
+            <Paper elevation={elevationHeight} sx={{marginTop:"10px"}}>
             <FullSearch/>
-            <h1>Districts</h1>
-            <Paper elevation={3}>
+                </Paper>
+            <Paper elevation={elevationHeight} sx={{marginTop:"10px",  height: "690px"}}>
                     <LiveMap/>
                 </Paper>
-                <h1>Schools</h1>
-                <Paper elevation={3}>
-
+                <Paper elevation={elevationHeight} sx={{marginTop:"10px"}}>
                 <SchoolTable/>
             </Paper>
         </Container>

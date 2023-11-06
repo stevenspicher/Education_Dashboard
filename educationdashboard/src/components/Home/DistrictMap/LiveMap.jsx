@@ -1,29 +1,18 @@
-import {MapContainer, TileLayer, GeoJSON, Marker, Popup, Polygon,} from "react-leaflet";
+import {MapContainer, TileLayer, GeoJSON} from "react-leaflet";
 import district_geoData from "../../../dataImport/district_geoData.json"
 import districtsData from "../../../dataImport/districtsData.json"
 import DistrictsMapLegend from "./DistrictsMapLegend.jsx";
-import {Link} from "@mui/material";
-import {useNavigate} from "react-router-dom";
+
 
 
 const LiveMap = () => {
-    const navigate = useNavigate();
     const district = district_geoData.features
-console.log(districtsData)
-    console.log(district)
 
     const districtName = (id) => {
         if (districtsData[id] !== undefined)
         {
         return (
-            // '<Link onClick={() => {
-            //     navigate(`/school/${school.id}+${school.type}`)
-            //         }}>
-            //         {school.schoolName}
-            //         </Link>'
             `<a href="/district/${[id]}">${districtsData[id].schoolName}</a>`
-
-            // districtsData[id].schoolName
         )
         } else {return ""}
     }
@@ -78,14 +67,13 @@ console.log(districtsData)
 
     return (
 
-        <MapContainer id={"map"} center={[33.4, -81.1]} zoom={7} scrollWheelZoom={false} >
+        <MapContainer id={"map"}  center={[33.7, -81.1]} zoom={8} scrollWheelZoom={false}  style={{height: "100%"}} >
             <TileLayer
                 attribution=' Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
             <DistrictsMapLegend/>
             <GeoJSON  style={style} data={district} onEachFeature={onEachDistrict}/>
-
         </MapContainer>
     )
 };

@@ -1,5 +1,5 @@
 export const options = {
-    backgroundColor: "#f3f4f2",
+    // backgroundColor: "#f3f4f2",
     legend: "none",
     height: 250,
     width: 300,
@@ -8,7 +8,7 @@ export const options = {
 
 export  const optionsLegend = {
 
-    backgroundColor: "#f3f4f2",
+    // backgroundColor: "#f3f4f2",
     legend:'top',
     // is3D:true,
     width:300,
