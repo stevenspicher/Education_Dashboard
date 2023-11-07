@@ -5,8 +5,23 @@ import DistrictsMapLegend from "./DistrictsMapLegend.jsx";
 
 
 
-const LiveMap = () => {
-    const district = district_geoData.features
+const LiveMap = (props) => {
+// let showMap = true
+// let districtResultsArr = [];
+    let district = district_geoData.features;
+//     props.districtResults.map((districtSearchResult) => {
+//         let dResult = district.filter((dist) => (
+//             dist.properties.district_id.includes(districtSearchResult.id)
+//         ))
+//         if (dResult)
+//         districtResultsArr.push(...dResult)
+//     })
+//     if (districtResultsArr[0] === undefined) {
+//         district = district
+//     } else {district = districtResultsArr}
+
+
+
 
     const districtName = (id) => {
         if (districtsData[id] !== undefined)
@@ -65,16 +80,28 @@ const LiveMap = () => {
 
         }
 
-    return (
+        // if (showMap) {
+            return (
 
-        <MapContainer id={"map"}  center={[33.7, -81.1]} zoom={8} scrollWheelZoom={false}  style={{height: "100%"}} >
-            <TileLayer
-                attribution=' Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>'
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            />
-            <DistrictsMapLegend/>
-            <GeoJSON  style={style} data={district} onEachFeature={onEachDistrict}/>
-        </MapContainer>
-    )
+                <MapContainer id={"map"} center={[33.7, -81.1]} zoom={8} scrollWheelZoom={false}
+                              style={{height: "100%"}}>
+                    <TileLayer
+                        attribution=' Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>'
+                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    />
+                    <DistrictsMapLegend/>
+                    <GeoJSON
+                        key={JSON.stringify(district[0])} //to cause rerender when district list is updated
+                        style={style}
+                        data={district}
+                        onEachFeature={onEachDistrict}/>
+                </MapContainer>
+
+            )
+        // } else {
+        //
+        // return (<></>)
+        // }
+
 };
 export default LiveMap;

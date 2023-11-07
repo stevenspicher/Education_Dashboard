@@ -14,7 +14,7 @@ import {visuallyHidden} from "@mui/utils";
 import schoolData from "../../../dataImport/homeSchoolData.json";
 
 
-const SchoolTable = () => {
+const SchoolTable = (props) => {
     const navigate = useNavigate();
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(10);
@@ -22,7 +22,6 @@ const SchoolTable = () => {
     const [orderBy, setOrderBy] = useState('schoolName');
     // const [schoolDataAPI, setSchoolDataAPI] = useState(undefined)
     // if (api.api !== undefined) setSchoolDataAPI(api.api.homeSchoolInfo)
-
 
     const headCells = [
         {
@@ -106,7 +105,7 @@ const SchoolTable = () => {
             ? (a, b) => descendingComparator(a, b, orderBy)
             : (a, b) => -descendingComparator(a, b, orderBy);
     }
-    const visibleRows = useMemo(
+    let visibleRows = useMemo(
         () =>
 
             Object.values(schoolData).slice().sort(getComparator(order, orderBy)).slice(
@@ -115,6 +114,10 @@ const SchoolTable = () => {
             ),
         [page, rowsPerPage, order, orderBy],
     );
+    // if (props.schoolResults[0] !== undefined ) {
+    //     visibleRows = props.schoolResults
+    // }
+
 
     const createSortHandler = (property) => (event) => {
         handleRequestSort(event, property);
