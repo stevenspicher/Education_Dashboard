@@ -1,9 +1,9 @@
 import React from "react";
 import {Routes, Route, Navigate} from 'react-router-dom';
 import 'bulma/css/bulma.min.css';
-import Home from "./screens/Home.jsx";
-import School from "./screens/School.jsx";
-import District from "./screens/District.jsx";
+import Home from "./pages/Home/Home.jsx";
+import School from "./pages/School/School.jsx";
+import District from "./pages/District/District.jsx";
 
 function App () {
     // TODO:  for eventual API data load:
