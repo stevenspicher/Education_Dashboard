@@ -4,39 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8d0d108c-4ac4-4e0b-8b45-613489021c53" name="Changes" comment="added top search to all pages&#10;implemented signal">
-      <change afterPath="$PROJECT_DIR$/educationdashboard/src/components/Charts/Charts.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/educationdashboard/src/pages/District/DistrictSchoolList/SchoolList.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/educationdashboard/src/pages/School/SchoolAcademicPerformance/functions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/educationdashboard/src/pages/School/SchoolClimateCards/SchoolClimateCards.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/educationdashboard/src/store/signalStore.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/educationdashboard/src/utils/functions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/components/Charts/chartFunctions.js" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/utils/chartFunctions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/components/District/DistrictAcademicPerformance/DistrictAcademicPerformance.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/pages/District/DistrictAcademicPerformance/DistrictAcademicPerformance.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/components/District/DistrictClimateCards/DistrictClimateCards.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/pages/District/DistrictClimateCards/DistrictClimateCards.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/components/District/DistrictDemographics/DistrictDemographics.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/pages/District/DistrictDemographics/DistrictDemographics.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/components/District/DistrictHeader/DistrictHeader.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/pages/District/DistrictHeader/DistrictHeader.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/components/District/DistrictMap/DistrictSchoolsMap.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/pages/District/DistrictMap/DistrictSchoolsMap.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/components/District/DistrictSchoolList/DistrictSchoolList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/pages/District/DistrictSchoolList/DistrictSchoolList.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/components/District/DistrictSchoolList/SchoolList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/components/Cards/Cards.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/components/District/DistrictSearch/FullSearch.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/components/Home/DistrictMap/DistrictsMapLegend.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/pages/Home/DistrictMap/DistrictsMapLegend.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/components/Home/DistrictMap/LiveMap.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/pages/Home/DistrictMap/LiveMap.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/components/Home/HomePageSearch/FullSearch.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/components/FullSearch.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/components/Home/Table/Table.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/pages/Home/Table/Table.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/components/School/SchoolAcademicPerformance/AcademicPerformance.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/pages/School/SchoolAcademicPerformance/AcademicPerformance.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/components/School/SchoolClimateCards/ClimateCards.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/components/School/SchoolDemographics/SchoolDemographics.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/pages/School/SchoolDemographics/SchoolDemographics.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/components/School/SchoolHeader/SchoolHeader.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/pages/School/SchoolHeader/SchoolHeader.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/components/School/SchoolSearch/FullSearch.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/screens/District.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/pages/District/District.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/screens/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/pages/Home/Home.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/screens/School.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/pages/School/School.jsx" afterDir="false" />
-    </list>
+    <list default="true" id="8d0d108c-4ac4-4e0b-8b45-613489021c53" name="Changes" comment="file structure cleanup;&#10;added transitions;" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -269,7 +237,14 @@
       <option name="project" value="LOCAL" />
       <updated>1699205212933</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="file structure cleanup;&#10;added transitions;">
+      <created>1699645115153</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1699645115153</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -321,6 +296,7 @@
     <MESSAGE value="Added Container and Paper styles;&#10;combined distict and state chart options (and functions)" />
     <MESSAGE value="added search to all screens, began updating home pagebased on results" />
     <MESSAGE value="added top search to all pages&#10;implemented signal" />
-    <option name="LAST_COMMIT_MESSAGE" value="added top search to all pages&#10;implemented signal" />
+    <MESSAGE value="file structure cleanup;&#10;added transitions;" />
+    <option name="LAST_COMMIT_MESSAGE" value="file structure cleanup;&#10;added transitions;" />
   </component>
 </project>
