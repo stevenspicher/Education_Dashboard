@@ -38,15 +38,7 @@ effect(() => {
         schoolCode.value = localStorage.getItem("code")
     } else schoolCode.value = undefined
 })
-// export const schoolId = computed(() => {
-//     if (schoolId.value === undefined)
-//     {return JSON.parse(localStorage.getItem("id"))}
-// })
-//
-// export const schoolCode = computed(() => {
-//     if (schoolCode.value === undefined)
-//     {return JSON.parse(localStorage.getItem("code"))}
-// })
+
 export const selectedSchool = computed(() => {
         if (elementaryData[schoolId.value] !== undefined) {
             return elementaryData[schoolId.value]
