@@ -4,8 +4,50 @@ import state from "../dataImport/stateData.json";
 
 
 export const createSchoolScoreData = (school, subject, code) => {
+    let chartTitle = subject;
 
-    let chartTitle = "Score Data for " + subject;
+    switch (subject) {
+        case "positiveReadingScoreAvg" :
+            chartTitle = "Students with Positive Reading Score";
+            break;
+        case "positiveMathScoreAvg" :
+            chartTitle = "Students with Positive Math Score";
+            break;
+        case "positiveScienceScoreAvg" :
+            chartTitle = "Students with Positive Science Score";
+            break;
+        case "gradRate" :
+            chartTitle = "On-time Graduation Rate";
+            break;
+        case "dropoutRate" :
+            chartTitle = "Dropout Percentage";
+            break;
+        case "collegeReady" :
+            chartTitle = "College-Ready Diploma Earners";
+            break;
+        case "careerReady" :
+            chartTitle = "Career-Ready Diploma Earners";
+            break;
+        case "studentsInPoverty" :
+            chartTitle = "Students in Poverty";
+            break;
+        case "studentsWithDisabilities" :
+            chartTitle = "Students with Disabilities";
+            break;
+        case "studentsWhite" :
+            chartTitle = "White";
+            break;
+        case "studentsBlack" :
+            chartTitle = "Black";
+            break;
+        case "studentsOther" :
+            chartTitle = "Other";
+            break;
+        case "ACTCompositeAVG" :
+            chartTitle = "Average ACT Score";
+            break;
+    }
+
     let scores = schoolScoreCheck(school, subject, code)
     if (code === "D") {
         return [["", school.schoolName, "State Average"],
