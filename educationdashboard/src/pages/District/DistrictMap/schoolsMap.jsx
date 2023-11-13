@@ -5,7 +5,7 @@ import {useNavigate} from "react-router-dom";
 import {selectedDistrict} from "../../../store/signalStore.js";
 import {navigateToPage} from "../../../utils/functions.js";
 
-const DistrictSchoolsMap = () => {
+const SchoolsMap = () => {
     const district = selectedDistrict.value.districtSchoolList
     const navigate = useNavigate();
     const districtSchooListGeodata = district.map((school, index) => {
@@ -39,4 +39,4 @@ const DistrictSchoolsMap = () => {
         )
 };
 
-export default DistrictSchoolsMap;
+export default SchoolsMap;

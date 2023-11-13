@@ -1,11 +1,11 @@
 import '../../index.css';
 import '../../css/search.css';
-import LiveMap from "./DistrictMap/LiveMap.jsx";
+import DistrictsMap from "./DistrictMap/districtsMap.jsx";
 import Paper from '@mui/material/Paper';
 import SchoolTable from "./Table/Table.jsx";
 import FullSearch from "../../components/FullSearch.jsx";
-import {Box, Container, FormControlLabel, Grow, Switch} from "@mui/material";
-import {useState} from "react";
+import {Container, Grow, } from "@mui/material";
+
 
 
 function Home() {
@@ -32,7 +32,7 @@ function Home() {
             <Grow in={true} timeout={1000}>
 
             <Paper elevation={elevationHeight} sx={{marginTop:"10px",  height: "690px"}}>
-                    <LiveMap />
+                    <DistrictsMap />
                 </Paper>
             </Grow>
             <Grow in={true} timeout={1000}>

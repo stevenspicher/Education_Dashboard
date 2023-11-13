@@ -1,7 +1,6 @@
-import districtsData from "../../dataImport/districtsData.json";
 import {useParams} from "react-router";
 import DistrictHeader from "./DistrictHeader/DistrictHeader.jsx";
-import DistrictSchoolsMap from "./DistrictMap/DistrictSchoolsMap.jsx";
+import SchoolsMap from "./DistrictMap/schoolsMap.jsx";
 import DistrictAcademicPerformance
     from "./DistrictAcademicPerformance/DistrictAcademicPerformance.jsx";
 import DistrictDemographics from "./DistrictDemographics/DistrictDemographics.jsx";
@@ -35,7 +34,7 @@ const District = () => {
                     justifyContent="space-evenly"
                     // alignItems="center"
                 >
-                    <DistrictSchoolsMap />
+                    <SchoolsMap />
                     <DistrictSchoolList />
                 </Stack>
             </Paper>
