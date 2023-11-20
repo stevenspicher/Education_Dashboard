@@ -14,7 +14,8 @@ const DistrictsMap = () => {
 
     let districtsData = districts.value;
     let districtGeoData = district_geoData.features;
-
+// console.log(districtsData)
+//         console.log(districtGeoData)
     const scorePopup = (id) => {
         let popUpText = "Graduation Rate"
         if (districtsData[id] !== undefined) {
@@ -59,6 +60,7 @@ const DistrictsMap = () => {
         let id = districtgeo.properties.district_id
         layer.bindPopup(scorePopup(id)
         ).openPopup();
+        console.log(layer.feature.properties)
         layer.options.fillColor = layerColor.value
         layer.options.weight = "2"
         layer.options.dashArray = "2"

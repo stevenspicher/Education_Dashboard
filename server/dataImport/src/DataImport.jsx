@@ -9,6 +9,7 @@ import etl_school_data from "../src/assets/etl_school_full_data_with_coords.json
 
 
 const ReportCardDataImport = () => {
+    const serverIP = "http://localhost:5001"
     const [reportCardData, setReportCardData] = useState(undefined);
     const [additionalInfoData, setAdditionalInfoData] = useState(undefined);
     const [geoData, setGeoData] = useState();
@@ -70,56 +71,56 @@ const ReportCardDataImport = () => {
 
 
         const sendJSONData = (data) => {
-            fetch('http://192.168.86.94:5001/posthomed', {
+            fetch('http://localhost:5001/posthomed', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(data.homeDistrictInfo, null, 2)
             })
-            fetch('http://192.168.86.94:5001/posthomes', {
+            fetch('http://localhost:5001/posthomes', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(data.homeSchoolInfo, null, 2)
             })
-            fetch('http://192.168.86.94:5001/poststate', {
+            fetch('http://localhost:5001/poststate', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(data.state, null, 2)
             })
-            fetch('http://192.168.86.94:5001/postdistricts', {
+            fetch('http://localhost:5001/postdistricts', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(data.districts, null, 2)
             })
-            fetch('http://192.168.86.94:5001/poste', {
+            fetch('http://localhost:5001/poste', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(data.e, null, 2)
             })
-            fetch('http://192.168.86.94:5001/posth', {
+            fetch('http://localhost:5001/posth', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(data.h, null, 2)
             })
-            fetch('http://192.168.86.94:5001/postm', {
+            fetch('http://localhost:5001/postm', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(data.m, null, 2)
             })
-            fetch('http://192.168.86.94:5001/postp', {
+            fetch('http://localhost:5001/postp', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -129,7 +130,7 @@ const ReportCardDataImport = () => {
         }
 
         const sendAPIData = (data) => {
-            fetch('http://192.168.86.94:5001/postservefile', {
+            fetch('http://localhost:5001/postservefile', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -149,7 +150,7 @@ const ReportCardDataImport = () => {
         }
 
         const getApiData = async () => {
-            const response = await fetch("http://192.168.86.94:5001/api.json");
+            const response = await fetch("http://localhost:5001/api.json");
             const data = await response.json();
             console.log(data);
         }

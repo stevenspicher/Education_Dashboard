@@ -4,13 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8d0d108c-4ac4-4e0b-8b45-613489021c53" name="Changes" comment="map legend and heat map">
+    <list default="true" id="8d0d108c-4ac4-4e0b-8b45-613489021c53" name="Changes" comment="updated to 2023 data">
+      <change afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/2022/districtsData.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/2022/e.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/2022/h.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/2022/homeDistrictData.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/2022/homeSchoolData.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/2022/m.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/2022/p.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/2022/stateData.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/css/district.css" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/css/district.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/css/schools.css" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/css/schools.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/css/search.css" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/css/search.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/pages/Home/Table/Table.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/pages/Home/Table/Table.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/educationdashboard/src/dataImport/districtsData.json" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/districtsData.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/educationdashboard/src/dataImport/e.json" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/e.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/educationdashboard/src/dataImport/h.json" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/h.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/educationdashboard/src/dataImport/homeDistrictData.json" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/homeDistrictData.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/educationdashboard/src/dataImport/homeSchoolData.json" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/homeSchoolData.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/educationdashboard/src/dataImport/m.json" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/m.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/educationdashboard/src/dataImport/p.json" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/p.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/educationdashboard/src/dataImport/stateData.json" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/stateData.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/educationdashboard/src/pages/Home/DistrictMap/districtsMap.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/pages/Home/DistrictMap/districtsMap.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/dataImport/src/DataImport.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/server/dataImport/src/DataImport.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,30 +72,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/steven/IdeaProjects/Education Dashboard/educationdashboard/src/pages/Home/DistrictMap&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Applications/IntelliJ IDEA.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/Users/steven/IdeaProjects/Education Dashboard/educationdashboard/src/dataImport/2022",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "ts.external.directory.path": "/Applications/IntelliJ IDEA.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/educationdashboard/src/dataImport/2022" />
       <recent name="$PROJECT_DIR$/educationdashboard/src/pages/Home/DistrictMap" />
       <recent name="$PROJECT_DIR$/educationdashboard/src/pages/District/DistrictClimateCards" />
       <recent name="$PROJECT_DIR$/educationdashboard/src/dataImport" />
       <recent name="$PROJECT_DIR$/educationdashboard/src/components/Home/DistrictMap" />
-      <recent name="$PROJECT_DIR$/server/dataImport/src/functions" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/educationdashboard/src/features/firebase" />
@@ -305,7 +318,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="signal_test" />
+                        <option value="data_fixes" />
                       </list>
                     </value>
                   </entry>
@@ -319,7 +332,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="installed react-leaflet;&#10;loaded district layers;&#10;started legend;" />
     <MESSAGE value="routing and some basic page work" />
     <MESSAGE value="readme updates" />
     <MESSAGE value="added map (main page version) to district page" />
@@ -343,6 +355,8 @@
     <MESSAGE value="file structure cleanup;&#10;added transitions;" />
     <MESSAGE value="fix chart titles" />
     <MESSAGE value="removed reducer/context items" />
-    <option name="LAST_COMMIT_MESSAGE" value="removed reducer/context items" />
+    <MESSAGE value="Added name column margin" />
+    <MESSAGE value="updated to 2023 data" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated to 2023 data" />
   </component>
 </project>
