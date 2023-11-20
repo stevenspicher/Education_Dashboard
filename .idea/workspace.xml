@@ -4,21 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8d0d108c-4ac4-4e0b-8b45-613489021c53" name="Changes" comment="removed reducer/context items">
-      <change afterPath="$PROJECT_DIR$/educationdashboard/src/pages/Home/DistrictMap/DistrictsHeatMap.jsx" afterDir="false" />
+    <list default="true" id="8d0d108c-4ac4-4e0b-8b45-613489021c53" name="Changes" comment="map legend and heat map">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/.firebaserc" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/features/firebase/.firebaserc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/firebase.json" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/features/firebase/firebase.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/main.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/pages/District/District.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/pages/District/District.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/pages/District/DistrictMap/DistrictSchoolsMap.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/pages/District/DistrictMap/schoolsMap.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/pages/Home/DistrictMap/DistrictsMapLegend.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/pages/Home/DistrictMap/DistrictsMapButtons.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/pages/Home/DistrictMap/LiveMap.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/pages/Home/DistrictMap/districtsMap.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/pages/Home/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/pages/Home/Home.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/pages/School/SchoolAcademicPerformance/functions.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/store/signalStore.js" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/store/signalStore.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/educationdashboard/src/css/district.css" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/css/district.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/educationdashboard/src/css/schools.css" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/css/schools.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/educationdashboard/src/css/search.css" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/css/search.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/educationdashboard/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/educationdashboard/src/pages/Home/Table/Table.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/pages/Home/Table/Table.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,11 +35,11 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;
   }
-}]]></component>
+}</component>
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
@@ -67,23 +59,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/steven/IdeaProjects/Education Dashboard/educationdashboard/src/pages/Home/DistrictMap",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "ts.external.directory.path": "/Applications/IntelliJ IDEA.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/steven/IdeaProjects/Education Dashboard/educationdashboard/src/pages/Home/DistrictMap&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Applications/IntelliJ IDEA.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/educationdashboard/src/pages/Home/DistrictMap" />
@@ -125,6 +117,8 @@
       <workItem from="1698166618397" duration="20455000" />
       <workItem from="1698288732082" duration="32605000" />
       <workItem from="1699657202437" duration="1217000" />
+      <workItem from="1700149012949" duration="4254000" />
+      <workItem from="1700503368485" duration="1689000" />
     </task>
     <task id="LOCAL-00001" summary="installed react-leaflet;&#10;loaded district layers;&#10;started legend;">
       <created>1690561038395</created>
