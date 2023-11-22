@@ -5,25 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8d0d108c-4ac4-4e0b-8b45-613489021c53" name="Changes" comment="updated to 2023 data">
-      <change afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/2022/districtsData.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/2022/e.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/2022/h.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/2022/homeDistrictData.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/2022/homeSchoolData.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/2022/m.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/2022/p.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/2022/stateData.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/district_demographic_join.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/schoolGeodata.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/public/schoolGeodata.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/dataImport/districtsData.json" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/districtsData.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/dataImport/e.json" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/e.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/dataImport/h.json" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/h.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/dataImport/homeDistrictData.json" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/homeDistrictData.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/dataImport/homeSchoolData.json" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/homeSchoolData.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/dataImport/m.json" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/m.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/dataImport/p.json" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/p.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/dataImport/stateData.json" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/stateData.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/educationdashboard/src/dataImport/schoolGeoData.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/educationdashboard/src/pages/District/DistrictMap/schoolsMap.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/pages/District/DistrictMap/schoolsMap.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/educationdashboard/src/pages/Home/DistrictMap/districtsMap.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/pages/Home/DistrictMap/districtsMap.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/dataImport/src/DataImport.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/server/dataImport/src/DataImport.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/dataImport/src/functions/mergeData_2.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/dataImport/src/functions/mergeData_2.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/public/geodata.json" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +69,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/steven/IdeaProjects/Education Dashboard/educationdashboard/src/dataImport/2022",
+    "last_opened_file_path": "/Users/steven/IdeaProjects/Education Dashboard/educationdashboard/src/dataImport",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -91,10 +82,10 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/educationdashboard/src/dataImport" />
       <recent name="$PROJECT_DIR$/educationdashboard/src/dataImport/2022" />
       <recent name="$PROJECT_DIR$/educationdashboard/src/pages/Home/DistrictMap" />
       <recent name="$PROJECT_DIR$/educationdashboard/src/pages/District/DistrictClimateCards" />
-      <recent name="$PROJECT_DIR$/educationdashboard/src/dataImport" />
       <recent name="$PROJECT_DIR$/educationdashboard/src/components/Home/DistrictMap" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -301,7 +292,14 @@
       <option name="project" value="LOCAL" />
       <updated>1699897726605</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="updated to 2023 data">
+      <created>1700509024721</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1700509024721</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

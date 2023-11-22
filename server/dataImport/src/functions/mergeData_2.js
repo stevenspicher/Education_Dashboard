@@ -115,13 +115,7 @@ console.log(combined)
                     teacherReturnRate: combined[schoolId]["TCHRETURN3yrAvg_PctCurrYr"],
                     ACTCompositeAVG: combined[schoolId]["ACT_Avg_CompositeScore"],
                 }
-                // districtSearch = Object.values(combined).find((district) => district["SchoolNm"] === combined[schoolId]["DistrictNm"]);
-                // if (districtSearch !== undefined) {
-                //     districtId = districtSearch["SCHOOLID"]
-                //     // if (districtId.toString().length === 6) {
-                //     //     districtId = "0" + districtId.toString()
-                //     // }
-                // }
+
 
                 m[schoolId] = {
                     schoolType: type,

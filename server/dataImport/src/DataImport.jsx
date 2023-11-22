@@ -50,6 +50,7 @@ const ReportCardDataImport = () => {
         // let schoolFeatures = []
         if (data) {
             data.map((school) => {
+                console.log(school)
                 let id = school["school_id"].toString()
                 if (id.length === 6) {
                     id = "0" + id
@@ -57,14 +58,16 @@ const ReportCardDataImport = () => {
                 if (school.lat !== "no_result")
                 schoolGeoData[id] =
                     {
+                        id: school.school_id,
                         lat: school.lat,
-                        lon: school.lon
+                        lon: school.lon,
+                        name: school.school
                     }
 
 
 
             });
-                writeGeoData(schoolGeoData)
+               writeGeoData(schoolGeoData)
         }
         ;
     }

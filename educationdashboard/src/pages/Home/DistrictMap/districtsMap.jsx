@@ -1,8 +1,9 @@
 import {MapContainer, TileLayer, GeoJSON} from "react-leaflet";
 import district_geoData from "../../../dataImport/district_geoData.json"
+import district_geoData2 from "../../../dataImport/district_demographic_join.json"
 import {
     districts,
-    mapDataType, districtsMapKey, layerColor, mapScore
+    mapDataType, districtsMapKey, layerColor, mapScore, selectedSchoolId
 } from "../../../store/signalStore.js";
 import DistrictsMapButtons from "./DistrictsMapButtons.jsx";
 import DistrictsHeatMap from "./DistrictsHeatMap.jsx";
@@ -12,12 +13,44 @@ import DistrictsHeatMap from "./DistrictsHeatMap.jsx";
 
 const DistrictsMap = () => {
 
+
+
     let districtsData = districts.value;
-    let districtGeoData = district_geoData.features;
-// console.log(districtsData)
-//         console.log(districtGeoData)
+    let districtGeoData = district_geoData2.features;
+    const districtFix = (districtgeo) => {
+
+        if (districtgeo.properties.district_full_name.includes("Bamberg")) {
+            return "0503999"
+        } else if (districtgeo.properties.district_id === "3803999"
+            || districtgeo.properties.district_id ==="3804999"
+            || districtgeo.properties.district_id === "3805999") { //3803999, 3804999, 3805999
+            return "3809999"}
+     else if (districtgeo.properties.district_full_name.includes("Barnwell School District 45")
+        ){
+        return "0645999"
+     }
+        else if (districtgeo.properties.district_full_name.includes("Barnwell School District 19") ||
+            districtgeo.properties.district_full_name.includes("Williston School District (Barnwell 29)"))
+        {
+            return "0648999"
+        }
+        else if (districtgeo.properties.district_full_name.includes("Clarendon") )
+        {
+            return "1406999"
+        }
+        else if (districtgeo.properties.district_full_name.includes("Hampton") ) {
+            return "2503999"
+
+        } else if (districtgeo.properties.district_full_name.includes("Richland School District Two") )
+        {
+            console.log(districtgeo)
+                return districtgeo.properties.district_id
+        }
+        else {return districtgeo.properties.district_id}
+    }
     const scorePopup = (id) => {
         let popUpText = "Graduation Rate"
+
         if (districtsData[id] !== undefined) {
         switch (mapDataType.value) {
             case "gradRate":
@@ -57,10 +90,9 @@ const DistrictsMap = () => {
         }
 
     const onEachDistrict = (districtgeo, layer) => {
-        let id = districtgeo.properties.district_id
+        let id = districtFix(districtgeo);
         layer.bindPopup(scorePopup(id)
         ).openPopup();
-        console.log(layer.feature.properties)
         layer.options.fillColor = layerColor.value
         layer.options.weight = "2"
         layer.options.dashArray = "2"
@@ -82,7 +114,8 @@ const DistrictsMap = () => {
                 key={districtsMapKey.value} //to cause rerender when district list is updated
                 style={style}
                 data={districtGeoData}
-                onEachFeature={onEachDistrict}/>
+                onEachFeature={onEachDistrict}
+            />
         </MapContainer>
 
     )

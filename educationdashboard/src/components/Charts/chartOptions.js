@@ -12,6 +12,12 @@ export  const optionsLegend = {
     legend:'top',
     // is3D:true,
     width:300,
-    height:250
-
+    height:250,
+    vAxis: {
+        viewWindow: {
+            min: 0,
+            max: 100
+        },
+        ticks: [0, 25, 50, 75, 100]
+    }
 };
