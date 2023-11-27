@@ -4,17 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8d0d108c-4ac4-4e0b-8b45-613489021c53" name="Changes" comment="updated to 2023 data">
-      <change afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/district_demographic_join.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/schoolGeodata.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/public/schoolGeodata.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/dataImport/schoolGeoData.json" beforeDir="false" />
+    <list default="true" id="8d0d108c-4ac4-4e0b-8b45-613489021c53" name="Changes" comment="fixed missing districts">
+      <change afterPath="$PROJECT_DIR$/educationdashboard/src/pages/District/DistrictMap/districtAndSchoolFix.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/educationdashboard/src/pages/District/DistrictMap/schoolsMap.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/pages/District/DistrictMap/schoolsMap.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/educationdashboard/src/pages/Home/DistrictMap/districtsMap.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/pages/Home/DistrictMap/districtsMap.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/dataImport/src/DataImport.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/server/dataImport/src/DataImport.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/dataImport/src/functions/mergeData_2.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/dataImport/src/functions/mergeData_2.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/public/geodata.json" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,23 +56,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/steven/IdeaProjects/Education Dashboard/educationdashboard/src/dataImport",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "ts.external.directory.path": "/Applications/IntelliJ IDEA.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/steven/IdeaProjects/Education Dashboard/educationdashboard/src/dataImport&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Applications/IntelliJ IDEA.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/educationdashboard/src/dataImport" />
@@ -123,6 +116,7 @@
       <workItem from="1699657202437" duration="1217000" />
       <workItem from="1700149012949" duration="4254000" />
       <workItem from="1700503368485" duration="1689000" />
+      <workItem from="1700667368706" duration="11599000" />
     </task>
     <task id="LOCAL-00001" summary="installed react-leaflet;&#10;loaded district layers;&#10;started legend;">
       <created>1690561038395</created>
@@ -299,7 +293,14 @@
       <option name="project" value="LOCAL" />
       <updated>1700509024721</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="fixed missing districts">
+      <created>1700668232025</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1700668232025</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -330,7 +331,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="routing and some basic page work" />
     <MESSAGE value="readme updates" />
     <MESSAGE value="added map (main page version) to district page" />
     <MESSAGE value="styling" />
@@ -355,6 +355,7 @@
     <MESSAGE value="removed reducer/context items" />
     <MESSAGE value="Added name column margin" />
     <MESSAGE value="updated to 2023 data" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated to 2023 data" />
+    <MESSAGE value="fixed missing districts" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed missing districts" />
   </component>
 </project>
