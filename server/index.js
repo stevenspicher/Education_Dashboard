@@ -23,6 +23,15 @@ app.post('/poststate', (req, res) => {
         res.status(200).json(result);
     });
 });
+
+app.post('/postall', (req, res) => {
+    fs.writeFile('../educationdashboard/src/dataImport/allSchoolsData.json', JSON.stringify(req.body), function (err) {
+        if (err) return console.log(err);
+        let result = (req.body);
+        console.log('receiving state data')
+        res.status(200).json(result);
+    });
+});
 app.post('/postdistricts', (req, res) => {
     fs.writeFile('../educationdashboard/src/dataImport/districtsData.json', JSON.stringify(req.body), function (err) {
         if (err) return console.log(err);

@@ -11,7 +11,7 @@ const clickHandler = (subject) => {
     districtsMapKey.value = subject;
     document.getElementById("gradRate").style.background= backgroundColor;
     document.getElementById("ACTCompositeAVG").style.background=backgroundColor;
-    document.getElementById("avgTeacherSalary").style.background=backgroundColor;
+    document.getElementById("avgTeacherSalaryLastYr").style.background=backgroundColor;
     document.getElementById("teacherReturnRate").style.background=backgroundColor;
 }
 return (
@@ -38,10 +38,10 @@ return (
         </Button>
         <Button
             style={{background:backgroundColor }}
-            id={"avgTeacherSalary"}
+            id={"avgTeacherSalaryLastYr"}
                 onClick={() => {
-                    clickHandler("avgTeacherSalary")
-                    document.getElementById("avgTeacherSalary").style.background='#f1b3f2';
+                    clickHandler("avgTeacherSalaryLastYr")
+                    document.getElementById("avgTeacherSalaryLastYr").style.background='#f1b3f2';
                 }}>
             Teacher Salary
         </Button>

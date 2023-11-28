@@ -55,13 +55,14 @@ export function mergeData(reportCardData, additionalInfoData, setSchoolData) {
     objCombine(collegeAndCareerReadiness, combined);
     objCombine(finance, combined);
     //combined = all data (except for when createSpecificDataObject is used)
-
+console.log(combined)
     // names of data files
     let h = {},
         e = {},
         m = {},
         p = {},
         state = {},
+        allSchools = {},
         districts = {},
         homeDistrictInfo = {},
         homeSchoolInfo = {},
@@ -71,11 +72,91 @@ export function mergeData(reportCardData, additionalInfoData, setSchoolData) {
         type;
     //Map through full list to create smaller data files
     Object.keys(combined).map((schoolId) => {
+        districtSchoolList = [];
+        Object.keys(combined).forEach((school) => {
+            const query = combined[school]["DistrictNm"]
+            if (query === combined[schoolId]["DistrictNm"])
+                districtSchoolList.push([{
+                    "schoolName": combined[school]["SchoolNm"],
+                    "id": school,
+                    "code": combined[school]["SCHOOLTYPECD"]
+                }])
+        })
 
+       const getNumberFromSalaryString = (salary) => {
+           let dollarRemoved = salary.replace("$", '');
+           let commaRemoved = dollarRemoved.replace(",","");
+           return Number(commaRemoved)
+       }
 
         // find year for gradrate
         let year = combined[schoolId]["ReportCardYear"].toString().slice(2)
+        switch (combined[schoolId]["SCHOOLTYPECD"]) {
+            case 'E':
+                type = "Elementary School";
+                break;
+            case 'M':
+                type = "Middle School";
+                break;
+            case 'P':
+                type = "Primary School";
+                break;
+            case 'H':
+                type = "High School";
+                break;
+            case 'D':
+                type = "District";
+                break;
+        }
 
+        allSchools[schoolId] = {
+            schoolName: combined[schoolId]["SchoolNm"],
+            schoolPhone: combined[schoolId]["hdphone"],
+            schoolType: type,
+            schoolCode: combined[schoolId]["SCHOOLTYPECD"],
+            schoolId: schoolId,
+            gradRate: combined[schoolId][`GRADRATE${year}`] ?? "*",
+            avgTeacherSalaryCurrYr: combined[schoolId]["TCHSALARY_AvgCurrYr"] !== "N/AV" ? getNumberFromSalaryString(combined[schoolId]["TCHSALARY_AvgCurrYr"]) : "*",
+            avgTeacherSalaryLastYr: combined[schoolId]["TCHSALARY_AvgLastYr"] !== "N/AV" ? getNumberFromSalaryString(combined[schoolId]["TCHSALARY_AvgLastYr"]) : "*",
+            teacherReturnRate: combined[schoolId]["TCHRETURN3yrAvg_PctCurrYr"],
+            ACTCompositeAVG: (type === "District" || type === "High School") ? combined[schoolId]["ACT_Avg_CompositeScore"] : "*",
+            districtName: combined[schoolId]["DistrictNm"],
+            districtId: type === "District" ? "*" : districtSearch(combined, schoolId),
+            city: combined[schoolId]["city"],
+            street: combined[schoolId]["street"],
+            totalStudents: combined[schoolId]["Enrollment"],
+            teacherCount: combined[schoolId]["TeacherCount"],
+
+            // demographics
+            studentsInPovertyPct: combined[schoolId]["StudentsinPoverty_PctCurrYr"],
+            studentsWithDisabilities:  combined[schoolId]["TotalN_Disabled"] !== "*" ? combined[schoolId]["TotalN_Disabled"] : 0,
+            ELLStudents: combined[schoolId]["TotalN_English\r\nLearner"] !== "*" ? combined[schoolId]["TotalN_English\r\nLearner"] : 0,
+            studentsWhite: combined[schoolId]["TotalN_Caucasian"] !== "*" ? combined[schoolId]["TotalN_Caucasian"] : 0,
+            studentsBlack: combined[schoolId]["TotalN_African\r\nAmerican"] !== "*" ? combined[schoolId]["TotalN_African\r\nAmerican"] : 0,
+            studentsAsianPacific: combined[schoolId]["TotalN_Asian\r\nPacific\r\nIslander"] !== "*" ? combined[schoolId]["TotalN_Asian\r\nPacific\r\nIslander"] : 0,
+            studentsHispanic: combined[schoolId]["TotalN_Hispanic"] !== "*" ? combined[schoolId]["TotalN_Hispanic"] : 0,
+            studentsAmericanIndian: combined[schoolId]["TotalN_American\r\nIndian"] !== "*" ? combined[schoolId]["TotalN_American\r\nIndian"] : 0,
+            ///cards
+            bullyAndHarass: combined[schoolId]["OCR_BullyHarass"],
+            parentFeelsSafe: combined[schoolId]["PAR_ChildFeelsSafe"],
+            teacherFeelsSafe: combined[schoolId]["TCH_IFeelSafe"],
+            violentAssaults:
+                combined[schoolId]["OCR_PhysAttachwWeapon"] +
+                combined[schoolId]["OCR_PhysAttachNoWeapon"] +
+                combined[schoolId]["OCR_PhysAttackwFirearm"] +
+                combined[schoolId]["OCR_Rape"] +
+                combined[schoolId]["OCR_SexAssault"] +
+                combined[schoolId]["OCR_RobNoWeapon"] +
+                combined[schoolId]["OCR_RobwWeapon"] +
+                combined[schoolId]["OCR_RobwFirearm"],
+            // academicPerformance
+            positiveReadingScoreAvg: (type === "District" || type === "High School") ? combined[schoolId]["E_PctABC"] : combined[schoolId]["E_PctME"],
+            positiveMathScoreAvg: (type === "District" || type === "High School") ? combined[schoolId]["M_PctABC"] : combined[schoolId]["M_PctME"],
+            positiveScienceScoreAvg: (type === "District" || type === "High School") ? combined[schoolId]["SC_PctABC"] : combined[schoolId]["SC_PctME"],
+            districtSchoolList: type === "District" ? districtSchoolList : [],
+        }
+
+        districtSchoolList = [];
         state = {
             //Elem, Middle, Primary
             positiveReadingScoreAvg_E: combined[9999999]["E_PctME"],
@@ -91,15 +172,14 @@ export function mergeData(reportCardData, additionalInfoData, setSchoolData) {
             ACTCompositeAVG: combined[9999999]["ACT_Avg_CompositeScore"],
             gradRate: combined[9999999][`GRADRATE${year}`],
             //demographics
-            studentsInPoverty: combined[9999999]["NTotal_ED"] / combined[9999999]["NTotal_ALL"],
-            studentsWithDisabilities: combined[9999999]["NTotal_DI"] / combined[9999999]["NTotal_ALL"],
-            ELLStudents: combined[9999999]["NTotal_EL"] / combined[9999999]["NTotal_ALL"],
-            studentsWhite: combined[9999999]["NTotal_CA"] / combined[9999999]["NTotal_ALL"],
-            studentsBlack: combined[9999999]["NTotal_AA"] / combined[9999999]["NTotal_ALL"],
-            studentsOther: (!Number.isNaN(combined[9999999]["NTotal_AP"]) ?? 0) + (!Number.isNaN(combined[9999999]["NTotal_AI"]) ?? 0) + (!Number.isNaN(combined[9999999]["NTotal_HI"]) ?? 0) / Number(combined[9999999]["NTotal_ALL"]),
+            studentsInPoverty: combined[9999999]["StudentsinPoverty_PctCurrYr"] / combined[9999999]["TotalN_ALL\r\nSTUDENTS"],
+            studentsWithDisabilities: combined[9999999]["TotalN_Disabled"] / combined[9999999]["TotalN_ALL\r\nSTUDENTS"],
+            ELLStudents: combined[9999999]["TotalN_EnglishLearner"] / combined[9999999]["TotalN_ALL\r\nSTUDENTS"],
+            studentsWhite: combined[9999999]["TotalN_Caucasian"] / combined[9999999]["TotalN_ALL\r\nSTUDENTS"],
+            studentsBlack: combined[9999999]["TotalN_African\r\nAmerican"] / combined[9999999]["TotalN_ALL\r\nSTUDENTS"],
+            studentsOther: (!Number.isNaN(combined[9999999]["TotalN_Asian\r\nPacific\r\nIslander"]) ?? 0) + (!Number.isNaN(combined[9999999]["TotalN_Asian\r\nPacific\r\nIslander"]) ?? 0) + (!Number.isNaN(combined[9999999]["TotalN_Hispanic"]) ?? 0) / Number(combined[9999999]["TotalN_ALL\r\nSTUDENTS"]),
         }
 
-console.log(combined)
         switch (combined[schoolId]["SCHOOLTYPECD"]) {
             case 'M':
                 type = "Middle School";
@@ -107,11 +187,12 @@ console.log(combined)
 
                 homeSchoolInfo[schoolId] = {
                     schoolName: combined[schoolId]["SchoolNm"],
+                    schoolPhone: combined[schoolId]["hdPhone"],
                     schoolType: type,
                     schoolCode: combined[schoolId]["SCHOOLTYPECD"],
                     schoolId: schoolId,
                     gradRate: combined[schoolId][`GRADRATE${year}`],
-                    avgTeacherSalary: combined[schoolId]["TCHSALARY_AvgCurrYr"],
+                    avgTeacherSalary: combined[schoolId]["TCHSALARY_AvgLastYr"], //TODO: update to current year when data is available
                     teacherReturnRate: combined[schoolId]["TCHRETURN3yrAvg_PctCurrYr"],
                     ACTCompositeAVG: combined[schoolId]["ACT_Avg_CompositeScore"],
                 }
@@ -119,7 +200,7 @@ console.log(combined)
 
                 m[schoolId] = {
                     schoolType: type,
-                    schoolPhone: combined[schoolId]["SchoolNm"], //FIX
+                    schoolPhone: combined[schoolId]["hdPhone"],
                     schoolName: combined[schoolId]["SchoolNm"],
                     districtName: combined[schoolId]["DistrictNm"],
                     districtId: districtSearch(combined, schoolId),
@@ -138,7 +219,7 @@ console.log(combined)
                     studentsOther: (!Number.isNaN(combined[schoolId]["NTotal_AP"]) ?? 0) + (!Number.isNaN(combined[schoolId]["NTotal_AI"]) ?? 0) + (!Number.isNaN(combined[schoolId]["NTotal_HI"]) ?? 0) / Number(combined[schoolId]["NTotal_ALL"]),
                     ///cards
                     bullyAndHarass: combined[schoolId]["OCR_BullyHarass"],
-                    avgTeacherSalary: combined[schoolId]["TCHSALARY_AvgCurrYr"],
+                    avgTeacherSalary: combined[schoolId]["TCHSALARY_AvgLastYr"],
                     parentFeelsSafe: combined[schoolId]["PAR_ChildFeelsSafe"],
                     teacherFeelsSafe: combined[schoolId]["TCH_IFeelSafe"],
                     violentAssaults:
@@ -170,11 +251,12 @@ console.log(combined)
 
                 homeSchoolInfo[schoolId] = {
                     schoolName: combined[schoolId]["SchoolNm"],
+                    schoolPhone: combined[schoolId]["hdPhone"],
                     schoolType: type,
                     schoolCode: combined[schoolId]["SCHOOLTYPECD"],
                     schoolId: schoolId,
                     gradRate: combined[schoolId][`GRADRATE${year}`],
-                    avgTeacherSalary: combined[schoolId]["TCHSALARY_AvgCurrYr"],
+                    avgTeacherSalary: combined[schoolId]["TCHSALARY_AvgLastYr"],
                     teacherReturnRate: combined[schoolId]["TCHRETURN3yrAvg_PctCurrYr"],
                     ACTCompositeAVG: combined[schoolId]["ACT_Avg_CompositeScore"],
                 }
@@ -182,6 +264,7 @@ console.log(combined)
                 e[schoolId] = {
                     schoolType: type,
                     schoolName: combined[schoolId]["SchoolNm"],
+                    schoolPhone: combined[schoolId]["hdPhone"],
                     districtName: combined[schoolId]["DistrictNm"],
                     districtId: districtSearch(combined, schoolId),
                     schoolId: schoolId,
@@ -199,7 +282,7 @@ console.log(combined)
                     studentsOther: (!Number.isNaN(combined[schoolId]["NTotal_AP"]) ?? 0) + (!Number.isNaN(combined[schoolId]["NTotal_AI"]) ?? 0) + (!Number.isNaN(combined[schoolId]["NTotal_HI"]) ?? 0) / Number(combined[schoolId]["NTotal_ALL"]),
                     ///cards
                     bullyAndHarass: combined[schoolId]["OCR_BullyHarass"],
-                    avgTeacherSalary: combined[schoolId]["TCHSALARY_AvgCurrYr"],
+                    avgTeacherSalary: combined[schoolId]["TCHSALARY_AvgLastYr"],
                     parentFeelsSafe: combined[schoolId]["PAR_ChildFeelsSafe"],
                     teacherFeelsSafe: combined[schoolId]["TCH_IFeelSafe"],
                     violentAssaults:
@@ -231,11 +314,12 @@ console.log(combined)
 
                 homeSchoolInfo[schoolId] = {
                     schoolName: combined[schoolId]["SchoolNm"],
+                    schoolPhone: combined[schoolId]["hdPhone"],
                     schoolCode: combined[schoolId]["SCHOOLTYPECD"],
                     schoolType: type,
                     schoolId: schoolId,
                     gradRate: combined[schoolId][`GRADRATE${year}`],
-                    avgTeacherSalary: combined[schoolId]["TCHSALARY_AvgCurrYr"],
+                    avgTeacherSalary: combined[schoolId]["TCHSALARY_AvgLastYr"],
                     teacherReturnRate: combined[schoolId]["TCHRETURN3yrAvg_PctCurrYr"],
                     ACTCompositeAVG: combined[schoolId]["ACT_Avg_CompositeScore"],
                 }
@@ -243,6 +327,7 @@ console.log(combined)
                 p[schoolId] = {
                     schoolType: type,
                     schoolName: combined[schoolId]["SchoolNm"],
+                    schoolPhone: combined[schoolId]["hdPhone"],
                     districtName: combined[schoolId]["DistrictNm"],
                     districtId: districtSearch(combined, schoolId),
                     schoolId: schoolId,
@@ -260,7 +345,7 @@ console.log(combined)
                     studentsOther: (!Number.isNaN(combined[schoolId]["NTotal_AP"]) ?? 0) + (!Number.isNaN(combined[schoolId]["NTotal_AI"]) ?? 0) + (!Number.isNaN(combined[schoolId]["NTotal_HI"]) ?? 0) / Number(combined[schoolId]["NTotal_ALL"]),
                     ///cards
                     bullyAndHarass: combined[schoolId]["OCR_BullyHarass"],
-                    avgTeacherSalary: combined[schoolId]["TCHSALARY_AvgCurrYr"],
+                    avgTeacherSalary: combined[schoolId]["TCHSALARY_AvgLastYr"],
                     parentFeelsSafe: combined[schoolId]["PAR_ChildFeelsSafe"],
                     teacherFeelsSafe: combined[schoolId]["TCH_IFeelSafe"],
                     violentAssaults:
@@ -273,9 +358,16 @@ console.log(combined)
                         combined[schoolId]["OCR_RobwWeapon"] +
                         combined[schoolId]["OCR_RobwFirearm"],
                     // academicPerformance - E/M/P
-                    positiveReadingScoreAvg: combined[schoolId]["E_PctME"],
-                    positiveMathScoreAvg: combined[schoolId]["M_PctME"],
-                    positiveScienceScoreAvg: combined[schoolId]["SC_PctME"],
+                    positiveReadingScoreAvgE: combined[schoolId]["E_PctME"],
+                    positiveMathScoreAvgE: combined[schoolId]["M_PctME"],
+                    positiveScienceScoreAvgE: combined[schoolId]["SC_PctME"],
+                    gradRate: combined[schoolId][`GRADRATE${year}`],
+                    dropoutRate: combined[schoolId]["DropoutRateCurrYr"],
+                    positiveReadingScoreAvgH: combined[schoolId]["E_PctABC"],
+                    positiveMathScoreAvgH: combined[schoolId]["M_PctABC"],
+                    positiveScienceScoreAvgH: combined[schoolId]["SC_PctABC"],
+                    collegeReady: combined[schoolId]["PctCollege"],
+                    careerReady: combined[schoolId]["PctCareer"],
                 }
                 // districtSearch = {};
                 // districtId = "";
@@ -293,17 +385,19 @@ console.log(combined)
 
                 homeSchoolInfo[schoolId] = {
                     schoolName: combined[schoolId]["SchoolNm"],
+                    schoolPhone: combined[schoolId]["hdPhone"],
                     schoolCode: combined[schoolId]["SCHOOLTYPECD"],
                     schoolType: type,
                     schoolId: schoolId,
                     gradRate: combined[schoolId][`GRADRATE${year}`],
-                    avgTeacherSalary: combined[schoolId]["TCHSALARY_AvgCurrYr"],
+                    avgTeacherSalary: combined[schoolId]["TCHSALARY_AvgLastYr"],
                     teacherReturnRate: combined[schoolId]["TCHRETURN3yrAvg_PctCurrYr"],
                     ACTCompositeAVG: combined[schoolId]["ACT_Avg_CompositeScore"],
                 }
 
                 h[schoolId] = {
                     schoolType: type,
+                    schoolPhone: combined[schoolId]["hdPhone"],
                     schoolName: combined[schoolId]["SchoolNm"],
                     districtName: combined[schoolId]["DistrictNm"],
                     districtId: districtSearch(combined, schoolId),
@@ -324,7 +418,7 @@ console.log(combined)
 
                     ///cards
                     bullyAndHarass: combined[schoolId]["OCR_BullyHarass"],
-                    avgTeacherSalary: combined[schoolId]["TCHSALARY_AvgCurrYr"],
+                    avgTeacherSalary: combined[schoolId]["TCHSALARY_AvgLastYr"],
                     parentFeelsSafe: combined[schoolId]["PAR_ChildFeelsSafe"],
                     teacherFeelsSafe: combined[schoolId]["TCH_IFeelSafe"],
                     violentAssaults:
@@ -366,7 +460,7 @@ console.log(combined)
                     schoolType: type,
                     schoolId: schoolId,
                     gradRate: combined[schoolId][`GRADRATE${year}`],
-                    avgTeacherSalary: combined[schoolId]["TCHSALARY_AvgCurrYr"],
+                    avgTeacherSalary: combined[schoolId]["TCHSALARY_AvgLastYr"],
                     teacherReturnRate: combined[schoolId]["TCHRETURN3yrAvg_PctCurrYr"],
                     ACTCompositeAVG: combined[schoolId]["ACT_Avg_CompositeScore"],
                 }
@@ -401,7 +495,7 @@ console.log(combined)
                     studentsWhite: combined[schoolId]["NTotal_CA"] / combined[schoolId]["NTotal_ALL"],
                     studentsBlack: combined[schoolId]["NTotal_AA"] / combined[schoolId]["NTotal_ALL"],
                     studentsOther: (!Number.isNaN(combined[schoolId]["NTotal_AP"]) ?? 0) + (!Number.isNaN(combined[schoolId]["NTotal_AI"]) ?? 0) + (!Number.isNaN(combined[schoolId]["NTotal_HI"]) ?? 0) / Number(combined[schoolId]["NTotal_ALL"]),
-                    avgTeacherSalary: combined[schoolId]["TCHSALARY_AvgCurrYr"],
+                    avgTeacherSalary: combined[schoolId]["TCHSALARY_AvgLastYr"],
                     teacherReturnRate: combined[schoolId]["TCHRETURN3yrAvg_PctCurrYr"],
                     teacherFeelsSafe: combined[schoolId]["TCH_IFeelSafe"],
                     parentFeelsSafe: combined[schoolId]["PAR_ChildFeelsSafe"],
@@ -422,8 +516,8 @@ console.log(combined)
                 type = "N/A";
         }
     })
-
-    setSchoolData({homeSchoolInfo, homeDistrictInfo, h, e, m, p, districts, state})
+console.log(allSchools)
+    setSchoolData({allSchools, homeSchoolInfo, homeDistrictInfo, h, e, m, p, districts, state})
 }
 
 const districtSearch = (combined, schoolId) => {

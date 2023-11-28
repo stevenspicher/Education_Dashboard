@@ -6,19 +6,21 @@ import {
     schoolCode,
     selectedSchoolCode,
     selectedSchoolId,
-    topSearchResults
+    topSearchResults, allSchools
 } from "../store/signalStore.js"
 import home from "../assets/home.png"
 import {navigateToPage} from "../utils/functions.js";
 
-const FullSearch = (props) => {
+const FullSearch = () => {
     const navigate = useNavigate();
     const searchName = (e) => {
         let result;
+
         if (fullSearchList.value !== undefined) {
             result = fullSearchList.value.filter((school) =>
-                school.name.toLowerCase().includes(e.target.value.toLowerCase())
-            )
+                school.name.toLowerCase().includes(e.target.value.toLowerCase()))
+
+
             const resultsSort = result?.sort((a, b) => a.name.localeCompare(b.name))
             topSearchResults.value = resultsSort
         }

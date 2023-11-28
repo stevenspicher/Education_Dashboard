@@ -14,8 +14,8 @@ const school = selectedSchool.value
                 alignItems="center"
             >
                 {climateCard(school, "bullyAndHarass")}
-                {climateCard(school, "avgTeacherSalary")}
-                {climateCard(school, "parentFeelsSafe")}
+                {climateCard(school, "avgTeacherSalaryLastYr")}
+                {climateCard(school, "teacherFeelsSafe")}
 
             </Stack>
             <Stack

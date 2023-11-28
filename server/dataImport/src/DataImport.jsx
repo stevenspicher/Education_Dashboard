@@ -95,6 +95,13 @@ const ReportCardDataImport = () => {
                 },
                 body: JSON.stringify(data.state, null, 2)
             })
+            fetch('http://localhost:5001/postall', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data.allSchools, null, 2)
+            })
             fetch('http://localhost:5001/postdistricts', {
                 method: 'POST',
                 headers: {

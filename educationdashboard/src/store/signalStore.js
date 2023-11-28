@@ -6,10 +6,15 @@ import primaryData from "../dataImport/p.json"
 import highSchoolData from "../dataImport/h.json"
 import districtsData from "../dataImport/districtsData.json"
 import stateData from "../dataImport/stateData.json"
+import allSchoolsData from "../dataImport/allSchoolsData.json"
+import school from "../pages/School/School.jsx";
 
-
-export const districts = signal(districtsData);
 export const schools = signal(homePageSchoolsData);
+export const districts = signal(districtsData);
+
+export const allSchools = signal(allSchoolsData)
+// export const districtsFromAllSchools = computed(Object.entries(allSchoolsData).filter((school => school[1].schoolCode === "D")));
+// export const schoolsFromAllSchools = computed(Object.entries(allSchoolsData).filter(school => school.code !== "D"));
 
 export const state = signal(stateData)
 export const selectedSchoolId = signal(undefined);
@@ -40,16 +45,17 @@ effect(() => {
 })
 
 export const selectedSchool = computed(() => {
-        if (elementaryData[schoolId.value] !== undefined) {
-            return elementaryData[schoolId.value]
-        } else if (middleData[schoolId.value] !== undefined) {
-            return middleData[schoolId.value]
-        } else if (highSchoolData[schoolId.value] !== undefined) {
-            return highSchoolData[schoolId.value]
-        } else if (primaryData[schoolId.value] !== undefined) {
-            return primaryData[schoolId.value]
-
-        } else return undefined
+        // if (elementaryData[schoolId.value] !== undefined) {
+        //     return elementaryData[schoolId.value]
+        // } else if (middleData[schoolId.value] !== undefined) {
+        //     return middleData[schoolId.value]
+        // } else if (highSchoolData[schoolId.value] !== undefined) {
+        //     return highSchoolData[schoolId.value]
+        // } else if (primaryData[schoolId.value] !== undefined) {
+        //     return primaryData[schoolId.value]
+        //
+        // } else return undefined
+    return allSchools.value[schoolId.value]
     }
 )
 export const selectedDistrict = computed(() => {
@@ -62,13 +68,13 @@ export const districtMapSearchResults = signal([])
 export const topSearchResults = signal([])
 export const fullSearchList = computed(() => {
     let list = [];
-    Object.values(schools.value).map((school) => {
+    Object.values(allSchools.value).map((school) => {
 
         list.push({name: school.schoolName, id: school.schoolId, code: school.schoolCode})
     })
-    Object.entries(districts.value).map((district) => {
-        list.push({name: district[1].schoolName, id: district[0], code: "D"})
-    })
+    // Object.entries(districts.value).map((district) => {
+    //     list.push({name: district[1].schoolName, id: district[0], code: "D"})
+    // })
     return list
 })
 
@@ -126,8 +132,8 @@ export const layerColor = computed(() => {
         if (Number(mapScore.value) > 80 && mapScore.value <= 90) return teacherReturnRateColorScale.value[4]
         if (Number(mapScore.value) > 90 && mapScore.value <= 100) return teacherReturnRateColorScale.value[5]
     }
-    if (mapDataType.value === "avgTeacherSalary") {
-        let salary = parseFloat(mapScore.value.replace(/,/g, ''))
+    if (mapDataType.value === "avgTeacherSalaryLastYr") {
+        let salary = mapScore.value
         if (salary <= 48000) return avgTeacherSalaryColorScale.value[1]
         if (salary > 48000 && salary <= 51000) return avgTeacherSalaryColorScale.value[2]
         if (salary > 51000 && salary <= 54000) return avgTeacherSalaryColorScale.value[3]

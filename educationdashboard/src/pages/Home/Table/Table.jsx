@@ -11,27 +11,26 @@ import {
     TableSortLabel, Typography
 } from "@mui/material";
 import {visuallyHidden} from "@mui/utils";
-import {schoolId, schools, schoolCode, selectedSchoolId, selectedSchoolCode} from "../../../store/signalStore"
-import { navigateToPage} from "../../../utils/functions.js";
+import {allSchools, topSearchResults} from "../../../store/signalStore"
+import {navigateToPage} from "../../../utils/functions.js";
 
 const SchoolTable = () => {
     const navigate = useNavigate();
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(10);
     const [order, setOrder] = useState('asc');
-    const [orderBy, setOrderBy] = useState('schoolName');
-    // const [schoolDataAPI, setSchoolDataAPI] = useState(undefined)
-    // if (api.api !== undefined) setSchoolDataAPI(api.api.homeSchoolInfo)
+    const [orderBy, setOrderBy] = useState('name');
+let schoolList = allSchools.value
 
     const headCells = [
         {
-            id: 'name',
+            id: 'schoolName',
             numeric: false,
             disablePadding: false,
             label: 'Name',
         },
         {
-            id: 'level',
+            id: 'schoolType',
             numeric: false,
             disablePadding: false,
             label: 'Education Level',
@@ -43,19 +42,19 @@ const SchoolTable = () => {
             label: 'Graduation Rate',
         },
         {
-            id: 'act',
+            id: 'ACTCompositeAVG',
             numeric: true,
             disablePadding: false,
             label: 'AVG ACT Score',
         },
         {
-            id: 'salary',
+            id: 'avgTeacherSalaryLastYr',
             numeric: true,
             disablePadding: false,
             label: 'AVG Teacher Salary',
         },
         {
-            id: 'retention',
+            id: 'teacherReturnRate',
             numeric: true,
             disablePadding: false,
             label: '3 YR Teacher Retention',
@@ -89,9 +88,12 @@ const SchoolTable = () => {
         const isAsc = orderBy === property && order === 'asc';
         setOrder(isAsc ? 'desc' : 'asc');
         setOrderBy(property);
+
+
     };
 
     function descendingComparator(a, b, orderBy) {
+
         if (b[orderBy] < a[orderBy]) {
             return -1;
         }
@@ -105,18 +107,15 @@ const SchoolTable = () => {
             ? (a, b) => descendingComparator(a, b, orderBy)
             : (a, b) => -descendingComparator(a, b, orderBy);
     }
+
     let visibleRows = useMemo(
         () =>
-
-            Object.values(schools.value).slice().sort(getComparator(order, orderBy)).slice(
+            Object.values(schoolList).slice().sort(getComparator(order, orderBy)).slice(
                 page * rowsPerPage,
                 page * rowsPerPage + rowsPerPage,
             ),
-        [page, rowsPerPage, order, orderBy],
+        [page, rowsPerPage, order, orderBy]
     );
-    // if (props.schoolResults[0] !== undefined ) {
-    //     visibleRows = props.schoolResults
-    // }
 
 
     const createSortHandler = (property) => (event) => {
@@ -130,7 +129,7 @@ const SchoolTable = () => {
                     <TableRow>
                         <TablePagination
                             rowsPerPageOptions={[5, 10, 25]}
-                            count={Object.entries(schools.value).length}
+                            count={Object.entries(allSchools.value).length}
                             rowsPerPage={rowsPerPage}
                             page={page}
                             onPageChange={handleChangePage}
@@ -164,7 +163,7 @@ const SchoolTable = () => {
                 </TableHead>
                 <TableBody>
 
-                    {schools.value === undefined ? <></> :
+                    {allSchools.value === undefined ? <></> :
                         visibleRows.map((school, index) => {
                             return (
                                 <TableRow
@@ -180,19 +179,19 @@ const SchoolTable = () => {
                                         </Typography>
                                     </TableCell>
                                     <TableCell component="th" scope="row">
-                                        <Typography>{school.schoolCode}</Typography>
+                                        <Typography>{school.schoolType}</Typography>
                                     </TableCell>
                                     <TableCell component="th" scope="row">
-                                        <Typography>{school.gradRate ?? ""}</Typography>
+                                        <Typography>{school.gradRate !== "*" ? school.gradRate + "%" :"*"}</Typography>
                                     </TableCell>
                                     <TableCell component="th" scope="row">
-                                        <Typography>{school.ACTCompositeAVG ?? ""}</Typography>
+                                        <Typography>{school.ACTCompositeAVG ?? "*"}</Typography>
                                     </TableCell>
                                     <TableCell component="th" scope="row">
-                                        <Typography>{school.avgTeacherSalary ?? ""}</Typography>
+                                        <Typography>{school.avgTeacherSalaryLastYr !== "*" ? "$" + school.avgTeacherSalaryLastYr : "*" }</Typography>
                                     </TableCell>
                                     <TableCell component="th" scope="row">
-                                        <Typography>{school.teacherReturnRate ?? ""}</Typography>
+                                        <Typography>{school.teacherReturnRate !== "*" ? school.teacherReturnRate + "%" : "*"}</Typography>
                                     </TableCell>
 
                                 </TableRow>

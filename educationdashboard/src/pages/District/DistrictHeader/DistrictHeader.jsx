@@ -1,8 +1,8 @@
-import { selectedDistrict} from "../../../store/signalStore.js";
+import {selectedSchool} from "../../../store/signalStore.js";
 
 const DistrictHeader = () => {
 
-    const district = selectedDistrict.value
+    const district = selectedSchool.value
     return (
         <div style={{textAlign: "center", padding: "10px"}}>
             <div className={"h1"}>{district.schoolName}</div>

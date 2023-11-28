@@ -1,7 +1,7 @@
 import {MapContainer, TileLayer, GeoJSON} from "react-leaflet";
 import district_geoData from "../../../dataImport/district_geoData.json"
 import {
-    districts,
+   allSchools,
     mapDataType, districtsMapKey, layerColor, mapScore,
 } from "../../../store/signalStore.js";
 import DistrictsMapButtons from "./DistrictsMapButtons.jsx";
@@ -12,7 +12,7 @@ import { districtFix} from "../../District/DistrictMap/districtAndSchoolFix.js";
 
 
 const DistrictsMap = () => {
-    let districtsData = districts.value;
+    let districtsData = allSchools.value;
     let districtGeoData = district_geoData.features;
     const scorePopup = (id) => {
         let popUpText = "Graduation Rate"
@@ -27,9 +27,9 @@ const DistrictsMap = () => {
                 popUpText = "AVG ACT Score: " + districtsData[id].ACTCompositeAVG
                 mapScore.value = districtsData[id].ACTCompositeAVG
                 break;
-            case "avgTeacherSalary":
-                popUpText = "Teacher Salary: " + districtsData[id].avgTeacherSalary
-                mapScore.value = districtsData[id].avgTeacherSalary.split("$")[1]
+            case "avgTeacherSalaryLastYr":
+                popUpText = "Teacher Salary: " + districtsData[id].avgTeacherSalaryLastYr
+                mapScore.value = districtsData[id].avgTeacherSalaryLastYr
                 break;
             case "teacherReturnRate":
                 popUpText = "Teacher Retention: " + districtsData[id].teacherReturnRate  + "%"

@@ -36,7 +36,7 @@ switch (mapDataType.value) {
                     </Stack>
             </Control>
         )
-    case "avgTeacherSalary":
+    case "avgTeacherSalaryLastYr":
         return (
             <Control prepend position='bottomright'>
                 <Stack>

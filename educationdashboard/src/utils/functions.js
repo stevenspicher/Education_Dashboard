@@ -13,6 +13,20 @@ export const getIdAndCode = (idAndCode) => {
     }
     return true
 }
+
+export const getSchoolType = (code) => {
+    switch (code) {
+        case "E" :
+            return "Elementary School";
+        case "M":
+            return "Middle School";
+        case "P":
+            return "Primary School";
+        case "H":
+            return "High School";
+        default: return "Other";
+    }
+}
 //// Creates url parameters for school or district,
 //// Navigates to appropriate page
 export const navigateToPage = (school, navigate) => {
@@ -24,3 +38,4 @@ export const navigateToPage = (school, navigate) => {
     selectedSchoolCode.value = school.schoolCode;
     selectedSchoolId.value = school.schoolId;
 };
+

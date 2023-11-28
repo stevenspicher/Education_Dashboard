@@ -7,7 +7,7 @@ export const climateCard = (school, subject) => {
         case "bullyAndHarass":
             cardTitle = "Number of incidents of bullying or harassment"
             break;
-        case "avgTeacherSalary":
+        case "avgTeacherSalaryLastYr":
             cardTitle = "Average teacher pay"
             break;
         case "parentFeelsSafe":
