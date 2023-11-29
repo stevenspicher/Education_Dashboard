@@ -2,9 +2,8 @@ import '../../index.css';
 import '../../css/search.css';
 import DistrictsMap from "./DistrictMap/districtsMap.jsx";
 import Paper from '@mui/material/Paper';
-import SchoolTable,  from "./Table/Table.jsx";
-import {Container, Grow, Stack, TableCell,} from "@mui/material";
-import {searchInput} from "../../store/signalStore.js";
+import SchoolTable  from "./Table/Table.jsx";
+import {Container, Grow, Stack} from "@mui/material";
 import SchoolIcon from "@mui/icons-material/School.js";
 
 

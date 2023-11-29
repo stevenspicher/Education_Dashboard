@@ -1,6 +1,5 @@
 import {selectedSchoolId} from "../../../store/signalStore.js";
 import district_geoData from "../../../dataImport/district_geoData.json";
-// import district_geoData from "../../../dataImport/district_demographic_join.json";
 import schoolGeoData from "../../../dataImport/schoolGeoData.json";
 
 export  const districtFix = (districtgeo) => {

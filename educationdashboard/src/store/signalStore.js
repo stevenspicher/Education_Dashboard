@@ -1,24 +1,13 @@
 import {computed, effect, signal} from "@preact/signals-react";
-import homePageSchoolsData from "../dataImport/homeSchoolData.json"
-import middleData from "../dataImport/m.json"
-import elementaryData from "../dataImport/e.json"
-import primaryData from "../dataImport/p.json"
-import highSchoolData from "../dataImport/h.json"
-import districtsData from "../dataImport/districtsData.json"
+
 import stateData from "../dataImport/stateData.json"
 import allSchoolsData from "../dataImport/allSchoolsData.json"
-import school from "../pages/School/School.jsx";
 
-export const schools = signal(homePageSchoolsData);
-export const districts = signal(districtsData);
 
 export const allSchools = signal(allSchoolsData)
-// export const districtsFromAllSchools = computed(Object.entries(allSchoolsData).filter((school => school[1].schoolCode === "D")));
-// export const schoolsFromAllSchools = computed(Object.entries(allSchoolsData).filter(school => school.code !== "D"));
 
 export const state = signal(stateData)
 export const selectedSchoolId = signal(undefined);
-export const selectedDistrictId = signal(undefined);
 export const selectedSchoolCode = signal(undefined);
 export const schoolCode = signal(undefined)
 export const schoolId = signal(undefined)
@@ -60,7 +49,7 @@ export const selectedSchool = computed(() => {
 )
 export const selectedDistrict = computed(() => {
         // if (districts.value[Number(schoolId.value] !== undefined)
-        return districts.value[schoolId.value]
+        return allSchools.value[schoolId.value]
         })
 
 export const schoolTableSearchResults = signal([])
@@ -104,7 +93,7 @@ export const topSearchResultsSchoolOnly = computed(
 )
 export const topSearchResultsObj = computed(() => {
     let obj = {};
-     Object.entries(topSearchResults.value).map((result, index) => {
+     Object.entries(topSearchResults.value).map((result) => {
          if (result[1].schoolCode === "D")
          obj[result[1].schoolId] = result[1]
      })

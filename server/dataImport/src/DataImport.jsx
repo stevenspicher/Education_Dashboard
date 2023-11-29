@@ -2,14 +2,12 @@ import {useState} from "react";
 
 import {Box, Typography, Button} from "@mui/material";
 import CheckIcon from "@mui/icons-material/Check";
-import {mergeData} from "./functions/mergeData_2"
+import {mergeData} from "./functions/mergeData"
 import {ReportCardImport} from "./importScripts/ReportCardImport.js";
 import {AdditionalInfoImport} from "./importScripts/AdditionalInfoImport.js";
-import etl_school_data from "../src/assets/etl_school_full_data_with_coords.json"
 
 
 const ReportCardDataImport = () => {
-    const serverIP = "http://localhost:5001"
     const [reportCardData, setReportCardData] = useState(undefined);
     const [additionalInfoData, setAdditionalInfoData] = useState(undefined);
     const [geoData, setGeoData] = useState();
@@ -69,25 +67,12 @@ const ReportCardDataImport = () => {
             });
                writeGeoData(schoolGeoData)
         }
-        ;
+
     }
 
 
         const sendJSONData = (data) => {
-            fetch('http://localhost:5001/posthomed', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data.homeDistrictInfo, null, 2)
-            })
-            fetch('http://localhost:5001/posthomes', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data.homeSchoolInfo, null, 2)
-            })
+
             fetch('http://localhost:5001/poststate', {
                 method: 'POST',
                 headers: {
@@ -101,41 +86,6 @@ const ReportCardDataImport = () => {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(data.allSchools, null, 2)
-            })
-            fetch('http://localhost:5001/postdistricts', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data.districts, null, 2)
-            })
-            fetch('http://localhost:5001/poste', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data.e, null, 2)
-            })
-            fetch('http://localhost:5001/posth', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data.h, null, 2)
-            })
-            fetch('http://localhost:5001/postm', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data.m, null, 2)
-            })
-            fetch('http://localhost:5001/postp', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data.p, null, 2)
             })
         }
 
@@ -201,17 +151,18 @@ const ReportCardDataImport = () => {
                     name="myfile"/>
                 {additionalInfoVerified ? <CheckIcon/> : <></>}
 
-                <Typography>Import CSV</Typography>
-                <input
-                    style={{maxWidth: "400px"}}
-                    type="file"
-                    multiple
-                    onChange={(e) => {
-                        // geoDataConversion(e.target.files[0])
-                    }
-                    }
-                    name="myfile"/>
-                {additionalInfoVerified ? <CheckIcon/> : <></>}
+                {/*<Typography>Import CSV</Typography>*/}
+                {/*<input*/}
+                {/*    style={{maxWidth: "400px"}}*/}
+                {/*    type="file"*/}
+                {/*    multiple*/}
+                {/*    onChange={(e) => {*/}
+                {/*        // geoDataConversion(e.target.files[0])*/}
+                {/*    }*/}
+                {/*    }*/}
+                {/*    name="myfile"/>*/}
+                {/*{additionalInfoVerified ? <CheckIcon/> : <></>}*/}
+<div>
 
                 <Button onClick={() => {
                     mergeData(reportCardData, additionalInfoData, setSchoolData, currentYear);
@@ -219,17 +170,18 @@ const ReportCardDataImport = () => {
                 <Button onClick={() => {
                     sendJSONData(schoolData)
                 }}>Send Data To React</Button>
-                <Button onClick={() => {
-                    sendAPIData(schoolData)
-                }}>Send Data To API</Button>
+</div>
+                {/*<Button onClick={() => {*/}
+                {/*    sendAPIData(schoolData)*/}
+                {/*}}>Send Data To API</Button>*/}
 
-                <Button onClick={() => {
-                    getApiData()
-                }}>Get API</Button>
+                {/*<Button onClick={() => {*/}
+                {/*    getApiData()*/}
+                {/*}}>Get API</Button>*/}
 
-                <Button onClick={() => {
-                    geoDataConversion(etl_school_data)
-                }}>Convert GeoData</Button>
+                {/*<Button onClick={() => {*/}
+                {/*    geoDataConversion(etl_school_data)*/}
+                {/*}}>Convert GeoData</Button>*/}
 
             </Box>
         )

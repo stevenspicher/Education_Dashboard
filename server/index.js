@@ -28,68 +28,15 @@ app.post('/postall', (req, res) => {
     fs.writeFile('../educationdashboard/src/dataImport/allSchoolsData.json', JSON.stringify(req.body), function (err) {
         if (err) return console.log(err);
         let result = (req.body);
-        console.log('receiving state data')
-        res.status(200).json(result);
-    });
-});
-app.post('/postdistricts', (req, res) => {
-    fs.writeFile('../educationdashboard/src/dataImport/districtsData.json', JSON.stringify(req.body), function (err) {
-        if (err) return console.log(err);
-        let result = (req.body);
-        console.log("receiving district data")
+        console.log('receiving school data')
         res.status(200).json(result);
     });
 });
 
-app.post('/posthomed', (req, res) => {
-    fs.writeFile('../educationdashboard/src/dataImport/homeDistrictData.json', JSON.stringify(req.body), function (err) {
-        if (err) return console.log(err);
-        let result = (req.body);
-        console.log("receiving Home page district data")
-        res.status(200).json(result);
-    });
-});
-app.post('/posthomes', (req, res) => {
-    fs.writeFile('../educationdashboard/src/dataImport/homeSchoolData.json', JSON.stringify(req.body), function (err) {
-        if (err) return console.log(err);
-        let result = (req.body);
-        console.log("receiving Home page school data")
-        res.status(200).json(result);
-    });
-});
 
-app.post('/posth', (req, res) => {
-    fs.writeFile('../educationdashboard/src/dataImport/h.json', JSON.stringify(req.body), function (err) {
-        if (err) return console.log(err);
-        let result = (req.body);
-        console.log("receiving High School")
-        res.status(200).json(result);
-    });
-});
-app.post('/poste', (req, res) => {
-    fs.writeFile('../educationdashboard/src/dataImport/e.json', JSON.stringify(req.body), function (err) {
-        if (err) return console.log(err);
-        let result = (req.body);
-        console.log("receiving Elementary")
-        res.status(200).json(result);
-    });
-});
-app.post('/postm', (req, res) => {
-    fs.writeFile('../educationdashboard/src/dataImport/m.json', JSON.stringify(req.body), function (err) {
-        if (err) return console.log(err);
-        let result = (req.body);
-        console.log("receiving Middle")
-        res.status(200).json(result);
-    });
-});
-app.post('/postp', (req, res) => {
-    fs.writeFile('../educationdashboard/src/dataImport/p.json', JSON.stringify(req.body), function (err) {
-        if (err) return console.log(err);
-        let result = (req.body);
-        console.log("receiving Primary")
-        res.status(200).json(result);
-    });
-});
+
+
+
 
 app.post('/postservefile', (req, res) => {
     fs.writeFile('./public/api.json', JSON.stringify(req.body), function (err) {
