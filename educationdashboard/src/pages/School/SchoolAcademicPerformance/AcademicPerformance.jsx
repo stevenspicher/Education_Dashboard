@@ -1,9 +1,9 @@
 import {Stack} from "@mui/material";
 import {selectedSchool} from "../../../store/signalStore"
 import {schoolScoreDataChart} from "../../../components/Charts/Charts.jsx";
-
 const AcademicPerformance = () => {
     const school = selectedSchool.value
+
     return (
         <Stack>
             <h5 className={"chart-title"} style={{marginLeft: "100px",  marginTop: "10px"}}>Academic Performance</h5>

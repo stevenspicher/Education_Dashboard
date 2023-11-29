@@ -2,9 +2,11 @@
 import {Stack} from "@mui/material";
 import {selectedDistrict} from "../../../store/signalStore.js";
 import {schoolScoreDataChart} from "../../../components/Charts/Charts.jsx";
-
+import state from "../../../dataImport/stateData.json"
 const DistrictDemographics = () => {
     const district = selectedDistrict.value
+    console.log(district)
+    console.log(state)
     return (
 
         <Stack>
@@ -15,7 +17,7 @@ const DistrictDemographics = () => {
                 justifyContent="space-evenly"
                 alignItems="center"
             >
-                {schoolScoreDataChart(district, "studentsInPoverty", "D")}
+                {schoolScoreDataChart(district, "studentsInPovertyPct", "D")}
                 {schoolScoreDataChart(district, "studentsWithDisabilities", "D")}
 
             </Stack>
@@ -25,6 +27,17 @@ const DistrictDemographics = () => {
                 justifyContent="space-evenly"
                 alignItems="center"
             >
+
+            </Stack>
+            <Stack
+                className="chart-container"
+                direction="row"
+                justifyContent="space-evenly"
+                alignItems="center"
+            >
+                {schoolScoreDataChart(district, "studentsWhite", "D")}
+                {schoolScoreDataChart(district, "studentsBlack", "D")}
+                {schoolScoreDataChart(district, "studentsOther", "D" )}
 
             </Stack>
 

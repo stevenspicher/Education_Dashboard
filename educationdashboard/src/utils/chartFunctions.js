@@ -30,7 +30,7 @@ export const createSchoolScoreData = (school, subject, code) => {
         case "careerReady" :
             chartTitle = "Career-Ready Diploma Earners";
             break;
-        case "studentsInPoverty" :
+        case "studentsInPovertyPct" :
             chartTitle = "Students in Poverty";
             break;
         case "studentsWithDisabilities" :
@@ -59,6 +59,9 @@ export const createSchoolScoreData = (school, subject, code) => {
             [chartTitle, scores.school, scores.school+ "%", scores.district, scores.district+ "%", scores.state, scores.state+ "%"]]
     }
 };
+    let schoolSubjectAvg = 0,
+        districtSubjectAvg= 0,
+        stateSubjectAvg = 0;
 const schoolScoreCheck = (school, subject, code) => {
     if (subject === "positiveReadingScoreAvg" ||
         subject === "positiveMathScoreAvg" ||
@@ -68,17 +71,62 @@ const schoolScoreCheck = (school, subject, code) => {
         if (schools[school["districtId"]] === undefined) {
             ///district page
             return {
-                school: Number(school[`${subject}_E`]) ? Number(school[`${subject}_E`]) : 0,
+                school: Number(school[`${subject}`]) ? Number(school[`${subject}`]) : 0,
                 state: Number(state[`${subject}_E`]) ? Number(state[`${subject}_E`]) : 0
             }
         } else
             ///school page
             return {
                 school: Number(school[subject]) ? Number(school[subject]) : 0,
-                district: Number(schools[school["districtId"]][`${subject}_${code}`]) ? Number(schools[school["districtId"]][`${subject}_${code}`]) : 0,
+                district: Number(schools[school["districtId"]][`${subject}`]) ? Number(schools[school["districtId"]][`${subject}`]) : 0,
                 state: Number(state[`${subject}_E`]) ? Number(state[`${subject}_E`]) : 0
             }
-    } else {
+//disabilties and ethnicity
+    } else if (subject === "studentsWithDisabilities" ||
+        subject === "studentsWhite" ||
+        subject === "studentsBlack"
+    ) {
+        schoolSubjectAvg = Math.round((school[subject]/school["totalStudents"] * 100) * 100) / 100
+        stateSubjectAvg = Math.round((state[subject]/state["totalStudents"] * 100) * 100) / 100
+        districtSubjectAvg = schools[school["districtId"]] !== undefined ?
+            Math.round((schools[school["districtId"]][subject]/schools[school["districtId"]]["totalStudents"]* 100) * 100) / 100 : 0
+        if (schools[school["districtId"]] === undefined) {
+            ///district page
+            return {
+                school: schoolSubjectAvg,
+                state: stateSubjectAvg,
+            }
+        } else
+            ///school page
+            return {
+                school: schoolSubjectAvg,
+                district: districtSubjectAvg,
+                state: stateSubjectAvg,
+            }
+        // "other
+    } else if (subject === "studentsOther") {
+        let schoolTotalOther = school.studentsAmericanIndian + school.studentsHispanic + school.studentsAsianPacific
+        let stateTotalOther = state.studentsAmericanIndian + state.studentsHispanic + state.studentsAsianPacific
+        let districtTotalOther = schools[school["districtId"]] !== undefined ? schools[school["districtId"]].studentsAmericanIndian + schools[school["districtId"]].studentsHispanic + schools[school["districtId"]].studentsAsianPacific : 0
+        schoolSubjectAvg = Math.round((schoolTotalOther/school["totalStudents"] * 100) * 100) / 100
+        stateSubjectAvg = Math.round((stateTotalOther/state["totalStudents"] * 100) * 100) / 100
+        districtSubjectAvg = schools[school["districtId"]] !== undefined ?
+            Math.round((districtTotalOther/schools[school["districtId"]]["totalStudents"]* 100) * 100) / 100 : 0
+        if (schools[school["districtId"]] === undefined) {
+            ///district page
+            return {
+                school: schoolSubjectAvg,
+                state: stateSubjectAvg,
+            }
+        } else
+            ///school page
+            return {
+                school: schoolSubjectAvg,
+                district: districtSubjectAvg,
+                state: stateSubjectAvg,
+            }
+    }
+    else {
 //subjects not requiring e/m/p/h distinction
         if (schools[school["districtId"]] === undefined) {
             ///district page
