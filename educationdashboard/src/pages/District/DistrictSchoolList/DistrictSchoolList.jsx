@@ -7,9 +7,8 @@ const DistrictSchoolList = () => {
     const district = selectedDistrict.value
     const navigate = useNavigate();
     const displaySchoolInfo = (school, code) => {
-        //TODO = change type to code when this is created
-        if (school.type === code) {
-            school.schoolCode = code
+
+        if (school.code === code) {
             school.schoolId = school.id
             return (
                 <Link onClick={() => {
