@@ -1,8 +1,8 @@
 import {MapContainer, TileLayer, GeoJSON} from "react-leaflet";
 import district_geoData from "../../../dataImport/district_geoData.json"
 import {
-   allSchools,
-    mapDataType, districtsMapKey, layerColor, mapScore,
+    allSchools,
+    mapDataType, districtsMapKey, layerColor, mapScore, topSearchResultsObj, topSearchResults,
 } from "../../../store/signalStore.js";
 import DistrictsMapButtons from "./DistrictsMapButtons.jsx";
 import DistrictsHeatMap from "./DistrictsHeatMap.jsx";
@@ -12,7 +12,8 @@ import { districtFix} from "../../District/DistrictMap/districtAndSchoolFix.js";
 
 
 const DistrictsMap = () => {
-    let districtsData = allSchools.value;
+    let districtsData = topSearchResults.value.length !== 0 ? topSearchResultsObj.value :  allSchools.value;
+
     let districtGeoData = district_geoData.features;
     const scorePopup = (id) => {
         let popUpText = "Graduation Rate"
@@ -50,25 +51,26 @@ const DistrictsMap = () => {
 
     const style =
         {
-            fillOpacity: 2,
-            weight: 4,
-            dashArray: 1
+            fillOpacity: 0,
+            dashArray: 0
         }
 
     const onEachDistrict = (districtgeo, layer) => {
         let id = districtFix(districtgeo);
-        layer.bindPopup(scorePopup(id)
-        ).openPopup();
-        layer.options.fillColor = layerColor.value
-        layer.options.weight = "2"
-        layer.options.dashArray = "2"
-        // layer.options.fillOpacity = "3",
-
+        layer.options.dashArray = "0"
+        layer.options.weight = "0"
+        if (districtsData[id] !== undefined) {
+            layer.bindPopup(scorePopup(id)
+            ).openPopup();
+            layer.options.fillColor = layerColor.value
+            layer.options.weight = "2"
+            layer.options.dashArray = "2"
+            layer.options.fillOpacity = "3"
+        }
     }
-
     return (
 
-        <MapContainer id={"map"} center={[33.7, -81.1]} zoom={8} scrollWheelZoom={false}
+        <MapContainer id={"map"} center={[33.65, -81.4]} zoom={8} scrollWheelZoom={false}
                       style={{height: "100%"}}>
             <TileLayer
                 attribution=' Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>'

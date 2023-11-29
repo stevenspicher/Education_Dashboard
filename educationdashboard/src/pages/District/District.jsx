@@ -17,17 +17,17 @@ const District = () => {
     return (
         <Container>
             <Grow in={true} timeout={1000}>
-    <Paper elevation={elevationHeight} sx={{marginTop:"10px"}} >
+    <Paper elevation={elevationHeight} sx={{marginTop:"10px", border: '1px solid black'}} >
             <FullSearch/>
         </Paper>
             </Grow>
             <Grow in={true} timeout={1000}>
-            <Paper elevation={elevationHeight} sx={{marginTop:"10px"}}>
+            <Paper elevation={elevationHeight} sx={{marginTop:"10px", border: '1px solid black'}}>
                 <DistrictHeader />
             </Paper>
             </Grow>
             <Grow in={true} timeout={1000}>
-            <Paper elevation={elevationHeight} sx={{marginTop:"10px"}}>
+            <Paper elevation={elevationHeight} sx={{marginTop:"10px", border: '1px solid black'}}>
                 <Stack
                     className="chart-container"
                     direction="row"
@@ -40,15 +40,15 @@ const District = () => {
             </Paper>
             </Grow>
             <Grow in={true} timeout={1000}>
-            <Paper elevation={elevationHeight} sx={{marginTop:"10px"}}>
+            <Paper elevation={elevationHeight} sx={{marginTop:"10px", border: '1px solid black'}}>
                 <DistrictAcademicPerformance/>
             </Paper>
             </Grow>
-            <Paper elevation={elevationHeight} sx={{marginTop:"10px"}}>
+            <Paper elevation={elevationHeight} sx={{marginTop:"10px", border: '1px solid black'}}>
                 <DistrictDemographics />
             </Paper>
             <Grow in={true} timeout={1000}>
-            <Paper elevation={elevationHeight} sx={{marginTop:"10px"}}>
+            <Paper elevation={elevationHeight} sx={{marginTop:"10px", border: '1px solid black'}}>
                 <DistrictClimateCards/>
             </Paper>
             </Grow>

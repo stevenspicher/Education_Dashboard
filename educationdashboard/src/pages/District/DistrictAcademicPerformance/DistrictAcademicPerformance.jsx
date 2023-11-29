@@ -7,7 +7,7 @@ const DistrictAcademicPerformance = () => {
     const district = selectedDistrict.value
     return (
         <Stack>
-            <h5 className={"chart-title"} style={{marginLeft:"100px"}}>Academic Performance</h5>
+            <h5 className={"chart-title"} style={{marginLeft:"100px", marginTop: "10px"}}>Academic Performance</h5>
             <Stack
                 className="chart-container"
                 direction="row"

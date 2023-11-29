@@ -9,7 +9,7 @@ export const options = {
 export  const optionsLegend = {
 
     // backgroundColor: "#f3f4f2",
-    legend:'top',
+    legend: "none",
     // is3D:true,
     width:300,
     height:250,
@@ -19,5 +19,6 @@ export  const optionsLegend = {
             max: 100
         },
         ticks: [0, 25, 50, 75, 100]
-    }
+    },
+    fontSize: 15,
 };

@@ -6,7 +6,7 @@ const SchoolDemographics = () => {
     const school = selectedSchool.value
     return (
         <Stack>
-            <h5 style={{marginLeft: "100px"}}>Demographics</h5>
+            <h5 style={{marginLeft: "100px", marginTop: "10px"}} className={"chart-title"}>Demographics</h5>
             <Stack
                 className="chart-container"
                 direction="row"

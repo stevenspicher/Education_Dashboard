@@ -7,7 +7,7 @@ const DistrictClimateCards = () => {
 const school = selectedDistrict.value
     return (
         <Stack>
-            <h5 className={"chart-title"} style={{marginLeft:"100px"}}>School Climate</h5>
+            <h5 className={"chart-title"} style={{marginLeft:"100px", marginTop: "10px"}}>School Climate</h5>
             <Stack
                 className="chart-container"
                 direction="row"

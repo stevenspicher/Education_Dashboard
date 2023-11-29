@@ -8,7 +8,7 @@ const DistrictDemographics = () => {
     return (
 
         <Stack>
-            <h5 style={{marginLeft: "100px"}}>Demographics</h5>
+            <h5 className="chart-title" style={{marginLeft: "100px", marginTop: "10px"}}>Demographics</h5>
             <Stack
                 className="chart-container"
                 direction="row"

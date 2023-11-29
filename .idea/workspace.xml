@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8d0d108c-4ac4-4e0b-8b45-613489021c53" name="Changes" comment="fixed missing districts">
-      <change afterPath="$PROJECT_DIR$/educationdashboard/src/pages/District/DistrictMap/districtAndSchoolFix.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/pages/District/DistrictMap/schoolsMap.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/pages/District/DistrictMap/schoolsMap.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/pages/Home/DistrictMap/districtsMap.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/pages/Home/DistrictMap/districtsMap.jsx" afterDir="false" />
-    </list>
+    <list default="true" id="8d0d108c-4ac4-4e0b-8b45-613489021c53" name="Changes" comment="converting to allschoolslist&#10;fixed table sort" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -22,7 +18,7 @@
     </option>
   </component>
   <component name="Git.Merge.Settings">
-    <option name="BRANCH" value="styling" />
+    <option name="BRANCH" value="data_fixes" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -300,7 +296,14 @@
       <option name="project" value="LOCAL" />
       <updated>1700668232025</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="converting to allschoolslist&#10;fixed table sort">
+      <created>1701139317022</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1701139317022</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -317,7 +320,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="data_fixes" />
+                        <option value="main" />
                       </list>
                     </value>
                   </entry>
@@ -331,7 +334,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="readme updates" />
     <MESSAGE value="added map (main page version) to district page" />
     <MESSAGE value="styling" />
     <MESSAGE value="added data imports" />
@@ -356,6 +358,7 @@
     <MESSAGE value="Added name column margin" />
     <MESSAGE value="updated to 2023 data" />
     <MESSAGE value="fixed missing districts" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed missing districts" />
+    <MESSAGE value="converting to allschoolslist&#10;fixed table sort" />
+    <option name="LAST_COMMIT_MESSAGE" value="converting to allschoolslist&#10;fixed table sort" />
   </component>
 </project>

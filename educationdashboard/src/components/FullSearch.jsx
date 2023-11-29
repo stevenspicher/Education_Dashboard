@@ -18,10 +18,10 @@ const FullSearch = () => {
 
         if (fullSearchList.value !== undefined) {
             result = fullSearchList.value.filter((school) =>
-                school.name.toLowerCase().includes(e.target.value.toLowerCase()))
+                school.schoolName.toLowerCase().includes(e.target.value.toLowerCase()))
 
 
-            const resultsSort = result?.sort((a, b) => a.name.localeCompare(b.name))
+            const resultsSort = result?.sort((a, b) => a.schoolName.localeCompare(b.schoolName))
             topSearchResults.value = resultsSort
         }
     }
@@ -62,12 +62,12 @@ const FullSearch = () => {
                         return (
                             <ListItem key={index} disablePadding>
                                 <ListItemButton onClick={() => {
-                                    school.schoolCode = school.code
-                                    school.schoolId = school.id
+                                    school.schoolCode = school.schoolCode
+                                    school.schoolId = school.schoolId
                                     navigateToPage(school, navigate)
                                     topSearchResults.value = []
                                 }}>
-                                    {school.name}
+                                    {school.schoolName}
                                 </ListItemButton>
                             </ListItem>
                         )

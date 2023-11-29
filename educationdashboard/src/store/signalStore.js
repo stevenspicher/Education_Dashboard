@@ -70,7 +70,7 @@ export const fullSearchList = computed(() => {
     let list = [];
     Object.values(allSchools.value).map((school) => {
 
-        list.push({name: school.schoolName, id: school.schoolId, code: school.schoolCode})
+        list.push(school)
     })
     // Object.entries(districts.value).map((district) => {
     //     list.push({name: district[1].schoolName, id: district[0], code: "D"})
@@ -102,11 +102,21 @@ export const topSearchResultsSchoolOnly = computed(
         return results
     }
 )
+export const topSearchResultsObj = computed(() => {
+    let obj = {};
+     Object.entries(topSearchResults.value).map((result, index) => {
+         if (result[1].schoolCode === "D")
+         obj[result[1].schoolId] = result[1]
+     })
+        return obj
+})
 
-
+export const searchInput = signal(undefined)
+export const visibleRows = signal([])
 
 /*Map Data */
-export const districtsMapKey = signal(topSearchResultsDistrictOnly.value.length)
+export const heatMapKey = signal(0)
+export const districtsMapKey = computed(() => {return topSearchResults.value.length + heatMapKey.value})
 export const mapDataType = signal("gradRate");
 
 export const mapScore = signal(0)
@@ -143,34 +153,34 @@ export const layerColor = computed(() => {
 })
 
 export const gradRateColorScale = signal({
-    1:"#1359F0",
-    2: "#477CEE",
+    5:"#1c51cb",
+    4: "#477CEE",
     3:"#85A6EC",
-    4: "#6490e8",
-    5: "#c1d3f7"
+    2: "#6490e8",
+    1: "#c1d3f7"
 })
 
 export const ACTCompositeAVGColorScale = signal({
-    1:"#25660f",
-    2: "#317819",
-    3:"#4B8B36",
-    4: "#51BD2E",
-    5: "#8cf569"
+    5:"#0c9349",
+    4: "#44a620",
+    3:"#5fc73f",
+    2: "#90e077",
+    1: "#b6e7a7"
 })
 
 export const teacherReturnRateColorScale = signal({
-    1: "#5b6310",
-    2: "#87912c",
-    3:"#9ca647",
-    4: "#bec769",
-    5: "#e5ed98",
+    5: "#f1d9a7",
+    4: "#f3a738",
+    3:"#eea243",
+    2: "#f3d34a",
+    1: "#f3e37c",
 
 })
 
 export const avgTeacherSalaryColorScale = signal({
-    1: "#7C197E",
-    2: "#942196",
-    3:"#C920CC",
-    4: "#F37BF6",
-    5: "#f1b3f2"
+    5: "#e93e3a",
+    4: "#ed683c",
+    3:"#f3903f",
+    2: "#fdc70c",
+    1: "#fff33b"
 })

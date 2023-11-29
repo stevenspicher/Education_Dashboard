@@ -16,27 +16,27 @@ const School = () => {
     return (
         <Container>
             <Grow in={true} timeout={1000}>
-            <Paper elevation={elevationHeight} sx={{marginTop: "10px"}}>
+            <Paper elevation={elevationHeight} sx={{marginTop: "10px", border: '1px solid black'}}>
                 <FullSearch/>
             </Paper>
             </Grow>
             <Grow in={true} timeout={1000}>
-            <Paper elevation={elevationHeight} sx={{marginTop: "10px"}}>
+            <Paper elevation={elevationHeight} sx={{marginTop: "10px", border: '1px solid black'}}>
                 <SchoolHeader/>
             </Paper>
             </Grow>
             <Grow in={true} timeout={1000}>
-            <Paper elevation={elevationHeight} sx={{marginTop: "10px"}}>
+            <Paper elevation={elevationHeight} sx={{marginTop: "10px", border: '1px solid black'}}>
                 <AcademicPerformance/>
             </Paper>
             </Grow>
             <Grow in={true} timeout={1000}>
-            <Paper elevation={elevationHeight} sx={{marginTop: "10px"}}>
+            <Paper elevation={elevationHeight} sx={{marginTop: "10px", border: '1px solid black'}}>
                 <SchoolDemographics/>
             </Paper>
             </Grow>
             <Grow in={true} timeout={1000}>
-            <Paper elevation={elevationHeight} sx={{marginTop: "10px"}}>
+            <Paper elevation={elevationHeight} sx={{marginTop: "10px", border: '1px solid black'}}>
                 <SchoolClimateCards/>
             </Paper>
             </Grow>

@@ -27,6 +27,10 @@ export  const districtFix = (districtgeo) => {
         return "0648999"
     }
 
+    else if (districtgeo.properties.district_id === "2104999") //FLorence 4
+    {
+        return "2101999"
+    }
     else if (districtgeo.properties.district_full_name.includes("Hampton") ) {
         return "2503999"
 
@@ -38,7 +42,6 @@ export  const districtFix = (districtgeo) => {
 }
 
 export const schoolFix = (schoolID) => {
-    console.log(schoolID)
     let newSchoolID = schoolID;
     if (schoolID.toString() === "0503001") { // Bamberg-Ernhardt High School
         newSchoolID = "0501002"

@@ -9,11 +9,10 @@ const SchoolHeader = () => {
     return (
         <div style={{textAlign: "center", padding: "10px"}}>
             <div className={"h1"}>{school.schoolName}</div>
-            <div>
-                <div className={"h4"}>{school.totalStudents} students, {school.teacherCount} teachers</div>
-            </div>
-            <div className={"h4"}>{school.street}, {school.city}</div>
-            <div className={"h4"}>
+            <div className={"h5"}>{school.street}, {school.city} | {school.totalStudents} students |   {school.teacherCount} teachers</div>
+                <div className={"h5"}></div>
+
+            <div className={"h5"}>
                 <Link onClick={() => {
                  navigateToPage({schoolCode: "D", schoolId: school.districtId}, navigate)
                 }}>

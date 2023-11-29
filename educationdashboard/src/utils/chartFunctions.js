@@ -50,11 +50,11 @@ export const createSchoolScoreData = (school, subject, code) => {
 
     let scores = schoolScoreCheck(school, subject, code)
     if (code === "D") {
-        return [["", school.schoolName, "State Average"],
-            [chartTitle, scores.school, scores.state]]
+        return [["", school.schoolName,{ role: 'annotation' }, "State Average",{ role: 'annotation' }],
+            [chartTitle, scores.school, scores.school + "%", scores.state, scores.state + "%"]]
     } else {
-        return [["", school.schoolName, "District Average", "State Average"],
-            [chartTitle, scores.school, scores.district, scores.state]]
+        return [["", school.schoolName,{ role: 'annotation' }, "District Average", { role: 'annotation' }, "State Average", { role: 'annotation' }],
+            [chartTitle, scores.school, scores.school+ "%", scores.district, scores.district+ "%", scores.state, scores.state+ "%"]]
     }
 };
 const schoolScoreCheck = (school, subject, code) => {
