@@ -1,12 +1,16 @@
-import {MapContainer, TileLayer, GeoJSON} from "react-leaflet";
+import {MapContainer, TileLayer, GeoJSON, Marker, Popup} from "react-leaflet";
 import district_geoData from "../../../dataImport/district_geoData.json"
 import {
     allSchools,
-    mapDataType, districtsMapKey, layerColor, mapScore, topSearchResultsObj, topSearchResults,
+    mapDataType, districtsMapKey, layerColor, mapScore, topSearchResultsObj, topSearchResults, selectedDistrict,
 } from "../../../store/signalStore.js";
 import DistrictsMapButtons from "./DistrictsMapButtons.jsx";
 import DistrictsHeatMap from "./DistrictsHeatMap.jsx";
-import { districtFix} from "../../District/DistrictMap/districtAndSchoolFix.js";
+import {districtFix, getCenter, schoolFix} from "../../District/DistrictMap/districtAndSchoolFix.js";
+import {useNavigate} from "react-router-dom";
+import schoolGeoData from "../../../dataImport/schoolGeodata.json";
+import {Link} from "@mui/material";
+import {navigateToPage} from "../../../utils/functions.js";
 
 
 
@@ -68,6 +72,26 @@ const DistrictsMap = () => {
             layer.options.fillOpacity = "3"
         }
     }
+
+    const district = selectedDistrict.value.districtSchoolList
+    const navigate = useNavigate();
+
+    const districtSchoolListGeodata = Object.entries(allSchools.value).map((school, index) => {
+        let schoolID = schoolFix([school[1].schoolId])
+        if (schoolGeoData[schoolID]  !== undefined) {
+            return (
+                <Marker key ={index} position={[schoolGeoData[schoolID].lat, schoolGeoData[schoolID].lon]}>
+                    <Popup>
+                        <Link onClick={() => {
+                            navigateToPage(school[1], navigate)
+                        }}>
+                            {school[1].schoolName}
+                        </Link>
+                    </Popup>
+                </Marker>
+            )
+        }
+    })
     return (
 
         <MapContainer id={"map"} center={[33.65, -81.4]} zoom={8} scrollWheelZoom={false}
@@ -77,6 +101,7 @@ const DistrictsMap = () => {
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
             <DistrictsMapButtons/>
+            {districtSchoolListGeodata}
             <DistrictsHeatMap/>
             <GeoJSON
                 key={districtsMapKey.value} //to cause rerender when district list is updated

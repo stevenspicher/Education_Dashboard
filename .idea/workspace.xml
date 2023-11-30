@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8d0d108c-4ac4-4e0b-8b45-613489021c53" name="Changes" comment="converting to allschoolslist&#10;fixed table sort" />
+    <list default="true" id="8d0d108c-4ac4-4e0b-8b45-613489021c53" name="Changes" comment="zip code - done&#10;&#10;AcademicPerformance, state and district - done&#10;demographics - done&#10;poverty - done&#10;&#10;career and college ready - done">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/educationdashboard/.firebase/hosting.ZGlzdA.cache" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/.firebase/hosting.ZGlzdA.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/educationdashboard/src/pages/Home/DistrictMap/districtsMap.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/pages/Home/DistrictMap/districtsMap.jsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -78,11 +82,11 @@
       <recent name="$PROJECT_DIR$/educationdashboard/src/components/Home/DistrictMap" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/educationdashboard" />
+      <recent name="$PROJECT_DIR$/educationdashboard/src" />
       <recent name="$PROJECT_DIR$/educationdashboard/src/features/firebase" />
       <recent name="$PROJECT_DIR$/educationdashboard/src/features" />
       <recent name="$PROJECT_DIR$/educationdashboard/src/utils" />
-      <recent name="$PROJECT_DIR$/educationdashboard/src/components" />
-      <recent name="$PROJECT_DIR$/educationdashboard/src/pages/School" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -113,6 +117,7 @@
       <workItem from="1700149012949" duration="4254000" />
       <workItem from="1700503368485" duration="1689000" />
       <workItem from="1700667368706" duration="11599000" />
+      <workItem from="1701374694171" duration="1650000" />
     </task>
     <task id="LOCAL-00001" summary="installed react-leaflet;&#10;loaded district layers;&#10;started legend;">
       <created>1690561038395</created>
@@ -303,7 +308,42 @@
       <option name="project" value="LOCAL" />
       <updated>1701139317022</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="removed all but school data on import&#10;cleaned server">
+      <created>1701292888340</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1701292888340</updated>
+    </task>
+    <task id="LOCAL-00029" summary="fixed school map navigation">
+      <created>1701293423622</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1701293423622</updated>
+    </task>
+    <task id="LOCAL-00030" summary="zip code - done&#10;&#10;AcademicPerformance, state and district - done&#10;demographics - done&#10;poverty - done">
+      <created>1701298018644</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1701298018644</updated>
+    </task>
+    <task id="LOCAL-00031" summary="zip code - done&#10;&#10;AcademicPerformance, state and district - done&#10;demographics - done&#10;poverty - done&#10;&#10;career and college ready - done">
+      <created>1701300835496</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1701300835496</updated>
+    </task>
+    <task id="LOCAL-00032" summary="zip code - done&#10;&#10;AcademicPerformance, state and district - done&#10;demographics - done&#10;poverty - done&#10;&#10;career and college ready - done">
+      <created>1701302472642</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1701302472642</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -334,10 +374,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="added map (main page version) to district page" />
-    <MESSAGE value="styling" />
-    <MESSAGE value="added data imports" />
-    <MESSAGE value="created global functions:&#10;createFullDataObject&#10;createSpecificDataObject" />
     <MESSAGE value="server for converting data to json file&#10;started displaying data on pages" />
     <MESSAGE value="updating gitignore" />
     <MESSAGE value="Created DistrictSchoolList.jsx" />
@@ -359,6 +395,10 @@
     <MESSAGE value="updated to 2023 data" />
     <MESSAGE value="fixed missing districts" />
     <MESSAGE value="converting to allschoolslist&#10;fixed table sort" />
-    <option name="LAST_COMMIT_MESSAGE" value="converting to allschoolslist&#10;fixed table sort" />
+    <MESSAGE value="removed all but school data on import&#10;cleaned server" />
+    <MESSAGE value="fixed school map navigation" />
+    <MESSAGE value="zip code - done&#10;&#10;AcademicPerformance, state and district - done&#10;demographics - done&#10;poverty - done" />
+    <MESSAGE value="zip code - done&#10;&#10;AcademicPerformance, state and district - done&#10;demographics - done&#10;poverty - done&#10;&#10;career and college ready - done" />
+    <option name="LAST_COMMIT_MESSAGE" value="zip code - done&#10;&#10;AcademicPerformance, state and district - done&#10;demographics - done&#10;poverty - done&#10;&#10;career and college ready - done" />
   </component>
 </project>
