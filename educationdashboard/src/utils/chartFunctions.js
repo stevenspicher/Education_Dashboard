@@ -6,57 +6,72 @@ import {allSchools} from "../store/signalStore.js";
 const schools = allSchools.value
 
 export const createSchoolScoreData = (school, subject, code) => {
-    let chartTitle = subject;
+    let chartTitle = subject,
+        annotation
+
 
     switch (subject) {
         case "positiveReadingScoreAvg" :
             chartTitle = "Students with Positive Reading Score";
+            annotation = "%"
             break;
         case "positiveMathScoreAvg" :
             chartTitle = "Students with Positive Math Score";
+            annotation = "%";
             break;
         case "positiveScienceScoreAvg" :
             chartTitle = "Students with Positive Science Score";
+            annotation = "%";
             break;
         case "gradRate" :
             chartTitle = "On-time Graduation Rate";
+            annotation = "%";
             break;
         case "dropoutRate" :
             chartTitle = "Dropout Percentage";
+            annotation = "%";
             break;
         case "collegeReady" :
             chartTitle = "College-Ready Diploma Earners";
+            annotation = "%";
             break;
         case "careerReady" :
             chartTitle = "Career-Ready Diploma Earners";
+            annotation = "%";
             break;
         case "studentsInPovertyPct" :
             chartTitle = "Students in Poverty";
+            annotation = "%";
             break;
         case "studentsWithDisabilities" :
             chartTitle = "Students with Disabilities";
+            annotation = "%";
             break;
         case "studentsWhite" :
             chartTitle = "White";
+            annotation = "%";
             break;
         case "studentsBlack" :
             chartTitle = "Black";
+            annotation = "%";
             break;
         case "studentsOther" :
             chartTitle = "Other";
+            annotation = "%";
             break;
         case "ACTCompositeAVG" :
             chartTitle = "Average ACT Score";
+            annotation = "";
             break;
     }
 
     let scores = schoolScoreCheck(school, subject, code)
     if (code === "D") {
         return [["", school.schoolName,{ role: 'annotation' }, "State Average",{ role: 'annotation' }],
-            [chartTitle, scores.school, scores.school + "%", scores.state, scores.state + "%"]]
+            [chartTitle, scores.school, scores.school + annotation, scores.state, scores.state + annotation]]
     } else {
         return [["", school.schoolName,{ role: 'annotation' }, "District Average", { role: 'annotation' }, "State Average", { role: 'annotation' }],
-            [chartTitle, scores.school, scores.school+ "%", scores.district, scores.district+ "%", scores.state, scores.state+ "%"]]
+            [chartTitle, scores.school, scores.school+ annotation, scores.district, scores.district+ annotation, scores.state, scores.state+ annotation]]
     }
 };
     let schoolSubjectAvg = 0,
