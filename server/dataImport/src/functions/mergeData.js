@@ -149,9 +149,17 @@ console.log(combined)
                 combined[schoolId]["OCR_RobwWeapon"] +
                 combined[schoolId]["OCR_RobwFirearm"],
             // academicPerformance
-            positiveReadingScoreAvg: (type === "District" || type === "High School") ? combined[schoolId]["E_PctABC"] : combined[schoolId]["E_PctME"],
-            positiveMathScoreAvg: (type === "District" || type === "High School") ? combined[schoolId]["M_PctABC"] : combined[schoolId]["M_PctME"],
-            positiveScienceScoreAvg: (type === "District" || type === "High School") ? combined[schoolId]["SC_PctABC"] : combined[schoolId]["SC_PctME"],
+            //Elem, Middle, Primary
+            positiveReadingScoreAvg_E: combined[schoolId]["E_PctME"] ?? "*",
+            positiveMathScoreAvg_E: combined[schoolId]["M_PctME"] ?? "*",
+            positiveScienceScoreAvg_E: combined[schoolId]["SC_PctME"] ?? "*",
+            //High School
+            positiveReadingScoreAvg_H: combined[schoolId]["E_PctABC"] ?? "*",
+            positiveMathScoreAvg_H: combined[schoolId]["M_PctABC"] ?? "*",
+            positiveScienceScoreAvg_H: combined[schoolId]["SC_PctABC"] ?? "*",
+            // positiveReadingScoreAvg: (type === "District" || type === "High School") ? combined[schoolId]["E_PctABC"] : combined[schoolId]["E_PctME"],
+            // positiveMathScoreAvg: (type === "District" || type === "High School") ? combined[schoolId]["M_PctABC"] : combined[schoolId]["M_PctME"],
+            // positiveScienceScoreAvg: (type === "District" || type === "High School") ? combined[schoolId]["SC_PctABC"] : combined[schoolId]["SC_PctME"],
             districtSchoolList: type === "District" ? districtSchoolList : [],
         }
 
