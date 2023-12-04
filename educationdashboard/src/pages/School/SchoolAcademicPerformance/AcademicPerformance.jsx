@@ -56,14 +56,30 @@ const AcademicPerformance = () => {
                 justifyContent="space-evenly"
                 alignItems="center"
             >
-                {schoolScoreDataChart(school, "positiveReadingScoreAvg", "E")}
-                {schoolScoreDataChart(school, "positiveMathScoreAvg", "E")}
+
 
                 {school.schoolType === "High School" ?
-                    schoolScoreDataChart(school, "ACTCompositeAVG", "H")
+                    <Stack
+                        className="chart-container"
+                        direction={"row"}
+                        justifyContent="space-evenly"
+                        alignItems="center"
+                    >
+                        {schoolScoreDataChart(school, "positiveMathScoreAvg", "H")}
+                        {schoolScoreDataChart(school, "positiveReadingScoreAvg", "H")}
+                        {schoolScoreDataChart(school, "ACTCompositeAVG", "H")}
+                        </Stack>
                     :
-                    schoolScoreDataChart(school, "positiveScienceScoreAvg", "E")
-
+                    <Stack
+                        className="chart-container"
+                        direction={"row"}
+                        justifyContent="space-evenly"
+                        alignItems="center"
+                    >
+                        {schoolScoreDataChart(school, "positiveMathScoreAvg", "E")}
+                        {schoolScoreDataChart(school, "positiveReadingScoreAvg", "E")}
+                        {schoolScoreDataChart(school, "positiveScienceScoreAvg", "E")}
+                    </Stack>
                 }
 
             </Stack>

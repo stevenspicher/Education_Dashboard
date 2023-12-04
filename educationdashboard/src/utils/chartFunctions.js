@@ -86,15 +86,16 @@ const schoolScoreCheck = (school, subject, code) => {
         if (schools[school["districtId"]] === undefined) {
             ///district page
             return {
-                school: Number(school[`${subject}`]) ? Number(school[`${subject}`]) : 0,
-                state: Number(state[`${subject}_E`]) ? Number(state[`${subject}_E`]) : 0
+                school: Number(school[`${subject}_H`]) ? Number(school[`${subject}_H`]) : 0,
+                state: Number(state[`${subject}_H`]) ? Number(state[`${subject}_H`]) : 0
             }
         } else
             ///school page
+
             return {
-                school: Number(school[subject]) ? Number(school[subject]) : 0,
-                district: Number(schools[school["districtId"]][`${subject}`]) ? Number(schools[school["districtId"]][`${subject}`]) : 0,
-                state: Number(state[`${subject}_E`]) ? Number(state[`${subject}_E`]) : 0
+                school: Number(school[`${subject}_${code}`]) ? Number(school[`${subject}_${code}`]) : 0,
+                district: Number(schools[school["districtId"]][`${subject}_${code}`]) ? Number(schools[school["districtId"]][`${subject}_${code}`]) : 0,
+                state: Number(state[`${subject}_${code}`]) ? Number(state[`${subject}_${code}`]) : 0
             }
 //disabilties and ethnicity
     } else if (subject === "studentsWithDisabilities" ||

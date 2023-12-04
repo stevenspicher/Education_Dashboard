@@ -51,8 +51,8 @@ const DistrictAcademicPerformance = () => {
                 alignItems="center"
                 // spacing={4}
             >
-                {schoolScoreDataChart(district, "positiveReadingScoreAvg", "D")}
                 {schoolScoreDataChart(district, "positiveMathScoreAvg", "D")}
+                {schoolScoreDataChart(district, "positiveReadingScoreAvg", "D")}
                 {schoolScoreDataChart(district, "positiveScienceScoreAvg", "D")}
 
             </Stack>
