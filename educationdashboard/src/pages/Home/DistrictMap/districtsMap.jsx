@@ -13,6 +13,12 @@ import { districtFix} from "../../District/DistrictMap/districtAndSchoolFix.js";
 
 const DistrictsMap = () => {
     let districtsData = topSearchResults.value.length !== 0 ? topSearchResultsObj.value :  allSchools.value;
+    ///Formating
+
+    const USDollar = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+    });
 
     let districtGeoData = district_geoData.features;
     const scorePopup = (id) => {
@@ -26,10 +32,11 @@ const DistrictsMap = () => {
                 break;
             case "ACTCompositeAVG":
                 popUpText = "AVG ACT Score: " + districtsData[id].ACTCompositeAVG
+
                 mapScore.value = districtsData[id].ACTCompositeAVG
                 break;
             case "avgTeacherSalaryLastYr":
-                popUpText = "Teacher Salary: " + districtsData[id].avgTeacherSalaryLastYr
+                popUpText = "Teacher Salary: " + USDollar.format(districtsData[id].avgTeacherSalaryLastYr)
                 mapScore.value = districtsData[id].avgTeacherSalaryLastYr
                 break;
             case "teacherReturnRate":

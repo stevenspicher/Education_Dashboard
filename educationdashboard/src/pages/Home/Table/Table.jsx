@@ -12,9 +12,9 @@ import {
 } from "@mui/material";
 import SchoolIcon from '@mui/icons-material/School';
 import {visuallyHidden} from "@mui/utils";
-import {allSchools, fullSearchList, searchInput, topSearchResults, visibleRows} from "../../../store/signalStore"
+import {allSchools, fullSearchList, topSearchResults} from "../../../store/signalStore"
 import {navigateToPage} from "../../../utils/functions.js";
-import home from "../../../assets/home.png";
+import {signal} from "@preact/signals-react";
 
 
 const SchoolTable = () => {
@@ -25,6 +25,15 @@ const SchoolTable = () => {
     const [orderBy, setOrderBy] = useState('schoolName');
     let schoolList = allSchools.value
 
+
+
+
+///Formating
+
+    const USDollar = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+    });
 
     const headCells = [
         {
@@ -264,7 +273,7 @@ const SchoolTable = () => {
                                     </TableCell>
                                     <TableCell
                                         style={{border: '1px solid black'}} component="th" scope="row">
-                                        <Typography>{school.avgTeacherSalaryLastYr !== "*" ? "$" + school.avgTeacherSalaryLastYr : "*"}</Typography>
+                                        <Typography>{school.avgTeacherSalaryLastYr !== "*" ? USDollar.format(school.avgTeacherSalaryLastYr) : "*"}</Typography>
                                     </TableCell>
                                     <TableCell
                                         style={{border: '1px solid black'}} component="th" scope="row">

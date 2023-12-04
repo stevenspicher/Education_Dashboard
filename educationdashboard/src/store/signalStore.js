@@ -173,3 +173,4 @@ export const avgTeacherSalaryColorScale = signal({
     2: "#fdc70c",
     1: "#fff33b"
 })
+
