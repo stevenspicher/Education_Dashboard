@@ -40,6 +40,7 @@ switch (mapDataType.value) {
         return (
             <Control prepend position='topright'>
                 <Stack>
+                    <Chip label="$66,000 to $60,000" style={{backgroundColor:avgTeacherSalaryColorScale.value[6], border: '1px solid black'} } />
                     <Chip label="$60,000 to $57,000" style={{backgroundColor:avgTeacherSalaryColorScale.value[5], border: '1px solid black'} } />
                     <Chip label="$57,000 to $54,000" style={{backgroundColor: avgTeacherSalaryColorScale.value[4], border: '1px solid black'}}/>
                     <Chip label="$54,000 to $51,000" style={{backgroundColor: avgTeacherSalaryColorScale.value[3], border: '1px solid black'}}/>

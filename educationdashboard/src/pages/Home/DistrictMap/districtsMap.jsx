@@ -21,9 +21,17 @@ const DistrictsMap = () => {
     });
 
     let districtGeoData = district_geoData.features;
+        let salaryTitle = "Teacher's Salary: "
+        let avgSalary;
     const scorePopup = (id) => {
         let popUpText = "Graduation Rate"
-
+        if (districtsData[id].avgTeacherSalaryCurrYr !== "*" && districtsData[id].avgTeacherSalaryCurrYr !== undefined && districtsData[id].avgTeacherSalaryCurrYr !== null) {
+            avgSalary = districtsData[id].avgTeacherSalaryCurrYr;
+        } else
+        if ( avgSalary !== undefined &&  districtsData[id].avgTeacherSalaryLastYr !== "*" && districtsData[id].avgTeacherSalaryLastYr !== undefined && districtsData[id].avgTeacherSalaryLastYr !== null) {
+            avgSalary = districtsData[id].avgTeacherSalaryLastYr;
+            salaryTitle = "Teachers's Salary (2022)"
+        } else {avgSalary = "*"};
         if (districtsData[id] !== undefined) {
         switch (mapDataType.value) {
             case "gradRate":
@@ -36,8 +44,8 @@ const DistrictsMap = () => {
                 mapScore.value = districtsData[id].ACTCompositeAVG
                 break;
             case "avgTeacherSalaryLastYr":
-                popUpText = "Teacher Salary: " + USDollar.format(districtsData[id].avgTeacherSalaryLastYr)
-                mapScore.value = districtsData[id].avgTeacherSalaryLastYr
+                popUpText = salaryTitle + USDollar.format(avgSalary)
+                mapScore.value = avgSalary
                 break;
             case "teacherReturnRate":
                 popUpText = "Teacher Retention: " + districtsData[id].teacherReturnRate  + "%"

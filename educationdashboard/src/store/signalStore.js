@@ -111,21 +111,21 @@ export const mapDataType = signal("gradRate");
 export const mapScore = signal(0)
 export const layerColor = computed(() => {
     if (mapDataType.value === "gradRate") {
-        if (mapScore.value <= 60) return gradRateColorScale.value[1]
+        if (mapScore.value <= 60 || mapScore.value == "*") return gradRateColorScale.value[1]
         if (mapScore.value > 60 && mapScore.value <= 70) return gradRateColorScale.value[2]
         if (mapScore.value > 70 && mapScore.value <= 80) return gradRateColorScale.value[3]
         if (mapScore.value > 80 && mapScore.value <= 90) return gradRateColorScale.value[4]
         if (mapScore.value > 90 && mapScore.value <= 100) return gradRateColorScale.value[5]
     }
     if (mapDataType.value === "ACTCompositeAVG") {
-        if (mapScore.value <= 13) return ACTCompositeAVGColorScale.value[1]
+        if (mapScore.value <= 13 || mapScore.value == "*") return ACTCompositeAVGColorScale.value[1]
         if (mapScore.value > 13 && mapScore.value <= 16) return ACTCompositeAVGColorScale.value[2]
         if (mapScore.value > 16 && mapScore.value <= 19) return ACTCompositeAVGColorScale.value[3]
         if (mapScore.value > 19 && mapScore.value <= 22) return ACTCompositeAVGColorScale.value[4]
         if (mapScore.value > 22 && mapScore.value <= 32) return ACTCompositeAVGColorScale.value[5]
     }
     if (mapDataType.value === "teacherReturnRate") {
-        if (Number(mapScore.value) <= 60) return teacherReturnRateColorScale.value[1]
+        if (Number(mapScore.value) <= 60 || mapScore.value == "*") return teacherReturnRateColorScale.value[1]
         if (Number(mapScore.value) > 60 && mapScore.value <= 70) return teacherReturnRateColorScale.value[2]
         if (Number(mapScore.value) > 70 && mapScore.value <= 80) return teacherReturnRateColorScale.value[3]
         if (Number(mapScore.value) > 80 && mapScore.value <= 90) return teacherReturnRateColorScale.value[4]
@@ -133,11 +133,12 @@ export const layerColor = computed(() => {
     }
     if (mapDataType.value === "avgTeacherSalaryLastYr") {
         let salary = mapScore.value
-        if (salary <= 48000) return avgTeacherSalaryColorScale.value[1]
+        if (salary <= 48000 || mapScore.value == "*") return avgTeacherSalaryColorScale.value[1]
         if (salary > 48000 && salary <= 51000) return avgTeacherSalaryColorScale.value[2]
         if (salary > 51000 && salary <= 54000) return avgTeacherSalaryColorScale.value[3]
         if (salary > 54000 && salary <= 57000) return avgTeacherSalaryColorScale.value[4]
         if (salary > 57000 && salary <= 60000) return avgTeacherSalaryColorScale.value[5]
+        if (salary > 60000 && salary <= 66000) return avgTeacherSalaryColorScale.value[6]
     }
 })
 
@@ -167,6 +168,7 @@ export const teacherReturnRateColorScale = signal({
 })
 
 export const avgTeacherSalaryColorScale = signal({
+    6: "#E71713FF",
     5: "#e93e3a",
     4: "#ed683c",
     3:"#f3903f",

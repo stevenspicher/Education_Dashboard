@@ -25,7 +25,8 @@ const SchoolTable = () => {
     const [orderBy, setOrderBy] = useState('schoolName');
     let schoolList = allSchools.value
 
-
+    let avgSalary;
+    let lastYr = false;
 
 
 ///Formating
@@ -243,6 +244,15 @@ const SchoolTable = () => {
 
                     {topSearchResults.value.length !== Object.keys(allSchools.value).length && topSearchResults.value.length > 0 ?
                         visibleSearchRows.map((school, index) => {
+                            if (school.avgTeacherSalaryCurrYr !== "*" && school.avgTeacherSalaryCurrYr !== undefined && school.avgTeacherSalaryCurrYr !== null) {
+                                avgSalary = "$" + school.avgTeacherSalaryCurrYr;
+                                console.log(avgSalary)
+                            } else
+                            if ( avgSalary !== undefined &&  school.avgTeacherSalaryLastYr !== "*" && school.avgTeacherSalaryLastYr !== undefined && school.avgTeacherSalaryLastYr !== null) {
+                                avgSalary = "$" + school.avgTeacherSalaryLastYr + " (2022 Data)";
+
+                            } else {avgSalary = "*"};
+
                             return (
                                 <TableRow
                                     key={index} sx={{'&:last-child td, &:last-child th': {border: 0}}}
@@ -273,7 +283,8 @@ const SchoolTable = () => {
                                     </TableCell>
                                     <TableCell
                                         style={{border: '1px solid black'}} component="th" scope="row">
-                                        <Typography>{school.avgTeacherSalaryLastYr !== "*" ? USDollar.format(school.avgTeacherSalaryLastYr) : "*"}</Typography>
+                                        <Typography>{avgSalary}</Typography>
+
                                     </TableCell>
                                     <TableCell
                                         style={{border: '1px solid black'}} component="th" scope="row">
@@ -284,6 +295,15 @@ const SchoolTable = () => {
                             )
                         }) :
                         visibleRows.map((school, index) => {
+                            if (school.avgTeacherSalaryCurrYr !== "*" && school.avgTeacherSalaryCurrYr !== undefined && school.avgTeacherSalaryCurrYr !== null) {
+                                avgSalary = "$" + school.avgTeacherSalaryCurrYr;
+                            } else
+                            if ( avgSalary !== undefined &&  school.avgTeacherSalaryLastYr !== "*" && school.avgTeacherSalaryLastYr !== undefined && school.avgTeacherSalaryLastYr !== null) {
+                                avgSalary = "$" + school.avgTeacherSalaryLastYr + " (2022 Data)";
+
+                            } else {avgSalary = "*";
+
+                            }
                             return (
                                 <TableRow
                                     key={index} sx={{'&:last-child td, &:last-child th': {border: 0}}}
@@ -313,7 +333,8 @@ const SchoolTable = () => {
                                     </TableCell>
                                     <TableCell
                                         style={{border: '1px solid black'}} component="th" scope="row">
-                                        <Typography>{school.avgTeacherSalaryLastYr !== "*" ? "$" + school.avgTeacherSalaryLastYr : "*"}</Typography>
+                                        <Typography>{avgSalary}</Typography>
+
                                     </TableCell>
                                     <TableCell
                                         style={{border: '1px solid black'}} component="th" scope="row">

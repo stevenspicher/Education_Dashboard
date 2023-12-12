@@ -41,7 +41,7 @@ return (
             id={"avgTeacherSalaryLastYr"}
                 onClick={() => {
                     clickHandler("avgTeacherSalaryLastYr")
-                    document.getElementById("avgTeacherSalaryLastYr").style.background='#f1b3f2';
+                    document.getElementById("avgTeacherSalaryLastYr").style.background='#de9b87';
                 }}>
             Teacher Salary
         </Button>
