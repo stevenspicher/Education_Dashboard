@@ -28,7 +28,7 @@ const SchoolsMap = () => {
         }
     })
     return (
-    <MapContainer style={{width:'60%'}} id={"map"}
+    <MapContainer style={{width:'50%'}} id={"map"}
                   center={centerLatLong}
                   zoom={9} scrollWheelZoom={false} >
         <TileLayer

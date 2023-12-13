@@ -29,9 +29,9 @@ const District = () => {
             <Grow in={true} timeout={1000}>
             <Paper elevation={elevationHeight} sx={{marginTop:"10px", border: '1px solid black'}}>
                 <Stack
-                    className="chart-container"
+                    // className="chart-container"
                     direction="row"
-                    justifyContent="space-evenly"
+                    // justifyContent="space-evenly"
                     // alignItems="center"
                 >
                     <SchoolsMap />

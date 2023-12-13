@@ -143,6 +143,20 @@ body {
     /* padding-top: 10px; */
 }
 
+.school-inner {
+    /*color: #F3F4F2;*/
+    overflow: scroll;
+    max-height: 420px;
+    width: 100%;
+    padding-left: 100px;
+}
+.school-list-inner-text {
+    /* background-color: #F3F4F2; */
+    overflow: scroll;
+    max-height: 420px;
+    /* padding-top: 10px; */
+}
+
 .dot {
     width: 8px;
     height: 8px;

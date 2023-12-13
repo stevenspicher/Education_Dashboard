@@ -4,21 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8d0d108c-4ac4-4e0b-8b45-613489021c53" name="Changes" comment="fixed E/H math/science/english data">
-      <change afterPath="$PROJECT_DIR$/educationdashboard/src/components/Legends/DistrictLegend.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/educationdashboard/src/components/Legends/SchoolLegend.jsx" afterDir="false" />
+    <list default="true" id="8d0d108c-4ac4-4e0b-8b45-613489021c53" name="Changes" comment="fixed legend, heatmap">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/components/Legend.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/dataImport/allSchoolsData.json" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/allSchoolsData.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/pages/District/DistrictAcademicPerformance/DistrictAcademicPerformance.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/pages/District/DistrictAcademicPerformance/DistrictAcademicPerformance.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/pages/District/DistrictDemographics/DistrictDemographics.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/pages/District/DistrictDemographics/DistrictDemographics.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/pages/Home/DistrictMap/DistrictsHeatMap.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/pages/Home/DistrictMap/DistrictsHeatMap.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/pages/Home/DistrictMap/DistrictsMapButtons.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/pages/Home/DistrictMap/DistrictsMapButtons.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/pages/Home/DistrictMap/districtsMap.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/pages/Home/DistrictMap/districtsMap.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/pages/Home/Table/Table.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/pages/Home/Table/Table.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/pages/School/SchoolAcademicPerformance/AcademicPerformance.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/pages/School/SchoolAcademicPerformance/AcademicPerformance.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/pages/School/SchoolDemographics/SchoolDemographics.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/pages/School/SchoolDemographics/SchoolDemographics.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/store/signalStore.js" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/store/signalStore.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/educationdashboard/.firebase/hosting.ZGlzdA.cache" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/.firebase/hosting.ZGlzdA.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/educationdashboard/src/css/district.css" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/css/district.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/educationdashboard/src/css/schools.css" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/css/schools.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/educationdashboard/src/pages/District/District.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/pages/District/District.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/educationdashboard/src/pages/District/DistrictMap/schoolsMap.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/pages/District/DistrictMap/schoolsMap.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/educationdashboard/src/pages/District/DistrictSchoolList/DistrictSchoolList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/pages/District/DistrictSchoolList/DistrictSchoolList.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,7 +123,7 @@
       <workItem from="1700667368706" duration="11599000" />
       <workItem from="1701378883911" duration="60000" />
       <workItem from="1701459050704" duration="1234000" />
-      <workItem from="1702408047632" duration="7172000" />
+      <workItem from="1702408047632" duration="11078000" />
     </task>
     <task id="LOCAL-00001" summary="installed react-leaflet;&#10;loaded district layers;&#10;started legend;">
       <created>1690561038395</created>
@@ -349,7 +342,14 @@
       <option name="project" value="LOCAL" />
       <updated>1701711455212</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="fixed legend, heatmap">
+      <created>1702422787392</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1702422787392</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -380,7 +380,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="created global functions:&#10;createFullDataObject&#10;createSpecificDataObject" />
     <MESSAGE value="server for converting data to json file&#10;started displaying data on pages" />
     <MESSAGE value="updating gitignore" />
     <MESSAGE value="Created DistrictSchoolList.jsx" />
@@ -405,6 +404,7 @@
     <MESSAGE value="add currency format to cards, table, and map" />
     <MESSAGE value="added chart legend" />
     <MESSAGE value="fixed E/H math/science/english data" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed E/H math/science/english data" />
+    <MESSAGE value="fixed legend, heatmap" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed legend, heatmap" />
   </component>
 </project>
