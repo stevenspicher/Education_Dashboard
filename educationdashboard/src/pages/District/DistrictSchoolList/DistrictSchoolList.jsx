@@ -33,7 +33,7 @@ const DistrictSchoolList = () => {
     return (
         <div
             style={{
-                overflow: "scroll",
+                overflow: "hidden",
                 width:"50%",
             justifyContent:"space-evenly",
                 maxHeight: "420px"
@@ -43,7 +43,7 @@ const DistrictSchoolList = () => {
                 style={{marginLeft:"100px", marginTop: "10px"}}
                 className={"chart-title"} >Schools in this district:</h1>
 
-            <Accordion className="school-inner"  expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
+            <Accordion  className="school-inner"  expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
                 <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel1a-content"
@@ -51,7 +51,7 @@ const DistrictSchoolList = () => {
                 >
                     <Typography>Elementary Schools</Typography>
                 </AccordionSummary>
-                <AccordionDetails>
+                <AccordionDetails >
                     {district.districtSchoolList.map((school, index) => {
                         return (
                             <div key={index}>
@@ -62,7 +62,7 @@ const DistrictSchoolList = () => {
                     }
                 </AccordionDetails>
             </Accordion>
-            <Accordion className="school-inner"  expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
+            <Accordion  className="school-inner" expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
                 <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel2a-content"
@@ -70,7 +70,7 @@ const DistrictSchoolList = () => {
                 >
                     <Typography>Middle Schools</Typography>
                 </AccordionSummary>
-                <AccordionDetails>
+                <AccordionDetails >
                     {district.districtSchoolList.map((school, index) => {
                         return (
                             <div key={index}>
@@ -81,7 +81,7 @@ const DistrictSchoolList = () => {
                     }
                 </AccordionDetails>
             </Accordion>
-            <Accordion className="school-inner"  expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
+            <Accordion className="school-inner" expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
                 <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel3a-content"
@@ -89,7 +89,7 @@ const DistrictSchoolList = () => {
                 >
                     <Typography>High Schools</Typography>
                 </AccordionSummary>
-                <AccordionDetails>
+                <AccordionDetails >
                     {district.districtSchoolList.map((school, index) => {
                         return (
                             <div key={index}>

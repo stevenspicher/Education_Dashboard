@@ -4,13 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8d0d108c-4ac4-4e0b-8b45-613489021c53" name="Changes" comment="fixed legend, heatmap">
+    <list default="true" id="8d0d108c-4ac4-4e0b-8b45-613489021c53" name="Changes" comment="add accordian">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/educationdashboard/.firebase/hosting.ZGlzdA.cache" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/.firebase/hosting.ZGlzdA.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/educationdashboard/src/css/district.css" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/css/district.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/css/schools.css" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/css/schools.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/pages/District/District.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/pages/District/District.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/pages/District/DistrictMap/schoolsMap.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/pages/District/DistrictMap/schoolsMap.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/educationdashboard/src/pages/District/DistrictSchoolList/DistrictSchoolList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/pages/District/DistrictSchoolList/DistrictSchoolList.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -123,7 +120,9 @@
       <workItem from="1700667368706" duration="11599000" />
       <workItem from="1701378883911" duration="60000" />
       <workItem from="1701459050704" duration="1234000" />
-      <workItem from="1702408047632" duration="11078000" />
+      <workItem from="1702408047632" duration="11462000" />
+      <workItem from="1702483644140" duration="59000" />
+      <workItem from="1702483788227" duration="3758000" />
     </task>
     <task id="LOCAL-00001" summary="installed react-leaflet;&#10;loaded district layers;&#10;started legend;">
       <created>1690561038395</created>
@@ -349,7 +348,14 @@
       <option name="project" value="LOCAL" />
       <updated>1702422787392</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="add accordian">
+      <created>1702482776295</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1702482776296</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -380,7 +386,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="server for converting data to json file&#10;started displaying data on pages" />
     <MESSAGE value="updating gitignore" />
     <MESSAGE value="Created DistrictSchoolList.jsx" />
     <MESSAGE value="created schoolDataFunctions.js&#10;added scoreCheck functions to both datafunctions" />
@@ -405,6 +410,7 @@
     <MESSAGE value="added chart legend" />
     <MESSAGE value="fixed E/H math/science/english data" />
     <MESSAGE value="fixed legend, heatmap" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed legend, heatmap" />
+    <MESSAGE value="add accordian" />
+    <option name="LAST_COMMIT_MESSAGE" value="add accordian" />
   </component>
 </project>
