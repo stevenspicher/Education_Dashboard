@@ -6,8 +6,6 @@ import SchoolTable  from "./Table/Table.jsx";
 import {Container, Grow, Stack} from "@mui/material";
 import SchoolIcon from "@mui/icons-material/School.js";
 
-
-
 function Home() {
     const elevationHeight = 12;
 

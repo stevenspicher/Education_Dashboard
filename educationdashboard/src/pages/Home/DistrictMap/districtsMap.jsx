@@ -8,12 +8,8 @@ import DistrictsMapButtons from "./DistrictsMapButtons.jsx";
 import DistrictsHeatMap from "./DistrictsHeatMap.jsx";
 import { districtFix} from "../../District/DistrictMap/districtAndSchoolFix.js";
 
-
-
-
 const DistrictsMap = () => {
     let districtsData = topSearchResults.value.length !== 0 ? topSearchResultsObj.value :  allSchools.value;
-    ///Formating
 
     const USDollar = new Intl.NumberFormat('en-US', {
         style: 'currency',

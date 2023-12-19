@@ -33,11 +33,6 @@ app.post('/postall', (req, res) => {
     });
 });
 
-
-
-
-
-
 app.post('/postservefile', (req, res) => {
     fs.writeFile('./public/api.json', JSON.stringify(req.body), function (err) {
         if (err) return console.log(err);

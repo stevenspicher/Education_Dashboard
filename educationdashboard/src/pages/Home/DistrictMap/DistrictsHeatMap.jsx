@@ -57,7 +57,6 @@ switch (mapDataType.value) {
                     <Chip label="90% to 80.1%" style={{backgroundColor: teacherReturnRateColorScale.value[4], border: '1px solid black'}}/>
                     <Chip label="80% to 70.1%" style={{backgroundColor: teacherReturnRateColorScale.value[3], border: '1px solid black'}}/>
                     <Chip label="70% or below" style={{backgroundColor: teacherReturnRateColorScale.value[2], border: '1px solid black'}}/>
-                    {/*<Chip label="60% or below" style={{backgroundColor: teacherReturnRateColorScale.value[1]}}/>*/}
                 </Stack>
             </Control>
         )

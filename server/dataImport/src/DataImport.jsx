@@ -151,17 +151,17 @@ const ReportCardDataImport = () => {
                     name="myfile"/>
                 {additionalInfoVerified ? <CheckIcon/> : <></>}
 
-                {/*<Typography>Import CSV</Typography>*/}
-                {/*<input*/}
-                {/*    style={{maxWidth: "400px"}}*/}
-                {/*    type="file"*/}
-                {/*    multiple*/}
-                {/*    onChange={(e) => {*/}
-                {/*        // geoDataConversion(e.target.files[0])*/}
-                {/*    }*/}
-                {/*    }*/}
-                {/*    name="myfile"/>*/}
-                {/*{additionalInfoVerified ? <CheckIcon/> : <></>}*/}
+                <Typography>Import CSV</Typography>
+                <input
+                    style={{maxWidth: "400px"}}
+                    type="file"
+                    multiple
+                    onChange={(e) => {
+                        geoDataConversion(e.target.files[0])
+                    }
+                    }
+                    name="myfile"/>
+                {additionalInfoVerified ? <CheckIcon/> : <></>}
 <div>
 
                 <Button onClick={() => {
@@ -171,17 +171,17 @@ const ReportCardDataImport = () => {
                     sendJSONData(schoolData)
                 }}>Send Data To React</Button>
 </div>
-                {/*<Button onClick={() => {*/}
-                {/*    sendAPIData(schoolData)*/}
-                {/*}}>Send Data To API</Button>*/}
+                <Button onClick={() => {
+                    sendAPIData(schoolData)
+                }}>Send Data To API</Button>
 
-                {/*<Button onClick={() => {*/}
-                {/*    getApiData()*/}
-                {/*}}>Get API</Button>*/}
+                <Button onClick={() => {
+                    getApiData()
+                }}>Get API</Button>
 
-                {/*<Button onClick={() => {*/}
-                {/*    geoDataConversion(etl_school_data)*/}
-                {/*}}>Convert GeoData</Button>*/}
+                <Button onClick={() => {
+                    geoDataConversion(etl_school_data)
+                }}>Convert GeoData</Button>
 
             </Box>
         )

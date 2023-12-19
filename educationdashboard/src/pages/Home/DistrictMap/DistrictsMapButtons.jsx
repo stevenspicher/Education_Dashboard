@@ -1,6 +1,6 @@
 import Control from 'react-leaflet-custom-control'
 import "../../../css/Legend.css"
-import {districtsMapKey, heatMapKey, mapDataType} from "../../../store/signalStore.js";
+import {heatMapKey, mapDataType} from "../../../store/signalStore.js";
 import {Button, Stack} from "@mui/material";
 
 

@@ -1,5 +1,6 @@
 import {useMemo, useState} from "react";
 import {useNavigate} from "react-router-dom";
+import {allSchools, fullSearchList, topSearchResults} from "../../../store/signalStore"
 import {
     Box, Link,
     Paper, Table, TableBody,
@@ -10,11 +11,8 @@ import {
     TableRow,
     TableSortLabel, Typography, Stack
 } from "@mui/material";
-import SchoolIcon from '@mui/icons-material/School';
 import {visuallyHidden} from "@mui/utils";
-import {allSchools, fullSearchList, topSearchResults} from "../../../store/signalStore"
 import {navigateToPage} from "../../../utils/functions.js";
-import {signal} from "@preact/signals-react";
 
 
 const SchoolTable = () => {
@@ -24,17 +22,7 @@ const SchoolTable = () => {
     const [order, setOrder] = useState('asc');
     const [orderBy, setOrderBy] = useState('schoolName');
     let schoolList = allSchools.value
-
     let avgSalary;
-    let lastYr = false;
-
-
-///Formating
-
-    const USDollar = new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: 'USD',
-    });
 
     const headCells = [
         {
@@ -81,20 +69,6 @@ const SchoolTable = () => {
         },
     ];
 
-    // console.log(districtData)
-    // const trimmedSchoolList = [];
-    // dataFile.home.map((school) => {
-    //     if (school[1].schoolCode !== "District")
-    //         trimmedSchoolList.push({
-    //             name: school[1].schoolName,
-    //             id: school[0],
-    //             type: school[1].schoolCode ?? "",
-    //             gradRate: school[1].gradRate ?? "",
-    //             act:school[1].academicPerformance.ACTCompositeAVG ?? "",
-    //             salary: school[1].avgTeacherSalary ?? "",
-    //             returnRate: school[1].teacherReturnRate ?? ""
-    //         })
-    // })
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
     };

@@ -70,8 +70,8 @@ export const createSchoolScoreData = (school, subject, code) => {
         return [["", school.schoolName,{ role: 'annotation' }, "State Average",{ role: 'annotation' }],
             [chartTitle, scores.school, scores.school + annotation, scores.state, scores.state + annotation]]
     } else {
-        return [["", school.schoolName,{ role: 'annotation' }, "District Average", { role: 'annotation' }, "State Average", { role: 'annotation' }],
-            [chartTitle, scores.school, scores.school+ annotation, scores.district, scores.district+ annotation, scores.state, scores.state+ annotation]]
+        return [["", school.schoolName, {role: 'annotation'}, "District Average", {role: 'annotation'}, "State Average", {role: 'annotation'}],
+            [chartTitle, scores.school, scores.school + annotation, scores.district, scores.district + annotation, scores.state, scores.state + annotation]]
     }
 };
     let schoolSubjectAvg = 0,

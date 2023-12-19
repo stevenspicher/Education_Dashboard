@@ -1,5 +1,5 @@
+import {selectedDistrict} from "../../../store/signalStore.js";
 import {Stack} from "@mui/material";
-import {allSchools, selectedDistrict} from "../../../store/signalStore.js";
 import {schoolScoreDataChart} from "../../../components/Charts/Charts.jsx";
 import DistrictLegend from "../../../components/Legends/DistrictLegend.jsx";
 
@@ -8,8 +8,8 @@ const DistrictAcademicPerformance = () => {
 
     return (
         <Stack>
-            <h5 className={"chart-title"} style={{marginLeft:"100px", marginTop: "10px"}}>Academic Performance</h5>
-           <DistrictLegend district={district}/>
+            <h5 className={"chart-title"} style={{marginLeft: "100px", marginTop: "10px"}}>Academic Performance</h5>
+            <DistrictLegend district={district}/>
             <Stack
                 className="chart-container"
                 direction="row"
@@ -29,11 +29,10 @@ const DistrictAcademicPerformance = () => {
                 alignItems="center"
             >
                 {schoolScoreDataChart(district, "gradRate", "D")}
-
                 {schoolScoreDataChart(district, "ACTCompositeAVG", "D")}
 
             </Stack>
-       </Stack>
+        </Stack>
     )
 }
 

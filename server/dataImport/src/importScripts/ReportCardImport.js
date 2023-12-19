@@ -49,16 +49,6 @@ export const ReportCardImport = async (data, setReport, setCurrentYear, setRepor
         header: 1,
         defval: ""
     })
-    console.log({
-        ratings:ratingsData.slice(2),
-        gradRate: gradRateData,
-        mainPage: mainPageData,
-        achievePrepSuccessHigh: achievePrepSuccessHighData,
-        achievePrepSuccessElemMid: achievePrepSuccessElemMidData,
-        participationBySubject: participationBySubjectData,
-        participation: participationData,
-        collegeAndCareerReadiness: collegeAndCareerReadinessData
-    })
     setReport({
         ratings:ratingsData.slice(2),
         gradRate: gradRateData,

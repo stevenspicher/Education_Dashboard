@@ -1,6 +1,5 @@
-import {Card} from "react-bootstrap";
-import {Stack} from "@mui/material";
 import {selectedDistrict} from "../../../store/signalStore.js";
+import {Stack} from "@mui/material";
 import {climateCard} from "../../../components/Cards/Cards.jsx";
 
 const DistrictClimateCards = () => {

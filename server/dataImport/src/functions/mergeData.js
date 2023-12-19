@@ -1,6 +1,5 @@
 import {createFullDataObject} from "./functions";
 
-
 export function mergeData(reportCardData, additionalInfoData, setSchoolData) {
     const mainPage = createFullDataObject(reportCardData.mainPage);
     const achievePrepSuccessElemMid = createFullDataObject(reportCardData.achievePrepSuccessElemMid);
@@ -20,9 +19,7 @@ export function mergeData(reportCardData, additionalInfoData, setSchoolData) {
 
     function objCombine(obj, variable) {
         let fixedKey;
-        //obj = report, variable = created Object
         for (let key of Object.keys(obj)) {
-            //key = school id
             if (key.length === 6) {
                 fixedKey = "0" + key
                 if (!variable[fixedKey]) variable[fixedKey] = {};
@@ -55,7 +52,6 @@ export function mergeData(reportCardData, additionalInfoData, setSchoolData) {
     objCombine(collegeAndCareerReadiness, combined);
     objCombine(finance, combined);
     //combined = all data (except for when createSpecificDataObject is used)
-console.log(combined)
     // names of data files
     let state = {},
         allSchools = {},
@@ -157,9 +153,6 @@ console.log(combined)
             positiveReadingScoreAvg_H: combined[schoolId]["E_PctABC"] ?? "*",
             positiveMathScoreAvg_H: combined[schoolId]["M_PctABC"] ?? "*",
             positiveScienceScoreAvg_H: combined[schoolId]["SC_PctABC"] ?? "*",
-            // positiveReadingScoreAvg: (type === "District" || type === "High School") ? combined[schoolId]["E_PctABC"] : combined[schoolId]["E_PctME"],
-            // positiveMathScoreAvg: (type === "District" || type === "High School") ? combined[schoolId]["M_PctABC"] : combined[schoolId]["M_PctME"],
-            // positiveScienceScoreAvg: (type === "District" || type === "High School") ? combined[schoolId]["SC_PctABC"] : combined[schoolId]["SC_PctME"],
             districtSchoolList: type === "District" ? districtSchoolList : [],
         }
 
@@ -191,8 +184,6 @@ console.log(combined)
             studentsAmericanIndian: combined[9999999]["TotalN_American\r\nIndian"] !== "*" ? combined[9999999]["TotalN_American\r\nIndian"] : 0,
         }
     })
-console.log(allSchools)
-console.log(state)
     setSchoolData({allSchools, state})
 }
 

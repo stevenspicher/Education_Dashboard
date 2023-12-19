@@ -1,6 +1,6 @@
 import {selectedSchoolId, selectedSchoolCode} from "../store/signalStore.js";
 
-//// gets ID and code from URL parameters,
+//// gets school ID and school code from URL parameters,
 //// saves to signal store
 export const getIdAndCode = (idAndCode) => {
     const id = idAndCode.toString().split("+")[0]
@@ -14,19 +14,6 @@ export const getIdAndCode = (idAndCode) => {
     return true
 }
 
-export const getSchoolType = (code) => {
-    switch (code) {
-        case "E" :
-            return "Elementary School";
-        case "M":
-            return "Middle School";
-        case "P":
-            return "Primary School";
-        case "H":
-            return "High School";
-        default: return "Other";
-    }
-}
 //// Creates url parameters for school or district,
 //// Navigates to appropriate page
 export const navigateToPage = (school, navigate) => {

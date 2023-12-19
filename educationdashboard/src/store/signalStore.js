@@ -1,11 +1,9 @@
 import {computed, effect, signal} from "@preact/signals-react";
-
 import stateData from "../dataImport/stateData.json"
 import allSchoolsData from "../dataImport/allSchoolsData.json"
 
 
 export const allSchools = signal(allSchoolsData)
-
 export const state = signal(stateData)
 export const selectedSchoolId = signal(undefined);
 export const selectedSchoolCode = signal(undefined);
@@ -34,26 +32,12 @@ effect(() => {
 })
 
 export const selectedSchool = computed(() => {
-        // if (elementaryData[schoolId.value] !== undefined) {
-        //     return elementaryData[schoolId.value]
-        // } else if (middleData[schoolId.value] !== undefined) {
-        //     return middleData[schoolId.value]
-        // } else if (highSchoolData[schoolId.value] !== undefined) {
-        //     return highSchoolData[schoolId.value]
-        // } else if (primaryData[schoolId.value] !== undefined) {
-        //     return primaryData[schoolId.value]
-        //
-        // } else return undefined
     return allSchools.value[schoolId.value]
     }
 )
 export const selectedDistrict = computed(() => {
-        // if (districts.value[Number(schoolId.value] !== undefined)
         return allSchools.value[schoolId.value]
         })
-
-export const schoolTableSearchResults = signal([])
-export const districtMapSearchResults = signal([])
 export const topSearchResults = signal([])
 export const fullSearchList = computed(() => {
     let list = [];
@@ -61,36 +45,8 @@ export const fullSearchList = computed(() => {
 
         list.push(school)
     })
-    // Object.entries(districts.value).map((district) => {
-    //     list.push({name: district[1].schoolName, id: district[0], code: "D"})
-    // })
     return list
 })
-
-export const topSearchResultsDistrictOnly = computed(
-    () => {
-        let results = [];
-        topSearchResults.value.forEach((result) => {
-            if (result.code !== undefined)
-                if (result.code === "D") {
-                    results.push(result)
-                }
-        })
-        return results
-    }
-)
-export const topSearchResultsSchoolOnly = computed(
-    () => {
-        let results = [];
-        topSearchResults.value.forEach((result) => {
-            if (result.code !== undefined)
-                if (result.code !== "D") {
-                    results.push(result)
-                }
-        })
-        return results
-    }
-)
 export const topSearchResultsObj = computed(() => {
     let obj = {};
      Object.entries(topSearchResults.value).map((result) => {
@@ -100,8 +56,6 @@ export const topSearchResultsObj = computed(() => {
         return obj
 })
 
-export const searchInput = signal(undefined)
-export const visibleRows = signal([])
 
 /*Map Data */
 export const heatMapKey = signal(0)

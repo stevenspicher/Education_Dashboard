@@ -1,8 +1,8 @@
-import {MapContainer, TileLayer, Marker, Popup,} from "react-leaflet";
-import schoolGeoData from "../../../dataImport/schoolGeoData.json";
-import {Link} from "@mui/material";
 import {useNavigate} from "react-router-dom";
 import {selectedDistrict} from "../../../store/signalStore.js";
+import {MapContainer, TileLayer, Marker, Popup,} from "react-leaflet";
+import {Link} from "@mui/material";
+import schoolGeoData from "../../../dataImport/schoolGeoData.json";
 import {navigateToPage} from "../../../utils/functions.js";
 import { getCenter, schoolFix} from "./districtAndSchoolFix.js";
 

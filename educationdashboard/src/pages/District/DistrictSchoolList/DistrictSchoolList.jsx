@@ -1,13 +1,14 @@
-import {Link, Stack} from "@mui/material";
+import {useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {selectedDistrict} from "../../../store/signalStore.js";
 import {navigateToPage} from "../../../utils/functions.js";
 import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
+import AccordionSummary from '@mui/material/AccordionSummary';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import {Link} from "@mui/material";
 import Typography from '@mui/material/Typography';
-import {useState} from "react";
+
 const DistrictSchoolList = () => {
     const district = selectedDistrict.value
     const navigate = useNavigate();
@@ -100,49 +101,6 @@ const DistrictSchoolList = () => {
                     }
                 </AccordionDetails>
             </Accordion>
-
-        {/*<Stack*/}
-        {/*    className="card-container"*/}
-        {/*    direction="column"*/}
-        {/*    // alignItems="center"*/}
-        {/*>*/}
-        {/*    <div className="school-inner">*/}
-
-        {/*        <ul>Elementary Schools</ul>*/}
-        {/*        {district.districtSchoolList.map((school, index) => {*/}
-        {/*            return (*/}
-        {/*                <div key={index}>*/}
-        {/*                    {displaySchoolInfo(school[0], "E")}*/}
-        {/*                </div>*/}
-        {/*            )*/}
-        {/*        })*/}
-        {/*        }*/}
-
-
-        {/*        <ul>Middle Schools</ul>*/}
-        {/*        <ul>*/}
-        {/*            {district.districtSchoolList.map((school, index) => {*/}
-        {/*                return (*/}
-        {/*                    <div key={index}>*/}
-        {/*                        {displaySchoolInfo(school[0], "M")}*/}
-        {/*                    </div>*/}
-        {/*                )*/}
-        {/*            })*/}
-        {/*            }*/}
-        {/*        </ul>*/}
-        {/*        <ul>High Schools</ul>*/}
-        {/*        <ul>*/}
-        {/*            {district.districtSchoolList.map((school, index) => {*/}
-        {/*                return (*/}
-        {/*                    <div key={index}>*/}
-        {/*                        {displaySchoolInfo(school[0], "H")}*/}
-        {/*                    </div>*/}
-        {/*                )*/}
-        {/*            })*/}
-        {/*            }*/}
-        {/*        </ul>*/}
-        {/*    </div>*/}
-        {/*</Stack>*/}
         </div>
 
     )

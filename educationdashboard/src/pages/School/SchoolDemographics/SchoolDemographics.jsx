@@ -5,7 +5,6 @@ import SchoolLegend from "../../../components/Legends/SchoolLegend.jsx";
 
 const SchoolDemographics = () => {
     const school = selectedSchool.value
-    console.log(school)
     return (
         <Stack>
             <h5 style={{marginLeft: "100px", marginTop: "10px"}} className={"chart-title"}>Demographics</h5>

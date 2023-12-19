@@ -2,8 +2,8 @@ import {selectedSchoolId} from "../../../store/signalStore.js";
 import district_geoData from "../../../dataImport/district_geoData.json";
 import schoolGeoData from "../../../dataImport/schoolGeoData.json";
 
+// to correct match errors between geodataset and district data
 export  const districtFix = (districtgeo) => {
-
     if (districtgeo.properties.district_full_name.includes("Bamberg")) {
         return "0503999"
     } else if (districtgeo.properties.district_id === "3803999"
@@ -75,14 +75,10 @@ export const schoolFix = (schoolID) => {
     if (schoolID.toString() === "5209999") {
         newSchoolID = "0619001" // Palmetto
     }
-// if (schoolID.toString()()  === "0648008") {
-//     newSchoolID = "0629006" // Williston-Elko Middle School
-// }
     return newSchoolID
 }
 
 export const getCenter = () => {
-
     let centerLatLong;
     if (selectedSchoolId.value === "0501999" || selectedSchoolId.value === "0502999" || selectedSchoolId.value === "0503999") {centerLatLong = ["33.3024", "-81.023791"]}
     else if (selectedSchoolId.value === "0648999" ) {centerLatLong = ["33.241161", "-81.35504"]}
@@ -96,22 +92,4 @@ export const getCenter = () => {
         let long = district_geoData.features.filter((dist) => dist.properties.district_id === selectedSchoolId.value)[0].properties.Long
         centerLatLong = [lat, long]}
     return centerLatLong
-}
-
-export const checkSchool = () => {
-    
-    Object.entries(schoolGeoData).map(school => {
-        // if (school[1].name.includes("Ridgeland")) {
-            console.log(school[1].name)
-            console.log(school[1].id)
-        // }
-    })
-}
-
-export const checkDistrict = () => {
-    Object.entries(district_geoData.features).map(district => {
-        if (district[1].properties.district_full_name.includes("Clarendon")) {
-        console.log(district[1].properties)
-        }
-    })
 }

@@ -1,6 +1,6 @@
 import {Link} from "@mui/material";
 import {useNavigate} from "react-router-dom";
-import {selectedSchool, selectedSchoolId, selectedSchoolCode} from "../../../store/signalStore"
+import {selectedSchool} from "../../../store/signalStore"
 import {navigateToPage} from "../../../utils/functions.js";
 
 const SchoolHeader = () => {

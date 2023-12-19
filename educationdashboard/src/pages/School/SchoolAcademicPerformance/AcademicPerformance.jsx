@@ -8,7 +8,6 @@ const AcademicPerformance = () => {
     return (
         <Stack>
             <h5 className={"chart-title"} style={{marginLeft: "100px",  marginTop: "10px"}}>Academic Performance</h5>
-            {/*Legend*/}
             <SchoolLegend school={school}/>
             <Stack
                 className="chart-container"
@@ -16,7 +15,6 @@ const AcademicPerformance = () => {
                 justifyContent="space-evenly"
                 alignItems="center"
             >
-
 
                 {school.schoolType === "High School" ?
                     <Stack

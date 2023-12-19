@@ -4,7 +4,6 @@ import XLSX from "xlsx-js-style";
 export const AdditionalInfoImport = async (data, setReport, currentYear, setAdditionalInfoVerified ) => {
 const fileNameWithYear = data.name.split('.')[0];
     const additionalInfoCurrentYear = fileNameWithYear.slice(-4);
-    // if (additionalInfoCurrentYear === currentYear) {setYearVerified(true)}
     const fileName = fileNameWithYear.split(additionalInfoCurrentYear)[0];
     if (fileName === "ReportCardData_AdditionalInfo") {setAdditionalInfoVerified(true)}
 
@@ -48,15 +47,6 @@ const fileNameWithYear = data.name.split('.')[0];
         defval: ""
     })
 
-    console.log({
-        careerReadiness: careerReadinessData,
-        gradRate: gradRateData,
-        finance: financialDataData,
-        classroomEnvironment: classroomEnvironmentData,
-        safety: schoolSafetyData,
-        collegeReadiness: collegeReadinessData,
-        schoolClimateChronicAbsence: schoolClimateChronicAbsenceData
-    })
     setReport({
         careerReadiness: careerReadinessData,
         gradRate: gradRateData,

@@ -1,11 +1,11 @@
+import {useParams} from "react-router";
+import {Container, Grow, Paper} from "@mui/material";
 import "../../css/schools.css";
-import SchoolClimateCards from "./SchoolClimateCards/SchoolClimateCards.jsx";
 import AcademicPerformance from "./SchoolAcademicPerformance/AcademicPerformance.jsx";
+import FullSearch from "../../components/FullSearch.jsx";
+import SchoolClimateCards from "./SchoolClimateCards/SchoolClimateCards.jsx";
 import SchoolDemographics from "./SchoolDemographics/SchoolDemographics.jsx";
 import SchoolHeader from "./SchoolHeader/SchoolHeader.jsx";
-import {Container, Grow, Paper} from "@mui/material";
-import FullSearch from "../../components/FullSearch.jsx";
-import {useParams} from "react-router";
 import {getIdAndCode} from "../../utils/functions.js";
 
 const School = () => {
