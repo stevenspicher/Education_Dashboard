@@ -5,35 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8d0d108c-4ac4-4e0b-8b45-613489021c53" name="Changes" comment="add accordian">
+      <change afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/allSchoolsData22.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/.firebase/hosting.ZGlzdA.cache" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/.firebase/hosting.ZGlzdA.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/pages/District/District.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/pages/District/District.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/pages/District/DistrictAcademicPerformance/DistrictAcademicPerformance.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/pages/District/DistrictAcademicPerformance/DistrictAcademicPerformance.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/pages/District/DistrictClimateCards/DistrictClimateCards.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/pages/District/DistrictClimateCards/DistrictClimateCards.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/pages/District/DistrictDemographics/DistrictDemographics.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/pages/District/DistrictDemographics/DistrictDemographics.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/pages/District/DistrictMap/districtAndSchoolFix.js" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/pages/District/DistrictMap/districtAndSchoolFix.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/pages/District/DistrictMap/schoolsMap.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/pages/District/DistrictMap/schoolsMap.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/pages/District/DistrictSchoolList/DistrictSchoolList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/pages/District/DistrictSchoolList/DistrictSchoolList.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/pages/Home/DistrictMap/DistrictsHeatMap.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/pages/Home/DistrictMap/DistrictsHeatMap.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/pages/Home/DistrictMap/DistrictsMapButtons.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/pages/Home/DistrictMap/DistrictsMapButtons.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/pages/Home/DistrictMap/districtsMap.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/pages/Home/DistrictMap/districtsMap.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/pages/Home/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/pages/Home/Home.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/pages/Home/Table/Table.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/pages/Home/Table/Table.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/pages/School/School.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/pages/School/School.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/pages/School/SchoolAcademicPerformance/AcademicPerformance.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/pages/School/SchoolAcademicPerformance/AcademicPerformance.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/pages/School/SchoolDemographics/SchoolDemographics.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/pages/School/SchoolDemographics/SchoolDemographics.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/pages/School/SchoolHeader/SchoolHeader.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/pages/School/SchoolHeader/SchoolHeader.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/store/signalStore.js" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/store/signalStore.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/utils/chartFunctions.js" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/utils/chartFunctions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/educationdashboard/src/utils/functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/utils/functions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/dataImport/src/DataImport.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/server/dataImport/src/DataImport.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/dataImport/src/functions/mergeData.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/dataImport/src/functions/mergeData.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/dataImport/src/importScripts/AdditionalInfoImport.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/dataImport/src/importScripts/AdditionalInfoImport.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/dataImport/src/importScripts/ReportCardImport.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/dataImport/src/importScripts/ReportCardImport.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/dataImport/src/importScripts/geodataImport.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/educationdashboard/src/dataImport/allSchoolsData.json" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/allSchoolsData.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/educationdashboard/src/dataImport/stateData.json" beforeDir="false" afterPath="$PROJECT_DIR$/educationdashboard/src/dataImport/stateData.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,30 +57,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/steven/IdeaProjects/Education Dashboard/educationdashboard/src/dataImport&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Applications/IntelliJ IDEA.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "F:/Education_Dashboard/educationdashboard/src/dataImport",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "ts.external.directory.path": "/Applications/IntelliJ IDEA.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\Education_Dashboard\educationdashboard\src\dataImport" />
       <recent name="$PROJECT_DIR$/educationdashboard/src/dataImport" />
       <recent name="$PROJECT_DIR$/educationdashboard/src/dataImport/2022" />
       <recent name="$PROJECT_DIR$/educationdashboard/src/pages/Home/DistrictMap" />
       <recent name="$PROJECT_DIR$/educationdashboard/src/pages/District/DistrictClimateCards" />
-      <recent name="$PROJECT_DIR$/educationdashboard/src/components/Home/DistrictMap" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/educationdashboard/src/features/firebase" />
