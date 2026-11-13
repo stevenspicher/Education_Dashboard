@@ -1,108 +1,74 @@
-import {useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {selectedDistrict} from "../../../store/signalStore.js";
 import {navigateToPage} from "../../../utils/functions.js";
-import Accordion from '@mui/material/Accordion';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import {Link} from "@mui/material";
-import Typography from '@mui/material/Typography';
+
+//// Schools in the district, shown as one always-visible column per level.
+//// Primary schools sit with elementary; a school with more than one report card
+//// (e.g. grades 6-12) is listed under each of its levels.
+const LEVELS = [
+    {code: "E", title: "Elementary"},
+    {code: "M", title: "Middle"},
+    {code: "H", title: "High"},
+];
+
+// roughly 15 schools before a column scrolls (vertically only)
+const COLUMN_MAX_HEIGHT = "460px";
 
 const DistrictSchoolList = () => {
     const district = selectedDistrict.value
     const navigate = useNavigate();
 
-    const [expanded, setExpanded] = useState(false);
+    const schools = district.districtSchoolList
+        .map((entry) => entry[0])
+        .slice()
+        .sort((a, b) => a.schoolName.localeCompare(b.schoolName));
 
-    const handleChange = (panel) => (event, isExpanded) => {
-        setExpanded(isExpanded ? panel : false);
-    };
-    const displaySchoolInfo = (school, code) => {
+    const columns = LEVELS.map((level) => ({
+        ...level,
+        schools: schools.filter((school) =>
+            (school.codes ?? [school.code]).map((code) => (code === "P" ? "E" : code)).includes(level.code)),
+    })).filter((column) => column.schools.length > 0);
 
-        const codes = (school.codes ?? [school.code]).map((c) => (c === "P" ? "E" : c))
-        if (codes.includes(code)) {
-            return (
-                <Link onClick={() => {
-                    navigateToPage({schoolId: school.id, schoolCode: school.code}, navigate)
-                }}>
-                    {school.schoolName}
-                </Link>
-            )
-        }
-    }
     return (
-        <div
-            style={{
-                overflow: "hidden",
-                width:"50%",
-            justifyContent:"space-evenly",
-                maxHeight: "420px"
-            }}
-        >
-            <h1
-                style={{marginLeft:"100px", marginTop: "10px"}}
-                className={"chart-title"} >Schools in this district:</h1>
-
-            <Accordion  className="school-inner"  expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
-                <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
-                    aria-controls="panel1a-content"
-                    id="panel1a-header"
-                >
-                    <Typography>Elementary Schools</Typography>
-                </AccordionSummary>
-                <AccordionDetails >
-                    {district.districtSchoolList.map((school, index) => {
-                        return (
-                            <div key={index}>
-                                {displaySchoolInfo(school[0], "E")}
-                            </div>
-                        )
-                    })
-                    }
-                </AccordionDetails>
-            </Accordion>
-            <Accordion  className="school-inner" expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
-                <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
-                    aria-controls="panel2a-content"
-                    id="panel2a-header"
-                >
-                    <Typography>Middle Schools</Typography>
-                </AccordionSummary>
-                <AccordionDetails >
-                    {district.districtSchoolList.map((school, index) => {
-                        return (
-                            <div key={index}>
-                                {displaySchoolInfo(school[0], "M")}
-                            </div>
-                        )
-                    })
-                    }
-                </AccordionDetails>
-            </Accordion>
-            <Accordion className="school-inner" expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
-                <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
-                    aria-controls="panel3a-content"
-                    id="panel3a-header"
-                >
-                    <Typography>High Schools</Typography>
-                </AccordionSummary>
-                <AccordionDetails >
-                    {district.districtSchoolList.map((school, index) => {
-                        return (
-                            <div key={index}>
-                                {displaySchoolInfo(school[0], "H")}
-                            </div>
-                        )
-                    })
-                    }
-                </AccordionDetails>
-            </Accordion>
+        <div style={{padding: "10px 30px 20px"}}>
+            <h5 className={"chart-title"} style={{marginLeft: "70px", marginTop: "10px"}}>
+                Schools in this district ({schools.length})
+            </h5>
+            <div style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+                gap: "24px",
+                marginTop: "10px",
+            }}>
+                {columns.map((column) => (
+                    <div key={column.code} style={{minWidth: 0}}>
+                        <div style={{
+                            fontWeight: "bold",
+                            borderBottom: "2px solid black",
+                            paddingBottom: "4px",
+                            marginBottom: "6px",
+                        }}>
+                            {column.title} ({column.schools.length})
+                        </div>
+                        <div style={{maxHeight: COLUMN_MAX_HEIGHT, overflowY: "auto", overflowX: "hidden"}}>
+                            {column.schools.map((school) => (
+                                <div key={school.id} style={{padding: "3px 0", overflowWrap: "anywhere"}}>
+                                    <Link
+                                        component="button"
+                                        style={{textAlign: "left"}}
+                                        onClick={() => {
+                                            navigateToPage({schoolId: school.id, schoolCode: school.code}, navigate)
+                                        }}>
+                                        {school.schoolName}
+                                    </Link>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                ))}
+            </div>
         </div>
-
     )
 }
 

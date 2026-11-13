@@ -1,5 +1,5 @@
 import {useParams} from "react-router";
-import {Container, Grow, Paper, Stack} from "@mui/material";
+import {Container, Grow, Paper} from "@mui/material";
 import DistrictHeader from "./DistrictHeader/DistrictHeader.jsx";
 import DistrictAcademicPerformance from "./DistrictAcademicPerformance/DistrictAcademicPerformance.jsx";
 import DistrictDemographics from "./DistrictDemographics/DistrictDemographics.jsx";
@@ -35,12 +35,8 @@ const District = () => {
             </Grow>
             <Grow in={true} timeout={1000}>
                 <Paper elevation={elevationHeight} sx={{marginTop: "10px", border: '1px solid black'}}>
-                    <Stack
-                        direction="row"
-                    >
-                        <SchoolsMap/>
-                        <DistrictSchoolList/>
-                    </Stack>
+                    <SchoolsMap/>
+                    <DistrictSchoolList/>
                 </Paper>
             </Grow>
             <Grow in={true} timeout={1000}>
