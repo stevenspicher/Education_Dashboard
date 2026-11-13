@@ -107,8 +107,9 @@ export const getCenter = () => {
     else if (selectedSchoolId.value === "5209999" ) {centerLatLong = ["33.89193", "-81.011801"]} //Palmetto
     else if (selectedSchoolId.value === "4701999" ) {centerLatLong = ["33.89193", "-81.011801"]} //SOUTH CAROLINA PUBLIC CHARTER
     else {
-        let lat = district_geoData.features.filter(dist => dist.properties.district_id === selectedSchoolId.value)[0].properties.Lat
-        let long = district_geoData.features.filter((dist) => dist.properties.district_id === selectedSchoolId.value)[0].properties.Long
-        centerLatLong = [lat, long]}
+        const feature = district_geoData.features.find((dist) => dist.properties.district_id === selectedSchoolId.value)
+        // statewide districts (charter, state-run schools) have no boundary: centre on the state instead
+        centerLatLong = feature !== undefined ? [feature.properties.Lat, feature.properties.Long] : ["33.9", "-80.9"]
+    }
     return centerLatLong
 }
