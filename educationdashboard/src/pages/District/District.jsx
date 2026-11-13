@@ -8,11 +8,19 @@ import DistrictSchoolList from "./DistrictSchoolList/DistrictSchoolList.jsx";
 import FullSearch from "../../components/FullSearch.jsx";
 import SchoolsMap from "./DistrictMap/schoolsMap.jsx";
 import {getIdAndCode} from "../../utils/functions.js";
+import {allSchools, selectedDistrict} from "../../store/signalStore.js";
+import Trends from "../../components/Trends/Trends.jsx";
+import NotFound from "../../components/NotFound.jsx";
 
 const District = () => {
     const elevationHeight = 12;
     const {id} = useParams();
     getIdAndCode(id)
+    // look the record up from the URL itself: the store only catches up after this render
+    const record = id !== undefined ? allSchools.value[id] : selectedDistrict.value
+    if (record === undefined || record.schoolCode !== "D") {
+        return <NotFound/>
+    }
     return (
         <Container>
             <Grow in={true} timeout={1000}>
@@ -40,6 +48,7 @@ const District = () => {
                     <DistrictAcademicPerformance/>
                 </Paper>
             </Grow>
+            <Trends record={record}/>
             <Paper elevation={elevationHeight} sx={{marginTop: "10px", border: '1px solid black'}}>
                 <DistrictDemographics/>
             </Paper>

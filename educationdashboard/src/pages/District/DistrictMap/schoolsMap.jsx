@@ -2,7 +2,7 @@ import {useNavigate} from "react-router-dom";
 import {selectedDistrict} from "../../../store/signalStore.js";
 import {MapContainer, TileLayer, Marker, Popup,} from "react-leaflet";
 import {Link} from "@mui/material";
-import schoolGeoData from "../../../dataImport/schoolGeoData.json";
+import schoolGeoData from "../../../dataImport/schoolGeodata.json";
 import {navigateToPage} from "../../../utils/functions.js";
 import { getCenter, schoolFix} from "./districtAndSchoolFix.js";
 
@@ -18,7 +18,7 @@ const SchoolsMap = () => {
                     <Marker key ={index} position={[schoolGeoData[schoolID].lat, schoolGeoData[schoolID].lon]}>
                         <Popup>
                             <Link onClick={() => {
-                                navigateToPage(school[0], navigate)
+                                navigateToPage({schoolId: school[0].id, schoolCode: school[0].code}, navigate)
                             }}>
                                 {school[0].schoolName}
                             </Link>

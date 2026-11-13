@@ -2,81 +2,49 @@ import {MapContainer, TileLayer, GeoJSON} from "react-leaflet";
 import district_geoData from "../../../dataImport/district_geoData.json"
 import {
     allSchools,
-    mapDataType, districtsMapKey, layerColor, mapScore, topSearchResultsObj, topSearchResults,
+    mapDataType, districtsMapKey, topSearchResultsObj, searchQuery,
 } from "../../../store/signalStore.js";
 import DistrictsMapButtons from "./DistrictsMapButtons.jsx";
 import DistrictsHeatMap from "./DistrictsHeatMap.jsx";
 import { districtFix} from "../../District/DistrictMap/districtAndSchoolFix.js";
+import {formatMetric, getScale, metricLabel, metricValue} from "../../../utils/mapScale.js";
+import {getSalary} from "../../../utils/values.js";
 
 const DistrictsMap = () => {
-    let districtsData = topSearchResults.value.length !== 0 ? topSearchResultsObj.value :  allSchools.value;
+    // while a search is active only the matching districts are drawn
+    const districtsData = searchQuery.value.trim() !== "" ? topSearchResultsObj.value : allSchools.value;
+    const metric = mapDataType.value;
+    const scale = getScale(metric, allSchools.value);
+    const districtGeoData = district_geoData.features;
 
-    const USDollar = new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: 'USD',
-    });
-
-    let districtGeoData = district_geoData.features;
-        let salaryTitle = "Teacher's Salary: "
-        let avgSalary;
-    const scorePopup = (id) => {
-        let popUpText = "Graduation Rate"
-        if (districtsData[id].avgTeacherSalaryCurrYr !== "*" && districtsData[id].avgTeacherSalaryCurrYr !== undefined && districtsData[id].avgTeacherSalaryCurrYr !== null) {
-            avgSalary = districtsData[id].avgTeacherSalaryCurrYr;
-        } else
-        if ( avgSalary !== undefined &&  districtsData[id].avgTeacherSalaryLastYr !== "*" && districtsData[id].avgTeacherSalaryLastYr !== undefined && districtsData[id].avgTeacherSalaryLastYr !== null) {
-            avgSalary = districtsData[id].avgTeacherSalaryLastYr;
-            salaryTitle = "Teachers's Salary (2022)"
-        } else {avgSalary = "*"};
-        if (districtsData[id] !== undefined) {
-        switch (mapDataType.value) {
-            case "gradRate":
-                popUpText = "Graduation Rate: " + districtsData[id].gradRate + "%"
-                mapScore.value = districtsData[id].gradRate
-                break;
-            case "ACTCompositeAVG":
-                popUpText = "AVG ACT Score: " + districtsData[id].ACTCompositeAVG
-
-                mapScore.value = districtsData[id].ACTCompositeAVG
-                break;
-            case "avgTeacherSalaryLastYr":
-                popUpText = salaryTitle + USDollar.format(avgSalary)
-                mapScore.value = avgSalary
-                break;
-            case "teacherReturnRate":
-                popUpText = "Teacher Retention: " + districtsData[id].teacherReturnRate  + "%"
-                mapScore.value = districtsData[id].teacherReturnRate
-                break;
+    const scorePopup = (district) => {
+        let label = metricLabel(metric);
+        if (metric === "avgTeacherSalaryLastYr" && getSalary(district).priorYear) {
+            label += " (prior year)"
         }
-        }
-        if (districtsData[id] !== undefined) {
+        return (
+            `<a href="/district/${district.schoolId}">${district.schoolName}</a>
+                <p>${label}: ${formatMetric(metric, metricValue(district, metric))}</p>`
+        )
+    }
 
-            return (
-                `<a href="/district/${[id]}">${districtsData[id].schoolName}</a>
-                <p>${popUpText}</p>`
-            )
-        } else {
-            return ""
+    const districtStyle = (districtgeo) => {
+        const district = districtsData[districtFix(districtgeo)];
+        if (district === undefined) {
+            return {weight: 0, fillOpacity: 0}
+        }
+        return {
+            fillColor: scale.colorFor(metricValue(district, metric)),
+            fillOpacity: 1,
+            weight: 2,
+            dashArray: "2",
         }
     }
 
-    const style =
-        {
-            fillOpacity: 0,
-            dashArray: 0
-        }
-
     const onEachDistrict = (districtgeo, layer) => {
-        let id = districtFix(districtgeo);
-        layer.options.dashArray = "0"
-        layer.options.weight = "0"
-        if (districtsData[id] !== undefined) {
-            layer.bindPopup(scorePopup(id)
-            ).openPopup();
-            layer.options.fillColor = layerColor.value
-            layer.options.weight = "2"
-            layer.options.dashArray = "2"
-            layer.options.fillOpacity = "3"
+        const district = districtsData[districtFix(districtgeo)];
+        if (district !== undefined) {
+            layer.bindPopup(scorePopup(district));
         }
     }
     return (
@@ -90,8 +58,8 @@ const DistrictsMap = () => {
             <DistrictsMapButtons/>
             <DistrictsHeatMap/>
             <GeoJSON
-                key={districtsMapKey.value} //to cause rerender when district list is updated
-                style={style}
+                key={districtsMapKey.value} //to cause rerender when district list or metric is updated
+                style={districtStyle}
                 data={districtGeoData}
                 onEachFeature={onEachDistrict}
             />

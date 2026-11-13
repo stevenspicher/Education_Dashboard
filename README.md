@@ -1,3 +1,19 @@
+# Yearly data update (current process)
+
+Download the two files for the year from [screportcards.com](https://screportcards.com/) ("Download Data"), then run:
+
+```bash
+node scripts/import-report-cards.mjs --researchers <ReportCardData_forResearchers.xlsx> --additional <ReportCardData_AdditionalInfo.xlsx> --publish
+```
+
+* Finds sheets and columns by name (not position) and stops with a message if one the dashboard needs is missing or renamed. Known renames go in `COLUMN_ALIASES` at the top of the script.
+* Writes `allSchoolsData<year>.json` / `stateData<year>.json` in `educationdashboard/src/dataImport`; `--publish` also makes that year the one the dashboard shows.
+* Prints a validation report (also saved to `scripts/import-report-<year>.txt`): record counts, how complete each field is compared with the previous data, schools added/removed, and schools with no map coordinates.
+* Rebuilds `history.json` from every `allSchoolsData<year>.json` in that folder; the Trends charts on the school and district pages read it. (`node scripts/build-history.mjs` rebuilds it on its own.)
+* Requires `npm install` in `educationdashboard/` first (the script uses its Excel library).
+
+The browser-based import page described below (`/server/dataImport`) is the original process and is kept for reference.
+
 # Data Import
 
 Client requested rebuild of previous dashboard which consisted of static html pages generated from a python script. 

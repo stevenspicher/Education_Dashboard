@@ -1,0 +1,117 @@
+Report card import — 2025
+  Researchers file:     ReportCardData_forResearchers2025 5.xlsx
+  Additional Info file: ReportCardData_AdditionalInfo2025 5.xlsx
+
+Records: 1206 schools, 81 districts, 1 state row
+    593  Elementary School
+    238  Middle School
+    209  High School
+     67  Elementary & Middle School
+     45  Primary School
+     29  Middle & High School
+     25  Elementary & Middle & High School
+  121 schools had more than one report card and were merged into one record
+
+Field coverage (share of applicable records with a value) and median, vs the data currently in the dashboard
+  field                          now   before   median now   median before
+  totalStudents                 100%    100%          572             579
+  teacherCount                  100%    100%           35              34
+  url                            99%      6%            -               -
+  overallRating                  90%       -            -               -
+  gradRate                       99%    100%         88.4              86
+  ACTCompositeAVG                94%     96%         17.5            17.8
+  dropoutRate                   100%    100%          1.5             1.6
+  collegeReady                   99%    100%         28.1            27.3
+  careerReady                    99%    100%         73.6            69.8
+  avgTeacherSalaryCurrYr         99%     99%        62631           59739
+  avgTeacherSalaryLastYr         97%     97%        59748           56608
+  teacherReturnRate              97%     97%           83            81.6
+  studentsInPovertyPct          100%    100%         71.6            70.7
+  chronicAbsenteeismRate         97%       -           22               -
+  demographicTotal               97%       -          601               -
+  studentsWithDisabilities       97%    100%           96              50
+  ELLStudents                    95%    100%           45              20
+  studentsWhite                  97%    100%          266               0
+  studentsBlack                  97%    100%          211               0
+  studentsHispanic               97%    100%           64               0
+  bullyAndHarass                100%    100%            1               1
+  parentFeelsSafe                88%     87%         95.9            95.1
+  teacherFeelsSafe               98%     98%          100             100
+  violentAssaults               100%    100%            0               0
+  positiveReadingScoreAvg_E      95%     95%         58.6            51.9
+  positiveMathScoreAvg_E         95%     94%         43.7            41.3
+  positiveScienceScoreAvg_E      90%      0%         46.3               -
+  positiveReadingScoreAvg_H      94%     98%           66            63.1
+  positiveMathScoreAvg_H         92%     95%         48.5            43.5
+  positiveScienceScoreAvg_H      93%     98%         38.2            42.9
+
+Compared with the dashboard's current data: 34 new, 28 no longer listed
+  + 1001201  Meeting Street Elementary-Burns (Elementary School)
+  + 1001202  Meeting Street Elementary & Middle Brentwood (Elementary & Middle School)
+  + 1704012  Dillon Elementary School (Primary School)
+  + 1804023  Woodland Middle School (Middle School)
+  + 3201073  South Lake Elementary School (Elementary School)
+  + 3809058  Lake Marion Middle School (Middle School)
+  + 4205096  Tyger River Elementary (Elementary School)
+  + 4205097  Abner Creek Middle (Middle School)
+  + 4205098  Berry Shoals Elementary (Elementary School)
+  + 4205099  Beech Springs Middle School (Middle School)
+  + 4701074  Green Charter School Simpsonville (Elementary School)
+  + 4701076  Movement School Bridge View Elementary (Primary School)
+  + 4701078  Sea Islands Heritage Academy (Middle School)
+  + 4701079  Summit Academy Sc (Middle School)
+  + 4701081  Meeting Street Academy - Spartanburg (Elementary School)
+  + 4801029  Willie Jeffries School Of Excellence (Elementary School)
+  + 4801037  Ascent Classical Academy - Fort Mill (Elementary & Middle School)
+  + 4801045  Langston Charter Middle School (Middle School)
+  + 4901007  Summerville Preparatory School (Elementary School)
+  + 4901013  Mountain View Preparatory (Middle & High School)
+  + 4901015  The South Carolina Preparatory Leadership School (Middle & High School)
+  + 4901026  Oceanside Collegiate Academy (High School)
+  + 4901027  Legion Collegiate Academy (High School)
+  + 4901028  The South Carolina Preparatory Academy (Middle & High School)
+  + 0601001  Blackvillle-Hilda High School (High School)
+  + 0601003  Macedonia Elementary Middle School (Elementary & Middle School)
+  + 0601006  Williston-Elko High School (High School)
+  + 0601007  Kelly Edwards Elementary School (Elementary School)
+  + 0601008  Williston-Elko Middle School (Middle School)
+  + 0601009  Barnwell High School (High School)
+  + 0601010  Guinyard Butler Middle School (Middle School)
+  + 0601011  Barnwell Primary School (Primary School)
+  + 0601012  Barnwell Elementary School (Elementary School)
+  + 0601999  Barnwell County School District (District)
+  - 1001200  Meeting Street Elementary (Middle School)
+  - 1406012  Manning Primary School (Primary School)
+  - 1704007  East Elementary School (Primary School)
+  - 1704011  Stewart Heights Elementary School (Primary School)
+  - 1804017  St. George Middle School (Middle School)
+  - 1804022  Harleyville Ridgeville Middle School (Middle School)
+  - 2301612  Langston Charter Middle School (Middle School)
+  - 3809018  Holly Hill Roberts Middle School (Middle School)
+  - 4205089  Beech Springs Intermediate School (Elementary School)
+  - 4205091  Berry Shoals Intermediate School (Elementary School)
+  - 4207200  Meeting Street Academy - Spartanburg (Elementary School)
+  - 4501029  C. E. Murray Elementary School (Elementary School)
+  - 4801005  Oceanside Collegiate Academy (High School)
+  - 4801016  Legion Collegiate Academy (High School)
+  - 4801017  Summit Classical School (Middle School)
+  - 4801024  The Sc Preparatory Academy (Middle School)
+  - 0645009  Barnwell High School (High School)
+  - 0645010  Guinyard-Butler Middle School (Middle School)
+  - 0645011  Barnwell Primary School (Primary School)
+  - 0645012  Barnwell Elementary School (Elementary School)
+  - 0645999  Barnwell School District 45 (District)
+  - 0648001  Blackville Hilda High School (High School)
+  - 0648003  Macedonia Elementary Middle School (Middle School)
+  - 0648006  Williston-Elko High School (High School)
+  - 0648007  Kelly Edwards Elementary School (Elementary School)
+  - 0648008  Williston-Elko Middle (Middle School)
+  - 0648999  Barnwell 48 (District)
+  - 0801020  J. K. Gourdin Elementary (Elementary School)
+
+Map coordinates: 404 of 1206 schools have no marker position (schoolGeodata.json)
+
+Problems: none
+
+Wrote allSchoolsData2025.json and stateData2025.json
+Not published. Re-run with --publish to make this the year the dashboard shows.
