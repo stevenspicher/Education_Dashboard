@@ -20,11 +20,11 @@ const DistrictSchoolList = () => {
     };
     const displaySchoolInfo = (school, code) => {
 
-        if (school.code === code) {
-            school.schoolId = school.id
+        const codes = (school.codes ?? [school.code]).map((c) => (c === "P" ? "E" : c))
+        if (codes.includes(code)) {
             return (
                 <Link onClick={() => {
-                    navigateToPage(school, navigate)
+                    navigateToPage({schoolId: school.id, schoolCode: school.code}, navigate)
                 }}>
                     {school.schoolName}
                 </Link>

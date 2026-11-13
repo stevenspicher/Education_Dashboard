@@ -3,6 +3,7 @@ import {selectedSchoolId, selectedSchoolCode} from "../store/signalStore.js";
 //// gets school ID and school code from URL parameters,
 //// saves to signal store
 export const getIdAndCode = (idAndCode) => {
+    if (idAndCode === undefined) return false
     const id = idAndCode.toString().split("+")[0]
     const code = idAndCode.toString().split("+")[1]
     if (id !== undefined) {

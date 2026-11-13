@@ -1,6 +1,6 @@
 import Control from 'react-leaflet-custom-control'
 import "../../../css/Legend.css"
-import {heatMapKey, mapDataType} from "../../../store/signalStore.js";
+import {mapDataType} from "../../../store/signalStore.js";
 import {Button, Stack} from "@mui/material";
 
 
@@ -12,7 +12,6 @@ const clickHandler = (subject) => {
     document.getElementById("ACTCompositeAVG").style.background=backgroundColor;
     document.getElementById("avgTeacherSalaryLastYr").style.background=backgroundColor;
     document.getElementById("teacherReturnRate").style.background=backgroundColor;
-    heatMapKey.value = subject.length;
 }
 return (
     <Control prepend position={"topleft"}>

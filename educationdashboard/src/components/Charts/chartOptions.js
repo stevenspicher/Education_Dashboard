@@ -22,3 +22,15 @@ export  const optionsLegend = {
     },
     fontSize: 15,
 };
+
+// ACT composite is scored 1-36, not a percentage
+export const optionsACT = {
+    ...optionsLegend,
+    vAxis: {
+        viewWindow: {
+            min: 0,
+            max: 36
+        },
+        ticks: [0, 9, 18, 27, 36]
+    },
+};

@@ -118,7 +118,7 @@ export function mergeData(reportCardData, additionalInfoData, setSchoolData) {
             city: combined[schoolId]["city"],
             street: combined[schoolId]["street"],
             zip: combined[schoolId]["zip"],
-            url: type !== "District" ? "*" :combined[schoolId]["URL"],
+            url: combined[schoolId]["URL"] || "*",
             totalStudents: combined[schoolId]["Enrollment"],
             teacherCount: combined[schoolId]["TeacherCount"],
 

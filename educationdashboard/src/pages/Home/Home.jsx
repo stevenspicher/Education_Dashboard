@@ -4,6 +4,7 @@ import DistrictsMap from "./DistrictMap/districtsMap.jsx";
 import Paper from '@mui/material/Paper';
 import SchoolTable  from "./Table/Table.jsx";
 import {Container, Grow, Stack} from "@mui/material";
+import {state} from "../../store/signalStore.js";
 import SchoolIcon from "@mui/icons-material/School.js";
 
 function Home() {
@@ -18,6 +19,7 @@ function Home() {
                     <Stack id="title" direction={"row"} className={"app-search"}>
                         <SchoolIcon fontSize="large" sx={{marginRight: "20px"}}/>
                         <h1>South Carolina Schools Explorer</h1>
+                        {state.value.reportCardYear ? <span style={{marginLeft: "20px", fontSize: "16px"}}>{state.value.reportCardYear} report card data</span> : <></>}
                     </Stack>
                 </Paper>
             </Grow>

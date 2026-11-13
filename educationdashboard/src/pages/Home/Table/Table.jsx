@@ -1,6 +1,6 @@
 import {useMemo, useState} from "react";
 import {useNavigate} from "react-router-dom";
-import {allSchools, fullSearchList, topSearchResults} from "../../../store/signalStore"
+import {allSchools, fullSearchList, searchQuery, topSearchResults} from "../../../store/signalStore"
 import {
     Box, Link,
     Paper, Table, TableBody,
@@ -9,11 +9,77 @@ import {
     TableHead,
     TablePagination,
     TableRow,
-    TableSortLabel, Typography, Stack
+    TableSortLabel, Typography
 } from "@mui/material";
 import {visuallyHidden} from "@mui/utils";
 import {navigateToPage} from "../../../utils/functions.js";
+import {formatPercent, formatSalary, getSalary, isReported, num} from "../../../utils/values.js";
 
+const headCells = [
+    {
+        id: 'schoolName',
+        numeric: false,
+        disablePadding: false,
+        label: 'Name',
+        width: '250px'
+    },
+    {
+        id: 'schoolType',
+        numeric: false,
+        disablePadding: false,
+        label: 'Education Level',
+        width: '105px'
+    },
+    {
+        id: 'gradRate',
+        numeric: true,
+        disablePadding: false,
+        label: 'Graduation Rate',
+        width: '175px'
+    },
+    {
+        id: 'ACTCompositeAVG',
+        numeric: true,
+        disablePadding: false,
+        label: 'AVG ACT Score',
+        width: '175px'
+    },
+    {
+        id: 'avgTeacherSalaryLastYr',
+        numeric: true,
+        disablePadding: false,
+        label: 'AVG Teacher Salary',
+        width: '175px'
+    },
+    {
+        id: 'teacherReturnRate',
+        numeric: true,
+        disablePadding: false,
+        label: '3 YR Teacher Retention',
+        width: '160px'
+    },
+];
+
+//// value a row is sorted by; null = not reported
+const sortValue = (school, orderBy) => {
+    if (orderBy === 'schoolName' || orderBy === 'schoolType') return school[orderBy] ?? null;
+    // salary sorts by the same figure that is displayed
+    if (orderBy === 'avgTeacherSalaryLastYr') return getSalary(school).value;
+    return num(school[orderBy]);
+};
+
+//// rows with no reported value always sort to the bottom
+const getComparator = (order, orderBy) => (a, b) => {
+    const aValue = sortValue(a, orderBy);
+    const bValue = sortValue(b, orderBy);
+    if (aValue === null && bValue === null) return 0;
+    if (aValue === null) return 1;
+    if (bValue === null) return -1;
+    const result = typeof aValue === "string" ? aValue.localeCompare(bValue) : aValue - bValue;
+    return order === 'desc' ? -result : result;
+};
+
+const cellStyle = {border: '1px solid black'};
 
 const SchoolTable = () => {
     const navigate = useNavigate();
@@ -21,53 +87,10 @@ const SchoolTable = () => {
     const [rowsPerPage, setRowsPerPage] = useState(5);
     const [order, setOrder] = useState('asc');
     const [orderBy, setOrderBy] = useState('schoolName');
-    let schoolList = allSchools.value
-    let avgSalary;
 
-    const headCells = [
-        {
-            id: 'schoolName',
-            numeric: false,
-            disablePadding: false,
-            label: 'Name',
-            width: '250px'
-        },
-        {
-            id: 'schoolType',
-            numeric: false,
-            disablePadding: false,
-            label: 'Education Level',
-            width: '105px'
-        },
-        {
-            id: 'gradRate',
-            numeric: true,
-            disablePadding: false,
-            label: 'Graduation Rate',
-            width: '175px'
-        },
-        {
-            id: 'ACTCompositeAVG',
-            numeric: true,
-            disablePadding: false,
-            label: 'AVG ACT Score',
-            width: '175px'
-        },
-        {
-            id: 'avgTeacherSalaryLastYr',
-            numeric: true,
-            disablePadding: false,
-            label: 'AVG Teacher Salary',
-            width: '175px'
-        },
-        {
-            id: 'teacherReturnRate',
-            numeric: true,
-            disablePadding: false,
-            label: '3 YR Teacher Retention',
-            width: '160px'
-        },
-    ];
+    const searching = searchQuery.value.trim() !== "";
+    const searchResults = topSearchResults.value;
+    const schoolList = allSchools.value;
 
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
@@ -82,82 +105,30 @@ const SchoolTable = () => {
         const isAsc = orderBy === property && order === 'asc';
         setOrder(isAsc ? 'desc' : 'asc');
         setOrderBy(property);
-
-
     };
-    let aTemp;
-    let bTemp;
 
-    function descendingComparator(a, b, orderBy) {
-        aTemp = a[orderBy];
-        bTemp = b[orderBy];
-
-        if (a[orderBy] === "*") {
-            aTemp = 0
-        }
-        if (b[orderBy] === "*") {
-            bTemp = 0
-        }
-        if (bTemp < aTemp) {
-            return -1;
-        }
-        if (bTemp > aTemp) {
-            return 1;
-        }
-        return 0;
-    }
-
-    function getComparator(order, orderBy) {
-        return order === 'desc'
-            ? (a, b) => descendingComparator(a, b, orderBy)
-            : (a, b) => -descendingComparator(a, b, orderBy);
-    }
-
-    let visibleRows = useMemo(
-        () =>
-
-            Object.values(schoolList).slice().sort(getComparator(order, orderBy)).slice(
-                page * rowsPerPage,
-                page * rowsPerPage + rowsPerPage,
-            ),
-        [page, rowsPerPage, order, orderBy]
+    const rows = useMemo(
+        () => (searching ? searchResults : Object.values(schoolList)).slice().sort(getComparator(order, orderBy)),
+        [searching, searchResults, schoolList, order, orderBy]
     );
-    let visibleSearchRows = useMemo(
-        () =>
-            topSearchResults.value.slice().sort(getComparator(order, orderBy)).slice(
-                page * rowsPerPage,
-                page * rowsPerPage + rowsPerPage,
-            ),
-        [page, rowsPerPage, order, orderBy]
-    );
+    const visibleRows = rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
 
     const createSortHandler = (property) => (event) => {
         handleRequestSort(event, property);
     };
 
     const searchName = (e) => {
-        let result;
-
-        if (fullSearchList.value !== undefined) {
-            result = fullSearchList.value.filter((school) =>
-                school.schoolName.toLowerCase().includes(e.target.value.toLowerCase()))
-
-
-            const resultsSort = result?.sort((a, b) => a.schoolName.localeCompare(b.schoolName))
-            topSearchResults.value = resultsSort
-            visibleRows.value = resultsSort
-        }
-        handleRequestSort(e, "schoolName")
+        const query = e.target.value;
+        searchQuery.value = query;
+        topSearchResults.value = fullSearchList.value.filter((school) =>
+            school.schoolName.toLowerCase().includes(query.trim().toLowerCase()))
+        setPage(0);
     }
 
     return (
         <TableContainer component={Paper} sx={{padding: "5px"}}>
-            <Table sx={{minWidth: 650}} aria-label="simple table">
+            <Table sx={{minWidth: 650}} aria-label="schools and districts">
                 <TableHead>
-                    <TableRow>
-
-                    </TableRow>
-
                     <TableRow>
                         <TableCell colSpan={3}
                                    style={{
@@ -168,13 +139,14 @@ const SchoolTable = () => {
                                    }}>
                             <input style={{width: "100%", fontWeight: "bold", fontSize:"20px"}} id="fill-box" type="text"
                                    placeholder="Search school or district ..."
+                                   value={searchQuery.value}
                                    onChange={(e) => {
                                        searchName(e)
                                    }}/>
                         </TableCell>
                         <TablePagination
                             rowsPerPageOptions={[5, 10, 25]}
-                            count={topSearchResults.value.length !== 0 ? topSearchResults.value.length : Object.entries(allSchools.value).length}
+                            count={rows.length}
                             rowsPerPage={rowsPerPage}
                             page={page}
                             onPageChange={handleChangePage}
@@ -215,111 +187,46 @@ const SchoolTable = () => {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-
-                    {topSearchResults.value.length !== Object.keys(allSchools.value).length && topSearchResults.value.length > 0 ?
-                        visibleSearchRows.map((school, index) => {
-                            if (school.avgTeacherSalaryCurrYr !== "*" && school.avgTeacherSalaryCurrYr !== undefined && school.avgTeacherSalaryCurrYr !== null) {
-                                avgSalary = "$" + school.avgTeacherSalaryCurrYr;
-                                console.log(avgSalary)
-                            } else
-                            if ( avgSalary !== undefined &&  school.avgTeacherSalaryLastYr !== "*" && school.avgTeacherSalaryLastYr !== undefined && school.avgTeacherSalaryLastYr !== null) {
-                                avgSalary = "$" + school.avgTeacherSalaryLastYr + " (2022 Data)";
-
-                            } else {avgSalary = "*"};
-
-                            return (
-                                <TableRow
-                                    key={index} sx={{'&:last-child td, &:last-child th': {border: 0}}}
-                                >
-                                    <TableCell
-                                        style={{border: '1px solid black'}}
-                                        component="th" scope="row">
-                                        <Typography>
-                                            <Link onClick={() => {
-                                                navigateToPage(school, navigate)
-                                                topSearchResults.value = []
-                                            }}>
-                                                {school.schoolName}
-                                            </Link>
-                                        </Typography>
-                                    </TableCell>
-                                    <TableCell
-                                        style={{border: '1px solid black'}} component="th" scope="row">
-                                        <Typography>{school.schoolType}</Typography>
-                                    </TableCell>
-                                    <TableCell
-                                        style={{border: '1px solid black'}} component="th" scope="row">
-                                        <Typography>{school.gradRate !== "*" ? school.gradRate + "%" : "*"}</Typography>
-                                    </TableCell>
-                                    <TableCell
-                                        style={{border: '1px solid black'}} component="th" scope="row">
-                                        <Typography>{school.ACTCompositeAVG ?? "*"}</Typography>
-                                    </TableCell>
-                                    <TableCell
-                                        style={{border: '1px solid black'}} component="th" scope="row">
-                                        <Typography>{avgSalary}</Typography>
-
-                                    </TableCell>
-                                    <TableCell
-                                        style={{border: '1px solid black'}} component="th" scope="row">
-                                        <Typography>{school.teacherReturnRate !== "*" ? school.teacherReturnRate + "%" : "*"}</Typography>
-                                    </TableCell>
-
-                                </TableRow>
-                            )
-                        }) :
-                        visibleRows.map((school, index) => {
-                            if (school.avgTeacherSalaryCurrYr !== "*" && school.avgTeacherSalaryCurrYr !== undefined && school.avgTeacherSalaryCurrYr !== null) {
-                                avgSalary = "$" + school.avgTeacherSalaryCurrYr;
-                            } else
-                            if ( avgSalary !== undefined &&  school.avgTeacherSalaryLastYr !== "*" && school.avgTeacherSalaryLastYr !== undefined && school.avgTeacherSalaryLastYr !== null) {
-                                avgSalary = "$" + school.avgTeacherSalaryLastYr + " (2022 Data)";
-
-                            } else {avgSalary = "*";
-
-                            }
-                            return (
-                                <TableRow
-                                    key={index} sx={{'&:last-child td, &:last-child th': {border: 0}}}
-                                >
-                                    <TableCell
-                                        style={{border: '1px solid black'}}
-                                        component="th" scope="row">
-                                        <Typography>
-                                            <Link onClick={() => {
-                                                navigateToPage(school, navigate)
-                                            }}>
-                                                {school.schoolName}
-                                            </Link>
-                                        </Typography>
-                                    </TableCell>
-                                    <TableCell
-                                        style={{border: '1px solid black'}} component="th" scope="row">
-                                        <Typography>{school.schoolType}</Typography>
-                                    </TableCell>
-                                    <TableCell
-                                        style={{border: '1px solid black'}} component="th" scope="row">
-                                        <Typography>{school.gradRate !== "*" ? school.gradRate + "%" : "*"}</Typography>
-                                    </TableCell>
-                                    <TableCell
-                                        style={{border: '1px solid black'}} component="th" scope="row">
-                                        <Typography>{school.ACTCompositeAVG ?? "*"}</Typography>
-                                    </TableCell>
-                                    <TableCell
-                                        style={{border: '1px solid black'}} component="th" scope="row">
-                                        <Typography>{avgSalary}</Typography>
-
-                                    </TableCell>
-                                    <TableCell
-                                        style={{border: '1px solid black'}} component="th" scope="row">
-                                        <Typography>{school.teacherReturnRate !== "*" ? school.teacherReturnRate + "%" : "*"}</Typography>
-                                    </TableCell>
-
-                                </TableRow>
-                            )
-                        })
+                    {visibleRows.length === 0 ?
+                        <TableRow>
+                            <TableCell colSpan={headCells.length} style={cellStyle}>
+                                <Typography>No schools or districts match &quot;{searchQuery.value}&quot;</Typography>
+                            </TableCell>
+                        </TableRow>
+                        :
+                        visibleRows.map((school) => (
+                            <TableRow
+                                key={school.schoolId} sx={{'&:last-child td, &:last-child th': {border: 0}}}
+                            >
+                                <TableCell style={cellStyle} component="th" scope="row">
+                                    <Typography>
+                                        <Link onClick={() => {
+                                            navigateToPage(school, navigate)
+                                            topSearchResults.value = []
+                                            searchQuery.value = ""
+                                        }}>
+                                            {school.schoolName}
+                                        </Link>
+                                    </Typography>
+                                </TableCell>
+                                <TableCell style={cellStyle}>
+                                    <Typography>{school.schoolType}</Typography>
+                                </TableCell>
+                                <TableCell style={cellStyle}>
+                                    <Typography>{isReported(school.gradRate) ? formatPercent(school.gradRate) : "*"}</Typography>
+                                </TableCell>
+                                <TableCell style={cellStyle}>
+                                    <Typography>{isReported(school.ACTCompositeAVG) ? school.ACTCompositeAVG : "*"}</Typography>
+                                </TableCell>
+                                <TableCell style={cellStyle}>
+                                    <Typography>{getSalary(school).value !== null ? formatSalary(school) : "*"}</Typography>
+                                </TableCell>
+                                <TableCell style={cellStyle}>
+                                    <Typography>{isReported(school.teacherReturnRate) ? formatPercent(school.teacherReturnRate) : "*"}</Typography>
+                                </TableCell>
+                            </TableRow>
+                        ))
                     }
-
                 </TableBody>
             </Table>
         </TableContainer>

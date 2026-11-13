@@ -10,16 +10,28 @@ const DistrictAcademicPerformance = () => {
         <Stack>
             <h5 className={"chart-title"} style={{marginLeft: "100px", marginTop: "10px"}}>Academic Performance</h5>
             <DistrictLegend district={district}/>
+            <h6 className={"chart-title"} style={{textAlign: "center", marginTop: "10px"}}>Elementary &amp; Middle Schools</h6>
             <Stack
                 className="chart-container"
                 direction="row"
                 justifyContent="space-evenly"
                 alignItems="center"
-                // spacing={4}
             >
-                {schoolScoreDataChart(district, "positiveMathScoreAvg", "D")}
-                {schoolScoreDataChart(district, "positiveReadingScoreAvg", "D")}
-                {schoolScoreDataChart(district, "positiveScienceScoreAvg", "D")}
+                {schoolScoreDataChart(district, "positiveMathScoreAvg", "E")}
+                {schoolScoreDataChart(district, "positiveReadingScoreAvg", "E")}
+                {schoolScoreDataChart(district, "positiveScienceScoreAvg", "E")}
+
+            </Stack>
+            <h6 className={"chart-title"} style={{textAlign: "center", marginTop: "10px"}}>High Schools</h6>
+            <Stack
+                className="chart-container"
+                direction="row"
+                justifyContent="space-evenly"
+                alignItems="center"
+            >
+                {schoolScoreDataChart(district, "positiveMathScoreAvg", "H")}
+                {schoolScoreDataChart(district, "positiveReadingScoreAvg", "H")}
+                {schoolScoreDataChart(district, "positiveScienceScoreAvg", "H")}
 
             </Stack>
             <Stack
